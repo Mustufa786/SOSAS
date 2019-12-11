@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimaryDark">#1A0B24</color>
+    <!--<color name="colorPrimary">#880E4F</color>-->
+    <color name="colorPrimary">#451e5d</color>
+    <color name="colorSecondary">#00617d</color>
+    <color name="colorPrimaryAlpha">#d6451e5d</color>
+    <color name="colorPrimaryBeta">#5c6bc0</color>
+    <color name="colorPrimaryGamma">#99a3ff</color>
+    <color name="colorAccent">#dcb46f</color>
+    <color name="pink_100">#ccefd3</color>
+    <color name="colorHeading">#00617d</color>
+    <color name="colorHeadingText">#dcb46f</color>
+
+    <color name="black">#000000</color>
+    <color name="blackOverlay">#66000000</color>
+    <color name="dullBlack">#292929</color>
+    <color name="grayOverlay">#7f7f7f7f</color>
+    <color name="gray">#7f7f7f</color>
+    <color name="dullWhiteOverlay">#99d6d6d6</color>
+    <color name="whiteOverlay">#99ffffff</color>
+    <color name="WhiteOverlay">#d6d6d6d6</color>
+    <color name="dullWhite">#d6d6d6</color>
+    <color name="white">#ffffff</color>
+    <color name="colorText">#050505</color>
+    <color name="ticker_red">#80ff0000</color>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="dullWhileOverlay">#99d6d6d6</color>
+    <color name="dullWhile">#d6d6d6</color>
+
+    <color name="year">#999999</color>
+    <color name="title">#222222</color>
+    <color name="green">#4caf50</color>
+    <color name="red">#f44336</color>
+
+    <color name="darkRed">#D50000</color>
+    <color name="lightOrange">#f7f6e0</color>
+
+    <color name="enrolled">#3392D050</color>
+    <color name="locked">#33ffff41</color>
+    <color name="shifted">#335B9BD5</color>
+    <color name="died">#33A5A5A5</color>
+    <color name="refused">#33EC701C</color>
+    <color name="dssIncorrect">#337f00ff</color>
+
+
+</resources>

@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.form1.Section01Activity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="callback"
+            type="edu.aku.hassannaqvi.rsvstudy.ui.form1.Section01Activity" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rsv_bg"
+        android:layoutDirection="rtl"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/HeadingTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Section1" />
+
+            <LinearLayout
+                android:id="@+id/ll01"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:cardCornerRadius="10dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <ImageView
+                            android:id="@+id/genderImage"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/boy" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingEnd="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@null"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/studyId"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/studyID"
+                                    style="@null"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+
+                                    android:text="35019"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="1dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@null"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+
+                                    android:text="@string/RS7"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/dssID"
+                                    style="@null"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+
+                                    android:text="AGAS04068A1"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="1dp"
+
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@null"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+
+                                    android:text="@string/RS10"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/motherName"
+                                    style="@null"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+
+                                    android:text="SAIRA"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="1dp"
+
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@null"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+
+                                    android:text="@string/RS11"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/fatherName"
+                                    style="@null"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+
+                                    android:text="M.HUSSAIN"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="1dp"
+
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@null"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+
+                                    android:text="@string/RS13"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/dob"
+                                    style="@null"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+
+                                    android:text="DOB"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:layout_marginTop="1dp"
+
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@null"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+
+                                    android:text="@string/RS14"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/months"
+                                    style="@null"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+
+                                    android:text="Months"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="1dp"
+
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@null"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+
+                                    android:text="@string/gender"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/gender"
+                                    style="@null"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+
+                                    android:text="Male"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_gravity="bottom"
+                                android:layout_marginTop="10dp"
+                                android:background="#e6e6e6e6" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </android.support.v7.widget.CardView>
+
+                <!--RS9-->
+                <android.support.v7.widget.CardView
+                    android:id="@+id/RS9cv"
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/i_textview"
+                            android:text="@string/RS9" />
+
+                        <EditText
+                            android:id="@+id/RS9"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:digits="@string/ed_sentence"
+                            android:hint="@string/RS9"
+                            android:inputType="textPersonName" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <!--                &lt;!&ndash;studyId&ndash;&gt;-->
+                <!--                <android.support.v7.widget.CardView style="@style/cardView">-->
+
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layoutDirection="ltr"-->
+
+                <!--                        android:orientation="vertical">-->
+
+                <!--                        <TextView-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:text="@string/RSID"-->
+                <!--                            android:textAppearance="?android:attr/textAppearanceLarge" />-->
+
+                <!--                        <com.edittextpicker.aliazaz.EditTextPicker-->
+                <!--                            android:id="@+id/RSID"-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:hint="Study ID"-->
+                <!--                            android:inputType="number"-->
+                <!--                            android:textColor="@color/colorPrimary"-->
+                <!--                            app:mask="#####"-->
+                <!--                            app:maxValue="99999"-->
+                <!--                            app:minValue="999"-->
+                <!--                            app:type="range" />-->
+
+                <!--                    </LinearLayout>-->
+
+                <!--                </android.support.v7.widget.CardView>-->
+                <!--RS15-->
+                <android.support.v7.widget.CardView
+                    android:id="@+id/RS15cv"
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/i_textview"
+                            android:text="@string/RS15" />
+
+                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                            android:id="@+id/RS15"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_weight="70"
+                            android:focusable="false"
+                            android:hint="DD-MM-YYYY"
+                            android:textColor="@android:color/black"
+                            app:dateFormat="dd-MM-yyyy"
+                            app:maxDate="CR_DATE" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <!--RS15-->
+                <android.support.v7.widget.CardView style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/i_textview"
+                            android:text="@string/RS14" />
+
+                        <EditText
+                            android:id="@+id/dobInMonths"
+                            style="@style/textInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_weight="70"
+                            android:enabled="false"
+                            android:focusable="false"
+                            android:hint="Months"
+                            android:textColor="@android:color/black" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/RS16cv"
+
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/i_textview"
+                            android:text="@string/RS16" />
+
+                        <RadioGroup
+                            android:id="@+id/RS16"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <RadioButton
+                                android:id="@+id/RS16a"
+                                style="@style/radiobutton"
+                                android:text="@string/RS16a" />
+
+                            <RadioButton
+                                android:id="@+id/RS16b"
+                                style="@style/radiobutton"
+                                android:text="@string/RS16b" />
+
+                            <RadioButton
+                                android:id="@+id/RS16c"
+                                style="@style/radiobutton"
+                                android:text="@string/RS16c" />
+
+                            <RadioButton
+                                android:id="@+id/RS16d"
+                                style="@style/radiobutton"
+                                android:text="@string/RS16d" />
+
+                            <RadioButton
+                                android:id="@+id/RS16e"
+                                style="@style/radiobutton"
+                                android:text="@string/RS16e" />
+
+                            <RadioButton
+                                android:id="@+id/RS1696"
+                                style="@style/radiobutton"
+                                android:text="@string/other" />
+
+                            <EditText
+                                android:id="@+id/RS1696x"
+                                style="@style/textInput"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:digits="@string/ed_letterOnly"
+                                android:hint="@string/other"
+                                android:tag="RS1696"
+                                android:text='@{RS1696.checked? RS1696x.getText().toString() : ""}'
+                                android:visibility='@{RS1696.checked? View.VISIBLE : View.GONE}' />
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+                <!--                <Button-->
+                <!--                    android:id="@+id/checkBtn"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:background="@drawable/button_bg"-->
+                <!--                    android:elevation="5dp"-->
+                <!--                    android:text="CHECK Study ID"-->
+                <!--                    android:textColor="@android:color/white"-->
+                <!--                    android:textSize="18sp" />-->
+
+                <!--                <LinearLayout-->
+                <!--                    android:id="@+id/ll0101"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:orientation="vertical"-->
+                <!--                    android:visibility="gone"-->
+                <!--                    tools:visibility="visible">-->
+
+                <!--                    &lt;!&ndash;RS7&ndash;&gt;-->
+                <!--                    <android.support.v7.widget.CardView style="@style/cardView">-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layoutDirection="ltr"-->
+                <!--                            android:orientation="vertical">-->
+
+                <!--                            <TextView-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:layout_gravity="center_horizontal"-->
+                <!--                                android:text="@string/RS7"-->
+                <!--                                android:textAppearance="?android:attr/textAppearanceLarge" />-->
+
+                <!--                            <TextView-->
+                <!--                                android:id="@+id/RS7"-->
+                <!--                                style="@style/TestDisabled"-->
+
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:hint="dssid" />-->
+
+                <!--                            &lt;!&ndash;<com.edittextpicker.aliazaz.EditTextPicker-->
+                <!--                                style="@style/Widget.AppCompat.EditText"-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:hint="@string/num78"-->
+                <!--                                android:inputType="number"-->
+                <!--                                android:textColor="@color/colorPrimary"-->
+                <!--                                app:defaultValue=""-->
+                <!--                                app:mask="#####-#######-#"-->
+                <!--                                app:pattern="[0-9]{5,5}-[0-9]{7,7}-[0-9]{1,1}"-->
+                <!--                                app:type="equal" />&ndash;&gt;-->
+
+                <!--                        </LinearLayout>-->
+
+                <!--                    </android.support.v7.widget.CardView>-->
+
+                <!--                    &lt;!&ndash;RS8&ndash;&gt;-->
+                <!--                    <android.support.v7.widget.CardView style="@style/cardView">-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layoutDirection="ltr"-->
+                <!--                            android:orientation="vertical">-->
+
+                <!--                            <TextView-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:layout_gravity="center_horizontal"-->
+                <!--                                android:text="@string/RS8"-->
+                <!--                                android:textAppearance="?android:attr/textAppearanceLarge" />-->
+
+                <!--                            <TextView-->
+                <!--                                android:id="@+id/RS8"-->
+                <!--                                style="@style/TestDisabled"-->
+
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:hint="dssid" />-->
+
+                <!--                            &lt;!&ndash;<com.edittextpicker.aliazaz.EditTextPicker-->
+                <!--                                android:id="@+id/RS8"-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:hint="@string/num78"-->
+                <!--                                android:inputType="number"-->
+                <!--                                android:textColor="@color/colorPrimary"-->
+                <!--                                app:defaultValue=""-->
+                <!--                                app:mask="#####-#######-#"-->
+                <!--                                app:pattern="[0-9]{5,5}-[0-9]{7,7}-[0-9]{1,1}"-->
+                <!--                                app:type="equal" />&ndash;&gt;-->
+
+                <!--                        </LinearLayout>-->
+
+                <!--                    </android.support.v7.widget.CardView>-->
+
+                <!--                    &lt;!&ndash;RS10&ndash;&gt;-->
+                <!--                    <android.support.v7.widget.CardView-->
+                <!--                        android:id="@+id/RS10cv"-->
+                <!--                        style="@style/cardView">-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:orientation="vertical">-->
+
+                <!--                            <TextView-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:layout_gravity="center_horizontal"-->
+                <!--                                android:text="@string/RS10"-->
+                <!--                                android:textAppearance="?android:attr/textAppearanceLarge" />-->
+
+                <!--                            <TextView-->
+                <!--                                android:id="@+id/RS10"-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                style="@style/TestDisabled"-->
+
+                <!--                                android:digits="@string/ed_sentence"-->
+                <!--                                android:hint="@string/RS10"-->
+                <!--                                android:inputType="textShortMessage" />-->
+
+                <!--                        </LinearLayout>-->
+
+                <!--                    </android.support.v7.widget.CardView>-->
+
+                <!--                    &lt;!&ndash;RS11&ndash;&gt;-->
+                <!--                    <android.support.v7.widget.CardView-->
+                <!--                        android:id="@+id/RS11cv"-->
+                <!--                        style="@style/cardView">-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:orientation="vertical">-->
+
+                <!--                            <TextView-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:layout_gravity="center_horizontal"-->
+                <!--                                android:text="@string/RS11"-->
+                <!--                                android:textAppearance="?android:attr/textAppearanceLarge" />-->
+
+                <!--                            <TextView-->
+                <!--                                android:id="@+id/RS11"-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                style="@style/TestDisabled"-->
+
+                <!--                                android:digits="@string/ed_sentence"-->
+                <!--                                android:hint="@string/RS11"-->
+                <!--                                android:inputType="textShortMessage" />-->
+
+                <!--                        </LinearLayout>-->
+
+                <!--                    </android.support.v7.widget.CardView>-->
+
+                <!--                    &lt;!&ndash;RS12&ndash;&gt;-->
+                <!--                    <android.support.v7.widget.CardView-->
+                <!--                        android:id="@+id/RS12cv"-->
+                <!--                        style="@style/cardView">-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:orientation="vertical">-->
+
+                <!--                            <TextView-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:layout_gravity="center_horizontal"-->
+                <!--                                android:text="@string/RS12"-->
+                <!--                                android:textAppearance="?android:attr/textAppearanceLarge" />-->
+
+                <!--                            <TextView-->
+                <!--                                android:id="@+id/RS12"-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                style="@style/TestDisabled"-->
+                <!--                                android:digits="@string/ed_sentence"-->
+                <!--                                android:hint="@string/RS12"-->
+                <!--                                android:inputType="textShortMessage" />-->
+
+                <!--                        </LinearLayout>-->
+
+                <!--                    </android.support.v7.widget.CardView>-->
+
+
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:orientation="horizontal">-->
+
+                <!--                        &lt;!&ndash;RS13 - Date Picker&ndash;&gt;-->
+                <!--                        <android.support.v7.widget.CardView-->
+                <!--                            android:id="@+id/RS22cv"-->
+                <!--                            style="@style/cardView"-->
+                <!--                            android:layout_weight="1">-->
+
+                <!--                            <LinearLayout-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:orientation="vertical">-->
+
+                <!--                                <TextView-->
+                <!--                                    android:layout_width="match_parent"-->
+                <!--                                    android:layout_height="wrap_content"-->
+                <!--                                    android:layout_gravity="center_horizontal"-->
+                <!--                                    android:text="@string/RS13"-->
+                <!--                                    android:textAppearance="?android:attr/textAppearanceLarge" />-->
+
+                <!--                                <EditText-->
+                <!--                                    android:id="@+id/RS13"-->
+                <!--                                    style="@style/textInput"-->
+                <!--                                    android:layout_marginStart="20dp"-->
+                <!--                                    android:layout_weight="70"-->
+                <!--                                    android:hint="DD/MM/YYYY"-->
+                <!--                                    android:textColor="@android:color/black" />-->
+
+                <!--                            </LinearLayout>-->
+
+                <!--                        </android.support.v7.widget.CardView>-->
+
+                <!--                        &lt;!&ndash;RS14&ndash;&gt;-->
+                <!--                        <android.support.v7.widget.CardView-->
+                <!--                            android:id="@+id/RS14cv"-->
+                <!--                            style="@style/cardView"-->
+                <!--                            android:layout_weight="1">-->
+
+                <!--                            <LinearLayout-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:orientation="vertical">-->
+
+                <!--                                <TextView-->
+                <!--                                    android:layout_width="match_parent"-->
+                <!--                                    android:layout_height="wrap_content"-->
+                <!--                                    android:layout_gravity="center_horizontal"-->
+                <!--                                    android:text="@string/RS14"-->
+                <!--                                    android:textAppearance="?android:attr/textAppearanceLarge" />-->
+
+                <!--                                <EditText-->
+                <!--                                    android:id="@+id/RS14"-->
+                <!--                                    style="@style/textInput"-->
+                <!--                                    android:digits="@string/ed_sentence"-->
+                <!--                                    android:enabled="false"-->
+                <!--                                    android:hint="@string/RS14"-->
+                <!--                                    android:inputType="textShortMessage"-->
+                <!--                                    android:textAlignment="center"-->
+                <!--                                    android:textStyle="bold" />-->
+
+                <!--                            </LinearLayout>-->
+
+                <!--                        </android.support.v7.widget.CardView>-->
+
+                <!--                    </LinearLayout>-->
+
+
+                <!--                    <LinearLayout-->
+                <!--                        android:id="@+id/navbuttons"-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_gravity="end"-->
+                <!--                        android:orientation="horizontal">-->
+
+                <!--                        <Button-->
+                <!--                            android:id="@+id/btn_Continue"-->
+                <!--                            android:layout_width="0dp"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_margin="4sp"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:background="@android:color/holo_green_light"-->
+                <!--                            android:onClick='@{() -> callback.BtnContinue()}'-->
+                <!--                            android:text="@string/start_interview"-->
+                <!--                            android:textColor="@color/white"-->
+                <!--                            android:textSize="24sp"-->
+                <!--                            android:textStyle="bold" />-->
+
+                <!--                        <Button-->
+                <!--                            android:id="@+id/btn_End"-->
+                <!--                            android:layout_width="0dp"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_margin="4sp"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:background="@android:color/holo_red_light"-->
+                <!--                            android:onClick='@{() -> callback.BtnEnd()}'-->
+                <!--                            android:text="@string/end_interview"-->
+                <!--                            android:textColor="@color/white"-->
+                <!--                            android:textSize="24sp"-->
+                <!--                            android:textStyle="bold"-->
+                <!--                            android:visibility="gone" />-->
+
+                <!--                    </LinearLayout>-->
+
+                <!--                </LinearLayout>-->
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_Continue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4sp"
+                    android:layout_weight="1"
+                    android:background="@android:color/holo_green_light"
+                    android:onClick='@{() -> callback.BtnContinue()}'
+                    android:text="@string/start_interview"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:visibility='@{RS16a.checked? View.VISIBLE : View.GONE}' />
+
+                <Button
+                    android:id="@+id/btn_End"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4sp"
+                    android:layout_weight="1"
+                    android:background="@android:color/holo_red_light"
+                    android:onClick='@{() -> callback.BtnEnd()}'
+                    android:text="@string/end_interview"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:visibility='@{RS16a.checked? View.GONE : View.VISIBLE}' />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>
