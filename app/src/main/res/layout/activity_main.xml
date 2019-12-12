@@ -9,7 +9,7 @@
 
         <variable
             name="callback"
-            type="edu.aku.hassannaqvi.rsvstudy.ui.other.MainActivity" />
+            type="edu.aku.hassannaqvi.uen_sosas.ui.other.MainActivity" />
     </data>
     <!--        <LinearLayout-->
     <!--            android:layout_width="match_parent"-->
@@ -405,7 +405,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
 
                     <LinearLayout
@@ -490,6 +490,54 @@
 
                         </android.support.v7.widget.CardView>
 
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layout3"
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.CardView
+                            android:id="@+id/syncBLRandom"
+                            android:layout_width="0dp"
+                            android:layout_height="120dp"
+                            android:layout_margin="@dimen/cardview_compat_inset_shadow"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:onClick="@{() -> callback.syncFamilyMembers()}">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="10dp">
+
+
+                                <ImageView
+                                    android:layout_width="?attr/actionBarSize"
+                                    android:layout_height="?attr/actionBarSize"
+                                    android:layout_centerVertical="true"
+                                    android:layout_toStartOf="@id/formText4"
+                                    android:src="@drawable/download" />
+
+                                <TextView
+                                    android:id="@+id/formText4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:text="Download Data"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                                    android:textColor="@color/colorPrimaryDark" />
+
+                            </RelativeLayout>
+
+                        </android.support.v7.widget.CardView>
 
                     </LinearLayout>
                 </LinearLayout>

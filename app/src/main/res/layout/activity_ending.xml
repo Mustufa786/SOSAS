@@ -10,7 +10,7 @@
 
         <variable
             name="callback"
-            type="edu.aku.hassannaqvi.rsvstudy.ui.other.EndingActivity" />
+            type="edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity" />
 
     </data>
 

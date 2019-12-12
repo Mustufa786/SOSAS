@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 28
@@ -19,7 +21,7 @@ android {
         versionProps.store(versionPropsFile.newWriter(), null)
 
         defaultConfig {
-            applicationId "edu.aku.hassannaqvi.rsvstudy"
+            applicationId "edu.aku.hassannaqvi.uen_sosas"
             minSdkVersion 21
             targetSdkVersion 28
             versionCode code

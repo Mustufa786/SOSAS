@@ -15,8 +15,53 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions." </string>
 
 
+    <string name="taheading">SECTION A: HH Identification</string>
+
+    <string name="ta01"> Cluster Number </string>
+    <string name="ta02"> Cluster type </string>
+    <string name="ta02a"> LHW Covered </string>
+    <string name="ta02b"> LHW UnCovered </string>
+    <string name="ta02c"> LHW Partially Covered </string>
+    <string name="ta03"> Name of Tehsil/Taluka </string>
+    <string name="ta03a"> Tando Mohammad Khan </string>
+    <string name="ta03b"> Tando Ghulam Hyder </string>
+    <string name="ta03c"> Bulri Shah Karim </string>
+    <string name="ta04"> Name of Union Council </string>
+    <string name="ta04a"> Lakhat </string>
+    <string name="ta04b"> Shaikh Bhirkio </string>
+    <string name="ta04c"> Tando Saeendad </string>
+    <string name="ta04d"> TMK 01 </string>
+    <string name="ta04e"> TMK 02 </string>
+    <string name="ta04f"> TMK 03 </string>
+    <string name="ta04g"> Dando </string>
+    <string name="ta04h"> Ghulam Shah Bagrani </string>
+    <string name="ta04i"> Nazarpur </string>
+    <string name="ta04j"> Tando Ghulam Hyder </string>
+    <string name="ta04k"> Allah Yar Turk </string>
+    <string name="ta04l"> Jinhan Soomro </string>
+    <string name="ta04m"> Bulri Shah Karim </string>
+    <string name="ta04n"> Saeed Khan Lund </string>
+    <string name="ta04o"> Mullakatiar </string>
+    <string name="ta04p"> Saeed Matto </string>
+    <string name="ta04q"> Saeedpur </string>
+    <string name="ta05"> House No </string>
+    <string name="ta05h"> House No </string>
+    <string name="ta05kh"> Khandan number </string>
+    <string name="ta05u"> Gas or electricity bill No </string>
+    <string name="ta06"> Village </string>
+    <string name="ta07"> Block/mohalla </string>
+    <string name="ta08"> Street </string>
+    <string name="ta09"> ڇا ھاڻي آءٌ انٽرويو شروع ڪري سگھان ٿي/ٿو؟ </string>
+    <string name="ta09c"> گھرو آف / اجازت دستياب ناهي. </string>
+    <string name="tc03"> جواب ڏيڻ واري جو نالو. </string>
+    <string name="tc04"> جواب ڏيڻ واري جي جنس. </string>
+    <string name="tc05"> جواب ڏيندڙ جي عمر. </string>
+    <string name="ta10"> Is there any under 5 child exist? </string>
+    <string name="ta11"> Total under 5 child? </string>
+
     <string name="dialogCheck">کیا آپ منتخب کئیے گئے بچے کے بارے میں اسکرین پر ظاہر کی گئی معلومات کے درست ہونے کی تصدیق کرتے ہیں؟</string>
 
+    <string name="uc">UC</string>
     <!--Start RSV Study Strings-->
     <string name="Section1"> شناخت کی معلومات </string>
     <string name="studyId"> ANISA Stydy ID </string>

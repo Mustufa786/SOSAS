@@ -8,13 +8,13 @@
 
         <variable
             name="callback"
-            type="edu.aku.hassannaqvi.rsvstudy.ui.sync.SyncActivity" />
+            type="edu.aku.hassannaqvi.uen_sosas.ui.sync.SyncActivity" />
     </data>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:background="@drawable/rsv_bg"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/rsv_bg">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,6 +22,7 @@
             android:animateLayoutChanges="false"
             android:layoutDirection="ltr"
             android:orientation="vertical">
+
 
             <Button
                 android:id="@+id/btnSync"
