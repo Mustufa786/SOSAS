@@ -10,7 +10,6 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,7 +25,7 @@ import edu.aku.hassannaqvi.rsvstudy.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.rsvstudy.utils.DateUtils;
 import edu.aku.hassannaqvi.rsvstudy.validator.ValidatorClass;
 
-public class Section01Activity extends AppCompatActivity {
+public class SectionEActivity extends AppCompatActivity {
 
     public static String DOB;
     ActivityF1Section01Binding bi;
@@ -40,7 +39,7 @@ public class Section01Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_f1_section01);
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_e);
         bi.setCallback(this);
 
         childData = getIntent().getParcelableExtra("data");
