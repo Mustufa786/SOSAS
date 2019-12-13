@@ -38,10 +38,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.SectionBActivity" />
-        <activity android:name=".ui.SectionCActivity" />
-        <activity android:name=".ui.SectionDAActivity" />
-        <activity android:name=".ui.SectionEActivity" />
         <activity
             android:name=".ui.other.LoginActivity"
             android:screenOrientation="portrait"
@@ -54,6 +50,26 @@
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
             android:name=".ui.form1.Section01Activity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme1"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".ui.SectionBActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme1"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".ui.SectionCActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme1"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".ui.SectionDAActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme1"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".ui.SectionEActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme1"
             android:windowSoftInputMode="adjustResize|stateHidden" />
