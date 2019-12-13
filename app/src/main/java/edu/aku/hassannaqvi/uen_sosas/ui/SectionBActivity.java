@@ -63,21 +63,19 @@ public class SectionBActivity extends AppCompatActivity {
 
     private boolean UpdateDB() {
 
-//        DatabaseHelper db = new DatabaseHelper(this);
-//        long updcount = db.addForm(MainApp.fc);
-//
-//        MainApp.fc.set_ID(String.valueOf(updcount));
-//        if (updcount != 0) {
-//            MainApp.fc.set_UID(
-//                    (MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
-//            db.updateFormID();
-//            return true;
-//        } else {
-//            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
-//            return false;
-//        }
+        DatabaseHelper db = new DatabaseHelper(this);
+        long updcount = db.addForm(MainApp.fc);
 
-        return true;
+        MainApp.fc.set_ID(String.valueOf(updcount));
+        if (updcount != 0) {
+            MainApp.fc.set_UID(
+                    (MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
+            db.updateFormID();
+            return true;
+        } else {
+            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
 
     }
 

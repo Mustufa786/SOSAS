@@ -11,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.uen_sosas.R;
+import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivitySectionEBinding;
 import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity;
@@ -80,21 +81,19 @@ public class SectionEActivity extends AppCompatActivity {
 
     private boolean UpdateDB() {
 
-//        DatabaseHelper db = new DatabaseHelper(this);
-//        long updcount = db.addForm(MainApp.fc);
-//
-//        MainApp.fc.set_ID(String.valueOf(updcount));
-//        if (updcount != 0) {
-//            MainApp.fc.set_UID(
-//                    (MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
-//            db.updateFormID();
-//            return true;
-//        } else {
-//            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
-//            return false;
-//        }
+        DatabaseHelper db = new DatabaseHelper(this);
+        long updcount = db.addForm(MainApp.fc);
 
-        return true;
+        MainApp.fc.set_ID(String.valueOf(updcount));
+        if (updcount != 0) {
+            MainApp.fc.set_UID(
+                    (MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
+            db.updateFormID();
+            return true;
+        } else {
+            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
 
     }
 
