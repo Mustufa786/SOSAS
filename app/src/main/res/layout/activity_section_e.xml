@@ -47,45 +47,53 @@
                         style="@style/i_textview"
                         android:text="@string/te05" />
 
-                    <CheckBox
-                        android:id="@+id/te05a"
-                        style="@style/checkbox"
-                        android:text="@string/te05a" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                    <CheckBox
-                        android:id="@+id/te05b"
-                        style="@style/checkbox"
-                        android:text="@string/te05b" />
+                        <CheckBox
+                            android:id="@+id/te05a"
+                            style="@style/checkbox"
+                            android:text="@string/te05a" />
 
-                    <CheckBox
-                        android:id="@+id/te05c"
-                        style="@style/checkbox"
-                        android:text="@string/te05c" />
+                        <CheckBox
+                            android:id="@+id/te05b"
+                            style="@style/checkbox"
+                            android:text="@string/te05b" />
 
-                    <CheckBox
-                        android:id="@+id/te05d"
-                        style="@style/checkbox"
-                        android:text="@string/te05d" />
+                        <CheckBox
+                            android:id="@+id/te05c"
+                            style="@style/checkbox"
+                            android:text="@string/te05c" />
 
-                    <CheckBox
-                        android:id="@+id/te05e"
-                        style="@style/checkbox"
-                        android:text="@string/te05e" />
+                        <CheckBox
+                            android:id="@+id/te05d"
+                            style="@style/checkbox"
+                            android:text="@string/te05d" />
 
-                    <CheckBox
-                        android:id="@+id/te05f"
-                        style="@style/checkbox"
-                        android:text="@string/te05f" />
+                        <CheckBox
+                            android:id="@+id/te05e"
+                            style="@style/checkbox"
+                            android:text="@string/te05e" />
 
-                    <CheckBox
-                        android:id="@+id/te05g"
-                        style="@style/checkbox"
-                        android:text="@string/te05g" />
+                        <CheckBox
+                            android:id="@+id/te05f"
+                            style="@style/checkbox"
+                            android:text="@string/te05f" />
 
-                    <CheckBox
-                        android:id="@+id/te05h"
-                        style="@style/checkbox"
-                        android:text="@string/te05h" />
+                        <CheckBox
+                            android:id="@+id/te05g"
+                            style="@style/checkbox"
+                            android:text="@string/te05g" />
+
+                        <CheckBox
+                            android:id="@+id/te05h"
+                            style="@style/checkbox"
+                            android:text="@string/te05h" />
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
 

@@ -10,4 +10,27 @@ class InfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info)
     }
+
+    fun saveDraft() {
+
+
+    }
+
+    fun formValidation(): Boolean {
+
+
+        return true
+    }
+
+
+    fun updateDB(): Boolean {
+
+
+        return true
+    }
+
+
+    fun setupViews() {
+
+    }
 }
