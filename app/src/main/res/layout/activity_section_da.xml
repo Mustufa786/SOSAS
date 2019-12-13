@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.form1.SectionDAActivity">
+    tools:context=".ui.SectionDAActivity">
 
     <data>
 
@@ -48,7 +48,7 @@
                         android:text="@string/td02b" />
 
                     <EditText
-                        android:id="@+id/td03x"
+                        android:id="@+id/td02b"
                         style="@style/textInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

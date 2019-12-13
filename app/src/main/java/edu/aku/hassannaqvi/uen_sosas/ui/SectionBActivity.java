@@ -7,9 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.uen_sosas.R;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
+import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivitySectionBBinding;
 import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass;
@@ -21,7 +23,6 @@ public class SectionBActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_b);
         bi.setCallback(this);
     }
@@ -83,6 +84,17 @@ public class SectionBActivity extends AppCompatActivity {
 
     private void SaveDraft() throws JSONException {
 
+        JSONObject SB = new JSONObject();
+
+        //td01
+        SB.put("td01", bi.td01a.isChecked() ? "1"
+                : bi.td01b.isChecked() ? "2"
+                : "0");
+
+        //td02a
+        SB.put("td02a", bi.td02a.getText().toString());
+
+        MainApp.fc.setsB(String.valueOf(SB));
 
     }
 

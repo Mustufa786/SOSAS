@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.form1.SectionCActivity">
+    tools:context=".ui.SectionCActivity">
 
     <data>
 
@@ -82,7 +82,7 @@
                         android:text="@string/te04" />
 
                     <EditText
-                        android:id="@+id/te04x"
+                        android:id="@+id/te04"
                         style="@style/textInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

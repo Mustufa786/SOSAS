@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.form1.SectionBActivity">
+    tools:context="ui.SectionBActivity">
 
     <data>
 
@@ -86,7 +86,7 @@
                         android:text="@string/td02a" />
 
                     <EditText
-                        android:id="@+id/td02ax"
+                        android:id="@+id/td02a"
                         style="@style/textInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

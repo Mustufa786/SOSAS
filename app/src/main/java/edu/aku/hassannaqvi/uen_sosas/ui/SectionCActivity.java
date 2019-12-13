@@ -7,8 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.uen_sosas.R;
+import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivitySectionCBinding;
 import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass;
@@ -84,6 +86,17 @@ public class SectionCActivity extends AppCompatActivity {
 
     private void SaveDraft() throws JSONException {
 
+        JSONObject SC = new JSONObject();
+
+        //te03
+        SC.put("te03", bi.te03a.isChecked() ? "1"
+                : bi.te03b.isChecked() ? "2"
+                : "0");
+
+        //te04
+        SC.put("te04", bi.te04.getText().toString());
+
+        MainApp.fc.setsC(String.valueOf(SC));
 
     }
 
