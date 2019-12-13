@@ -427,6 +427,8 @@
 
     <string name="td03"> وفات ٿيل ٻار جي ماءُ جو نالو </string>
 
+    <string name="tdhh"> Deceased Child </string>
+
     <string name="td04"> وفات ٿيندڙ ٻار جي عمر </string>
     <string name="td04mm"> مهينا </string>
     <string name="td04dd"> سال </string>
@@ -497,7 +499,8 @@
     <string name="td14c"> اسپتال ويندي رستي ۾ </string>
     <string name="td14d"> ڪنهن ٻي جاءِ تي </string>
 
-    <string name="tehh"> EYES اکيون </string>
+    <string name="teh"> EYES اکيون </string>
+    <string name="tehh"> EYES Problems </string>
 
     <string name="te01"> ماءُ جو نالو (پنجن سالن کان گهٽ عمر جي ٻارن جي مائرن جا نالا ) لکو. </string>
 
@@ -518,6 +521,8 @@
     <string name="te05f"> حادثاتي نقص </string>
     <string name="te05g"> نابين ٿيڻ </string>
     <string name="te05h"> نظر گهٽ ٿيڻ </string>
+
+    <string name="tfhh"> Eyes Problems </string>
 
     <string name="te06"> ڇا مسئلو ڪنهن ڌڪ لڳڻ يا حادثي جي ڪري ٿيو؟ </string>
     <string name="te06a"> ھا </string>

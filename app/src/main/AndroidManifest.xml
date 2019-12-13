@@ -37,6 +37,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ui.SectionBActivity" />
+        <activity android:name=".ui.SectionCActivity" />
+        <activity android:name=".ui.SectionDAActivity" />
+        <activity android:name=".ui.SectionEActivity" />
         <activity
             android:name=".ui.other.LoginActivity"
             android:screenOrientation="portrait"

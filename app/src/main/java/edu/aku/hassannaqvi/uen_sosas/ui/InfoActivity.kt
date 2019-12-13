@@ -2,6 +2,7 @@ package edu.aku.hassannaqvi.uen_sosas.ui
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import edu.aku.hassannaqvi.uen_sosas.R
 
 class InfoActivity : AppCompatActivity() {
 

@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.form1.SectionEActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="callback"
+            type="edu.aku.hassannaqvi.uen_sosas.ui.SectionEActivity" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rsv_bg"
+        android:layoutDirection="rtl"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:id="@+id/ll04"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/HeadingTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tehh" />
+
+            <!--Check Box Te05-->
+            <android.support.v7.widget.CardView
+                android:id="@+id/te05cv"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/i_textview"
+                        android:text="@string/te05" />
+
+                    <CheckBox
+                        android:id="@+id/te05a"
+                        style="@style/checkbox"
+                        android:text="@string/te05a" />
+
+                    <CheckBox
+                        android:id="@+id/te05b"
+                        style="@style/checkbox"
+                        android:text="@string/te05b" />
+
+                    <CheckBox
+                        android:id="@+id/te05c"
+                        style="@style/checkbox"
+                        android:text="@string/te05c" />
+
+                    <CheckBox
+                        android:id="@+id/te05d"
+                        style="@style/checkbox"
+                        android:text="@string/te05d" />
+
+                    <CheckBox
+                        android:id="@+id/te05e"
+                        style="@style/checkbox"
+                        android:text="@string/te05e" />
+
+                    <CheckBox
+                        android:id="@+id/te05f"
+                        style="@style/checkbox"
+                        android:text="@string/te05f" />
+
+                    <CheckBox
+                        android:id="@+id/te05g"
+                        style="@style/checkbox"
+                        android:text="@string/te05g" />
+
+                    <CheckBox
+                        android:id="@+id/te05h"
+                        style="@style/checkbox"
+                        android:text="@string/te05h" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <!--Radio Button Te06-->
+            <android.support.v7.widget.CardView
+                android:id="@+id/te06cv"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/i_textview"
+                        android:text="@string/te06" />
+
+                    <RadioGroup
+                        android:id="@+id/te06"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <RadioButton
+                            android:id="@+id/te06a"
+                            style="@style/radiobutton"
+                            android:text="@string/yes" />
+
+                        <RadioButton
+                            android:id="@+id/te06b"
+                            style="@style/radiobutton"
+                            android:text="@string/no" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <LinearLayout
+                android:id="@+id/llsos04"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility='@{te06b.checked ? View.GONE : View.VISIBLE }'>
+
+                <!--Radio Button Te07-->
+                <android.support.v7.widget.CardView
+                    android:id="@+id/te07cv"
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/i_textview"
+                            android:text="@string/te07" />
+
+                        <RadioGroup
+                            android:id="@+id/te07"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <RadioButton
+                                android:id="@+id/te07a"
+                                style="@style/radiobutton"
+                                android:text="@string/te07a" />
+
+                            <RadioButton
+                                android:id="@+id/te07b"
+                                style="@style/radiobutton"
+                                android:text="@string/te07b" />
+
+                            <RadioButton
+                                android:id="@+id/te07c"
+                                style="@style/radiobutton"
+                                android:text="@string/te07c" />
+
+                            <RadioButton
+                                android:id="@+id/te07d"
+                                style="@style/radiobutton"
+                                android:text="@string/te07d" />
+
+                            <RadioButton
+                                android:id="@+id/te07e"
+                                style="@style/radiobutton"
+                                android:text="@string/te07e" />
+
+                            <RadioButton
+                                android:id="@+id/te07f"
+                                style="@style/radiobutton"
+                                android:text="@string/te07f" />
+
+                            <RadioButton
+                                android:id="@+id/te07g"
+                                style="@style/radiobutton"
+                                android:text="@string/te07g" />
+
+                            <RadioButton
+                                android:id="@+id/te07h"
+                                style="@style/radiobutton"
+                                android:text="@string/te07h" />
+
+                            <RadioButton
+                                android:id="@+id/te07i"
+                                style="@style/radiobutton"
+                                android:text="@string/te07i" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <!--Radio Button Te08-->
+                <android.support.v7.widget.CardView
+                    android:id="@+id/te08cv"
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/i_textview"
+                            android:text="@string/te08" />
+
+                        <RadioGroup
+                            android:id="@+id/te08"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <RadioButton
+                                android:id="@+id/te08a"
+                                style="@style/radiobutton"
+                                android:text="@string/te08a" />
+
+                            <RadioButton
+                                android:id="@+id/te08b"
+                                style="@style/radiobutton"
+                                android:text="@string/te08b" />
+
+                            <RadioButton
+                                android:id="@+id/te08c"
+                                style="@style/radiobutton"
+                                android:text="@string/te08c" />
+
+                            <RadioButton
+                                android:id="@+id/te08d"
+                                style="@style/radiobutton"
+                                android:text="@string/te08d" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <!--Radio Button Te09-->
+                <android.support.v7.widget.CardView
+                    android:id="@+id/te09cv"
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/i_textview"
+                            android:text="@string/te09" />
+
+                        <RadioGroup
+                            android:id="@+id/te09"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <RadioButton
+                                android:id="@+id/te09a"
+                                style="@style/radiobutton"
+                                android:text="@string/yes" />
+
+                            <RadioButton
+                                android:id="@+id/te09b"
+                                style="@style/radiobutton"
+                                android:text="@string/no" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <!--Radio Button Te10-->
+                <android.support.v7.widget.CardView
+                    android:id="@+id/te10cv"
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/i_textview"
+                            android:text="@string/te10" />
+
+                        <RadioGroup
+                            android:id="@+id/te10"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <RadioButton
+                                android:id="@+id/te10a"
+                                style="@style/radiobutton"
+                                android:text="@string/te10a" />
+
+                            <RadioButton
+                                android:id="@+id/te10b"
+                                style="@style/radiobutton"
+                                android:text="@string/te10b" />
+
+                            <RadioButton
+                                android:id="@+id/te10c"
+                                style="@style/radiobutton"
+                                android:text="@string/te10c" />
+
+                            <RadioButton
+                                android:id="@+id/te10d"
+                                style="@style/radiobutton"
+                                android:text="@string/te10d" />
+
+                            <RadioButton
+                                android:id="@+id/te10e"
+                                style="@style/radiobutton"
+                                android:text="@string/te10e" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+            <!--Radio Button Te11-->
+            <android.support.v7.widget.CardView
+                android:id="@+id/te11cv"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/i_textview"
+                        android:text="@string/te11" />
+
+                    <RadioGroup
+                        android:id="@+id/te11"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <RadioButton
+                            android:id="@+id/te11a"
+                            style="@style/radiobutton"
+                            android:text="@string/te11a" />
+
+                        <RadioButton
+                            android:id="@+id/te11b"
+                            style="@style/radiobutton"
+                            android:text="@string/te11b" />
+
+                        <RadioButton
+                            android:id="@+id/te11c"
+                            style="@style/radiobutton"
+                            android:text="@string/te11c" />
+
+                        <RadioButton
+                            android:id="@+id/te11d"
+                            style="@style/radiobutton"
+                            android:text="@string/te11d" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <!--Radio Button Te12-->
+            <android.support.v7.widget.CardView
+                android:id="@+id/te12cv"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/i_textview"
+                        android:text="@string/te12" />
+
+                    <RadioGroup
+                        android:id="@+id/te12"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <RadioButton
+                            android:id="@+id/te12a"
+                            style="@style/radiobutton"
+                            android:text="@string/te12a" />
+
+                        <RadioButton
+                            android:id="@+id/te12b"
+                            style="@style/radiobutton"
+                            android:text="@string/te12b" />
+
+                        <RadioButton
+                            android:id="@+id/te12c"
+                            style="@style/radiobutton"
+                            android:text="@string/te12c" />
+
+                        <RadioButton
+                            android:id="@+id/te12d"
+                            style="@style/radiobutton"
+                            android:text="@string/te12d" />
+
+                        <RadioButton
+                            android:id="@+id/te12e"
+                            style="@style/radiobutton"
+                            android:text="@string/te12e" />
+
+                        <RadioButton
+                            android:id="@+id/te1296"
+                            style="@style/radiobutton"
+                            android:text="@string/other" />
+
+                        <EditText
+                            android:id="@+id/te1296x"
+                            style="@style/textInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:digits="@string/ed_letterOnly"
+                            android:hint="@string/other"
+                            android:tag="te1296"
+                            android:text='@{te1296.checked? te1296x.getText().toString() : ""}'
+                            android:visibility='@{te1296.checked? View.VISIBLE : View.GONE}' />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <!--Check Box Te13-->
+            <android.support.v7.widget.CardView
+                android:id="@+id/te13cv"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/i_textview"
+                        android:text="@string/te13" />
+
+                    <CheckBox
+                        android:id="@+id/te13a"
+                        style="@style/checkbox"
+                        android:text="@string/te13a" />
+
+                    <CheckBox
+                        android:id="@+id/te13b"
+                        style="@style/checkbox"
+                        android:text="@string/te13b" />
+
+                    <CheckBox
+                        android:id="@+id/te13c"
+                        style="@style/checkbox"
+                        android:text="@string/te13c" />
+
+                    <CheckBox
+                        android:id="@+id/te13d"
+                        style="@style/checkbox"
+                        android:text="@string/te13d" />
+
+                    <CheckBox
+                        android:id="@+id/te13e"
+                        style="@style/checkbox"
+                        android:text="@string/te13e" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <!--Radio Button Te14-->
+            <!--<android.support.v7.widget.CardView
+                android:id="@+id/te14cv"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/i_textview"
+                        android:text="@string/te14" />
+
+                    <RadioGroup
+                        android:id="@+id/te14"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <RadioButton
+                            android:id="@+id/te14a"
+                            style="@style/radiobutton"
+                            android:text="@string/yes" />
+
+                        <RadioButton
+                            android:id="@+id/te14b"
+                            style="@style/radiobutton"
+                            android:text="@string/no" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>-->
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_Continue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4sp"
+                    android:layout_weight="1"
+                    android:background="@android:color/holo_green_light"
+                    android:onClick='@{() -> callback.BtnContinue()}'
+                    android:text="@string/start_interview"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_End"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4sp"
+                    android:layout_weight="1"
+                    android:background="@android:color/holo_red_light"
+                    android:onClick='@{() -> callback.BtnEnd()}'
+                    android:text="@string/end_interview"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>
