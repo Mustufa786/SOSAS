@@ -73,9 +73,11 @@
                 style="@style/cardView">
 
                 <LinearLayout
+                    android:id="@+id/te04sos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility='@{te03b.checked? View.GONE : View.VISIBLE}'>
 
                     <TextView
                         style="@style/i_textview"

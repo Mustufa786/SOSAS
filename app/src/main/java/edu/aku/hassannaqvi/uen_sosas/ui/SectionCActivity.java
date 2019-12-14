@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -14,6 +15,7 @@ import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivitySectionCBinding;
 import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity;
+import edu.aku.hassannaqvi.uen_sosas.validator.ClearClass;
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass;
 
 public class SectionCActivity extends AppCompatActivity {
@@ -28,18 +30,39 @@ public class SectionCActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_c);
         bi.setCallback(this);
 
+        setListeners();
+
+    }
+
+    private void setListeners() {
+
+        bi.te03.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (bi.te03b.isChecked()) {
+                    ClearClass.ClearAllFields(bi.te04sos, null);
+                }
+            }
+        });
     }
 
     public void BtnContinue() {
         if (formValidation()) {
             try {
                 SaveDraft();
-            } catch (JSONException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             if (UpdateDB()) {
-                finish();
-                startActivity(new Intent(this, SectionEActivity.class));
+
+                if (bi.te03b.isChecked()) {
+                    finish();
+                    startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+                } else {
+                    finish();
+                    startActivity(new Intent(this, SectionDAActivity.class));
+                }
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
