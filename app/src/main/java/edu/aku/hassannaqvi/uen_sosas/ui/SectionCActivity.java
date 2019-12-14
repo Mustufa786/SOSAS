@@ -84,7 +84,6 @@ public class SectionCActivity extends AppCompatActivity {
 
     }
 
-
     private void SaveDraft() throws JSONException {
 
         JSONObject SC = new JSONObject();
@@ -100,7 +99,6 @@ public class SectionCActivity extends AppCompatActivity {
         MainApp.fc.setsC(String.valueOf(SC));
 
     }
-
 
     private boolean formValidation() {
         return ValidatorClass.EmptyCheckingContainer(this, bi.ll03);
