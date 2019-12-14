@@ -17,7 +17,6 @@
 
         <ImageView
             android:layout_width="wrap_content"
-
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="350dp"
@@ -37,7 +36,6 @@
             android:textSize="36sp"
             android:textStyle="bold"
             android:visibility="invisible" />
-
 
         <!--<TextView
             android:layout_width="match_parent"
@@ -79,6 +77,7 @@
                 android:text="@string/dummy_button" />
 
         </LinearLayout>
+
     </LinearLayout>
 
     <!-- This FrameLayout insets its children based on system windows using

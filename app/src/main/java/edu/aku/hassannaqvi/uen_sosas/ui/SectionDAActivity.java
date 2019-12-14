@@ -126,7 +126,6 @@ public class SectionDAActivity extends AppCompatActivity {
 
     }
 
-
     private void SaveDraft() throws JSONException {
 
         JSONObject SD = new JSONObject();
@@ -215,7 +214,6 @@ public class SectionDAActivity extends AppCompatActivity {
         MainApp.fc.setsD(String.valueOf(SD));
 
     }
-
 
     private boolean formValidation() {
         return ValidatorClass.EmptyCheckingContainer(this, bi.ll02);
