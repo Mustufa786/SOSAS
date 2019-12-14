@@ -175,7 +175,6 @@
 </LinearLayout>
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
@@ -196,7 +195,7 @@
         android:layout_width="match_parent"
 
         android:layout_height="match_parent"
-        android:background="@drawable/rsv_splash">
+        android:background="@drawable/sosas_splash">
 
         <LinearLayout
             android:id="@+id/email_login_form"

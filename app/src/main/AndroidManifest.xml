@@ -18,7 +18,7 @@
     <application
         android:name=".core.MainApp"
         android:allowBackup="true"
-        android:icon="@drawable/rsv_logo"
+        android:icon="@drawable/sosas_icon"
         android:label="@string/app_name"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme1">

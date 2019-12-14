@@ -17,7 +17,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/rsv_bg"
+        android:background="@drawable/sosas_bg"
         android:layoutDirection="rtl"
         android:padding="16dp">
 
