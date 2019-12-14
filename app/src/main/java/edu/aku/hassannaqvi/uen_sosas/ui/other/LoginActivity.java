@@ -45,6 +45,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -73,7 +74,6 @@ import edu.aku.hassannaqvi.uen_sosas.contracts.TalukasContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.UCsContract;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
-import edu.aku.hassannaqvi.uen_sosas.databinding.ActivityLoginBinding;
 import edu.aku.hassannaqvi.uen_sosas.ui.sync.SyncActivity;
 
 import static edu.aku.hassannaqvi.uen_sosas.utils.Constants.DUMMY_CREDENTIALS;
@@ -85,12 +85,12 @@ import static edu.aku.hassannaqvi.uen_sosas.utils.Constants.TWO_MINUTES;
 import static java.lang.Thread.sleep;
 
 
+/**
+ * A login screen that offers login via email/password.
+ */
 public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
-
-    // Spinners
     ArrayAdapter<String> dataAdapter;
-
 
     ArrayList<String> lablesTalukas;
     Collection<TalukasContract> TalukasList;
@@ -99,9 +99,32 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     ArrayList<String> lablesUCs;
     Collection<UCsContract> UcsList;
     Map<String, String> ucsMap;
-
-
     protected static LocationManager locationManager;
+
+
+    // UI references.
+    @BindView(R.id.login_progress)
+    ProgressBar mProgressView;
+    @BindView(R.id.login_form)
+    ScrollView mLoginFormView;
+    @BindView(R.id.email)
+    EditText mEmailView;
+    @BindView(R.id.password)
+    EditText mPasswordView;
+    @BindView(R.id.txtinstalldate)
+    TextView txtinstalldate;
+    @BindView(R.id.email_sign_in_button)
+    Button mEmailSignInButton;
+
+    @BindView(R.id.spTaluka)
+    Spinner spTaluka;
+
+    @BindView(R.id.spUCs)
+    Spinner spUCs;
+
+
+    @BindView(R.id.syncData)
+    TextView syncData;
 
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
@@ -112,30 +135,26 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
     private UserLoginTask mAuthTask = null;
 
-    ActivityLoginBinding bi;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_login);
-        bi.setCallback(this);
+        setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
         try {
-            String mPackage = getPackageName();
             long installedOn = this
                     .getPackageManager()
-                    .getPackageInfo(mPackage, 0)
+                    .getPackageInfo("edu.aku.hassannaqvi.rsvstudy", 0)
                     .lastUpdateTime;
             MainApp.versionCode = this
                     .getPackageManager()
-                    .getPackageInfo(mPackage, 0)
+                    .getPackageInfo("edu.aku.hassannaqvi.rsvstudy", 0)
                     .versionCode;
             MainApp.versionName = this
                     .getPackageManager()
-                    .getPackageInfo(mPackage, 0)
+                    .getPackageInfo("edu.aku.hassannaqvi.rsvstudy", 0)
                     .versionName;
-            bi.txtinstalldate.setText("Ver. " + MainApp.versionName + "." + MainApp.versionCode + " \r\n( Last Updated: " + new SimpleDateFormat("dd MMM. yyyy").format(new Date(installedOn)) + " )");
+            txtinstalldate.setText("Ver. " + MainApp.versionName + "." + MainApp.versionCode + " \r\n( Last Updated: " + new SimpleDateFormat("dd MMM. yyyy").format(new Date(installedOn)) + " )");
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
@@ -166,7 +185,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                 .build();
 
 //        mPasswordView = findViewById(R.id.password);
-        bi.password.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == R.id.login || id == EditorInfo.IME_NULL) {
@@ -178,7 +197,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         });
 
 
-        bi.emailSignInButton.setOnClickListener(new OnClickListener() {
+        mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -194,83 +213,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 //        DB backup
 
         dbBackup();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        populateSpinner(this);
-    }
-
-    public void populateSpinner(Context context) {
-
-        final Context mContext = context;
-
-        // Populate Talukas list
-        TalukasList = db.getAllTalukas();
-
-        lablesTalukas = new ArrayList<>();
-        talukasMap = new HashMap<>();
-
-        lablesTalukas.add("Select Taluka...");
-
-        for (TalukasContract taluka : TalukasList) {
-            lablesTalukas.add(taluka.getTaluka());
-
-            talukasMap.put(taluka.getTaluka(), taluka.getTalukacode());
-        }
-
-        bi.spTaluka.setAdapter(new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_dropdown_item, lablesTalukas));
-
-        bi.spTaluka.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                // Populate UCs list
-
-                if (bi.spTaluka.getSelectedItemPosition() != 0) {
-                    MainApp.talukaCode = Integer.valueOf(talukasMap.get(bi.spTaluka.getSelectedItem().toString()));
-                }
-
-                lablesUCs = new ArrayList<>();
-                ucsMap = new HashMap<>();
-                lablesUCs.add("Select UC..");
-
-                if (bi.spTaluka.getSelectedItemPosition() != 0) {
-                    UcsList = db.getAllUCs(String.valueOf(MainApp.talukaCode));
-                    for (UCsContract ucs : UcsList) {
-                        lablesUCs.add(ucs.getUcs());
-                        ucsMap.put(ucs.getUcs(), ucs.getUccode());
-                    }
-                }
-
-                bi.spUCs.setAdapter(new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_dropdown_item, lablesUCs));
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-        bi.spUCs.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                // Populate UCs list
-
-                if (bi.spUCs.getSelectedItemPosition() != 0) {
-                    MainApp.ucCode = Integer.valueOf(ucsMap.get(bi.spUCs.getSelectedItem().toString()));
-                }
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-
     }
 
     private void gettingDeviceIMEI() {
@@ -436,27 +378,27 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         }
 
         // Reset errors.
-        bi.email.setError(null);
-        bi.password.setError(null);
+        mEmailView.setError(null);
+        mPasswordView.setError(null);
 
         // Store values at the time of the login attempt.
-        String email = bi.email.getText().toString();
-        String password = bi.password.getText().toString();
+        String email = mEmailView.getText().toString();
+        String password = mPasswordView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
         if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            bi.password.setError(getString(R.string.error_invalid_password));
-            focusView = bi.password;
+            mPasswordView.setError(getString(R.string.error_invalid_password));
+            focusView = mPasswordView;
             cancel = true;
         }
 
         // Check for a valid email address.
         if (TextUtils.isEmpty(email)) {
-            bi.email.setError(getString(R.string.error_field_required));
-            focusView = bi.email;
+            mEmailView.setError(getString(R.string.error_field_required));
+            focusView = mEmailView;
             cancel = true;
         } /*else if (!isEmailValid(email)) {
             mEmailView.setError(getString(R.string.error_invalid_email));
@@ -500,28 +442,28 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
             int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
-            bi.loginForm.setVisibility(show ? View.GONE : View.VISIBLE);
-            bi.loginForm.animate().setDuration(shortAnimTime).alpha(
+            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+            mLoginFormView.animate().setDuration(shortAnimTime).alpha(
                     show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
-                    bi.loginForm.setVisibility(show ? View.GONE : View.VISIBLE);
+                    mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
                 }
             });
 
-            bi.loginProgress.setVisibility(show ? View.VISIBLE : View.GONE);
-            bi.loginProgress.animate().setDuration(shortAnimTime).alpha(
+            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
+            mProgressView.animate().setDuration(shortAnimTime).alpha(
                     show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
-                    bi.loginProgress.setVisibility(show ? View.VISIBLE : View.GONE);
+                    mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
                 }
             });
         } else {
             // The ViewPropertyAnimator APIs are not available, so simply show
             // and hide the relevant UI components.
-            bi.loginProgress.setVisibility(show ? View.VISIBLE : View.GONE);
-            bi.loginForm.setVisibility(show ? View.GONE : View.VISIBLE);
+            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
+            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
         }
     }
 
@@ -558,14 +500,15 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
     }
 
-    public void onShowPasswordClick() {
+    @OnClick(R.id.showPassword)
+    void onShowPasswordClick() {
         //TODO implement
-        if (bi.password.getTransformationMethod() == null) {
-            bi.password.setTransformationMethod(new PasswordTransformationMethod());
-            bi.password.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_lock_black_24dp, 0, 0, 0);
+        if (mPasswordView.getTransformationMethod() == null) {
+            mPasswordView.setTransformationMethod(new PasswordTransformationMethod());
+            mPasswordView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_lock_black_24dp, 0, 0, 0);
         } else {
-            bi.password.setTransformationMethod(null);
-            bi.password.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_lock_open_black_24dp, 0, 0, 0);
+            mPasswordView.setTransformationMethod(null);
+            mPasswordView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_lock_open_black_24dp, 0, 0, 0);
         }
     }
 
@@ -587,101 +530,10 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         int IS_PRIMARY = 1;
     }
 
-    /**
-     * Represents an asynchronous login/registration task used to authenticate
-     * the user.
-     */
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
-
-        private final String mEmail;
-        private final String mPassword;
-
-        UserLoginTask(String email, String password) {
-            mEmail = email;
-            mPassword = password;
-        }
-
-
-        @Override
-        protected Boolean doInBackground(Void... params) {
-            // TODO: attempt authentication against a network service.
-
-            try {
-                // Simulate network access.
-                sleep(2000);
-            } catch (InterruptedException e) {
-                return false;
-            }
-
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
-                }
-            }
-
-            // TODO: register the new account here.
-            return true;
-        }
-
-        @Override
-        protected void onPostExecute(final Boolean success) {
-            mAuthTask = null;
-            showProgress(false);
-
-            LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            if (mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-
-                DatabaseHelper db = new DatabaseHelper(LoginActivity.this);
-                if ((mEmail.equals("dmu@aku") && mPassword.equals("aku?dmu")) ||
-                        (mEmail.equals("guest@aku") && mPassword.equals("aku1234")) || db.Login(mEmail, mPassword)
-                        || (mEmail.equals("test1234") && mPassword.equals("test1234"))) {
-                    MainApp.userName = mEmail;
-                    MainApp.admin = mEmail.contains("@");
-
-                    Intent iLogin = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(iLogin);
-
-                } else {
-                    bi.password.setError(getString(R.string.error_incorrect_password));
-                    bi.password.requestFocus();
-                    Toast.makeText(LoginActivity.this, mEmail + " " + mPassword, Toast.LENGTH_SHORT).show();
-                }
-            } else {
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                        LoginActivity.this);
-                alertDialogBuilder
-                        .setMessage("GPS is disabled in your device. Enable it?")
-                        .setCancelable(false)
-                        .setPositiveButton("Enable GPS",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog,
-                                                        int id) {
-                                        Intent callGPSSettingIntent = new Intent(
-                                                android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                                        startActivity(callGPSSettingIntent);
-                                    }
-                                });
-                alertDialogBuilder.setNegativeButton("Cancel",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog alert = alertDialogBuilder.create();
-                alert.show();
-
-            }
-
-        }
-
-
-        @Override
-        protected void onCancelled() {
-            mAuthTask = null;
-            showProgress(false);
-        }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        populateSpinner(this);
     }
 
     public void loadIMEI() {
@@ -914,6 +766,175 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         }
     }
 
+    public void populateSpinner(Context context) {
+
+        final Context mContext = context;
+
+        // Populate Talukas list
+        TalukasList = db.getAllTalukas();
+
+        lablesTalukas = new ArrayList<>();
+        talukasMap = new HashMap<>();
+
+        lablesTalukas.add("Select Taluka...");
+
+        for (TalukasContract taluka : TalukasList) {
+            lablesTalukas.add(taluka.getTaluka());
+
+            talukasMap.put(taluka.getTaluka(), taluka.getTalukacode());
+        }
+
+        spTaluka.setAdapter(new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_dropdown_item, lablesTalukas));
+
+        spTaluka.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                // Populate UCs list
+
+                if (spTaluka.getSelectedItemPosition() != 0) {
+                    MainApp.talukaCode = Integer.valueOf(talukasMap.get(spTaluka.getSelectedItem().toString()));
+                }
+
+                lablesUCs = new ArrayList<>();
+                ucsMap = new HashMap<>();
+                lablesUCs.add("Select UC..");
+
+                if (spTaluka.getSelectedItemPosition() != 0) {
+                    UcsList = db.getAllUCs(String.valueOf(MainApp.talukaCode));
+                    for (UCsContract ucs : UcsList) {
+                        lablesUCs.add(ucs.getUcs());
+                        ucsMap.put(ucs.getUcs(), ucs.getUccode());
+                    }
+                }
+
+                spUCs.setAdapter(new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_dropdown_item, lablesUCs));
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        spUCs.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                // Populate UCs list
+
+                if (spUCs.getSelectedItemPosition() != 0) {
+                    MainApp.ucCode = Integer.valueOf(ucsMap.get(spUCs.getSelectedItem().toString()));
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+    }
+
+    /**
+     * Represents an asynchronous login/registration task used to authenticate
+     * the user.
+     */
+    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
+
+        private final String mEmail;
+        private final String mPassword;
+
+        UserLoginTask(String email, String password) {
+            mEmail = email;
+            mPassword = password;
+        }
+
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            // TODO: attempt authentication against a network service.
+
+            try {
+                // Simulate network access.
+                sleep(2000);
+            } catch (InterruptedException e) {
+                return false;
+            }
+
+            for (String credential : DUMMY_CREDENTIALS) {
+                String[] pieces = credential.split(":");
+                if (pieces[0].equals(mEmail)) {
+                    // Account exists, return true if the password matches.
+                    return pieces[1].equals(mPassword);
+                }
+            }
+
+            // TODO: register the new account here.
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(final Boolean success) {
+            mAuthTask = null;
+            showProgress(false);
+
+            LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            if (mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+
+                DatabaseHelper db = new DatabaseHelper(LoginActivity.this);
+                if ((mEmail.equals("dmu@aku") && mPassword.equals("aku?dmu")) ||
+                        (mEmail.equals("guest@aku") && mPassword.equals("aku1234")) || db.Login(mEmail, mPassword)
+                        || (mEmail.equals("test1234") && mPassword.equals("test1234"))) {
+                    MainApp.userName = mEmail;
+                    MainApp.admin = mEmail.contains("@");
+
+                    Intent iLogin = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(iLogin);
+
+                } else {
+                    mPasswordView.setError(getString(R.string.error_incorrect_password));
+                    mPasswordView.requestFocus();
+                    Toast.makeText(LoginActivity.this, mEmail + " " + mPassword, Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                        LoginActivity.this);
+                alertDialogBuilder
+                        .setMessage("GPS is disabled in your device. Enable it?")
+                        .setCancelable(false)
+                        .setPositiveButton("Enable GPS",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,
+                                                        int id) {
+                                        Intent callGPSSettingIntent = new Intent(
+                                                android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                                        startActivity(callGPSSettingIntent);
+                                    }
+                                });
+                alertDialogBuilder.setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = alertDialogBuilder.create();
+                alert.show();
+
+            }
+
+        }
+
+
+        @Override
+        protected void onCancelled() {
+            mAuthTask = null;
+            showProgress(false);
+        }
+    }
+
 
 }
+
 

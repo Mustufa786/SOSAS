@@ -12,10 +12,8 @@ import org.json.JSONObject;
 
 public class VillagesContract {
 
-    private String talukacode;
-    private String talukaname;
-    private String uccode;
-    private String ucname;
+
+    private String areaCode;
     private String villagecode;
     private String villagename;
 
@@ -24,20 +22,8 @@ public class VillagesContract {
     }
 
 
-    public String getTalukacode() {
-        return talukacode;
-    }
-
-    public String getTalukaname() {
-        return talukaname;
-    }
-
-    public String getUccode() {
-        return uccode;
-    }
-
-    public String getUcname() {
-        return ucname;
+    public String getAreaCode() {
+        return areaCode;
     }
 
     public String getVillagecode() {
@@ -49,10 +35,7 @@ public class VillagesContract {
     }
 
     public VillagesContract sync(JSONObject jsonObject) throws JSONException {
-        this.talukacode = jsonObject.getString(singleVillage.COLUMN_TALUKA_CODE);
-        this.talukaname = jsonObject.getString(singleVillage.COLUMN_TALUKA_NAME);
-        this.uccode = jsonObject.getString(singleVillage.COLUMN_UC_CODE);
-        this.ucname = jsonObject.getString(singleVillage.COLUMN_UC_NAME);
+        this.areaCode = jsonObject.getString(singleVillage.COLUMN_AREA_CODE);
         this.villagecode = jsonObject.getString(singleVillage.COLUMN_VILLAGE_CODE);
         this.villagename = jsonObject.getString(singleVillage.COLUMN_VILLAGE_NAME);
 
@@ -60,10 +43,7 @@ public class VillagesContract {
     }
 
     public VillagesContract hydrate(Cursor cursor) {
-        this.talukacode = cursor.getString(cursor.getColumnIndex(singleVillage.COLUMN_TALUKA_CODE));
-        this.talukaname = cursor.getString(cursor.getColumnIndex(singleVillage.COLUMN_TALUKA_NAME));
-        this.uccode = cursor.getString(cursor.getColumnIndex(singleVillage.COLUMN_UC_CODE));
-        this.ucname = cursor.getString(cursor.getColumnIndex(singleVillage.COLUMN_UC_NAME));
+        this.areaCode = cursor.getString(cursor.getColumnIndex(singleVillage.COLUMN_AREA_CODE));
         this.villagecode = cursor.getString(cursor.getColumnIndex(singleVillage.COLUMN_VILLAGE_CODE));
         this.villagename = cursor.getString(cursor.getColumnIndex(singleVillage.COLUMN_VILLAGE_NAME));
 
@@ -74,12 +54,8 @@ public class VillagesContract {
     public static abstract class singleVillage implements BaseColumns {
 
         public static final String TABLE_NAME = "villages";
-        public static final String COLUMN_NAME_NULLABLE = "nullColumnHack";
         public static final String _ID = "_ID";
-        public static final String COLUMN_TALUKA_CODE = "taluka_code";
-        public static final String COLUMN_TALUKA_NAME = "taluka_name";
-        public static final String COLUMN_UC_CODE = "uc_code";
-        public static final String COLUMN_UC_NAME = "uc_name";
+        public static final String COLUMN_AREA_CODE = "area_code";
         public static final String COLUMN_VILLAGE_CODE = "village_code";
         public static final String COLUMN_VILLAGE_NAME = "village_name";
 

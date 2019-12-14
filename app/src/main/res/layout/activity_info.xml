@@ -49,6 +49,7 @@
                         android:textColor="@android:color/white" />
 
                     <Spinner
+                        android:id="@+id/areaSpinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp" />
@@ -77,6 +78,7 @@
                         android:textColor="@android:color/white" />
 
                     <Spinner
+                        android:id="@+id/villageSpinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
@@ -137,7 +139,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:enabled="false"
                         android:hint="Enter House No"
                         android:padding="10dp"
                         android:paddingLeft="10dp" />
@@ -147,7 +148,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/colorPrimaryBeta"
-                        android:onClick="@{() -> callback.onCheckHHClick()}"
                         android:padding="20dp"
                         android:text="Check HouseHold"
                         android:textColor="@color/white" />
@@ -228,7 +228,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:backgroundTint="@color/red"
-                        android:onClick="@{() -> callback.onBtnEndClick()}"
                         android:padding="20dp"
                         android:text="@string/end_interview"
                         android:textColor="@color/white"
@@ -241,7 +240,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:backgroundTint="@color/green"
-                        android:onClick="@{() -> callback.onBtnContinueClick()}"
                         android:padding="20dp"
                         android:text="@string/start_interview"
                         android:textColor="@color/white"

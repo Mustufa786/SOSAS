@@ -39,6 +39,7 @@ import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.uen_sosas.get.GetFamilyMembersData;
 import edu.aku.hassannaqvi.uen_sosas.ui.ChildListActivity;
+import edu.aku.hassannaqvi.uen_sosas.ui.InfoActivity;
 import edu.aku.hassannaqvi.uen_sosas.ui.sync.SyncActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -185,10 +186,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void OpenFormFunc(int id) {
+    public void OpenFormFunc() {
         Intent oF = new Intent();
         if (!MainApp.userName.equals("0000")) {
-            oF = new Intent(MainActivity.this, ChildListActivity.class).putExtra("code", id);
+            oF = new Intent(MainActivity.this, InfoActivity.class);
             startActivity(oF);
         } else {
             Toast.makeText(getApplicationContext(), "Please login Again!", Toast.LENGTH_LONG).show();

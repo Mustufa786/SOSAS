@@ -16,7 +16,9 @@
     <color name="black">#000000</color>
 
     <color name="colorPrimaryDark1">#303F9F</color>
+    <color name="dullWhite">#d6d6d6</color>
 
+    <color name="colorSecondary">#00617d</color>
     <color name="redforborder">#EF9A9A</color>
     <color name="colorPrimaryLight">#448aff</color>
     <color name="colorPrimaryAlpha">#607d8b</color>

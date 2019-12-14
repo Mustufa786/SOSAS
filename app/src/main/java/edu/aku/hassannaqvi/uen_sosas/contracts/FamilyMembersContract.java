@@ -1,5 +1,6 @@
 package edu.aku.hassannaqvi.uen_sosas.contracts;
 
+import android.database.Cursor;
 import android.provider.BaseColumns;
 
 import org.json.JSONException;
@@ -30,6 +31,23 @@ public class FamilyMembersContract {
         this.serialno = jsonObject.getString(singleMember.COLUMN_SERIAL_NO);
         this.motherName = jsonObject.getString(singleMember.COLUMN_MOMTHER_NAME) == null ? "" : jsonObject.getString(singleMember.COLUMN_MOMTHER_NAME);
         this.type = jsonObject.getString(singleMember.COLUMN_TYPE);
+
+        return this;
+    }
+
+    public FamilyMembersContract hydrate(Cursor cursor) {
+        this.uid = cursor.getString(cursor.getColumnIndex(singleMember.COLUMN_UID));
+        this.uuid = cursor.getString(cursor.getColumnIndex(singleMember.COLUMN_UUID));
+        this.formdate = cursor.getString(cursor.getColumnIndex(singleMember.COLUMN_FORMDATE));
+        this.age = cursor.getString(cursor.getColumnIndex(singleMember.COLUMN_AGE));
+        this.clusterno = cursor.getString(cursor.getColumnIndex(singleMember.COLUMN_CLUSTER_CODE));
+        this.hhno = cursor.getString(cursor.getColumnIndex(singleMember.COLUMN_HHNO));
+        this.motherid = cursor.getString(cursor.getColumnIndex(singleMember.COLUMN_MOTHER_ID));
+        this.name = cursor.getString(cursor.getColumnIndex(singleMember.COLUMN_NAME));
+        this.serialno = cursor.getString(cursor.getColumnIndex(singleMember.COLUMN_SERIAL_NO));
+        this.motherName = cursor.getString(cursor.getColumnIndex(singleMember.COLUMN_MOMTHER_NAME));
+        this.type = cursor.getString(cursor.getColumnIndex(singleMember.COLUMN_TYPE));
+
 
         return this;
     }
