@@ -73,7 +73,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="?attr/actionBarSize"
-                        android:background="@color/dullWhileOverlay"
+                        android:background="@color/dullWhiteOverlay"
                         android:orientation="horizontal">
 
                         <TextView
@@ -281,6 +281,46 @@
 
                     </LinearLayout>
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/adminsec"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="openB"
+                            android:text="Open Section B (Mothers's Info)" />
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="openC"
+                            android:text="Open Section C (Children's Info)" />
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="openD"
+                            android:text="Open Section D (Deceased)" />
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="openE"
+                            android:text="Open Section D (Problems)" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
 
             </LinearLayout>
 

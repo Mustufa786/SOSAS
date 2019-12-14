@@ -38,8 +38,11 @@ import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.uen_sosas.get.GetFamilyMembersData;
-import edu.aku.hassannaqvi.uen_sosas.ui.ChildListActivity;
 import edu.aku.hassannaqvi.uen_sosas.ui.InfoActivity;
+import edu.aku.hassannaqvi.uen_sosas.ui.SectionBActivity;
+import edu.aku.hassannaqvi.uen_sosas.ui.SectionCActivity;
+import edu.aku.hassannaqvi.uen_sosas.ui.SectionDAActivity;
+import edu.aku.hassannaqvi.uen_sosas.ui.SectionEActivity;
 import edu.aku.hassannaqvi.uen_sosas.ui.sync.SyncActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -168,6 +171,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         if (MainApp.admin) {
+            bi.adminsec.setVisibility(View.VISIBLE);
             bi.databaseBtn.setVisibility(View.VISIBLE);
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
             rSumText += "Last Data Download: \t" + syncPref.getString("LastDownSyncServer", "Never Updated");
@@ -202,6 +206,7 @@ public class MainActivity extends AppCompatActivity {
         Intent dbmanager = new Intent(getApplicationContext(), AndroidDatabaseManager.class);
         startActivity(dbmanager);
     }
+
 
     public void CheckCluster(View v) {
 //        Intent cluster_list = new Intent(getApplicationContext(), FormsList.class);
@@ -279,5 +284,25 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.item_menu, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    public void openB(View v) {
+        Intent oF = new Intent(MainActivity.this, SectionBActivity.class);
+        startActivity(oF);
+    }
+
+    public void openC(View v) {
+        Intent oF = new Intent(MainActivity.this, SectionCActivity.class);
+        startActivity(oF);
+    }
+
+    public void openD(View v) {
+        Intent oF = new Intent(MainActivity.this, SectionDAActivity.class);
+        startActivity(oF);
+    }
+
+    public void openE(View v) {
+        Intent oF = new Intent(MainActivity.this, SectionEActivity.class);
+        startActivity(oF);
     }
 }

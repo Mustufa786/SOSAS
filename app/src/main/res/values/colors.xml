@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#388e3c</color>
-    <color name="colorPrimaryDark">#00600f</color>
-    <color name="colorAccent">#6abf69</color>
+    <color name="colorPrimary">#336699</color>
+    <color name="colorPrimaryDark">#224466</color>
+    <color name="colorAccent">#7553ef</color>
 
     <color name="ticker_red">#80ff0000</color>
 
 
-    <color name="dullWhileOverlay">#99E7E6E6</color>
+    <color name="dullWhiteOverlay">#99E7E6E6</color>
     <color name="gray">#757575</color>
     <color name="white">#F5F5F5</color>
     <color name="blackOverlay">#66000000</color>
@@ -31,7 +31,6 @@
     <color name="dullBlack">#292929</color>
     <color name="grayOverlay">#7f7f7f7f</color>
     <color name="whiteOverlay">#99ffffff</color>
-    <color name="dullWhile">#d6d6d6</color>
     <color name="colorText">#050505</color>
 
     <color name="black_overlay">#66000000</color>
@@ -58,5 +57,12 @@
 
     <color name="darkRed">#D50000</color>
     <color name="lightOrange">#FFE0B2</color>
+
+    <color name="enrolled">#3392D050</color>
+    <color name="locked">#33ffff41</color>
+    <color name="shifted">#335B9BD5</color>
+    <color name="died">#33A5A5A5</color>
+    <color name="refused">#33EC701C</color>
+    <color name="dssIncorrect">#337f00ff</color>
 
 </resources>
