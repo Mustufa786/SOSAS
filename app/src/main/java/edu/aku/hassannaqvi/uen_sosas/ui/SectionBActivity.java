@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -14,6 +15,7 @@ import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivitySectionBBinding;
 import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity;
+import edu.aku.hassannaqvi.uen_sosas.validator.ClearClass;
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass;
 
 public class SectionBActivity extends AppCompatActivity {
@@ -25,18 +27,39 @@ public class SectionBActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_b);
         bi.setCallback(this);
+
+        setListeners();
+    }
+
+    private void setListeners() {
+
+        bi.td01.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (bi.td01b.isChecked()) {
+                    ClearClass.ClearAllFields(bi.td02, null);
+                }
+            }
+        });
     }
 
     public void BtnContinue() {
         if (formValidation()) {
             try {
                 SaveDraft();
-            } catch (JSONException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             if (UpdateDB()) {
-                finish();
-                startActivity(new Intent(this, SectionDAActivity.class));
+
+                if (bi.td01b.isChecked()) {
+                    finish();
+                    startActivity(new Intent(this, SectionCActivity.class).putExtra("complete", true));
+                } else {
+                    finish();
+                    startActivity(new Intent(this, SectionDAActivity.class));
+                }
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
