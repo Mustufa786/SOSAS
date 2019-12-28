@@ -41,9 +41,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/text_style"
+                        style="@style/i_textview"
                         android:text="Area"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@android:color/white" />
@@ -70,9 +68,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/text_style"
+                        style="@style/i_textview"
                         android:text="@string/ta06"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@android:color/white" />
@@ -101,9 +97,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/text_style"
+                        style="@style/i_textview"
                         android:text="@string/ta01"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@android:color/white" />
@@ -112,7 +106,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
+                        android:layout_margin="10dp"
                         android:gravity="center"
                         android:text="1212"
                         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -128,6 +122,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:layout_margin="10dp"
                     android:layout_marginBottom="10dp"
                     android:gravity="center_vertical"
@@ -139,9 +134,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:hint="Enter House No"
+                        android:hint="XXXX-X"
                         android:padding="10dp"
-                        android:paddingLeft="10dp" />
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true" />
 
                     <Button
                         android:id="@+id/checkHH"

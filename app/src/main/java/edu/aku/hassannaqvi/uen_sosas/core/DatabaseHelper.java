@@ -1431,5 +1431,56 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allDC;
     }
 
+    public List<FamilyMembersContract> getChildrenList(String hhNo, String clutserNo, String serialNo) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                singleMember.COLUMN_UID,
+                singleMember.COLUMN_UUID,
+                singleMember.COLUMN_FORMDATE,
+                singleMember.COLUMN_AGE,
+                singleMember.COLUMN_CLUSTER_CODE,
+                singleMember.COLUMN_HHNO,
+                singleMember.COLUMN_MOTHER_ID,
+                singleMember.COLUMN_MOMTHER_NAME,
+                singleMember.COLUMN_NAME,
+                singleMember.COLUMN_SERIAL_NO,
+                singleMember.COLUMN_TYPE,
+        };
+
+
+        String whereClause = singleMember.COLUMN_HHNO + " = ? AND " + singleMember.COLUMN_CLUSTER_CODE + " = ? AND " + singleMember.COLUMN_MOTHER_ID + " = ? AND " + singleMember.COLUMN_TYPE + " = ?";
+        String[] whereArgs = {hhNo, String.valueOf(clutserNo), serialNo, "1"};
+        String groupBy = null;
+        String having = null;
+        String orderBy = null;
+
+
+        List<FamilyMembersContract> allDC = new ArrayList<>();
+        try {
+            c = db.query(
+                    singleMember.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                FamilyMembersContract dc = new FamilyMembersContract();
+                allDC.add(dc.hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allDC;
+    }
+
 
 }

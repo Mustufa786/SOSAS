@@ -27,6 +27,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/headingTitle"
                 style="@style/HeadingTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -70,14 +71,14 @@
             <!--Edit Text Te04-->
             <android.support.v7.widget.CardView
                 android:id="@+id/te04cv"
-                style="@style/cardView">
+                style="@style/cardView"
+                android:visibility='@{te03b.checked? View.GONE : View.VISIBLE}'>
 
                 <LinearLayout
                     android:id="@+id/te04sos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility='@{te03b.checked? View.GONE : View.VISIBLE}'>
+                    android:orientation="vertical">
 
                     <TextView
                         style="@style/i_textview"
@@ -88,8 +89,10 @@
                         style="@style/textInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:digits="@string/ed_letterOnly"
                         android:hint="@string/te04"
+                        android:digits="123456789"
+                        android:inputType="number"
+                        android:maxLength="1"
                         android:tag="td04" />
 
                 </LinearLayout>

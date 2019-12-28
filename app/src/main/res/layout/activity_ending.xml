@@ -67,15 +67,15 @@
                                 android:text="@string/istatus1"
                                 android:textSize="25sp" />
 
-                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
-                                android:id="@+id/RS82"
-                                style="@style/textInput"
-                                android:hint="@string/RS82"
-                                android:text='@{istatus1.checked? RS82.getText().toString() : "" }'
-                                android:textColor="@android:color/black"
-                                android:visibility='@{istatus1.checked? View.VISIBLE : View.GONE}'
-                                app:dateFormat="dd-MM-yyyy"
-                                app:minDate="CR_DATE" />
+                            <!--                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText-->
+                            <!--                                android:id="@+id/RS82"-->
+                            <!--                                style="@style/textInput"-->
+                            <!--                                android:hint="@string/RS82"-->
+                            <!--                                android:text='@{istatus1.checked? RS82.getText().toString() : "" }'-->
+                            <!--                                android:textColor="@android:color/black"-->
+                            <!--                                android:visibility='@{istatus1.checked? View.VISIBLE : View.GONE}'-->
+                            <!--                                app:dateFormat="dd-MM-yyyy"-->
+                            <!--                                app:minDate="CR_DATE" />-->
 
 
                             <RadioButton

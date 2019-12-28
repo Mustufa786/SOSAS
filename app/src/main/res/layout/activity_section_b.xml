@@ -43,7 +43,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        style="@style/i_textview"
+                        style="@style/labels"
                         android:text="@string/td01" />
 
                     <RadioGroup
@@ -70,22 +70,19 @@
             <!--Edit Text Td02-->
             <android.support.v7.widget.CardView
                 android:id="@+id/td02cv"
-                style="@style/cardView">
+                style="@style/cardView"
+                android:visibility='@{td01b.checked? View.GONE : View.VISIBLE}'>
 
                 <LinearLayout
                     android:id="@+id/td02"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility='@{td01b.checked? View.GONE : View.VISIBLE}'>
+                    android:orientation="vertical">
 
                     <TextView
-                        style="@style/i_textview"
+                        style="@style/labels"
                         android:text="@string/td02" />
 
-                    <TextView
-                        style="@style/i_textview"
-                        android:text="@string/td02a" />
 
                     <EditText
                         android:id="@+id/td02a"
@@ -94,6 +91,8 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/td02a"
                         android:inputType="number"
+                        android:digits="123456789"
+                        android:maxLength="1"
                         android:tag="td02a" />
 
                 </LinearLayout>

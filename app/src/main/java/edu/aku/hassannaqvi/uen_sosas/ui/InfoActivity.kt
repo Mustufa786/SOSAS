@@ -103,12 +103,17 @@ class InfoActivity : AppCompatActivity() {
         })
 
         bi.checkHH.setOnClickListener {
-            if (!bi.hhName.text.toString().equals("")) {
+            if (bi.hhName.text.toString() != "") {
                 motherList = db.getMotherList(bi.hhName.text.toString(), villageCode)
-                Toast.makeText(this@InfoActivity, "Mother Found", Toast.LENGTH_SHORT).show()
-                adapter = ChildListAdapter(this@InfoActivity, motherList)
-                bi.motherList.layoutManager = LinearLayoutManager(this@InfoActivity)
-                bi.motherList.adapter = adapter
+                if (motherList.isNotEmpty()) {
+                    Toast.makeText(this@InfoActivity, "Mother Found", Toast.LENGTH_SHORT).show()
+                    adapter = ChildListAdapter(this@InfoActivity, motherList, true)
+                    bi.motherList.layoutManager = LinearLayoutManager(this@InfoActivity)
+                    bi.motherList.adapter = adapter
+                } else {
+                    Toast.makeText(this@InfoActivity, "Mother Not Found", Toast.LENGTH_SHORT).show()
+                }
+
 
             }
         }

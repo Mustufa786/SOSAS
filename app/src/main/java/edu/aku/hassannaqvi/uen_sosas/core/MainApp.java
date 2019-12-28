@@ -26,6 +26,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
+import edu.aku.hassannaqvi.uen_sosas.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.FormsContract;
 import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity;
 
@@ -105,6 +106,8 @@ public class MainApp extends Application {
     public static String DeviceURL = "devices.php";
     public static String IMEI;
     public static String formtype;
+    public static String motherInfo = "motherInfo";
+    public static FamilyMembersContract motherData;
 
     public static SharedPreferences sharedPref;
 
@@ -144,6 +147,22 @@ public class MainApp extends Application {
     public static String cluster = "";
     public static String hhno = "";
     public static int BLRandomSize;
+    public static int childCount = 0;
+    public static int problemType = 0;
+    public static int problemCount = 0;
+    /*
+     problem type
+     1 = eyes
+     2 = ears
+     3 = face
+     4 = neck
+     5 = head
+     6 = chest
+     7 = back
+     8 = abdomen
+     9 = buttocks/groin/genitalia
+     10 = extremities
+     */
     public static String lhwCode;
     public static String lhwName;
     public static String hh04txt;

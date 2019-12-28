@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -11,6 +13,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.uen_sosas.R;
+import edu.aku.hassannaqvi.uen_sosas.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivitySectionBBinding;
@@ -21,6 +24,7 @@ import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass;
 public class SectionBActivity extends AppCompatActivity {
 
     ActivitySectionBBinding bi;
+    FamilyMembersContract motherData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,8 @@ public class SectionBActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_b);
         bi.setCallback(this);
 
+
+        MainApp.motherData = getIntent().getParcelableExtra(MainApp.motherInfo);
         setListeners();
     }
 
@@ -42,27 +48,49 @@ public class SectionBActivity extends AppCompatActivity {
                 }
             }
         });
+
+        bi.td02a.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (!s.toString().isEmpty()) {
+                    MainApp.childCount = Integer.parseInt(s.toString());
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     public void BtnContinue() {
         if (formValidation()) {
-            try {
-                SaveDraft();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            if (UpdateDB()) {
-
-                if (bi.td01b.isChecked()) {
-                    finish();
-                    startActivity(new Intent(this, SectionCActivity.class).putExtra("complete", true));
-                } else {
-                    finish();
-                    startActivity(new Intent(this, SectionDAActivity.class));
-                }
+            if (bi.td01b.isChecked()) {
+                finish();
+                startActivity(new Intent(this, ChildListActivity.class));
             } else {
-                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+                finish();
+                startActivity(new Intent(this, SectionDAActivity.class));
             }
+//            try {
+//                SaveDraft();
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//            if (UpdateDB()) {
+//
+//
+//            } else {
+//                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+//            }
         }
     }
 

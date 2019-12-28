@@ -1,12 +1,14 @@
 package edu.aku.hassannaqvi.uen_sosas.contracts;
 
 import android.database.Cursor;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.provider.BaseColumns;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class FamilyMembersContract {
+public class FamilyMembersContract implements Parcelable {
     private String uid;
     private String uuid;
     private String formdate;
@@ -19,6 +21,35 @@ public class FamilyMembersContract {
     private String motherName;
     private String type;
 
+    public static final Creator<FamilyMembersContract> CREATOR = new Creator<FamilyMembersContract>() {
+        @Override
+        public FamilyMembersContract createFromParcel(Parcel in) {
+            return new FamilyMembersContract(in);
+        }
+
+        @Override
+        public FamilyMembersContract[] newArray(int size) {
+            return new FamilyMembersContract[size];
+        }
+    };
+
+    public FamilyMembersContract(Parcel in) {
+        uid = in.readString();
+        uuid = in.readString();
+        formdate = in.readString();
+        age = in.readString();
+        clusterno = in.readString();
+        hhno = in.readString();
+        motherid = in.readString();
+        name = in.readString();
+        serialno = in.readString();
+        motherName = in.readString();
+        type = in.readString();
+    }
+
+    public FamilyMembersContract() {
+    }
+
     public FamilyMembersContract Sync(JSONObject jsonObject) throws JSONException {
         this.uid = jsonObject.getString(singleMember.COLUMN_UID);
         this.uuid = jsonObject.getString(singleMember.COLUMN_UUID);
@@ -29,7 +60,7 @@ public class FamilyMembersContract {
         this.motherid = jsonObject.getString(singleMember.COLUMN_MOTHER_ID);
         this.name = jsonObject.getString(singleMember.COLUMN_NAME);
         this.serialno = jsonObject.getString(singleMember.COLUMN_SERIAL_NO);
-        this.motherName = jsonObject.getString(singleMember.COLUMN_MOMTHER_NAME) == null ? "" : jsonObject.getString(singleMember.COLUMN_MOMTHER_NAME);
+        this.motherName = jsonObject.getString(singleMember.COLUMN_MOMTHER_NAME);
         this.type = jsonObject.getString(singleMember.COLUMN_TYPE);
 
         return this;
@@ -139,6 +170,26 @@ public class FamilyMembersContract {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(uid);
+        dest.writeString(uuid);
+        dest.writeString(formdate);
+        dest.writeString(age);
+        dest.writeString(clusterno);
+        dest.writeString(hhno);
+        dest.writeString(motherid);
+        dest.writeString(name);
+        dest.writeString(serialno);
+        dest.writeString(motherName);
+        dest.writeString(type);
     }
 
 

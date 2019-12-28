@@ -18,11 +18,15 @@ import java.util.List;
 import edu.aku.hassannaqvi.uen_sosas.R;
 import edu.aku.hassannaqvi.uen_sosas.adapter.ChildListAdapter;
 import edu.aku.hassannaqvi.uen_sosas.contracts.ChildList;
+import edu.aku.hassannaqvi.uen_sosas.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
+import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivityChildListBinding;
 import edu.aku.hassannaqvi.uen_sosas.databinding.LayoutDialogeBinding;
 import edu.aku.hassannaqvi.uen_sosas.ui.form1.Section01Activity;
 import edu.aku.hassannaqvi.uen_sosas.utils.DateUtils;
+
+import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.motherData;
 
 public class ChildListActivity extends AppCompatActivity {
 
@@ -31,7 +35,7 @@ public class ChildListActivity extends AppCompatActivity {
     ActivityChildListBinding bi;
     DatabaseHelper db;
     ChildListAdapter adapter;
-    List<ChildList> list;
+    List<FamilyMembersContract> list;
     ArrayList<String> dssids;
     ArrayList<ChildList> filteredItems;
     private TextView dssID;
@@ -44,7 +48,7 @@ public class ChildListActivity extends AppCompatActivity {
 
         this.setTitle("Child List");
 
-        areaCode = getIntent().getIntExtra("code", 0);
+//        areaCode = getIntent().getIntExtra("code", 0);
 
         db = new DatabaseHelper(this);
 
@@ -56,7 +60,7 @@ public class ChildListActivity extends AppCompatActivity {
         LinearLayoutManager manager = new LinearLayoutManager(this);
         bi.childlist.setLayoutManager(manager);
         bi.childlist.setHasFixedSize(true);
-        list = db.getChildList(String.valueOf(areaCode));
+        list = db.getChildrenList(motherData.getHhno(), motherData.getClusterno(), motherData.getSerialno());
         setupRecyclerView(list);
 
     }
@@ -64,39 +68,39 @@ public class ChildListActivity extends AppCompatActivity {
 
     private void setListener() {
 
-        bi.filterDSS.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                filteredItems = new ArrayList<>();
-                if (!s.toString().equals("")) {
-                    for (int i = 0; i < list.size(); i++) {
-                        if (list.get(i).getDssid().toLowerCase().contains(s.toString().toLowerCase())) {
-                            filteredItems.add(list.get(i));
-                        }
-                    }
-                    setupRecyclerView(filteredItems);
-                } else {
-                    setupRecyclerView(list);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
+//        bi.filterDSS.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+////                filteredItems = new ArrayList<>();
+////                if (!s.toString().equals("")) {
+////                    for (int i = 0; i < list.size(); i++) {
+////                        if (list.get(i).getDssid().toLowerCase().contains(s.toString().toLowerCase())) {
+////                            filteredItems.add(list.get(i));
+////                        }
+////                    }
+////                    setupRecyclerView(filteredItems);
+////                } else {
+////                    setupRecyclerView(list);
+////                }
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//
+//            }
+//        });
 
 
     }
 
-    private void setupRecyclerView(List<ChildList> list) {
-//        adapter = new ChildListAdapter(this, list);
-//        bi.childlist.setAdapter(adapter);
+    private void setupRecyclerView(List<FamilyMembersContract> list) {
+        adapter = new ChildListAdapter(this, list, false);
+        bi.childlist.setAdapter(adapter);
 //        adapter.setItemClicked(new ChildListAdapter.OnItemClicked() {
 //            @Override
 //            public void onItemClick(final ChildList item, int position) {

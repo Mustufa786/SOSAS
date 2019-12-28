@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -30,7 +32,21 @@ public class SectionCActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_c);
         bi.setCallback(this);
 
+//        MainApp.motherData = getIntent().getParcelableExtra(MainApp.motherInfo);
+
+        MainApp.problemType++;
+        bi.headingTitle.setText(MainApp.problemType == 1 ? "EYES"
+                : MainApp.problemType == 2 ? "EARS"
+                : MainApp.problemType == 3 ? "FACE"
+                : MainApp.problemType == 4 ? "NECK"
+                : MainApp.problemType == 5 ? "HEAD"
+                : MainApp.problemType == 6 ? "CHEST"
+                : MainApp.problemType == 7 ? "BACK"
+                : MainApp.problemType == 8 ? "ABDOMEN"
+                : MainApp.problemType == 9 ? "BUTTOCKS/GROIN/GENETALIA"
+                : "EXTREMITIES");
         setListeners();
+
 
     }
 
@@ -45,26 +61,37 @@ public class SectionCActivity extends AppCompatActivity {
                 }
             }
         });
+
+        bi.te04.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (!s.toString().isEmpty())
+                    MainApp.problemCount = Integer.parseInt(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     public void BtnContinue() {
         if (formValidation()) {
-            try {
-                SaveDraft();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            if (UpdateDB()) {
-
-                if (bi.te03b.isChecked()) {
-                    finish();
-                    startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
-                } else {
-                    finish();
-                    startActivity(new Intent(this, SectionDAActivity.class));
-                }
+            if (bi.te03b.isChecked()) {
+                finish();
+                startActivity(new Intent(this, MainApp.problemType != 10 ? SectionCActivity.class
+                        : EndingActivity.class).putExtra("complete", true));
             } else {
-                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+                finish();
+                startActivity(new Intent(this, SectionEActivity.class));
+
             }
         }
     }

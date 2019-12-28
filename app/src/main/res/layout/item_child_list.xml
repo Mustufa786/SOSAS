@@ -9,8 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:background="@drawable/card_design"
-        android:elevation="1dp"
-        android:padding="16dp">
+        android:elevation="1dp">
 
 
         <LinearLayout
@@ -64,29 +63,28 @@
 
 
                     <TextView
-                        android:id="@+id/motherId"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Mother Id Not Found"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                        android:textColor="@color/colorPrimary"
-                        android:textStyle="bold" />
-
-
-                    <TextView
-                        android:id="@+id/motherName"
+                        android:id="@+id/name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Mother Name Not Found"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Mother Id Not Found"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
 
                     <TextView
                         android:id="@+id/dob"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
                         android:layout_weight="1"
                         android:text="7 Months"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />

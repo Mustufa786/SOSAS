@@ -29,8 +29,8 @@ public class EndingActivity extends AppCompatActivity {
         bi.setCallback(this);
 
 
-        bi.RS82.setMaxDate(DateUtils.getMonthsBack("dd/MM/yyyy", 1));
-        bi.RS82.setMinDate(DateUtils.getDaysBack("dd/MM/yyyy", 1));
+//        bi.RS82.setMaxDate(DateUtils.getMonthsBack("dd/MM/yyyy", 1));
+//        bi.RS82.setMinDate(DateUtils.getDaysBack("dd/MM/yyyy", 1));
 
         Boolean check = getIntent().getExtras().getBoolean("complete");
 
@@ -51,45 +51,46 @@ public class EndingActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
-            SaveDraft();
-            if (UpdateDB()) {
-                MainApp.memFlag = 0;
-
-                MainApp.TotalMembersCount = 0;
-                MainApp.TotalMWRACount = 0;
-                MainApp.mwraCount = 1;
-                MainApp.TotalChildCount = 0;
-                MainApp.imsCount = 1;
-                MainApp.totalImsCount = 0;
-                MainApp.motherList.clear();
-                MainApp.fatherList.clear();
-                MainApp.childList.clear();
-                MainApp.positionIm = 0;
-
-//                MainApp.CounterDeceasedMother = 0;
-                MainApp.CounterDeceasedChild = 0;
-
-                MainApp.lstChild.clear();
-
-
-                MainApp.counter = 0;
-
-                MainApp.selectedPos = -1;
-
-                MainApp.randID = 1;
-
-                MainApp.isRsvp = false;
-                MainApp.isHead = false;
-
-                MainApp.flag = true;
-
-                finish();
-
-                Intent endSec = new Intent(this, MainActivity.class);
-                startActivity(endSec);
-            } else {
-//                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
-            }
+            Intent endSec = new Intent(this, MainActivity.class);
+            startActivity(endSec);
+//            SaveDraft();
+//            if (UpdateDB()) {
+//                MainApp.memFlag = 0;
+//
+//                MainApp.TotalMembersCount = 0;
+//                MainApp.TotalMWRACount = 0;
+//                MainApp.mwraCount = 1;
+//                MainApp.TotalChildCount = 0;
+//                MainApp.imsCount = 1;
+//                MainApp.totalImsCount = 0;
+//                MainApp.motherList.clear();
+//                MainApp.fatherList.clear();
+//                MainApp.childList.clear();
+//                MainApp.positionIm = 0;
+//
+////                MainApp.CounterDeceasedMother = 0;
+//                MainApp.CounterDeceasedChild = 0;
+//
+//                MainApp.lstChild.clear();
+//
+//
+//                MainApp.counter = 0;
+//
+//                MainApp.selectedPos = -1;
+//
+//                MainApp.randID = 1;
+//
+//                MainApp.isRsvp = false;
+//                MainApp.isHead = false;
+//
+//                MainApp.flag = true;
+//
+//                finish();
+//
+//
+//            } else {
+////                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+//            }
         }
     }
 
@@ -115,7 +116,7 @@ public class EndingActivity extends AppCompatActivity {
                 : MainApp.status == 6 && bi.istatus1.isChecked() ? "6"
                 : "0");
 
-        MainApp.fc.setNextVisit(bi.RS82.getText().toString());
+//        MainApp.fc.setNextVisit(bi.RS82.getText().toString());
         MainApp.fc.setEndingdatetime(dtToday);
 
 //        Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();

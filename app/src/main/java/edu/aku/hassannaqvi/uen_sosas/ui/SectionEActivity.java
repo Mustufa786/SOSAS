@@ -30,10 +30,22 @@ public class SectionEActivity extends AppCompatActivity {
         bi.setCallback(this);
 
         setListeners();
+
+        bi.heading.setText(MainApp.problemType == 1 ? "EYES PROBLEM"
+                : MainApp.problemType == 2 ? "EARS PROBLEM"
+                : MainApp.problemType == 3 ? "FACE PROBLEM"
+                : MainApp.problemType == 4 ? "NECK PROBLEM"
+                : MainApp.problemType == 5 ? "HEAD PROBLEM"
+                : MainApp.problemType == 6 ? "CHEST PROBLEM"
+                : MainApp.problemType == 7 ? "BACK PROBLEM"
+                : MainApp.problemType == 8 ? "ABDOMEN PROBLEM"
+                : MainApp.problemType == 9 ? "BUTTOCKS/GROIN/GENETALIA PROBLEM"
+                : "EXTREMITIES PROBLEM");
     }
 
     private void setListeners() {
 
+        --MainApp.problemCount;
         bi.te06.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -47,17 +59,22 @@ public class SectionEActivity extends AppCompatActivity {
 
     public void BtnContinue() {
         if (formValidation()) {
-            try {
-                SaveDraft();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            if (UpdateDB()) {
+            if (MainApp.problemCount > 0) {
                 finish();
-                startActivity(new Intent(this, EndingActivity.class));
+                startActivity(new Intent(this, SectionEActivity.class));
             } else {
-                Toast.makeText(this, "Complete", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, MainApp.problemType != 10 ? SectionCActivity.class : EndingActivity.class).putExtra("complete", true));
             }
+//            try {
+//                SaveDraft();
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//            if (UpdateDB()) {
+//
+//            } else {
+//                Toast.makeText(this, "Complete", Toast.LENGTH_SHORT).show();
+//            }
         }
     }
 

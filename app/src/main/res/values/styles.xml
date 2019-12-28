@@ -5,7 +5,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:scrollViewStyle">@style/BackgroundStyle</item>
-        <item name="android:textViewStyle">@style/labels</item>
+        <!--        <item name="android:textViewStyle">@style/labels</item>-->
         <item name="android:editTextStyle">@style/textInput</item>
         <item name="android:radioButtonStyle">@style/radiobutton</item>
         <item name="checkboxStyle">@style/checkbox</item>
@@ -72,23 +72,24 @@
     <style name="labels" parent="@android:style/TextAppearance.Widget.TextView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">24dp</item>
-        <item name="android:background">@color/colorPrimary</item>
+        <!--        <item name="android:layout_marginTop">24dp</item>-->
+        <item name="android:background">@drawable/text_style</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">24sp</item>
         <item name="android:typeface">serif</item>
-        <item name="android:paddingTop">16dp</item>
+        <item name="android:padding">10dp</item>
+        <!--        <item name="android:paddingTop">16dp</item>-->
         <item name="android:elevation">1dp</item>
-        <item name="android:paddingStart">8dp</item>
+        <!--        <item name="android:paddingStart">8dp</item>-->
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:paddingEnd">8dp</item>
+        <!--        <item name="android:textStyle">bold</item>-->
+        <!--        <item name="android:paddingEnd">8dp</item>-->
 
 
     </style>
 
     <style name="HeadingTitle" parent="@android:style/TextAppearance.Widget.TextView">
-        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:background">@color/colorSecondary</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:textSize">30sp</item>
@@ -210,11 +211,11 @@
         <item name="android:textSize">24sp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">1dp</item>
         <item name="android:background">@color/white</item>
         <!--        <item name="android:button">@color/colorPrimary</item>-->
         <item name="android:elevation">1dp</item>
-        <item name="android:radius">2dp</item>
+        <item name="android:layout_marginBottom">1dp</item>
+        <item name="android:padding">5dp</item>
     </style>
 
     <style name="buttons" parent="android:Widget.Material.Light.Button">

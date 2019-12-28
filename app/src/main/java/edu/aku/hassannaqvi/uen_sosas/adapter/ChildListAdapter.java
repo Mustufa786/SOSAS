@@ -1,22 +1,24 @@
 package edu.aku.hassannaqvi.uen_sosas.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.List;
 
 import edu.aku.hassannaqvi.uen_sosas.R;
-import edu.aku.hassannaqvi.uen_sosas.contracts.ChildList;
 import edu.aku.hassannaqvi.uen_sosas.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.FormsContract;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
+import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
 import edu.aku.hassannaqvi.uen_sosas.databinding.ItemChildListBinding;
+import edu.aku.hassannaqvi.uen_sosas.ui.SectionBActivity;
+import edu.aku.hassannaqvi.uen_sosas.ui.SectionCActivity;
 
 public class ChildListAdapter extends RecyclerView.Adapter<ChildListAdapter.ViewHolder> {
 
@@ -26,10 +28,19 @@ public class ChildListAdapter extends RecyclerView.Adapter<ChildListAdapter.View
     private List<FamilyMembersContract> mList;
     DatabaseHelper db;
     FormsContract ChildData;
+    boolean isMother;
+    /*
+       if Mother
+       isMother = true
 
-    public ChildListAdapter(Context mContext, List<FamilyMembersContract> mList) {
+       if child
+       isMother = false
+     */
+
+    public ChildListAdapter(Context mContext, List<FamilyMembersContract> mList, boolean isMother) {
         this.mContext = mContext;
         this.mList = mList;
+        this.isMother = isMother;
         db = new DatabaseHelper(mContext);
 
     }
@@ -49,30 +60,18 @@ public class ChildListAdapter extends RecyclerView.Adapter<ChildListAdapter.View
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int i) {
 
-        holder.bi.motherId.setText(mList.get(i).getMotherid());
-        holder.bi.motherName.setText(mList.get(i).getMotherName());
-        holder.bi.dob.setText(mList.get(i).getAge());
+        holder.bi.id.setText("Serial No: " + mList.get(i).getSerialno());
+        holder.bi.name.setText(isMother ? mList.get(i).getName() : mList.get(i).getName() + "/" + mList.get(i).getMotherName());
+        holder.bi.dob.setText("Age: " + mList.get(i).getAge() + " Year(s)");
         holder.bi.index.setText(String.valueOf(i + 1));
-//        holder.bi.parentLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                FormsContract ChildData;
-//                ChildData = db.isDataExists(mList.get(i).getDssid());
-//                if (ChildData != null) {
-//                    if (!ChildData.getStatus().contains("1") && !ChildData.getStatus().contains("2")) {
-//                        itemClicked.onItemClick(mList.get(i), i);
-//                    } else {
-//                        Toast.makeText(mContext, "Completed form for this child already exist!", Toast.LENGTH_LONG).show();
-//                    }
-//
-//                } else {
-//                    Toast.makeText(mContext, "Completed form for this child already exist!", Toast.LENGTH_LONG).show();
-//                }
-//
-//            }
-//        });
-//
+        holder.bi.genderImage.setImageResource(isMother ? R.drawable.mother : R.drawable.boy);
+        holder.bi.parentLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mContext.startActivity(new Intent(mContext, isMother ? SectionBActivity.class
+                        : SectionCActivity.class).putExtra(MainApp.motherInfo, mList.get(i)));
+            }
+        });
 
     }
 
@@ -83,7 +82,7 @@ public class ChildListAdapter extends RecyclerView.Adapter<ChildListAdapter.View
 
     public interface OnItemClicked {
 
-        void onItemClick(ChildList item, int position);
+        void onItemClick(FamilyMembersContract item, int position);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
