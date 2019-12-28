@@ -118,15 +118,15 @@ public class SectionEActivity extends AppCompatActivity {
 
         JSONObject SE = new JSONObject();
 
-        //checkbox Te05
-        SE.put("Te05a", bi.te05a.isChecked() ? "1" : "0");
-        SE.put("Te05b", bi.te05b.isChecked() ? "2" : "0");
-        SE.put("Te05c", bi.te05c.isChecked() ? "3" : "0");
-        SE.put("Te05d", bi.te05d.isChecked() ? "4" : "0");
-        SE.put("Te05e", bi.te05e.isChecked() ? "5" : "0");
-        SE.put("Te05f", bi.te05f.isChecked() ? "6" : "0");
-        SE.put("Te05g", bi.te05g.isChecked() ? "7" : "0");
-        SE.put("Te05h", bi.te05h.isChecked() ? "8" : "0");
+        SE.put("te05", bi.te05a.isChecked() ? "1"
+                : bi.te05b.isChecked() ? "2"
+                : bi.te05c.isChecked() ? "3"
+                : bi.te05d.isChecked() ? "4"
+                : bi.te05e.isChecked() ? "5"
+                : bi.te05f.isChecked() ? "6"
+                : bi.te05g.isChecked() ? "7"
+                : bi.te05h.isChecked() ? "8"
+                : "0");
 
         //te06
         SE.put("te06", bi.te06a.isChecked() ? "1"

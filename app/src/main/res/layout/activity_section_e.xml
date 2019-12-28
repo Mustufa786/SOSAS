@@ -47,53 +47,52 @@
                         style="@style/i_textview"
                         android:text="@string/te05" />
 
-                    <LinearLayout
+                    <RadioGroup
+                        android:id="@+id/te05"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:tag="0">
+                        android:orientation="vertical">
 
-                        <CheckBox
+                        <RadioButton
                             android:id="@+id/te05a"
-                            style="@style/checkbox"
+                            style="@style/radiobutton"
                             android:text="@string/te05a" />
 
-                        <CheckBox
+                        <RadioButton
                             android:id="@+id/te05b"
-                            style="@style/checkbox"
+                            style="@style/radiobutton"
                             android:text="@string/te05b" />
 
-                        <CheckBox
+                        <RadioButton
                             android:id="@+id/te05c"
-                            style="@style/checkbox"
+                            style="@style/radiobutton"
                             android:text="@string/te05c" />
 
-                        <CheckBox
+                        <RadioButton
                             android:id="@+id/te05d"
-                            style="@style/checkbox"
+                            style="@style/radiobutton"
                             android:text="@string/te05d" />
 
-                        <CheckBox
+                        <RadioButton
                             android:id="@+id/te05e"
-                            style="@style/checkbox"
+                            style="@style/radiobutton"
                             android:text="@string/te05e" />
 
-                        <CheckBox
+                        <RadioButton
                             android:id="@+id/te05f"
-                            style="@style/checkbox"
+                            style="@style/radiobutton"
                             android:text="@string/te05f" />
 
-                        <CheckBox
+                        <RadioButton
                             android:id="@+id/te05g"
-                            style="@style/checkbox"
+                            style="@style/radiobutton"
                             android:text="@string/te05g" />
 
-                        <CheckBox
+                        <RadioButton
                             android:id="@+id/te05h"
-                            style="@style/checkbox"
+                            style="@style/radiobutton"
                             android:text="@string/te05h" />
-
-                    </LinearLayout>
+                    </RadioGroup>
 
 
                 </LinearLayout>
