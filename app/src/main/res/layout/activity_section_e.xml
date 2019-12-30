@@ -92,8 +92,28 @@
                             android:id="@+id/te05h"
                             style="@style/radiobutton"
                             android:text="@string/te05h" />
-                    </RadioGroup>
 
+                        <RadioButton
+                            android:id="@+id/te05i"
+                            style="@style/radiobutton"
+                            android:text="@string/te05i" />
+
+                        <RadioButton
+                            android:id="@+id/te05j"
+                            style="@style/radiobutton"
+                            android:text="@string/te05j" />
+
+                        <RadioButton
+                            android:id="@+id/te05k"
+                            style="@style/radiobutton"
+                            android:text="@string/te05k" />
+
+                        <RadioButton
+                            android:id="@+id/te05l"
+                            style="@style/radiobutton"
+                            android:text="@string/te05l" />
+
+                    </RadioGroup>
 
                 </LinearLayout>
 
