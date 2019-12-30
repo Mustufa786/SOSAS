@@ -47,12 +47,7 @@ public class ChildListActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_child_list);
 
         this.setTitle("Child List");
-
-//        areaCode = getIntent().getIntExtra("code", 0);
-
         db = new DatabaseHelper(this);
-
-        setListener();
         setupViews();
     }
 
@@ -65,81 +60,17 @@ public class ChildListActivity extends AppCompatActivity {
 
     }
 
-
-    private void setListener() {
-
-//        bi.filterDSS.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-////                filteredItems = new ArrayList<>();
-////                if (!s.toString().equals("")) {
-////                    for (int i = 0; i < list.size(); i++) {
-////                        if (list.get(i).getDssid().toLowerCase().contains(s.toString().toLowerCase())) {
-////                            filteredItems.add(list.get(i));
-////                        }
-////                    }
-////                    setupRecyclerView(filteredItems);
-////                } else {
-////                    setupRecyclerView(list);
-////                }
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//
-//            }
-//        });
-
-
-    }
-
     private void setupRecyclerView(List<FamilyMembersContract> list) {
         adapter = new ChildListAdapter(this, list, false);
         bi.childlist.setAdapter(adapter);
-//        adapter.setItemClicked(new ChildListAdapter.OnItemClicked() {
-//            @Override
-//            public void onItemClick(final ChildList item, int position) {
-//
-//                AlertDialog.Builder builder = new AlertDialog.Builder(ChildListActivity.this);
-//                View view = LayoutInflater.from(ChildListActivity.this).inflate(R.layout.layout_dialoge, null);
-//                final LayoutDialogeBinding bi = DataBindingUtil.bind(view);
-//                builder.setView(view);
-//                final AlertDialog dialog = builder.create();
-//                bi.dssID.setText(item.getDssid());
-//                bi.studyID.setText(item.getStudy_id());
-//                bi.fatherName.setText(item.getFather_name());
-//                bi.motherName.setText(item.getMother_name());
-//                bi.dob.setText(item.getDob());
-//                bi.gender.setText(item.equals("1") ? "Male" : "Female");
-//                bi.genderImage.setImageResource(item.getGender().equals("1") ? R.drawable.boy : R.drawable.girl);
-//                bi.months.setText(String.valueOf(DateUtils.ageInMonthsByDOB(DateUtils.getDate(item.getDob()))));
-//                bi.start.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        if (!bi.checkChild.isChecked()) {
-//                            bi.checkChild.setError("Required field");
-//                            return;
-//                        }
-//                        startActivity(new Intent(ChildListActivity.this, Section01Activity.class).putExtra("data", item));
-//                        dialog.dismiss();
-//                    }
-//                });
-//                bi.cancel.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        dialog.dismiss();
-//                    }
-//                });
-//
-//                dialog.setTitle("Confirm Child");
-//                dialog.show();
-//
-//            }
-//        });
+        adapter.setItemClicked(new ChildListAdapter.OnItemClicked() {
+            @Override
+            public void onItemClick(FamilyMembersContract item, int position, boolean isMother) {
+
+                startActivity(new Intent(ChildListActivity.this, isMother ? SectionBActivity.class
+                        : SectionCActivity.class).putExtra(MainApp.motherInfo, item));
+            }
+        });
+
     }
 }

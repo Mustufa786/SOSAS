@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -41,6 +42,10 @@ public class SectionEActivity extends AppCompatActivity {
                 : MainApp.problemType == 8 ? "ABDOMEN PROBLEM"
                 : MainApp.problemType == 9 ? "BUTTOCKS/GROIN/GENETALIA PROBLEM"
                 : "EXTREMITIES PROBLEM");
+
+        if (MainApp.problemType == 1) {
+            bi.te05d.setVisibility(View.GONE);
+        }
     }
 
     private void setListeners() {

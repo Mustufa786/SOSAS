@@ -68,8 +68,8 @@ public class ChildListAdapter extends RecyclerView.Adapter<ChildListAdapter.View
         holder.bi.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mContext.startActivity(new Intent(mContext, isMother ? SectionBActivity.class
-                        : SectionCActivity.class).putExtra(MainApp.motherInfo, mList.get(i)));
+                itemClicked.onItemClick(mList.get(i), i, isMother);
+
             }
         });
 
@@ -82,7 +82,7 @@ public class ChildListAdapter extends RecyclerView.Adapter<ChildListAdapter.View
 
     public interface OnItemClicked {
 
-        void onItemClick(FamilyMembersContract item, int position);
+        void onItemClick(FamilyMembersContract item, int position, boolean isMother);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

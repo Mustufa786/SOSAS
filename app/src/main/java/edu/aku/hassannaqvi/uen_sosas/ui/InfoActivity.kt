@@ -1,14 +1,18 @@
 package edu.aku.hassannaqvi.uen_sosas.ui
 
+import android.content.Intent
 import android.databinding.DataBindingUtil
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.Toast
 import edu.aku.hassannaqvi.uen_sosas.R
 import edu.aku.hassannaqvi.uen_sosas.adapter.ChildListAdapter
@@ -18,6 +22,7 @@ import edu.aku.hassannaqvi.uen_sosas.contracts.VillagesContract
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivityInfoBinding
+import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass
 
 class InfoActivity : AppCompatActivity() {
 
@@ -45,8 +50,11 @@ class InfoActivity : AppCompatActivity() {
     }
 
     fun setupViews() {
+
+        motherList = ArrayList()
         var list: Collection<AreasContract> = db.getAllAreas(MainApp.ucCode)
         var areaNames: ArrayList<String> = ArrayList()
+        areaNames.add("-Select Area-")
         var areaMap: HashMap<String, String> = HashMap()
         for (item in list) {
             areaNames.add(item.area)
@@ -60,17 +68,21 @@ class InfoActivity : AppCompatActivity() {
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 
-                val areaCode = areaMap[bi.areaSpinner.selectedItem.toString()]
+                if (bi.areaSpinner.selectedItemPosition != 0) {
+                    val areaCode = areaMap[bi.areaSpinner.selectedItem.toString()]
 
-                villageList = db.getVillages(areaCode)
-                villageNames = ArrayList()
-                villageMap = HashMap()
+                    villageList = db.getVillages(areaCode)
+                    villageNames = ArrayList()
+                    villageNames.add("-Select Village Name-")
+                    villageMap = HashMap()
 
-                for (item in villageList) {
-                    villageNames.add(item.villagename)
-                    villageMap[item.villagename] = item.villagecode
+                    for (item in villageList) {
+                        villageNames.add(item.villagename)
+                        villageMap[item.villagename] = item.villagecode
+                    }
+                    bi.villageSpinner.adapter = ArrayAdapter(this@InfoActivity, android.R.layout.simple_list_item_1, villageNames)
+
                 }
-                bi.villageSpinner.adapter = ArrayAdapter(this@InfoActivity, android.R.layout.simple_list_item_1, villageNames)
 
             }
         }
@@ -81,8 +93,11 @@ class InfoActivity : AppCompatActivity() {
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                if (bi.villageSpinner.selectedItemPosition != 0) {
+                    villageCode = villageMap[bi.villageSpinner.selectedItem.toString()]
+                    bi.clusterNumber.text = villageCode
+                }
 
-                villageCode = villageMap[bi.villageSpinner.selectedItem.toString()]
 
             }
 
@@ -96,28 +111,62 @@ class InfoActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s.toString() == "") {
+                if (motherList.isNotEmpty()) {
+                    motherList = emptyList()
+                    setupRecyclerView()
                 }
             }
 
         })
 
         bi.checkHH.setOnClickListener {
-            if (bi.hhName.text.toString() != "") {
-                motherList = db.getMotherList(bi.hhName.text.toString(), villageCode)
-                if (motherList.isNotEmpty()) {
-                    Toast.makeText(this@InfoActivity, "Mother Found", Toast.LENGTH_SHORT).show()
-                    adapter = ChildListAdapter(this@InfoActivity, motherList, true)
-                    bi.motherList.layoutManager = LinearLayoutManager(this@InfoActivity)
-                    bi.motherList.adapter = adapter
-                } else {
-                    Toast.makeText(this@InfoActivity, "Mother Not Found", Toast.LENGTH_SHORT).show()
+            if (formValidation()) {
+                if (bi.hhName.text.toString() != "") {
+                    motherList = db.getMotherList(bi.hhName.text.toString(), villageCode)
+                    if (motherList.isNotEmpty()) {
+                        Toast.makeText(this@InfoActivity, "Mother Found", Toast.LENGTH_SHORT).show()
+                        setupRecyclerView()
+                    } else {
+                        Toast.makeText(this@InfoActivity, "Mother Not Found", Toast.LENGTH_SHORT).show()
+                    }
+
+
                 }
-
-
             }
+
         }
 
+    }
+
+    fun setupRecyclerView() {
+        adapter = ChildListAdapter(this@InfoActivity, motherList, true)
+        bi.motherList.layoutManager = LinearLayoutManager(this@InfoActivity)
+        bi.motherList.adapter = adapter
+
+        adapter.setItemClicked { item, position, isMother ->
+
+            val dialogBuilder: AlertDialog.Builder = AlertDialog.Builder(this@InfoActivity)
+            val v = LayoutInflater.from(this).inflate(R.layout.alert_dialog_layout, null)
+            dialogBuilder.setView(v)
+            var dialog: AlertDialog = dialogBuilder.create()
+            dialog.show()
+            var noBtn: Button = v.findViewById(R.id.noBtn)
+            var continueBtn: Button = v.findViewById(R.id.continueBtn)
+            noBtn.setOnClickListener {
+                dialog.dismiss()
+            }
+            continueBtn.setOnClickListener {
+
+                saveDraft()
+                if (updateDB()) {
+                    startActivity(Intent(this@InfoActivity, if (isMother) SectionBActivity::class.java
+                    else SectionCActivity::class.java).putExtra(MainApp.motherInfo, item))
+//
+                }
+                dialog.dismiss()
+            }
+
+        }
 
     }
 
@@ -126,14 +175,12 @@ class InfoActivity : AppCompatActivity() {
 
     }
 
-    fun formValidation(): Boolean {
-
-
-        return true
+    private fun formValidation(): Boolean {
+        return ValidatorClass.EmptyCheckingContainer(this, bi.checkLayout1)
     }
 
 
-    fun updateDB(): Boolean {
+    private fun updateDB(): Boolean {
 
 
         return true
