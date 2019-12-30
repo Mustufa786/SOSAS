@@ -1,5 +1,6 @@
 package edu.aku.hassannaqvi.uen_sosas.ui
 
+import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.text.Editable
 import android.text.TextWatcher
+import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.AdapterView
@@ -18,11 +20,18 @@ import edu.aku.hassannaqvi.uen_sosas.R
 import edu.aku.hassannaqvi.uen_sosas.adapter.ChildListAdapter
 import edu.aku.hassannaqvi.uen_sosas.contracts.AreasContract
 import edu.aku.hassannaqvi.uen_sosas.contracts.FamilyMembersContract
+import edu.aku.hassannaqvi.uen_sosas.contracts.FormsContract
 import edu.aku.hassannaqvi.uen_sosas.contracts.VillagesContract
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp
+import edu.aku.hassannaqvi.uen_sosas.core.MainApp.fc
+import edu.aku.hassannaqvi.uen_sosas.core.MainApp.setGPS
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivityInfoBinding
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass
+import org.json.JSONObject
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 class InfoActivity : AppCompatActivity() {
 
@@ -30,6 +39,7 @@ class InfoActivity : AppCompatActivity() {
     lateinit var bi: ActivityInfoBinding
     lateinit var db: DatabaseHelper
     var villageCode: String? = null
+    var areaCode: String? = null
     var hhNo: String? = null
     lateinit var adapter: ChildListAdapter
     lateinit var villageList: Collection<VillagesContract>
@@ -49,7 +59,7 @@ class InfoActivity : AppCompatActivity() {
         setupViews()
     }
 
-    fun setupViews() {
+    private fun setupViews() {
 
         motherList = ArrayList()
         var list: Collection<AreasContract> = db.getAllAreas(MainApp.ucCode)
@@ -69,7 +79,7 @@ class InfoActivity : AppCompatActivity() {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 
                 if (bi.areaSpinner.selectedItemPosition != 0) {
-                    val areaCode = areaMap[bi.areaSpinner.selectedItem.toString()]
+                    areaCode = areaMap[bi.areaSpinner.selectedItem.toString()]
 
                     villageList = db.getVillages(areaCode)
                     villageNames = ArrayList()
@@ -156,7 +166,6 @@ class InfoActivity : AppCompatActivity() {
                 dialog.dismiss()
             }
             continueBtn.setOnClickListener {
-
                 saveDraft()
                 if (updateDB()) {
                     startActivity(Intent(this@InfoActivity, if (isMother) SectionBActivity::class.java
@@ -170,8 +179,19 @@ class InfoActivity : AppCompatActivity() {
 
     }
 
-    fun saveDraft() {
-
+    private fun saveDraft() {
+        fc = FormsContract()
+        val pref = getSharedPreferences("tagName", Context.MODE_PRIVATE)
+        fc.devicetagID = pref.getString("tagName", null)
+        fc.deviceID = MainApp.deviceId
+        fc.formDate = DateFormat.format("dd-MM-yyyy HH:mm", Date()).toString()
+        fc.user = MainApp.userName
+        fc.talukdaCode = MainApp.talukaCode.toString()
+        fc.uc = MainApp.ucCode.toString()
+        fc.areaCode = areaCode
+        fc.village = villageCode
+        fc.appversion = MainApp.versionName + "." + MainApp.versionCode
+        setGPS(this)
 
     }
 
@@ -181,9 +201,18 @@ class InfoActivity : AppCompatActivity() {
 
 
     private fun updateDB(): Boolean {
+        val rowId: Long
+        val db = DatabaseHelper(this)
+        rowId = db.addForm(fc)
+        if (rowId > 0) {
+            fc._ID = rowId.toString()
+            fc._UID = fc.deviceID + fc._ID
+            db.updateFormID()
+            return true
+        } else {
+            return false
+        }
 
-
-        return true
     }
 
 

@@ -56,7 +56,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + FormsTable.TABLE_NAME + "("
             + FormsTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + FormsTable.COLUMN_PROJECT_NAME + " TEXT,"
-            + FormsTable.COLUMN_UID + " TEXT," +
+            + FormsTable.COLUMN_UID + " TEXT,"
+            + FormsTable.COLUMN_TALUKA_CODE + " TEXT,"
+            + FormsTable.COLUMN_UC_CODE + " TEXT,"
+            + FormsTable.COLUMN_AREA_CODE + " TEXT,"
+            + FormsTable.COLUMN_VILLAGE_CODE + " TEXT," +
             FormsTable.COLUMN_FORMDATE + " TEXT," +
             FormsTable.COLUMN_APPVERSION + " TEXT," +
             FormsTable.COLUMN_STATUS + " TEXT," +
@@ -65,11 +69,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_NEXT_VISIT + " TEXT," +
             FormsTable.COLUMN_USER + " TEXT," +
             FormsTable.COLUMN_SA + " TEXT," +
-            FormsTable.COLUMN_SB + " TEXT," +
-            FormsTable.COLUMN_SC + " TEXT," +
-            FormsTable.COLUMN_SD + " TEXT," +
-            FormsTable.COLUMN_SE + " TEXT," +
-            FormsTable.COLUMN_SF + " TEXT," +
             FormsTable.COLUMN_ISTATUS + " TEXT," +
             FormsTable.COLUMN_ISTATUS88x + " TEXT," +
             FormsTable.COLUMN_ENDINGDATETIME + " TEXT," +
@@ -514,7 +513,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_NEXT_VISIT,
                 FormsTable.COLUMN_FORMDATE,
                 FormsTable.COLUMN_SA,
-                FormsTable.COLUMN_SB,
         };
 
         String whereClause = FormsTable.COLUMN_FORMTYPE + " =? AND " + FormsTable.COLUMN_DSSID + " =? AND " + FormsTable.COLUMN_NEXT_VISIT + "=? AND " + FormsTable.COLUMN_ISTATUS + "=?";
@@ -899,11 +897,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_ISTATUS88x, fc.getIstatus88x());
         values.put(FormsTable.COLUMN_ENDINGDATETIME, fc.getEndingdatetime());
         values.put(FormsTable.COLUMN_SA, fc.getsA());
-        values.put(FormsTable.COLUMN_SB, fc.getsB());
-        values.put(FormsTable.COLUMN_SC, fc.getsC());
-        values.put(FormsTable.COLUMN_SD, fc.getsD());
-        values.put(FormsTable.COLUMN_SE, fc.getsE());
-        values.put(FormsTable.COLUMN_SF, fc.getsF());
+        values.put(FormsTable.COLUMN_TALUKA_CODE, fc.getTalukdaCode());
+        values.put(FormsTable.COLUMN_UC_CODE, fc.getUc());
+        values.put(FormsTable.COLUMN_AREA_CODE, fc.getAreaCode());
+        values.put(FormsTable.COLUMN_VILLAGE_CODE, fc.getVillage());
         values.put(FormsTable.COLUMN_GPSLAT, fc.getGpsLat());
         values.put(FormsTable.COLUMN_GPSLNG, fc.getGpsLng());
         values.put(FormsTable.COLUMN_GPSDATE, fc.getGpsDT());
@@ -1036,11 +1033,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_USER,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SA,
-                FormsTable.COLUMN_SB,
-                FormsTable.COLUMN_SC,
-                FormsTable.COLUMN_SD,
-                FormsTable.COLUMN_SE,
-                FormsTable.COLUMN_SF,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
                 FormsTable.COLUMN_GPSDATE,
@@ -1096,11 +1088,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_USER,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SA,
-                FormsTable.COLUMN_SB,
-                FormsTable.COLUMN_SC,
-                FormsTable.COLUMN_SD,
-                FormsTable.COLUMN_SE,
-                FormsTable.COLUMN_SF,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
                 FormsTable.COLUMN_GPSDATE,
@@ -1208,11 +1195,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_NEXT_VISIT,
                 FormsTable.COLUMN_ENDINGDATETIME,
                 FormsTable.COLUMN_SA,
-                FormsTable.COLUMN_SB,
-                FormsTable.COLUMN_SC,
-                FormsTable.COLUMN_SD,
-                FormsTable.COLUMN_SE,
-                FormsTable.COLUMN_SF,
+                FormsTable.COLUMN_TALUKA_CODE,
+                FormsTable.COLUMN_UC_CODE,
+                FormsTable.COLUMN_AREA_CODE,
+                FormsTable.COLUMN_VILLAGE_CODE,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
                 FormsTable.COLUMN_GPSDATE,
@@ -1482,5 +1468,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allDC;
     }
 
+    public int updatesSA() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FormsTable.COLUMN_SA, MainApp.fc.getsA());
+
+// Which row to update, based on the ID
+        String selection = FormsTable._ID + " =? ";
+        String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};
+
+        int count = db.update(FormsTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
 
 }
