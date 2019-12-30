@@ -73,76 +73,67 @@ public class SectionBActivity extends AppCompatActivity {
 
     public void BtnContinue() {
         if (formValidation()) {
-            if (bi.td01b.isChecked()) {
-                finish();
-                startActivity(new Intent(this, ChildListActivity.class));
-            } else {
-                finish();
-                startActivity(new Intent(this, SectionDAActivity.class));
-            }
-//            try {
-//                SaveDraft();
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//            if (UpdateDB()) {
-//
-//
-//            } else {
-//                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
-//            }
-        }
-    }
-
-    public void BtnEnd() {
-        if (formValidation()) {
             try {
                 SaveDraft();
-            } catch (JSONException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             if (UpdateDB()) {
-                finish();
-                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+                if (bi.td01b.isChecked()) {
+                    finish();
+                    startActivity(new Intent(this, ChildListActivity.class));
+                } else {
+                    finish();
+                    startActivity(new Intent(this, SectionDAActivity.class));
+                }
+
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    public void BtnEnd() {
+        finish();
+        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+//        if (formValidation()) {
+//            try {
+//                SaveDraft();
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//            if (UpdateDB()) {
+//
+//            } else {
+//                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+//            }
+//        }
 
 
     }
 
     private boolean UpdateDB() {
-
         DatabaseHelper db = new DatabaseHelper(this);
-        long updcount = db.addForm(MainApp.fc);
+        // 2. UPDATE FORM ROWID
+        int updcount = db.updatesSA();
 
-        MainApp.fc.set_ID(String.valueOf(updcount));
-        if (updcount != 0) {
-            MainApp.fc.set_UID(
-                    (MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
-            db.updateFormID();
-            return true;
-        } else {
-            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-
+        //            Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+        //            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+        return updcount == 1;
     }
 
     private void SaveDraft() throws JSONException {
 
-        JSONObject SB = new JSONObject();
+        JSONObject SA = new JSONObject();
 
         //td01
-        SB.put("td01", bi.td01a.isChecked() ? "1"
+        SA.put("td01", bi.td01a.isChecked() ? "1"
                 : bi.td01b.isChecked() ? "2"
                 : "0");
-
         //td02a
-        SB.put("td02a", bi.td02a.getText().toString());
+        SA.put("td02a", bi.td02a.getText().toString());
+        MainApp.fc.setsA(String.valueOf(SA));
 
-        MainApp.fc.setsB(String.valueOf(SB));
 
     }
 

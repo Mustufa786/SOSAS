@@ -86,37 +86,12 @@ public class SectionDAActivity extends AppCompatActivity {
             } else {
                 startActivity(new Intent(this, ChildListActivity.class));
             }
-
-//            try {
-//                SaveDraft();
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//            if (UpdateDB()) {
-//
-//            } else {
-//                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
-//            }
         }
     }
 
     public void BtnEnd() {
-        if (formValidation()) {
-            finish();
-            startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
-//            try {
-//                SaveDraft();
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//            if (UpdateDB()) {
-//
-//            } else {
-//                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
-//            }
-        }
-
-
+        finish();
+        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
     }
 
     private boolean UpdateDB() {
@@ -221,8 +196,6 @@ public class SectionDAActivity extends AppCompatActivity {
                 : bi.td14d.isChecked() ? "4"
                 : "0");
 
-
-        MainApp.fc.setsD(String.valueOf(SD));
 
     }
 
