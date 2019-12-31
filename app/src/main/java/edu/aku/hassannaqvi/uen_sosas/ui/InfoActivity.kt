@@ -204,13 +204,13 @@ class InfoActivity : AppCompatActivity() {
         val rowId: Long
         val db = DatabaseHelper(this)
         rowId = db.addForm(fc)
-        if (rowId > 0) {
+        return if (rowId > 0) {
             fc._ID = rowId.toString()
             fc._UID = fc.deviceID + fc._ID
             db.updateFormID()
-            return true
+            true
         } else {
-            return false
+            false
         }
 
     }

@@ -89,8 +89,8 @@
                         style="@style/textInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/te04"
                         android:digits="123456789"
+                        android:hint="@string/te04"
                         android:inputType="number"
                         android:maxLength="1"
                         android:tag="td04" />

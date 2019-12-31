@@ -22,6 +22,8 @@ import edu.aku.hassannaqvi.uen_sosas.contracts.AreasContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.AreasContract.singleAreas;
 import edu.aku.hassannaqvi.uen_sosas.contracts.ChildList;
 import edu.aku.hassannaqvi.uen_sosas.contracts.ChildrenContract;
+import edu.aku.hassannaqvi.uen_sosas.contracts.DeceasedChildContract;
+import edu.aku.hassannaqvi.uen_sosas.contracts.DeceasedChildContract.singleChild;
 import edu.aku.hassannaqvi.uen_sosas.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.FamilyMembersContract.singleMember;
 import edu.aku.hassannaqvi.uen_sosas.contracts.FormsContract;
@@ -103,21 +105,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             VersionAppContract.VersionAppTable.COLUMN_VERSION_NAME + " TEXT, " +
             VersionAppContract.VersionAppTable.COLUMN_PATH_NAME + " TEXT " +
             ");";
-    final String SQL_CREATE_PSU_TABLE = "CREATE TABLE " + singleVillage.TABLE_NAME + " (" +
-            singleVillage._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            singleVillage.COLUMN_AREA_CODE + " TEXT, " +
-            singleVillage.COLUMN_VILLAGE_CODE + " TEXT, " +
-            singleVillage.COLUMN_VILLAGE_NAME + " TEXT " +
-            ");";
-    final String SQL_CREATE_LHW_TABLE = "CREATE TABLE " + LHWContract.lhwEntry.TABLE_NAME + " (" +
-            LHWContract.lhwEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            LHWContract.lhwEntry.COLUMN_TALUKA_CODE + " TEXT, " +
-            LHWContract.lhwEntry.COLUMN_TALUKA_NAME + " TEXT, " +
-            LHWContract.lhwEntry.COLUMN_UC_CODE + " TEXT, " +
-            LHWContract.lhwEntry.COLUMN_UC_NAME + " TEXT, " +
-            LHWContract.lhwEntry.COLUMN_LHW_CODE + " TEXT, " +
-            LHWContract.lhwEntry.COLUMN_LHW_NAME + " TEXT " +
-            ");";
 
     final String SQL_CREATE_TALUKAS = "CREATE TABLE " + TalukasContract.singleTalukas.TABLE_NAME + "("
             + TalukasContract.singleTalukas._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -133,6 +120,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + singleAreas.COLUMN_AREACODE + " TEXT,"
             + singleAreas.COLUMN_UC_CODE + " TEXT,"
             + singleAreas.COLUMN_AREA + " TEXT );";
+
+
     final String SQL_CREATE_CHILDREN = "CREATE TABLE " + ChildrenContract.singleChild.TABLE_NAME + "("
             + ChildrenContract.singleChild._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + ChildrenContract.singleChild.COLUMN_LHW_CODE + " TEXT,"
@@ -141,6 +130,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + ChildrenContract.singleChild.COLUMN_F_NAME + " TEXT,"
             + ChildrenContract.singleChild.COLUMN_REF_DATE + " TEXT, "
             + ChildrenContract.singleChild.COLUMN_LUID + " TEXT );";
+
+    final String SQL_CREATE_PSU_TABLE = "CREATE TABLE " + singleVillage.TABLE_NAME + " (" +
+            singleVillage._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            singleVillage.COLUMN_AREA_CODE + " TEXT, " +
+            singleVillage.COLUMN_VILLAGE_CODE + " TEXT, " +
+            singleVillage.COLUMN_VILLAGE_NAME + " TEXT " +
+            ");";
+
+    final String SQL_CREATE_DECEASED_CHILD = "CREATE TABLE " + singleChild.TABLE_NAME + "("
+            + singleChild._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + singleChild.COLUMN_luid + " TEXT,"
+            + singleChild.COLUMN_UID + " TEXT,"
+            + singleChild.COLUMN_UUID + " TEXT,"
+            + singleChild.COLUMN_MOTHER_ID + " TEXT,"
+            + singleChild.COLUMN_SERIAL_NO + " TEXT,"
+            + singleChild.COLUMN_DA + " TEXT,"
+            + singleChild.COLUMN_FORMDATE + " TEXT,"
+            + singleChild.COLUMN_USER + " TEXT,"
+            + singleChild.COLUMN_DEVICEID + " TEXT,"
+            + singleChild.COLUMN_DEVICETAGID + " TEXT,"
+            + singleChild.COLUMN_SYNCED + " TEXT,"
+            + singleChild.COLUMN_SYNCED_DATE + " TEXT );";
 
 
     final String SQL_CREATE_CHILDLIST = "CREATE TABLE " + ChildList.singleChildList.TABLE_NAME + "("
@@ -188,9 +199,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_UCS);
         db.execSQL(SQL_CREATE_CHILDREN);
         db.execSQL(SQL_CREATE_CHILDLIST);
+        db.execSQL(SQL_CREATE_DECEASED_CHILD);
         db.execSQL(SQL_CREATE_PSU_TABLE);
+
         db.execSQL(SQL_CREATE_AREAS);
-        db.execSQL(SQL_CREATE_LHW_TABLE);
+
         db.execSQL(SQL_CREATE_VERSIONAPP);
         db.execSQL(SQL_CREATE_FAMILY_MEMBERS);
     }
@@ -921,6 +934,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    public Long addChildForm(DeceasedChildContract fc) {
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = this.getWritableDatabase();
+
+// Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(singleChild.COLUMN_luid, fc.getLuid());
+        values.put(singleChild.COLUMN_DA, fc.getdA());
+        values.put(singleChild.COLUMN_FORMDATE, fc.getFormdate());
+        values.put(singleChild.COLUMN_MOTHER_ID, fc.getMotherId());
+        values.put(singleChild.COLUMN_SERIAL_NO, fc.getSerialNo());
+        values.put(singleChild.COLUMN_USER, fc.getUser());
+        values.put(singleChild.COLUMN_DEVICEID, fc.getDeviceID());
+        values.put(singleChild.COLUMN_DEVICETAGID, fc.getDevicetagID());
+        values.put(singleChild.COLUMN_UUID, fc.getUuid());
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId;
+        newRowId = db.insert(
+                singleChild.TABLE_NAME,
+                FormsTable.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
+
     public FormsContract isDataExists(String studyId) {
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = null;
@@ -1017,6 +1056,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};
 
         int count = db.update(FormsTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+
+    public int updateChildFormID() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(singleChild.COLUMN_UID, MainApp.dcc.getUid());
+
+// Which row to update, based on the ID
+        String selection = singleChild._ID + " = ?";
+        String[] selectionArgs = {String.valueOf(MainApp.dcc.get_id())};
+
+        int count = db.update(singleChild.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);

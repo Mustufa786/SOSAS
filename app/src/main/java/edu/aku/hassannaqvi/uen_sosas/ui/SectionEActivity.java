@@ -44,7 +44,7 @@ public class SectionEActivity extends AppCompatActivity {
                 : "EXTREMITIES PROBLEM");
 
         if (MainApp.problemType == 1) {
-            bi.te05d.setVisibility(View.GONE);
+
         }
     }
 
@@ -84,19 +84,20 @@ public class SectionEActivity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        if (formValidation()) {
-            try {
-                SaveDraft();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            if (UpdateDB()) {
-                finish();
-                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
-            } else {
-                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
-            }
-        }
+        finish();
+        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+//        if (formValidation()) {
+//            try {
+//                SaveDraft();
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//            if (UpdateDB()) {
+//
+//            } else {
+//                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+//            }
+//        }
 
 
     }
@@ -194,8 +195,6 @@ public class SectionEActivity extends AppCompatActivity {
         SE.put("te13d", bi.te13d.isChecked() ? "4" : "0");
         SE.put("te13e", bi.te13e.isChecked() ? "5" : "0");
 
-
-        MainApp.fc.setsE(String.valueOf(SE));
 
     }
 
