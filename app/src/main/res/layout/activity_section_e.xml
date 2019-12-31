@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tehh" />
 
-            <!--Check Box Te05-->
+            <!--Radio Button Te05-->
             <android.support.v7.widget.CardView
                 android:id="@+id/te05cv"
                 style="@style/cardView">
@@ -154,162 +154,163 @@
 
             </android.support.v7.widget.CardView>
 
+            <!--Radio Button Te07-->
+            <android.support.v7.widget.CardView
+                android:id="@+id/te07cv"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility='@{te06b.checked ? View.GONE : View.VISIBLE }'>
+
+                    <TextView
+                        style="@style/i_textview"
+                        android:text="@string/te07" />
+
+                    <RadioGroup
+                        android:id="@+id/te07"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <RadioButton
+                            android:id="@+id/te07a"
+                            style="@style/radiobutton"
+                            android:text="@string/te07a" />
+
+                        <RadioButton
+                            android:id="@+id/te07b"
+                            style="@style/radiobutton"
+                            android:text="@string/te07b" />
+
+                        <RadioButton
+                            android:id="@+id/te07c"
+                            style="@style/radiobutton"
+                            android:text="@string/te07c" />
+
+                        <RadioButton
+                            android:id="@+id/te07d"
+                            style="@style/radiobutton"
+                            android:text="@string/te07d" />
+
+                        <RadioButton
+                            android:id="@+id/te07e"
+                            style="@style/radiobutton"
+                            android:text="@string/te07e" />
+
+                        <RadioButton
+                            android:id="@+id/te07f"
+                            style="@style/radiobutton"
+                            android:text="@string/te07f" />
+
+                        <RadioButton
+                            android:id="@+id/te07g"
+                            style="@style/radiobutton"
+                            android:text="@string/te07g" />
+
+                        <RadioButton
+                            android:id="@+id/te07h"
+                            style="@style/radiobutton"
+                            android:text="@string/te07h" />
+
+                        <RadioButton
+                            android:id="@+id/te07i"
+                            style="@style/radiobutton"
+                            android:text="@string/te07i" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <!--Radio Button Te08-->
+            <android.support.v7.widget.CardView
+                android:id="@+id/te08cv"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/i_textview"
+                        android:text="@string/te08" />
+
+                    <RadioGroup
+                        android:id="@+id/te08"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <RadioButton
+                            android:id="@+id/te08a"
+                            style="@style/radiobutton"
+                            android:text="@string/te08a" />
+
+                        <RadioButton
+                            android:id="@+id/te08b"
+                            style="@style/radiobutton"
+                            android:text="@string/te08b" />
+
+                        <RadioButton
+                            android:id="@+id/te08c"
+                            style="@style/radiobutton"
+                            android:text="@string/te08c" />
+
+                        <RadioButton
+                            android:id="@+id/te08d"
+                            style="@style/radiobutton"
+                            android:text="@string/te08d" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <!--Radio Button Te09-->
+            <android.support.v7.widget.CardView
+                android:id="@+id/te09cv"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/i_textview"
+                        android:text="@string/te09" />
+
+                    <RadioGroup
+                        android:id="@+id/te09"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <RadioButton
+                            android:id="@+id/te09a"
+                            style="@style/radiobutton"
+                            android:text="@string/yes" />
+
+                        <RadioButton
+                            android:id="@+id/te09b"
+                            style="@style/radiobutton"
+                            android:text="@string/no" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
             <LinearLayout
                 android:id="@+id/llsos04"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility='@{te06b.checked ? View.GONE : View.VISIBLE }'>
-
-                <!--Radio Button Te07-->
-                <android.support.v7.widget.CardView
-                    android:id="@+id/te07cv"
-                    style="@style/cardView">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            style="@style/i_textview"
-                            android:text="@string/te07" />
-
-                        <RadioGroup
-                            android:id="@+id/te07"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <RadioButton
-                                android:id="@+id/te07a"
-                                style="@style/radiobutton"
-                                android:text="@string/te07a" />
-
-                            <RadioButton
-                                android:id="@+id/te07b"
-                                style="@style/radiobutton"
-                                android:text="@string/te07b" />
-
-                            <RadioButton
-                                android:id="@+id/te07c"
-                                style="@style/radiobutton"
-                                android:text="@string/te07c" />
-
-                            <RadioButton
-                                android:id="@+id/te07d"
-                                style="@style/radiobutton"
-                                android:text="@string/te07d" />
-
-                            <RadioButton
-                                android:id="@+id/te07e"
-                                style="@style/radiobutton"
-                                android:text="@string/te07e" />
-
-                            <RadioButton
-                                android:id="@+id/te07f"
-                                style="@style/radiobutton"
-                                android:text="@string/te07f" />
-
-                            <RadioButton
-                                android:id="@+id/te07g"
-                                style="@style/radiobutton"
-                                android:text="@string/te07g" />
-
-                            <RadioButton
-                                android:id="@+id/te07h"
-                                style="@style/radiobutton"
-                                android:text="@string/te07h" />
-
-                            <RadioButton
-                                android:id="@+id/te07i"
-                                style="@style/radiobutton"
-                                android:text="@string/te07i" />
-
-                        </RadioGroup>
-
-                    </LinearLayout>
-
-                </android.support.v7.widget.CardView>
-
-                <!--Radio Button Te08-->
-                <android.support.v7.widget.CardView
-                    android:id="@+id/te08cv"
-                    style="@style/cardView">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            style="@style/i_textview"
-                            android:text="@string/te08" />
-
-                        <RadioGroup
-                            android:id="@+id/te08"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <RadioButton
-                                android:id="@+id/te08a"
-                                style="@style/radiobutton"
-                                android:text="@string/te08a" />
-
-                            <RadioButton
-                                android:id="@+id/te08b"
-                                style="@style/radiobutton"
-                                android:text="@string/te08b" />
-
-                            <RadioButton
-                                android:id="@+id/te08c"
-                                style="@style/radiobutton"
-                                android:text="@string/te08c" />
-
-                            <RadioButton
-                                android:id="@+id/te08d"
-                                style="@style/radiobutton"
-                                android:text="@string/te08d" />
-
-                        </RadioGroup>
-
-                    </LinearLayout>
-
-                </android.support.v7.widget.CardView>
-
-                <!--Radio Button Te09-->
-                <android.support.v7.widget.CardView
-                    android:id="@+id/te09cv"
-                    style="@style/cardView">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            style="@style/i_textview"
-                            android:text="@string/te09" />
-
-                        <RadioGroup
-                            android:id="@+id/te09"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <RadioButton
-                                android:id="@+id/te09a"
-                                style="@style/radiobutton"
-                                android:text="@string/yes" />
-
-                            <RadioButton
-                                android:id="@+id/te09b"
-                                style="@style/radiobutton"
-                                android:text="@string/no" />
-
-                        </RadioGroup>
-
-                    </LinearLayout>
-
-                </android.support.v7.widget.CardView>
+                android:visibility='@{te09b.checked ? View.GONE : View.VISIBLE }'>
 
                 <!--Radio Button Te10-->
                 <android.support.v7.widget.CardView
@@ -361,52 +362,52 @@
 
                 </android.support.v7.widget.CardView>
 
-            </LinearLayout>
+                <!--Radio Button Te11-->
+                <android.support.v7.widget.CardView
+                    android:id="@+id/te11cv"
+                    style="@style/cardView">
 
-            <!--Radio Button Te11-->
-            <android.support.v7.widget.CardView
-                android:id="@+id/te11cv"
-                style="@style/cardView">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        style="@style/i_textview"
-                        android:text="@string/te11" />
-
-                    <RadioGroup
-                        android:id="@+id/te11"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                        <RadioButton
-                            android:id="@+id/te11a"
-                            style="@style/radiobutton"
-                            android:text="@string/te11a" />
+                        <TextView
+                            style="@style/i_textview"
+                            android:text="@string/te11" />
 
-                        <RadioButton
-                            android:id="@+id/te11b"
-                            style="@style/radiobutton"
-                            android:text="@string/te11b" />
+                        <RadioGroup
+                            android:id="@+id/te11"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
 
-                        <RadioButton
-                            android:id="@+id/te11c"
-                            style="@style/radiobutton"
-                            android:text="@string/te11c" />
+                            <RadioButton
+                                android:id="@+id/te11a"
+                                style="@style/radiobutton"
+                                android:text="@string/te11a" />
 
-                        <RadioButton
-                            android:id="@+id/te11d"
-                            style="@style/radiobutton"
-                            android:text="@string/te11d" />
+                            <RadioButton
+                                android:id="@+id/te11b"
+                                style="@style/radiobutton"
+                                android:text="@string/te11b" />
 
-                    </RadioGroup>
+                            <RadioButton
+                                android:id="@+id/te11c"
+                                style="@style/radiobutton"
+                                android:text="@string/te11c" />
 
-                </LinearLayout>
+                            <RadioButton
+                                android:id="@+id/te11d"
+                                style="@style/radiobutton"
+                                android:text="@string/te11d" />
 
-            </android.support.v7.widget.CardView>
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
 
             <!--Radio Button Te12-->
             <android.support.v7.widget.CardView
@@ -416,7 +417,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility='@{!te11a.checked ? View.GONE : View.VISIBLE}'>
 
                     <TextView
                         style="@style/i_textview"
@@ -451,6 +453,11 @@
                             android:id="@+id/te12e"
                             style="@style/radiobutton"
                             android:text="@string/te12e" />
+
+                        <RadioButton
+                            android:id="@+id/te12f"
+                            style="@style/radiobutton"
+                            android:text="@string/te12f" />
 
                         <RadioButton
                             android:id="@+id/te1296"

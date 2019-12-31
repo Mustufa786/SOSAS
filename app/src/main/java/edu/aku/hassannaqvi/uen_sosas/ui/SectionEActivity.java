@@ -60,7 +60,7 @@ public class SectionEActivity extends AppCompatActivity {
         }
 
         if (MainApp.problemType == 2) {
-            bi.te05g.setText("ٻوڙو ٿيڻ");
+            bi.te05g.setText(getString(R.string.teo5g1));
             bi.te05h.setVisibility(View.GONE);
             bi.te05i.setVisibility(View.GONE);
             bi.te05j.setVisibility(View.GONE);
@@ -96,10 +96,10 @@ public class SectionEActivity extends AppCompatActivity {
         }
 
         if (MainApp.problemType == 6) {
-            bi.te05e.setText("ساهه جي ناليءَ ۾ ڪا شئي ڦاسڻ");
-            bi.te05f.setText("پئدائشي نقص");
-            bi.te05g.setText("حادثاتي نقص");
-            bi.te05h.setText("دل جو مسئلو (پئدائشي)");
+            bi.te05e.setText(getString(R.string.te05e1));
+            bi.te05f.setText(getString(R.string.te05f1));
+            bi.te05g.setText(getString(R.string.te05g2));
+            bi.te05h.setText(getString(R.string.te05h1));
             bi.te05i.setVisibility(View.GONE);
             bi.te05j.setVisibility(View.GONE);
             bi.te05k.setVisibility(View.GONE);
@@ -116,11 +116,22 @@ public class SectionEActivity extends AppCompatActivity {
         }
 
         if (MainApp.problemType == 8) {
-            bi.te05d.setText("جسم ۾ غير ضروري واڌ، سخت ڳڙ");
-            bi.te05e.setText("جسم ۾ غير ضروري واڌ، گهٽجندڙ ڳڙ");
-            bi.te05f.setText("پئدائشي نقص");
-            bi.te05g.setText("حادثاتي نقص");
-            bi.te05h.setText("پيٽ ۾ سور يا مروڙ پوڻ يا پيٽ سڄڻ");
+            bi.te05d.setText(getString(R.string.te05d1));
+            bi.te05e.setText(getString(R.string.te05e2));
+            bi.te05f.setText(getString(R.string.te05f2));
+            bi.te05g.setText(getString(R.string.te05g3));
+            bi.te05h.setText(getString(R.string.te05h2));
+        }
+
+        if (MainApp.problemType == 9) {
+            bi.te05e.setText(getString(R.string.te05e3));
+            bi.te05f.setText(getString(R.string.te05f3));
+            bi.te05g.setText(getString(R.string.te05g4));
+            bi.te05h.setText(getString(R.string.te05h3));
+            bi.te05i.setText(getString(R.string.te05i1));
+            bi.te05j.setText(getString(R.string.te05j1));
+            bi.te05k.setVisibility(View.GONE);
+            bi.te05l.setVisibility(View.GONE);
         }
     }
 
@@ -132,6 +143,16 @@ public class SectionEActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
 
                 if (bi.te06b.isChecked()) {
+                    ClearClass.ClearAllFields(bi.te07cv, null);
+                }
+            }
+        });
+
+        bi.te09.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (bi.te09b.isChecked()) {
                     ClearClass.ClearAllFields(bi.llsos04, null);
                 }
             }
@@ -225,6 +246,13 @@ public class SectionEActivity extends AppCompatActivity {
                 : bi.te07i.isChecked() ? "9"
                 : "0");
 
+        //te08
+        SE.put("te08", bi.te08a.isChecked() ? "1"
+                : bi.te08b.isChecked() ? "2"
+                : bi.te08c.isChecked() ? "3"
+                : bi.te08d.isChecked() ? "4"
+                : "0");
+
         //te09
         SE.put("te09", bi.te09a.isChecked() ? "1"
                 : bi.te09b.isChecked() ? "2"
@@ -238,11 +266,11 @@ public class SectionEActivity extends AppCompatActivity {
                 : bi.te10e.isChecked() ? "5"
                 : "0");
 
-        //te08
-        SE.put("te08", bi.te08a.isChecked() ? "1"
-                : bi.te08b.isChecked() ? "2"
-                : bi.te08c.isChecked() ? "3"
-                : bi.te08d.isChecked() ? "4"
+        //te11
+        SE.put("te11", bi.te11a.isChecked() ? "1"
+                : bi.te11b.isChecked() ? "2"
+                : bi.te11c.isChecked() ? "3"
+                : bi.te11d.isChecked() ? "4"
                 : "0");
 
         //te12
@@ -251,16 +279,10 @@ public class SectionEActivity extends AppCompatActivity {
                 : bi.te12c.isChecked() ? "3"
                 : bi.te12d.isChecked() ? "4"
                 : bi.te12e.isChecked() ? "5"
+                : bi.te12f.isChecked() ? "6"
                 : bi.te1296.isChecked() ? "96"
                 : "0");
         SE.put("te1296x", bi.te1296x.getText().toString());
-
-        //te11
-        SE.put("te11", bi.te11a.isChecked() ? "1"
-                : bi.te11b.isChecked() ? "2"
-                : bi.te11c.isChecked() ? "3"
-                : bi.te11d.isChecked() ? "4"
-                : "0");
 
         //checkbox Te13
         SE.put("te13a", bi.te13a.isChecked() ? "1" : "0");
@@ -271,6 +293,8 @@ public class SectionEActivity extends AppCompatActivity {
 
         pc.setdA(String.valueOf(SE));
         --MainApp.problemCount;
+
+        MainApp.fc.setsE(String.valueOf(SE));
 
     }
 
