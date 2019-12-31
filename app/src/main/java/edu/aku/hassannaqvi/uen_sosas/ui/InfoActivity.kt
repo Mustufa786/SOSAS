@@ -168,6 +168,7 @@ class InfoActivity : AppCompatActivity() {
             continueBtn.setOnClickListener {
                 saveDraft()
                 if (updateDB()) {
+                    finish()
                     startActivity(Intent(this@InfoActivity, if (isMother) SectionBActivity::class.java
                     else SectionCActivity::class.java).putExtra(MainApp.motherInfo, item))
 //

@@ -28,17 +28,11 @@ public class EndingActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_ending);
         bi.setCallback(this);
 
-
-//        bi.RS82.setMaxDate(DateUtils.getMonthsBack("dd/MM/yyyy", 1));
-//        bi.RS82.setMinDate(DateUtils.getDaysBack("dd/MM/yyyy", 1));
-
         Boolean check = getIntent().getExtras().getBoolean("complete");
 
         if (check) {
             bi.istatus1.setEnabled(true);
-
             bi.istatus5.setEnabled(false);
-
         } else {
             //fldGrpmn0823Reason.setVisibility(View.GONE);
             bi.istatus1.setEnabled(false);
@@ -51,46 +45,14 @@ public class EndingActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
-            Intent endSec = new Intent(this, MainActivity.class);
-            startActivity(endSec);
-//            SaveDraft();
-//            if (UpdateDB()) {
-//                MainApp.memFlag = 0;
-//
-//                MainApp.TotalMembersCount = 0;
-//                MainApp.TotalMWRACount = 0;
-//                MainApp.mwraCount = 1;
-//                MainApp.TotalChildCount = 0;
-//                MainApp.imsCount = 1;
-//                MainApp.totalImsCount = 0;
-//                MainApp.motherList.clear();
-//                MainApp.fatherList.clear();
-//                MainApp.childList.clear();
-//                MainApp.positionIm = 0;
-//
-////                MainApp.CounterDeceasedMother = 0;
-//                MainApp.CounterDeceasedChild = 0;
-//
-//                MainApp.lstChild.clear();
-//
-//
-//                MainApp.counter = 0;
-//
-//                MainApp.selectedPos = -1;
-//
-//                MainApp.randID = 1;
-//
-//                MainApp.isRsvp = false;
-//                MainApp.isHead = false;
-//
-//                MainApp.flag = true;
-//
-//                finish();
-//
-//
-//            } else {
-////                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
-//            }
+            SaveDraft();
+            if (UpdateDB()) {
+                finish();
+                Intent endSec = new Intent(this, MainActivity.class);
+                startActivity(endSec);
+            } else {
+//                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -98,25 +60,8 @@ public class EndingActivity extends AppCompatActivity {
 //        Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
         MainApp.fc.setIstatus(bi.istatus1.isChecked() ? "1"
-
                 : bi.istatus5.isChecked() ? "5"
-
                 : "0");
-
-//        MainApp.status == 5 && bi.istatus1.isChecked()? "5" ||
-//                MainApp.status == 2 && bi.istatus1.isChecked()? "2" ||
-//                MainApp.status == 1 && bi.istatus1.isChecked()? "1" ||
-//                MainApp.status == 4 && bi.istatus1.isChecked()? "4"
-
-        MainApp.fc.setStatus(MainApp.status == 3 && bi.istatus1.isChecked() ? "3"
-                : MainApp.status == 5 && bi.istatus1.isChecked() ? "5"
-                : MainApp.status == 2 && bi.istatus1.isChecked() ? "2"
-                : MainApp.status == 1 && bi.istatus1.isChecked() ? "1"
-                : MainApp.status == 4 && bi.istatus1.isChecked() ? "4"
-                : MainApp.status == 6 && bi.istatus1.isChecked() ? "6"
-                : "0");
-
-//        MainApp.fc.setNextVisit(bi.RS82.getText().toString());
         MainApp.fc.setEndingdatetime(dtToday);
 
 //        Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();

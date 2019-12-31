@@ -3,12 +3,10 @@ package edu.aku.hassannaqvi.uen_sosas.contracts;
 import android.database.Cursor;
 import android.provider.BaseColumns;
 
-public class DeceasedChildContract {
+public class ChildContract {
 
     private String luid;
     private String uid;
-
-
     private String uuid;
     private String serialNo;
     private String dA;
@@ -53,20 +51,20 @@ public class DeceasedChildContract {
         this.devicetagID = devicetagID;
     }
 
-    public DeceasedChildContract hydrate(Cursor cursor) {
-        this.luid = cursor.getString(cursor.getColumnIndex(singleDeceasedChild.COLUMN_luid));
-        this.uid = cursor.getString(cursor.getColumnIndex(singleDeceasedChild.COLUMN_UID));
-        this.serialNo = cursor.getString(cursor.getColumnIndex(singleDeceasedChild.COLUMN_SERIAL_NO));
-        this.dA = cursor.getString(cursor.getColumnIndex(singleDeceasedChild.COLUMN_DA));
-        this.formdate = cursor.getString(cursor.getColumnIndex(singleDeceasedChild.COLUMN_FORMDATE));
-        this.synced = cursor.getString(cursor.getColumnIndex(singleDeceasedChild.COLUMN_SYNCED));
-        this.syncedDate = cursor.getString(cursor.getColumnIndex(singleDeceasedChild.COLUMN_SYNCED_DATE));
-        this.motherId = cursor.getString(cursor.getColumnIndex(singleDeceasedChild.COLUMN_MOTHER_ID));
-        this._id = cursor.getString(cursor.getColumnIndex(singleDeceasedChild._ID));
-        this.user = cursor.getString(cursor.getColumnIndex(singleDeceasedChild.COLUMN_USER));
-        this.deviceID = cursor.getString(cursor.getColumnIndex(singleDeceasedChild.COLUMN_DEVICEID));
-        this.devicetagID = cursor.getString(cursor.getColumnIndex(singleDeceasedChild.COLUMN_DEVICETAGID));
-        this.uuid = cursor.getString(cursor.getColumnIndex(singleDeceasedChild.COLUMN_UUID));
+    public ChildContract hydrate(Cursor cursor) {
+        this.luid = cursor.getString(cursor.getColumnIndex(singleChild.COLUMN_luid));
+        this.uid = cursor.getString(cursor.getColumnIndex(singleChild.COLUMN_UID));
+        this.serialNo = cursor.getString(cursor.getColumnIndex(singleChild.COLUMN_SERIAL_NO));
+        this.dA = cursor.getString(cursor.getColumnIndex(singleChild.COLUMN_DA));
+        this.formdate = cursor.getString(cursor.getColumnIndex(singleChild.COLUMN_FORMDATE));
+        this.synced = cursor.getString(cursor.getColumnIndex(singleChild.COLUMN_SYNCED));
+        this.syncedDate = cursor.getString(cursor.getColumnIndex(singleChild.COLUMN_SYNCED_DATE));
+        this.motherId = cursor.getString(cursor.getColumnIndex(singleChild.COLUMN_MOTHER_ID));
+        this._id = cursor.getString(cursor.getColumnIndex(singleChild._ID));
+        this.user = cursor.getString(cursor.getColumnIndex(singleChild.COLUMN_USER));
+        this.deviceID = cursor.getString(cursor.getColumnIndex(singleChild.COLUMN_DEVICEID));
+        this.devicetagID = cursor.getString(cursor.getColumnIndex(singleChild.COLUMN_DEVICETAGID));
+        this.uuid = cursor.getString(cursor.getColumnIndex(singleChild.COLUMN_UUID));
 
         return this;
     }
@@ -145,9 +143,9 @@ public class DeceasedChildContract {
     }
 
 
-    public static abstract class singleDeceasedChild implements BaseColumns {
+    public static abstract class singleChild implements BaseColumns {
 
-        public static final String TABLE_NAME = "deceasedChild";
+        public static final String TABLE_NAME = "child_table";
         public static final String _ID = "_ID";
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_UUID = "_uuid";

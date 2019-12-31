@@ -12,11 +12,9 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import edu.aku.hassannaqvi.uen_sosas.R;
-import edu.aku.hassannaqvi.uen_sosas.contracts.ChildList;
 import edu.aku.hassannaqvi.uen_sosas.contracts.DeceasedChildContract;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
@@ -97,6 +95,7 @@ public class SectionDAActivity extends AppCompatActivity {
                     finish();
                     startActivity(new Intent(this, SectionDAActivity.class));
                 } else {
+                    finish();
                     startActivity(new Intent(this, ChildListActivity.class));
                 }
             }
@@ -106,19 +105,19 @@ public class SectionDAActivity extends AppCompatActivity {
 
     public void BtnEnd() {
         finish();
-        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
     }
 
     private boolean UpdateDB() {
 
         DatabaseHelper db = new DatabaseHelper(this);
-        long updcount = db.addChildForm(dcc);
+        long updcount = db.addChildDeceaseForm(dcc);
 
         MainApp.dcc.set_id(String.valueOf(updcount));
         if (updcount != 0) {
             MainApp.dcc.setUid(
                     (MainApp.dcc.getDeviceID() + MainApp.dcc.get_id()));
-            db.updateChildFormID();
+            db.updateChildDeceaseFormID();
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();

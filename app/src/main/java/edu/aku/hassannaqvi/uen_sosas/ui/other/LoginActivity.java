@@ -53,6 +53,9 @@ import com.github.amlcurran.showcaseview.ShowcaseView;
 import com.github.amlcurran.showcaseview.targets.Target;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
 
+import org.angmarch.views.NiceSpinner;
+import org.angmarch.views.OnSpinnerItemSelectedListener;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -117,10 +120,10 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     Button mEmailSignInButton;
 
     @BindView(R.id.spTaluka)
-    Spinner spTaluka;
+    NiceSpinner spTaluka;
 
     @BindView(R.id.spUCs)
-    Spinner spUCs;
+    NiceSpinner spUCs;
 
 
     @BindView(R.id.syncData)
@@ -776,64 +779,42 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         lablesTalukas = new ArrayList<>();
         talukasMap = new HashMap<>();
 
-        lablesTalukas.add("Select Taluka...");
-
         for (TalukasContract taluka : TalukasList) {
             lablesTalukas.add(taluka.getTaluka());
-
             talukasMap.put(taluka.getTaluka(), taluka.getTalukacode());
         }
 
-        spTaluka.setAdapter(new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_dropdown_item, lablesTalukas));
+        spTaluka.attachDataSource(lablesTalukas);
 
-        spTaluka.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spTaluka.setOnSpinnerItemSelectedListener(new OnSpinnerItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                // Populate UCs list
+            public void onItemSelected(NiceSpinner parent, View view, int position, long id) {
 
-                if (spTaluka.getSelectedItemPosition() != 0) {
-                    MainApp.talukaCode = Integer.valueOf(talukasMap.get(spTaluka.getSelectedItem().toString()));
-                }
-
-                lablesUCs = new ArrayList<>();
-                ucsMap = new HashMap<>();
-                lablesUCs.add("Select UC..");
-
-                if (spTaluka.getSelectedItemPosition() != 0) {
+                if (position != 0) {
+                    MainApp.talukaCode = Integer.valueOf(talukasMap.get(parent.getItemAtPosition(position)));
                     UcsList = db.getAllUCs(String.valueOf(MainApp.talukaCode));
+                    lablesUCs = new ArrayList<>();
+                    ucsMap = new HashMap<>();
                     for (UCsContract ucs : UcsList) {
                         lablesUCs.add(ucs.getUcs());
                         ucsMap.put(ucs.getUcs(), ucs.getUccode());
                     }
+                    spUCs.attachDataSource(lablesUCs);
                 }
-
-                spUCs.setAdapter(new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_dropdown_item, lablesUCs));
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
 
-        spUCs.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                // Populate UCs list
 
-                if (spUCs.getSelectedItemPosition() != 0) {
-                    MainApp.ucCode = Integer.valueOf(ucsMap.get(spUCs.getSelectedItem().toString()));
+        spUCs.setOnSpinnerItemSelectedListener(new OnSpinnerItemSelectedListener() {
+            @Override
+            public void onItemSelected(NiceSpinner parent, View view, int position, long id) {
+
+                if (position != 0) {
+                    MainApp.ucCode = Integer.valueOf(ucsMap.get(parent.getItemAtPosition(position)));
+
                 }
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
-
 
     }
 

@@ -69,6 +69,8 @@ public class ChildListActivity extends AppCompatActivity {
 
                 startActivity(new Intent(ChildListActivity.this, isMother ? SectionBActivity.class
                         : SectionCActivity.class).putExtra(MainApp.motherInfo, item));
+                MainApp.childData = item;
+
             }
         });
 

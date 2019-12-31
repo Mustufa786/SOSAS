@@ -107,12 +107,12 @@ public class ChildrenContract {
 
     /*public JSONObject toJSONObject() throws JSONException {
         JSONObject json = new JSONObject();
-        json.put(singleChild.COLUMN_LUID, this.luid == null ? JSONObject.NULL : this.luid);
-        json.put(singleChild.COLUMN_LHW_CODE, this.lhw_code == null ? JSONObject.NULL : this.lhw_code);
-        json.put(singleChild.COLUMN_CASEID, this.caseid == null ? JSONObject.NULL : this.caseid);
-        json.put(singleChild.COLUMN_CHILD_NAME, this.child_name == null ? JSONObject.NULL : this.child_name);
-        json.put(singleChild.COLUMN_F_NAME, this.f_name == null ? JSONObject.NULL : this.f_name);
-        json.put(singleChild.COLUMN_REP_DATE, this.rep_date == null ? JSONObject.NULL : this.rep_date);
+        json.put(singleDeceasedChild.COLUMN_LUID, this.luid == null ? JSONObject.NULL : this.luid);
+        json.put(singleDeceasedChild.COLUMN_LHW_CODE, this.lhw_code == null ? JSONObject.NULL : this.lhw_code);
+        json.put(singleDeceasedChild.COLUMN_CASEID, this.caseid == null ? JSONObject.NULL : this.caseid);
+        json.put(singleDeceasedChild.COLUMN_CHILD_NAME, this.child_name == null ? JSONObject.NULL : this.child_name);
+        json.put(singleDeceasedChild.COLUMN_F_NAME, this.f_name == null ? JSONObject.NULL : this.f_name);
+        json.put(singleDeceasedChild.COLUMN_REP_DATE, this.rep_date == null ? JSONObject.NULL : this.rep_date);
 
         return json;
     }*/

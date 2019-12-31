@@ -95,19 +95,7 @@ public class SectionBActivity extends AppCompatActivity {
 
     public void BtnEnd() {
         finish();
-        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
-//        if (formValidation()) {
-//            try {
-//                SaveDraft();
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//            if (UpdateDB()) {
-//
-//            } else {
-//                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
-//            }
-//        }
+        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
 
 
     }

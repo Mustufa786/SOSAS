@@ -1,9 +1,11 @@
 package edu.aku.hassannaqvi.uen_sosas.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -11,13 +13,20 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Date;
+
 import edu.aku.hassannaqvi.uen_sosas.R;
+import edu.aku.hassannaqvi.uen_sosas.contracts.ChildContract;
+import edu.aku.hassannaqvi.uen_sosas.contracts.ProblemContract;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivitySectionEBinding;
 import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.uen_sosas.validator.ClearClass;
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass;
+
+import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.cc;
+import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.pc;
 
 public class SectionEActivity extends AppCompatActivity {
 
@@ -117,7 +126,7 @@ public class SectionEActivity extends AppCompatActivity {
 
     private void setListeners() {
 
-        --MainApp.problemCount;
+
         bi.te06.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -131,54 +140,41 @@ public class SectionEActivity extends AppCompatActivity {
 
     public void BtnContinue() {
         if (formValidation()) {
-            if (MainApp.problemCount > 0) {
-                finish();
-                startActivity(new Intent(this, SectionEActivity.class));
-            } else {
-                startActivity(new Intent(this, MainApp.problemType != 10 ? SectionCActivity.class : EndingActivity.class).putExtra("complete", true));
+            try {
+                SaveDraft();
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-//            try {
-//                SaveDraft();
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//            if (UpdateDB()) {
-//
-//            } else {
-//                Toast.makeText(this, "Complete", Toast.LENGTH_SHORT).show();
-//            }
+            if (UpdateDB()) {
+                if (MainApp.problemCount > 0) {
+                    finish();
+                    startActivity(new Intent(this, SectionEActivity.class));
+                } else {
+                    finish();
+                    startActivity(new Intent(this, MainApp.problemType != 10 ? SectionCActivity.class : EndingActivity.class).putExtra("complete", true));
+                }
+            } else {
+                Toast.makeText(this, "Complete", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
     public void BtnEnd() {
         finish();
-        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
-//        if (formValidation()) {
-//            try {
-//                SaveDraft();
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//            if (UpdateDB()) {
-//
-//            } else {
-//                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
-//            }
-//        }
-
+        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
 
     }
 
     private boolean UpdateDB() {
 
         DatabaseHelper db = new DatabaseHelper(this);
-        long updcount = db.addForm(MainApp.fc);
+        long updcount = db.addProblems(pc);
 
-        MainApp.fc.set_ID(String.valueOf(updcount));
+        pc.set_id(String.valueOf(updcount));
         if (updcount != 0) {
-            MainApp.fc.set_UID(
-                    (MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
-            db.updateFormID();
+            pc.setUid(
+                    (MainApp.pc.getDeviceID() + MainApp.pc.get_id()));
+            db.updateProblemFormID();
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
@@ -190,7 +186,15 @@ public class SectionEActivity extends AppCompatActivity {
     private void SaveDraft() throws JSONException {
 
         JSONObject SE = new JSONObject();
-
+        SharedPreferences preferences = getSharedPreferences("tagName", MODE_PRIVATE);
+        pc = new ProblemContract();
+        pc.setFormdate(DateFormat.format("dd-MM-yyyy HH:mm", new Date()).toString());
+        pc.setProblemType(String.valueOf(MainApp.problemType));
+        pc.setDeviceID(MainApp.deviceId);
+        pc.setUser(MainApp.userName);
+        pc.setUuid(MainApp.fc.get_UID());
+        pc.setCuid(MainApp.cc.getUid());
+        pc.setDevicetagID(preferences.getString("tagName", null));
         SE.put("te05", bi.te05a.isChecked() ? "1"
                 : bi.te05b.isChecked() ? "2"
                 : bi.te05c.isChecked() ? "3"
@@ -204,7 +208,6 @@ public class SectionEActivity extends AppCompatActivity {
                 : bi.te05k.isChecked() ? "11"
                 : bi.te05l.isChecked() ? "12"
                 : "0");
-
         //te06
         SE.put("te06", bi.te06a.isChecked() ? "1"
                 : bi.te06b.isChecked() ? "2"
@@ -266,6 +269,8 @@ public class SectionEActivity extends AppCompatActivity {
         SE.put("te13d", bi.te13d.isChecked() ? "4" : "0");
         SE.put("te13e", bi.te13e.isChecked() ? "5" : "0");
 
+        pc.setdA(String.valueOf(SE));
+        --MainApp.problemCount;
 
     }
 
