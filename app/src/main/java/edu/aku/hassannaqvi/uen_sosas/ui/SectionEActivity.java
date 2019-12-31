@@ -113,6 +113,17 @@ public class SectionEActivity extends AppCompatActivity {
             bi.te05g.setText("حادثاتي نقص");
             bi.te05h.setText("پيٽ ۾ سور يا مروڙ پوڻ يا پيٽ سڄڻ");
         }
+
+        if (MainApp.problemType == 9) {
+            bi.te05e.setText("جسم ۾ غير ضروري واڌ، گهٽجندڙ ڳڙ");
+            bi.te05f.setText("پئدائشي نقص");
+            bi.te05g.setText("حادثاتي نقص");
+            bi.te05h.setText("پائخاني يا پيشاب جو هر وقت نڪري وڃڻ");
+            bi.te05i.setText("پائخاني ۾ رت اچڻ");
+            bi.te05j.setText("پيشاب جي نالي مان رت اچڻ");
+            bi.te05k.setVisibility(View.GONE);
+            bi.te05l.setVisibility(View.GONE);
+        }
     }
 
     private void setListeners() {

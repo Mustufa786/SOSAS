@@ -372,6 +372,12 @@ public class FormsContract {
 
     }
 
+    public void setsE(String valueOf) {
+    }
+
+    public void setsC(String valueOf) {
+    }
+
 
     public static abstract class FormsTable implements BaseColumns {
 
