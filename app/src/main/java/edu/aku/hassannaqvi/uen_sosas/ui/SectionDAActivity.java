@@ -1,23 +1,31 @@
 package edu.aku.hassannaqvi.uen_sosas.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.format.DateFormat;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import edu.aku.hassannaqvi.uen_sosas.R;
 import edu.aku.hassannaqvi.uen_sosas.contracts.ChildList;
+import edu.aku.hassannaqvi.uen_sosas.contracts.DeceasedChildContract;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivitySectionDaBinding;
 import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.uen_sosas.validator.ClearClass;
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass;
+
+import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.dcc;
 
 public class SectionDAActivity extends AppCompatActivity {
 
@@ -35,7 +43,6 @@ public class SectionDAActivity extends AppCompatActivity {
 
     private void setListeners() {
 
-        --MainApp.childCount;
 
         bi.td07.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -80,12 +87,20 @@ public class SectionDAActivity extends AppCompatActivity {
 
     public void BtnContinue() {
         if (formValidation()) {
-            if (MainApp.childCount > 0) {
-                finish();
-                startActivity(new Intent(this, SectionDAActivity.class));
-            } else {
-                startActivity(new Intent(this, ChildListActivity.class));
+            try {
+                SaveDraft();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
+            if (UpdateDB()) {
+                if (MainApp.childCount > 0) {
+                    finish();
+                    startActivity(new Intent(this, SectionDAActivity.class));
+                } else {
+                    startActivity(new Intent(this, ChildListActivity.class));
+                }
+            }
+
         }
     }
 
@@ -97,13 +112,13 @@ public class SectionDAActivity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         DatabaseHelper db = new DatabaseHelper(this);
-        long updcount = db.addForm(MainApp.fc);
+        long updcount = db.addChildForm(dcc);
 
-        MainApp.fc.set_ID(String.valueOf(updcount));
+        MainApp.dcc.set_id(String.valueOf(updcount));
         if (updcount != 0) {
-            MainApp.fc.set_UID(
-                    (MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
-            db.updateFormID();
+            MainApp.dcc.setUid(
+                    (MainApp.dcc.getDeviceID() + MainApp.dcc.get_id()));
+            db.updateChildFormID();
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
@@ -115,6 +130,17 @@ public class SectionDAActivity extends AppCompatActivity {
     private void SaveDraft() throws JSONException {
 
         JSONObject SD = new JSONObject();
+        SharedPreferences preferences = getSharedPreferences("tagName", MODE_PRIVATE);
+
+        dcc = new DeceasedChildContract();
+        dcc.setLuid(MainApp.motherData.getUid());
+        dcc.setFormdate(DateFormat.format("dd-MM-yyyy HH:mm", new Date()).toString());
+        dcc.setMotherId(MainApp.motherData.getSerialno());
+        dcc.setSerialNo(String.valueOf(MainApp.childCount));
+        dcc.setDeviceID(MainApp.deviceId);
+        dcc.setUser(MainApp.userName);
+        dcc.setUuid(MainApp.fc.get_UID());
+        dcc.setDevicetagID(preferences.getString("tagName", null));
 
         //td03
         SD.put("td02b", bi.td02b.getText().toString());
@@ -195,6 +221,10 @@ public class SectionDAActivity extends AppCompatActivity {
                 : bi.td14c.isChecked() ? "3"
                 : bi.td14d.isChecked() ? "4"
                 : "0");
+
+        dcc.setdA(String.valueOf(SD));
+
+        --MainApp.childCount;
 
 
     }

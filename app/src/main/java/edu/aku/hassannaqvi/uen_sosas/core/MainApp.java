@@ -26,6 +26,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
+import edu.aku.hassannaqvi.uen_sosas.contracts.DeceasedChildContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.FormsContract;
 import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity;
@@ -79,6 +80,7 @@ public class MainApp extends Application {
 
     public static Boolean admin = false;
     public static FormsContract fc;
+    public static DeceasedChildContract dcc;
     public static String userName = "0000";
     public static String DOB = "";
     //    Total No of members got from Section A

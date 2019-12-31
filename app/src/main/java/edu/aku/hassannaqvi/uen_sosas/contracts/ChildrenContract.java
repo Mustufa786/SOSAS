@@ -95,10 +95,10 @@ public class ChildrenContract {
         this.ref_date = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_FORMDATE));
 
         CrfChild formSa = new Gson().fromJson(cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_SA)), CrfChild.class);
-        CrfChild formSb = new Gson().fromJson(cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_SB)), CrfChild.class);
+
 
         this.child_name = formSa.getPocfa09();
-        this.f_name = formSb.getPocfb02();
+
         //this.rep_date = formSa.getKapr09();
 
         return this;

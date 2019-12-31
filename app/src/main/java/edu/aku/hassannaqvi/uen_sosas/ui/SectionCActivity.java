@@ -97,19 +97,20 @@ public class SectionCActivity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        if (formValidation()) {
-            try {
-                SaveDraft();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            if (UpdateDB()) {
-                finish();
-                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
-            } else {
-                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
-            }
-        }
+        finish();
+        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+//        if (formValidation()) {
+//            try {
+//                SaveDraft();
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//            if (UpdateDB()) {
+//
+//            } else {
+//                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+//            }
+//        }
 
 
     }
@@ -117,18 +118,18 @@ public class SectionCActivity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         DatabaseHelper db = new DatabaseHelper(this);
-        long updcount = db.addForm(MainApp.fc);
+//        long updcount = db.addForm(MainApp.fc);
 
-        MainApp.fc.set_ID(String.valueOf(updcount));
-        if (updcount != 0) {
-            MainApp.fc.set_UID(
-                    (MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
-            db.updateFormID();
-            return true;
-        } else {
-            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
-
-        }
+//        MainApp.fc.set_ID(String.valueOf(updcount));
+//        if (updcount != 0) {
+//            MainApp.fc.set_UID(
+//                    (MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
+//            db.updateFormID();
+//            return true;
+//        } else {
+//            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+//
+//        }
 
         return false;
 
@@ -146,7 +147,6 @@ public class SectionCActivity extends AppCompatActivity {
         //te04
         SC.put("te04", bi.te04.getText().toString());
 
-        MainApp.fc.setsC(String.valueOf(SC));
 
     }
 
