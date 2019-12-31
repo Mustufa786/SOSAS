@@ -44,7 +44,74 @@ public class SectionEActivity extends AppCompatActivity {
                 : "EXTREMITIES PROBLEM");
 
         if (MainApp.problemType == 1) {
+            bi.te05i.setVisibility(View.GONE);
+            bi.te05j.setVisibility(View.GONE);
+            bi.te05k.setVisibility(View.GONE);
+            bi.te05l.setVisibility(View.GONE);
+        }
 
+        if (MainApp.problemType == 2) {
+            bi.te05g.setText("ٻوڙو ٿيڻ");
+            bi.te05h.setVisibility(View.GONE);
+            bi.te05i.setVisibility(View.GONE);
+            bi.te05j.setVisibility(View.GONE);
+            bi.te05k.setVisibility(View.GONE);
+            bi.te05l.setVisibility(View.GONE);
+        }
+
+        if (MainApp.problemType == 3) {
+            bi.te05g.setVisibility(View.GONE);
+            bi.te05h.setVisibility(View.GONE);
+            bi.te05i.setVisibility(View.GONE);
+            bi.te05j.setVisibility(View.GONE);
+            bi.te05k.setVisibility(View.GONE);
+            bi.te05l.setVisibility(View.GONE);
+        }
+
+        if (MainApp.problemType == 4) {
+            bi.te05g.setVisibility(View.GONE);
+            bi.te05h.setVisibility(View.GONE);
+            bi.te05i.setVisibility(View.GONE);
+            bi.te05j.setVisibility(View.GONE);
+            bi.te05k.setVisibility(View.GONE);
+            bi.te05l.setVisibility(View.GONE);
+        }
+
+        if (MainApp.problemType == 5) {
+            bi.te05g.setVisibility(View.GONE);
+            bi.te05h.setVisibility(View.GONE);
+            bi.te05i.setVisibility(View.GONE);
+            bi.te05j.setVisibility(View.GONE);
+            bi.te05k.setVisibility(View.GONE);
+            bi.te05l.setVisibility(View.GONE);
+        }
+
+        if (MainApp.problemType == 6) {
+            bi.te05e.setText("ساهه جي ناليءَ ۾ ڪا شئي ڦاسڻ");
+            bi.te05f.setText("پئدائشي نقص");
+            bi.te05g.setText("حادثاتي نقص");
+            bi.te05h.setText("دل جو مسئلو (پئدائشي)");
+            bi.te05i.setVisibility(View.GONE);
+            bi.te05j.setVisibility(View.GONE);
+            bi.te05k.setVisibility(View.GONE);
+            bi.te05l.setVisibility(View.GONE);
+        }
+
+        if (MainApp.problemType == 7) {
+            bi.te05g.setVisibility(View.GONE);
+            bi.te05h.setVisibility(View.GONE);
+            bi.te05i.setVisibility(View.GONE);
+            bi.te05j.setVisibility(View.GONE);
+            bi.te05k.setVisibility(View.GONE);
+            bi.te05l.setVisibility(View.GONE);
+        }
+
+        if (MainApp.problemType == 8) {
+            bi.te05d.setText("جسم ۾ غير ضروري واڌ، سخت ڳڙ");
+            bi.te05e.setText("جسم ۾ غير ضروري واڌ، گهٽجندڙ ڳڙ");
+            bi.te05f.setText("پئدائشي نقص");
+            bi.te05g.setText("حادثاتي نقص");
+            bi.te05h.setText("پيٽ ۾ سور يا مروڙ پوڻ يا پيٽ سڄڻ");
         }
     }
 
@@ -132,6 +199,10 @@ public class SectionEActivity extends AppCompatActivity {
                 : bi.te05f.isChecked() ? "6"
                 : bi.te05g.isChecked() ? "7"
                 : bi.te05h.isChecked() ? "8"
+                : bi.te05i.isChecked() ? "9"
+                : bi.te05j.isChecked() ? "10"
+                : bi.te05k.isChecked() ? "11"
+                : bi.te05l.isChecked() ? "12"
                 : "0");
 
         //te06
