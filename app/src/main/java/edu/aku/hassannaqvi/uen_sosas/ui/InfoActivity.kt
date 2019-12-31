@@ -140,7 +140,6 @@ class InfoActivity : AppCompatActivity() {
                         Toast.makeText(this@InfoActivity, "Mother Not Found", Toast.LENGTH_SHORT).show()
                     }
 
-
                 }
             }
 

@@ -134,6 +134,16 @@ public class SectionEActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
 
                 if (bi.te06b.isChecked()) {
+                    ClearClass.ClearAllFields(bi.te07cv, null);
+                }
+            }
+        });
+
+        bi.te09.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (bi.te09b.isChecked()) {
                     ClearClass.ClearAllFields(bi.llsos04, null);
                 }
             }
@@ -233,6 +243,13 @@ public class SectionEActivity extends AppCompatActivity {
                 : bi.te07i.isChecked() ? "9"
                 : "0");
 
+        //te08
+        SE.put("te08", bi.te08a.isChecked() ? "1"
+                : bi.te08b.isChecked() ? "2"
+                : bi.te08c.isChecked() ? "3"
+                : bi.te08d.isChecked() ? "4"
+                : "0");
+
         //te09
         SE.put("te09", bi.te09a.isChecked() ? "1"
                 : bi.te09b.isChecked() ? "2"
@@ -246,11 +263,11 @@ public class SectionEActivity extends AppCompatActivity {
                 : bi.te10e.isChecked() ? "5"
                 : "0");
 
-        //te08
-        SE.put("te08", bi.te08a.isChecked() ? "1"
-                : bi.te08b.isChecked() ? "2"
-                : bi.te08c.isChecked() ? "3"
-                : bi.te08d.isChecked() ? "4"
+        //te11
+        SE.put("te11", bi.te11a.isChecked() ? "1"
+                : bi.te11b.isChecked() ? "2"
+                : bi.te11c.isChecked() ? "3"
+                : bi.te11d.isChecked() ? "4"
                 : "0");
 
         //te12
@@ -259,16 +276,10 @@ public class SectionEActivity extends AppCompatActivity {
                 : bi.te12c.isChecked() ? "3"
                 : bi.te12d.isChecked() ? "4"
                 : bi.te12e.isChecked() ? "5"
+                : bi.te12f.isChecked() ? "6"
                 : bi.te1296.isChecked() ? "96"
                 : "0");
         SE.put("te1296x", bi.te1296x.getText().toString());
-
-        //te11
-        SE.put("te11", bi.te11a.isChecked() ? "1"
-                : bi.te11b.isChecked() ? "2"
-                : bi.te11c.isChecked() ? "3"
-                : bi.te11d.isChecked() ? "4"
-                : "0");
 
         //checkbox Te13
         SE.put("te13a", bi.te13a.isChecked() ? "1" : "0");

@@ -203,6 +203,7 @@
     <string name="te09"> ڇا توهان ٻار کي علاج لاءِ ڪنهن اسپتال يا معالج کي ڏيکاريو؟ </string>
     <string name="te09a"> ھا </string>
     <string name="te09b"> نه </string>
+
     <string name="te10"> (نالي) کي علاج لاءِ ڪٿي وٺي ويا ؟ </string>
     <string name="te10a"> گھر ۾ </string>
     <string name="te10b"> سرڪاري اسپتال ۾ </string>
@@ -261,7 +262,6 @@
     <string name="specify"> وضاحت کریں </string>
 
     <!-- Strings related to Sections Below -->
-
     <string name="istatus"> انٹرویو کا نتیجہ </string>
     <string name="istatus1"> مکمل </string>
     <string name="istatus2"> انکار کر دیا </string>
