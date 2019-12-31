@@ -1,6 +1,8 @@
 <resources>
+
     <!--new Strings-->
     <string name="app_name">SOSAS</string>
+
     <!-- Strings related to login -->
     <string name="btnSync">Sync</string>
     <string name="btnUpload">Upload</string>
@@ -13,7 +15,6 @@
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions." </string>
-
 
     <string name="taheading">SECTION A: HH Identification</string>
 
@@ -259,8 +260,7 @@
     <string name="uother"> ٻيو ڪجهه </string>
     <string name="specify"> وضاحت کریں </string>
 
-    <!-- Strings related to Sec
-    ons Below -->
+    <!-- Strings related to Sections Below -->
 
     <string name="istatus"> انٹرویو کا نتیجہ </string>
     <string name="istatus1"> مکمل </string>
@@ -278,5 +278,23 @@
     <string name="num">اعداد</string>
     <string name="gender">جنس</string>
 
+    <!--Start SOSAS Study te05 Response Strings-->
+    <string name="teo5g1">ٻوڙو ٿيڻ</string>
+    <string name="te05e1">ساهه جي ناليءَ ۾ ڪا شئي ڦاسڻ</string>
+    <string name="te05f1">پئدائشي نقص</string>
+    <string name="te05g2">حادثاتي نقص</string>
+    <string name="te05h1">دل جو مسئلو (پئدائشي)</string>
+    <string name="te05d1">جسم ۾ غير ضروري واڌ، سخت ڳڙ</string>
+    <string name="te05e2">جسم ۾ غير ضروري واڌ، گهٽجندڙ ڳڙ</string>
+    <string name="te05f2">پئدائشي نقص</string>
+    <string name="te05g3">حادثاتي نقص</string>
+    <string name="te05h2">پيٽ ۾ سور يا مروڙ پوڻ يا پيٽ سڄڻ</string>
+    <string name="te05e3">جسم ۾ غير ضروري واڌ، گهٽجندڙ ڳڙ</string>
+    <string name="te05f3">پئدائشي نقص</string>
+    <string name="te05g4">حادثاتي نقص</string>
+    <string name="te05h3">پائخاني يا پيشاب جو هر وقت نڪري وڃڻ</string>
+    <string name="te05i1">پائخاني ۾ رت اچڻ</string>
+    <string name="te05j1">پيشاب جي نالي مان رت اچڻ</string>
+    <!--END SOSAS Study te05 Response Strings-->
 
 </resources>

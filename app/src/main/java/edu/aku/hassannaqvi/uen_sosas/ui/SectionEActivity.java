@@ -51,7 +51,7 @@ public class SectionEActivity extends AppCompatActivity {
         }
 
         if (MainApp.problemType == 2) {
-            bi.te05g.setText("ٻوڙو ٿيڻ");
+            bi.te05g.setText(getString(R.string.teo5g1));
             bi.te05h.setVisibility(View.GONE);
             bi.te05i.setVisibility(View.GONE);
             bi.te05j.setVisibility(View.GONE);
@@ -87,10 +87,10 @@ public class SectionEActivity extends AppCompatActivity {
         }
 
         if (MainApp.problemType == 6) {
-            bi.te05e.setText("ساهه جي ناليءَ ۾ ڪا شئي ڦاسڻ");
-            bi.te05f.setText("پئدائشي نقص");
-            bi.te05g.setText("حادثاتي نقص");
-            bi.te05h.setText("دل جو مسئلو (پئدائشي)");
+            bi.te05e.setText(getString(R.string.te05e1));
+            bi.te05f.setText(getString(R.string.te05f1));
+            bi.te05g.setText(getString(R.string.te05g2));
+            bi.te05h.setText(getString(R.string.te05h1));
             bi.te05i.setVisibility(View.GONE);
             bi.te05j.setVisibility(View.GONE);
             bi.te05k.setVisibility(View.GONE);
@@ -107,20 +107,20 @@ public class SectionEActivity extends AppCompatActivity {
         }
 
         if (MainApp.problemType == 8) {
-            bi.te05d.setText("جسم ۾ غير ضروري واڌ، سخت ڳڙ");
-            bi.te05e.setText("جسم ۾ غير ضروري واڌ، گهٽجندڙ ڳڙ");
-            bi.te05f.setText("پئدائشي نقص");
-            bi.te05g.setText("حادثاتي نقص");
-            bi.te05h.setText("پيٽ ۾ سور يا مروڙ پوڻ يا پيٽ سڄڻ");
+            bi.te05d.setText(getString(R.string.te05d1));
+            bi.te05e.setText(getString(R.string.te05e2));
+            bi.te05f.setText(getString(R.string.te05f2));
+            bi.te05g.setText(getString(R.string.te05g3));
+            bi.te05h.setText(getString(R.string.te05h2));
         }
 
         if (MainApp.problemType == 9) {
-            bi.te05e.setText("جسم ۾ غير ضروري واڌ، گهٽجندڙ ڳڙ");
-            bi.te05f.setText("پئدائشي نقص");
-            bi.te05g.setText("حادثاتي نقص");
-            bi.te05h.setText("پائخاني يا پيشاب جو هر وقت نڪري وڃڻ");
-            bi.te05i.setText("پائخاني ۾ رت اچڻ");
-            bi.te05j.setText("پيشاب جي نالي مان رت اچڻ");
+            bi.te05e.setText(getString(R.string.te05e3));
+            bi.te05f.setText(getString(R.string.te05f3));
+            bi.te05g.setText(getString(R.string.te05g4));
+            bi.te05h.setText(getString(R.string.te05h3));
+            bi.te05i.setText(getString(R.string.te05i1));
+            bi.te05j.setText(getString(R.string.te05j1));
             bi.te05k.setVisibility(View.GONE);
             bi.te05l.setVisibility(View.GONE);
         }
@@ -277,6 +277,8 @@ public class SectionEActivity extends AppCompatActivity {
         SE.put("te13d", bi.te13d.isChecked() ? "4" : "0");
         SE.put("te13e", bi.te13e.isChecked() ? "5" : "0");
 
+
+        MainApp.fc.setsE(String.valueOf(SE));
 
     }
 

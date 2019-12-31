@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tehh" />
 
-            <!--Check Box Te05-->
+            <!--Radio Button Te05-->
             <android.support.v7.widget.CardView
                 android:id="@+id/te05cv"
                 style="@style/cardView">
