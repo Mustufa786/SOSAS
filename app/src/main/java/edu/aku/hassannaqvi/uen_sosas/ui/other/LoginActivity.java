@@ -73,6 +73,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.uen_sosas.R;
+import edu.aku.hassannaqvi.uen_sosas.contracts.AppInfo;
 import edu.aku.hassannaqvi.uen_sosas.contracts.TalukasContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.UCsContract;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
@@ -144,23 +145,8 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-        try {
-            long installedOn = this
-                    .getPackageManager()
-                    .getPackageInfo("edu.aku.hassannaqvi.rsvstudy", 0)
-                    .lastUpdateTime;
-            MainApp.versionCode = this
-                    .getPackageManager()
-                    .getPackageInfo("edu.aku.hassannaqvi.rsvstudy", 0)
-                    .versionCode;
-            MainApp.versionName = this
-                    .getPackageManager()
-                    .getPackageInfo("edu.aku.hassannaqvi.rsvstudy", 0)
-                    .versionName;
-            txtinstalldate.setText("Ver. " + MainApp.versionName + "." + MainApp.versionCode + " \r\n( Last Updated: " + new SimpleDateFormat("dd MMM. yyyy").format(new Date(installedOn)) + " )");
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
+        MainApp.appInfo = new AppInfo(this, getPackageName());
+        txtinstalldate.setText(MainApp.appInfo.getAppInfo());
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkAndRequestPermissions()) {
@@ -220,13 +206,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
     private void gettingDeviceIMEI() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
         MainApp.IMEI = ((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
@@ -351,15 +330,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
             startActivity(new Intent(this, SyncActivity.class));
-////            if (TalukasList.size() == 0) {
-//                new syncData(this, true).execute();
-////            } else {
-//            if (spTalukas.getSelectedItemPosition() != 0
-//                        &&
-//                        spUCs.getSelectedItemPosition() != 0) {
-//                    new syncData(this, false).execute();
-//                }
-////            }
         } else {
             Toast.makeText(this, "No network connection available.", Toast.LENGTH_SHORT).show();
         }
@@ -369,12 +339,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         getLoaderManager().initLoader(0, null, this);
     }
 
-
-    /**
-     * Attempts to sign in or register the account specified by the login form.
-     * If there are form errors (invalid email, missing fields, etc.), the
-     * errors are presented and no actual login attempt is made.
-     */
     private void attemptLogin() {
         if (mAuthTask != null) {
             return;

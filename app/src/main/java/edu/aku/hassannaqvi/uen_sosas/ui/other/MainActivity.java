@@ -181,6 +181,9 @@ public class MainActivity extends AppCompatActivity {
             rSumText += "\r\n";
             rSumText += "Unsynced Forms: \t" + unsyncedForms.size();
             rSumText += "\r\n";
+        } else {
+            bi.adminsec.setVisibility(View.GONE);
+            bi.databaseBtn.setVisibility(View.GONE);
         }
         Log.d(TAG, "onCreate: " + rSumText);
         bi.recordSummary.setText(rSumText);
