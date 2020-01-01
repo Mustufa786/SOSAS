@@ -107,7 +107,7 @@ public class SectionCActivity extends AppCompatActivity {
             if (UpdateDB()) {
                 if (bi.te03b.isChecked()) {
                     finish();
-                    startActivity(new Intent(this, MainApp.problemType != 17 ? SectionCActivity.class
+                    startActivity(new Intent(this, MainApp.problemType != 16 ? SectionCActivity.class
                             : EndingActivity.class).putExtra("complete", true).putExtra(MainApp.motherInfo, MainApp.childData));
                 } else {
                     finish();

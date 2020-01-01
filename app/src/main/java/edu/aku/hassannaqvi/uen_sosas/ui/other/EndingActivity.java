@@ -38,6 +38,9 @@ public class EndingActivity extends AppCompatActivity {
             bi.istatus1.setEnabled(false);
         }
 
+        MainApp.problemType = 0;
+        MainApp.childCount = 0;
+
 
     }
 
