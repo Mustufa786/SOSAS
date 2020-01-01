@@ -41,6 +41,7 @@ public class SectionCActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_c);
         bi.setCallback(this);
 
+
         MainApp.problemType++;
         bi.headingTitle.setText(MainApp.problemType == 1 ? "EYES"
                 : MainApp.problemType == 2 ? "EARS"

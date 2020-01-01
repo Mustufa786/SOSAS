@@ -604,7 +604,7 @@
                     android:layout_weight="1"
                     android:background="@android:color/holo_green_light"
                     android:onClick='@{() -> callback.BtnContinue()}'
-                    android:text="@string/start_interview"
+                    android:text="@string/nextSection"
                     android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold"

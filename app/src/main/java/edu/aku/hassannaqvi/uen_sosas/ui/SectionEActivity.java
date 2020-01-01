@@ -133,6 +133,8 @@ public class SectionEActivity extends AppCompatActivity {
             bi.te05k.setVisibility(View.GONE);
             bi.te05l.setVisibility(View.GONE);
         }
+
+
     }
 
     private void setListeners() {
