@@ -63,7 +63,6 @@ public class SectionCActivity extends AppCompatActivity {
 
         setListeners();
 
-
     }
 
     private void setListeners() {

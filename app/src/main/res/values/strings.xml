@@ -156,7 +156,7 @@
 
     <string name="te02"> ٻار جو نالو لکو (پنجن سالن کان گهٽ عمر جي ٻارن جا نالا ماءُ جي نالي سيمت لکو </string>
 
-    <string name="te03"> توهان جي (ٻار جو نالو) کي ڪڏهن اکين ۾ زخم، سڙڻ، ڳڙ، نقص، نظرجو يا اهڙو ڪو ٻيو مسئلو ٿيو آهي؟ </string>
+    <string name="te03"> توهان جي (ٻار جو نالو) کي ڪڏهن زخم، سڙڻ، ڳڙ، نقص، اهڙو ڪو ٻيو مسئلو ٿيو آهي؟ </string>
     <string name="te03a"> ھا </string>
     <string name="te03b"> نه </string>
 
@@ -214,11 +214,13 @@
     <string name="te10c"> خانگي اسپتال ۾ </string>
     <string name="te10d"> فلاحي اداري جي اسپتال ۾ </string>
     <string name="te10e"> حڪيم، طبيب يا ڏاهو </string>
+
     <string name="te11"> ٻار جوڪهڙي قسم جو علاج ٿيو؟ </string>
     <string name="te11a"> ڪابه جراحي يا علاج نه ٿيو </string>
     <string name="te11b"> صرف دوا ڏني وئي </string>
     <string name="te11c"> وڏو آپريشن جنهن ۾ مريض کي بيهوش ڪيو ويندو آهي </string>
     <string name="te11d"> ننڍو آپريشن ملم پٽي ٽانڪا لڳائڻ دوا وغيره </string>
+
     <string name="te12"> ڪهڙن سببن جي ڪري ٻار کي ڪنهن اسپتال ۾ ڪنهن ڊاڪٽر يا نرس کي نه ڏيکاريو ويو يا ان جو آپريشن يا ملم پٽي نه ڪرائي وئي ؟ </string>
     <string name="te12a"> علاج لاءِ پئسا نه هئا </string>
     <string name="te12b"> ڀاڙي ڪرائي لاءِ پئسا نه هئا </string>
@@ -227,6 +229,7 @@
     <string name="te12e"> سهولت، معالج، سامان موجود نه هئا </string>
     <string name="te12f"> علاج جي ضرورت نه هئي </string>
     <string name="te1296"> ٻيو ڪجهه </string>
+
     <string name="te13"> ڇا اهو مسئلو يا معذوري اڃان تائين ٻار جي روزمره جي زندگيءَ تي اثر انداز ٿئي ٿي؟ (معذوري هڪ جسماني مسئلو آهي جيڪو توهان جي زندگيءَ کي متاثر ڪري ٿو، يا توهان کي روزمره جي ڪم ڪار ۾ ڏکيائن جو سبب بڻجي ٿي) </string>
     <string name="te13a"> حالت معذوري جهڙي نه آهي </string>
     <string name="te13b"> شرمساري محسوس ڪري ٿو، ٿي </string>
@@ -283,23 +286,18 @@
     <string name="gender">جنس</string>
 
     <!--Start SOSAS Study te05 Response Strings-->
-    <string name="teo5g1">ٻوڙو ٿيڻ</string>
+    <string name="te05g1">ٻوڙو ٿيڻ</string>
+    <string name="te05d1">جسم ۾ غير ضروري واڌ، ڳڙ</string>
     <string name="te05e1">ساهه جي ناليءَ ۾ ڪا شئي ڦاسڻ</string>
-    <string name="te05f1">پئدائشي نقص</string>
-    <string name="te05g2">حادثاتي نقص</string>
     <string name="te05h1">دل جو مسئلو (پئدائشي)</string>
-    <string name="te05d1">جسم ۾ غير ضروري واڌ، سخت ڳڙ</string>
+    <string name="te05d2">جسم ۾ غير ضروري واڌ، سخت ڳڙ</string>
     <string name="te05e2">جسم ۾ غير ضروري واڌ، گهٽجندڙ ڳڙ</string>
-    <string name="te05f2">پئدائشي نقص</string>
-    <string name="te05g3">حادثاتي نقص</string>
     <string name="te05h2">پيٽ ۾ سور يا مروڙ پوڻ يا پيٽ سڄڻ</string>
     <string name="te05e3">جسم ۾ غير ضروري واڌ، گهٽجندڙ ڳڙ</string>
-    <string name="te05f3">پئدائشي نقص</string>
-    <string name="te05g4">حادثاتي نقص</string>
     <string name="te05h3">پائخاني يا پيشاب جو هر وقت نڪري وڃڻ</string>
     <string name="te05i1">پائخاني ۾ رت اچڻ</string>
     <string name="te05j1">پيشاب جي نالي مان رت اچڻ</string>
-    <string name="te05g5">زخم مان رت يا پس وهڻ</string>
+    <string name="te05g2">زخم مان رت يا پس وهڻ</string>
     <!--END SOSAS Study te05 Response Strings-->
 
 </resources>

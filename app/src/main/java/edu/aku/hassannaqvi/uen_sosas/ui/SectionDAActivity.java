@@ -72,7 +72,7 @@ public class SectionDAActivity extends AppCompatActivity {
             }
         });
 
-        bi.td12.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        /*bi.td12.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
 
@@ -80,7 +80,7 @@ public class SectionDAActivity extends AppCompatActivity {
                     ClearClass.ClearAllFields(bi.td13, null);
                 }
             }
-        });
+        });*/
     }
 
     public void BtnContinue() {
@@ -153,7 +153,9 @@ public class SectionDAActivity extends AppCompatActivity {
                 : "0");
 
         //td06
-        SD.put("td06dod", bi.td06dod.getText().toString());
+        SD.put("td06dd", bi.td06dd.getText().toString());
+        SD.put("td06mm", bi.td06mm.getText().toString());
+        SD.put("td06dyy", bi.td06yy.getText().toString());
 
         //td07
         SD.put("td07", bi.td07a.isChecked() ? "1"
