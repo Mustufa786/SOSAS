@@ -17,7 +17,7 @@
     </style>
 
     <style name="AppTheme1" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="buttonStyle">@style/buttons</item>
+        <!--        <item name="buttonStyle">@style/buttons</item>-->
         <item name="android:fillAfter">true</item>
         <item name="android:enterFadeDuration">600</item>
         <item name="android:exitFadeDuration">200</item>

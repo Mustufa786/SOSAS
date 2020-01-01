@@ -27,6 +27,7 @@ import edu.aku.hassannaqvi.uen_sosas.core.MainApp
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp.fc
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp.setGPS
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivityInfoBinding
+import edu.aku.hassannaqvi.uen_sosas.databinding.AlertDialogLayoutBinding
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass
 import org.json.JSONObject
 import java.util.*
@@ -151,28 +152,15 @@ class InfoActivity : AppCompatActivity() {
         adapter = ChildListAdapter(this@InfoActivity, motherList, true)
         bi.motherList.layoutManager = LinearLayoutManager(this@InfoActivity)
         bi.motherList.adapter = adapter
-
         adapter.setItemClicked { item, position, isMother ->
-
-            val dialogBuilder: AlertDialog.Builder = AlertDialog.Builder(this@InfoActivity)
-            val v = LayoutInflater.from(this).inflate(R.layout.alert_dialog_layout, null)
-            dialogBuilder.setView(v)
-            var dialog: AlertDialog = dialogBuilder.create()
-            dialog.show()
-            var noBtn: Button = v.findViewById(R.id.noBtn)
-            var continueBtn: Button = v.findViewById(R.id.continueBtn)
-            noBtn.setOnClickListener {
-                dialog.dismiss()
-            }
-            continueBtn.setOnClickListener {
+            MainApp.openDialog(this@InfoActivity, item, isMother)
+            MainApp.itemClick = MainApp.OnItemClick {
                 saveDraft()
                 if (updateDB()) {
                     finish()
                     startActivity(Intent(this@InfoActivity, if (isMother) SectionBActivity::class.java
                     else SectionCActivity::class.java).putExtra(MainApp.motherInfo, item))
-//
                 }
-                dialog.dismiss()
             }
 
         }
@@ -190,7 +178,7 @@ class InfoActivity : AppCompatActivity() {
         fc.uc = MainApp.ucCode.toString()
         fc.areaCode = areaCode
         fc.village = villageCode
-        fc.appversion = MainApp.versionName + "." + MainApp.versionCode
+        fc.appversion = MainApp.appInfo.appInfo + "." + MainApp.versionCode
         setGPS(this)
 
     }

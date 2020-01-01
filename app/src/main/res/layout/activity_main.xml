@@ -181,6 +181,7 @@
                                     android:src="@drawable/upload" />
 
                                 <TextView
+                                    android:layout_marginStart="10dp"
                                     android:id="@+id/formText2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -218,6 +219,7 @@
                                     android:src="@drawable/database" />
 
                                 <TextView
+                                    android:layout_marginStart="10dp"
                                     android:id="@+id/formText3"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"

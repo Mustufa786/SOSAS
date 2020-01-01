@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.databinding.DataBindingUtil;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -17,6 +18,8 @@ import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Toast;
 
 import java.text.ParseException;
@@ -26,11 +29,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
+import edu.aku.hassannaqvi.uen_sosas.R;
+import edu.aku.hassannaqvi.uen_sosas.contracts.AppInfo;
 import edu.aku.hassannaqvi.uen_sosas.contracts.ChildContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.DeceasedChildContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.FormsContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.ProblemContract;
+import edu.aku.hassannaqvi.uen_sosas.databinding.AlertDialogLayoutBinding;
 import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity;
 
 
@@ -79,6 +85,8 @@ public class MainApp extends Application {
     //public static final long MILLISECONDS_IN_100_YEAR = MILLISECONDS_IN_YEAR * 100;
     public static String deviceId;
     public static int status = 0;
+    public static OnItemClick itemClick;
+    public static AppInfo appInfo;
 
     public static Boolean admin = false;
     public static FormsContract fc;
@@ -95,6 +103,11 @@ public class MainApp extends Application {
     //    public static int TotalDeceasedMotherCount = 0;
 //    public static int CounterDeceasedMother = 0;
     public static int TotalDeceasedChildCount = 0;
+
+    public static void setItemClick(OnItemClick itemClick) {
+        MainApp.itemClick = itemClick;
+    }
+
     public static int CounterDeceasedChild = 0;
     public static int counter = 0;
     public static int mm = 1;
@@ -376,6 +389,43 @@ public class MainApp extends Application {
 
             return true;
         }
+    }
+
+    public static void openDialog(Context context, FamilyMembersContract item, boolean isMother) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        View view = LayoutInflater.from(context).inflate(R.layout.alert_dialog_layout, null);
+        AlertDialogLayoutBinding bi = DataBindingUtil.bind(view.getRootView());
+        builder.setView(view);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        bi.itemLayout.mainHeading.setText("You Have Selected " + item.getName());
+        bi.itemLayout.genderImage.setImageResource(isMother ? R.drawable.mother_1 : R.drawable.maternity);
+        bi.itemLayout.hhNo.setText(item.getHhno());
+        bi.itemLayout.clusterNo.setText(item.getClusterno());
+        bi.itemLayout.dob.setText(item.getAge() + " Years");
+        bi.itemLayout.name.setText(item.getName());
+        bi.itemLayout.id.setText(item.getSerialno());
+
+        bi.continueBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemClick.itemClick();
+                dialog.dismiss();
+            }
+        });
+
+        bi.noBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dialog.dismiss();
+            }
+        });
+    }
+
+    public interface OnItemClick {
+        void itemClick();
     }
 
     @Override

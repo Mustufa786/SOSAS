@@ -67,9 +67,13 @@ public class ChildListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(FamilyMembersContract item, int position, boolean isMother) {
 
-                startActivity(new Intent(ChildListActivity.this, isMother ? SectionBActivity.class
-                        : SectionCActivity.class).putExtra(MainApp.motherInfo, item));
-                MainApp.childData = item;
+                MainApp.openDialog(ChildListActivity.this, item, isMother);
+                MainApp.setItemClick(() -> {
+                    startActivity(new Intent(ChildListActivity.this, isMother ? SectionBActivity.class
+                            : SectionCActivity.class).putExtra(MainApp.motherInfo, item));
+                    MainApp.childData = item;
+
+                });
 
             }
         });
