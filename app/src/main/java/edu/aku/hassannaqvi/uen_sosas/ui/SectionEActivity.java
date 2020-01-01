@@ -50,13 +50,20 @@ public class SectionEActivity extends AppCompatActivity {
                 : MainApp.problemType == 7 ? "BACK PROBLEM"
                 : MainApp.problemType == 8 ? "ABDOMEN PROBLEM"
                 : MainApp.problemType == 9 ? "BUTTOCKS/GROIN/GENETALIA PROBLEM"
-                : "EXTREMITIES PROBLEM");
+                : MainApp.problemType == 10 ? "FINGERS EXTREMITIES"
+                : MainApp.problemType == 11 ? "THUMB/HAND EXTREMITIES"
+                : MainApp.problemType == 12 ? "LOWER ARM EXTREMITIES"
+                : MainApp.problemType == 13 ? "UPPER ARM EXTREMITIES"
+                : MainApp.problemType == 14 ? "FOOT EXTREMITIES"
+                : MainApp.problemType == 15 ? "LOWER LEG EXTREMITIES"
+                : "UPPER LEG EXTREMITIES");
 
         if (MainApp.problemType == 1) {
             bi.te05i.setVisibility(View.GONE);
             bi.te05j.setVisibility(View.GONE);
             bi.te05k.setVisibility(View.GONE);
             bi.te05l.setVisibility(View.GONE);
+            bi.te15cv.setVisibility(View.GONE);
         }
 
         if (MainApp.problemType == 2) {
@@ -66,6 +73,7 @@ public class SectionEActivity extends AppCompatActivity {
             bi.te05j.setVisibility(View.GONE);
             bi.te05k.setVisibility(View.GONE);
             bi.te05l.setVisibility(View.GONE);
+            bi.te15cv.setVisibility(View.GONE);
         }
 
         if (MainApp.problemType == 3) {
@@ -75,6 +83,7 @@ public class SectionEActivity extends AppCompatActivity {
             bi.te05j.setVisibility(View.GONE);
             bi.te05k.setVisibility(View.GONE);
             bi.te05l.setVisibility(View.GONE);
+            bi.te15cv.setVisibility(View.GONE);
         }
 
         if (MainApp.problemType == 4) {
@@ -84,6 +93,7 @@ public class SectionEActivity extends AppCompatActivity {
             bi.te05j.setVisibility(View.GONE);
             bi.te05k.setVisibility(View.GONE);
             bi.te05l.setVisibility(View.GONE);
+            bi.te15cv.setVisibility(View.GONE);
         }
 
         if (MainApp.problemType == 5) {
@@ -93,6 +103,7 @@ public class SectionEActivity extends AppCompatActivity {
             bi.te05j.setVisibility(View.GONE);
             bi.te05k.setVisibility(View.GONE);
             bi.te05l.setVisibility(View.GONE);
+            bi.te15cv.setVisibility(View.GONE);
         }
 
         if (MainApp.problemType == 6) {
@@ -104,6 +115,7 @@ public class SectionEActivity extends AppCompatActivity {
             bi.te05j.setVisibility(View.GONE);
             bi.te05k.setVisibility(View.GONE);
             bi.te05l.setVisibility(View.GONE);
+            bi.te15cv.setVisibility(View.GONE);
         }
 
         if (MainApp.problemType == 7) {
@@ -113,6 +125,7 @@ public class SectionEActivity extends AppCompatActivity {
             bi.te05j.setVisibility(View.GONE);
             bi.te05k.setVisibility(View.GONE);
             bi.te05l.setVisibility(View.GONE);
+            bi.te15cv.setVisibility(View.GONE);
         }
 
         if (MainApp.problemType == 8) {
@@ -121,6 +134,7 @@ public class SectionEActivity extends AppCompatActivity {
             bi.te05f.setText(getString(R.string.te05f2));
             bi.te05g.setText(getString(R.string.te05g3));
             bi.te05h.setText(getString(R.string.te05h2));
+            bi.te15cv.setVisibility(View.GONE);
         }
 
         if (MainApp.problemType == 9) {
@@ -132,7 +146,20 @@ public class SectionEActivity extends AppCompatActivity {
             bi.te05j.setText(getString(R.string.te05j1));
             bi.te05k.setVisibility(View.GONE);
             bi.te05l.setVisibility(View.GONE);
+            bi.te15cv.setVisibility(View.GONE);
         }
+
+        if (MainApp.problemType > 9) {
+            bi.te05g.setText(getString(R.string.te05g5));
+            bi.te05h.setVisibility(View.GONE);
+            bi.te05i.setVisibility(View.GONE);
+            bi.te05j.setVisibility(View.GONE);
+            bi.te05k.setVisibility(View.GONE);
+            bi.te05l.setVisibility(View.GONE);
+            bi.te15cv.setVisibility(View.VISIBLE);
+        }
+
+
     }
 
     private void setListeners() {
@@ -172,7 +199,7 @@ public class SectionEActivity extends AppCompatActivity {
                     startActivity(new Intent(this, SectionEActivity.class));
                 } else {
                     finish();
-                    startActivity(new Intent(this, MainApp.problemType != 10 ? SectionCActivity.class : EndingActivity.class).putExtra("complete", true));
+                    startActivity(new Intent(this, MainApp.problemType != 17 ? SectionCActivity.class : EndingActivity.class).putExtra("complete", true));
                 }
             } else {
                 Toast.makeText(this, "Complete", Toast.LENGTH_SHORT).show();
@@ -251,6 +278,11 @@ public class SectionEActivity extends AppCompatActivity {
                 : bi.te08b.isChecked() ? "2"
                 : bi.te08c.isChecked() ? "3"
                 : bi.te08d.isChecked() ? "4"
+                : "0");
+
+        //te15
+        SE.put("te15", bi.te15a.isChecked() ? "1"
+                : bi.te15b.isChecked() ? "2"
                 : "0");
 
         //te09

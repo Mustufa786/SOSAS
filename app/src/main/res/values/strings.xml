@@ -200,6 +200,10 @@
     <string name="te08c"> گذريل ٻارنهن مهينن ۾ پر هڪ مهيني کان اڳ </string>
     <string name="te08d"> گذريل ٻارنهن مهينن کان اڳ ۾ </string>
 
+    <string name="te15"> ڇا ان جي هڏي ٽٽي پئي يا جوڙ مان نڪري وئي؟ </string>
+    <string name="te15a"> ھا </string>
+    <string name="te15b"> نه </string>
+
     <string name="te09"> ڇا توهان ٻار کي علاج لاءِ ڪنهن اسپتال يا معالج کي ڏيکاريو؟ </string>
     <string name="te09a"> ھا </string>
     <string name="te09b"> نه </string>
@@ -295,6 +299,7 @@
     <string name="te05h3">پائخاني يا پيشاب جو هر وقت نڪري وڃڻ</string>
     <string name="te05i1">پائخاني ۾ رت اچڻ</string>
     <string name="te05j1">پيشاب جي نالي مان رت اچڻ</string>
+    <string name="te05g5">زخم مان رت يا پس وهڻ</string>
     <!--END SOSAS Study te05 Response Strings-->
 
 </resources>

@@ -169,6 +169,13 @@ public class MainApp extends Application {
      8 = abdomen
      9 = buttocks/groin/genitalia
      10 = extremities
+     11 = fingers
+     12 = thumb / hand
+     13 = lower arm
+     14 = upper arm
+     15 = foot
+     16 = lower leg
+     17 = upper leg
      */
     public static String lhwCode;
     public static String lhwName;
