@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
+import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -52,7 +53,14 @@ public class SectionCActivity extends AppCompatActivity {
                 : MainApp.problemType == 7 ? "BACK"
                 : MainApp.problemType == 8 ? "ABDOMEN"
                 : MainApp.problemType == 9 ? "BUTTOCKS/GROIN/GENETALIA"
-                : "EXTREMITIES");
+                : MainApp.problemType == 10 ? "FINGERS EXTREMITIES"
+                : MainApp.problemType == 11 ? "THUMB/HAND EXTREMITIES"
+                : MainApp.problemType == 12 ? "LOWER ARM EXTREMITIES"
+                : MainApp.problemType == 13 ? "UPPER ARM EXTREMITIES"
+                : MainApp.problemType == 14 ? "FOOT EXTREMITIES"
+                : MainApp.problemType == 15 ? "LOWER LEG EXTREMITIES"
+                : "UPPER LEG EXTREMITIES");
+
         setListeners();
 
 
@@ -100,7 +108,7 @@ public class SectionCActivity extends AppCompatActivity {
             if (UpdateDB()) {
                 if (bi.te03b.isChecked()) {
                     finish();
-                    startActivity(new Intent(this, MainApp.problemType != 10 ? SectionCActivity.class
+                    startActivity(new Intent(this, MainApp.problemType != 17 ? SectionCActivity.class
                             : EndingActivity.class).putExtra("complete", true).putExtra(MainApp.motherInfo, MainApp.childData));
                 } else {
                     finish();
