@@ -79,6 +79,7 @@ import edu.aku.hassannaqvi.uen_sosas.contracts.UCsContract;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
 import edu.aku.hassannaqvi.uen_sosas.ui.sync.SyncActivity;
+import edu.aku.hassannaqvi.uen_sosas.utils.Util;
 
 import static edu.aku.hassannaqvi.uen_sosas.utils.Constants.DUMMY_CREDENTIALS;
 import static edu.aku.hassannaqvi.uen_sosas.utils.Constants.MINIMUM_DISTANCE_CHANGE_FOR_UPDATES;
@@ -213,45 +214,9 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     }
 
     private boolean checkAndRequestPermissions() {
-        int permissionContact = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.READ_CONTACTS);
-        int permissionGetAccount = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.GET_ACCOUNTS);
-        int permissionReadPhoneState = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.READ_PHONE_STATE);
-        int accessFineLocation = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION);
-        int accessCoarseLocation = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_COARSE_LOCATION);
-        int writeExternalStorage = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        int permissionCamera = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.CAMERA);
-
-        List<String> listPermissionsNeeded = new ArrayList<>();
-        if (permissionContact != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.READ_CONTACTS);
-        }
-        if (permissionGetAccount != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.GET_ACCOUNTS);
-        }
-        if (permissionReadPhoneState != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.READ_PHONE_STATE);
-        }
-        if (accessFineLocation != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.ACCESS_FINE_LOCATION);
-        }
-        if (accessCoarseLocation != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.ACCESS_COARSE_LOCATION);
-        }
-        if (writeExternalStorage != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        }
-        if (permissionCamera != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.CAMERA);
-        }
-        if (!listPermissionsNeeded.isEmpty()) {
-            ActivityCompat.requestPermissions(this, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]), MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+        if (!Util.getPermissionsList(this).isEmpty()) {
+            ActivityCompat.requestPermissions(this, Util.getPermissionsList(this).toArray(new String[Util.getPermissionsList(this).size()]),
+                    MY_PERMISSIONS_REQUEST_READ_CONTACTS);
             return false;
         }
 
