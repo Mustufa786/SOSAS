@@ -61,41 +61,15 @@ public class SectionCActivity extends AppCompatActivity {
                 : MainApp.problemType == 15 ? "LOWER LEG EXTREMITIES"
                 : "UPPER LEG EXTREMITIES");
 
-        if (MainApp.problemType == 2) {
-            bi.te03a1.setText(getString(R.string.te03a1));
-        }
-
-        if (MainApp.problemType == 3) {
-            bi.te03a1.setText(getString(R.string.te03a2));
-        }
-
-        if (MainApp.problemType == 4) {
-            bi.te03a1.setText(getString(R.string.te03a3));
-        }
-
-        if (MainApp.problemType == 5) {
-            bi.te03a1.setText(getString(R.string.te03a4));
-        }
-
-        if (MainApp.problemType == 6) {
-            bi.te03a1.setText(getString(R.string.te03a5));
-        }
-
-        if (MainApp.problemType == 7) {
-            bi.te03a1.setText(getString(R.string.te03a6));
-        }
-
-        if (MainApp.problemType == 8) {
-            bi.te03a1.setText(getString(R.string.te03a7));
-        }
-
-        if (MainApp.problemType == 9) {
-            bi.te03a1.setText(getString(R.string.te03a8));
-        }
-
-        if (MainApp.problemType > 9) {
-            bi.te03a1.setText(getString(R.string.te03a9));
-        }
+        bi.te03a1.setText(MainApp.problemType == 2 ? getString(R.string.te03a1)
+                : MainApp.problemType == 3 ? getString(R.string.te03a2)
+                : MainApp.problemType == 4 ? getString(R.string.te03a3)
+                : MainApp.problemType == 5 ? getString(R.string.te03a4)
+                : MainApp.problemType == 6 ? getString(R.string.te03a5)
+                : MainApp.problemType == 7 ? getString(R.string.te03a6)
+                : MainApp.problemType == 8 ? getString(R.string.te03a7)
+                : MainApp.problemType == 9 ? getString(R.string.te03a8)
+                : getString(R.string.te03a9));
 
         setListeners();
 

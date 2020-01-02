@@ -190,12 +190,8 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-
-//                if (spUCs.getSelectedItemPosition() != 0 && spTalukas.getSelectedItemPosition() != 0) {
                 attemptLogin();
-                /*} else {
-                    Toast.makeText(getApplicationContext(), "Please Sync Data or select from combobox!!", Toast.LENGTH_LONG).show();
-                }*/
+
             }
         });
 
