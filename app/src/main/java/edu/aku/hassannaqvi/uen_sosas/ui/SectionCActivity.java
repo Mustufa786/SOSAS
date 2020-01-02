@@ -61,6 +61,42 @@ public class SectionCActivity extends AppCompatActivity {
                 : MainApp.problemType == 15 ? "LOWER LEG EXTREMITIES"
                 : "UPPER LEG EXTREMITIES");
 
+        if (MainApp.problemType == 2) {
+            bi.te03a1.setText(getString(R.string.te03a1));
+        }
+
+        if (MainApp.problemType == 3) {
+            bi.te03a1.setText(getString(R.string.te03a2));
+        }
+
+        if (MainApp.problemType == 4) {
+            bi.te03a1.setText(getString(R.string.te03a3));
+        }
+
+        if (MainApp.problemType == 5) {
+            bi.te03a1.setText(getString(R.string.te03a4));
+        }
+
+        if (MainApp.problemType == 6) {
+            bi.te03a1.setText(getString(R.string.te03a5));
+        }
+
+        if (MainApp.problemType == 7) {
+            bi.te03a1.setText(getString(R.string.te03a6));
+        }
+
+        if (MainApp.problemType == 8) {
+            bi.te03a1.setText(getString(R.string.te03a7));
+        }
+
+        if (MainApp.problemType == 9) {
+            bi.te03a1.setText(getString(R.string.te03a8));
+        }
+
+        if (MainApp.problemType > 9) {
+            bi.te03a1.setText(getString(R.string.te03a9));
+        }
+
         setListeners();
 
     }

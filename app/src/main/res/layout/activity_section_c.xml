@@ -44,6 +44,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/te03a1"
                         style="@style/i_textview"
                         android:text="@string/te03" />
 

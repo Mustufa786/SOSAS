@@ -270,7 +270,7 @@
 
             </android.support.v7.widget.CardView>
 
-            <!--Radio Button Te15-->
+            <!--Radio Button Te15 only extremities-->
             <android.support.v7.widget.CardView
                 android:id="@+id/te15cv"
                 style="@style/cardView">
