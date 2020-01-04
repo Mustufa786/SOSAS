@@ -72,15 +72,15 @@ public class SectionDAActivity extends AppCompatActivity {
             }
         });
 
-        /*bi.td12.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        bi.td12.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
 
-                if (bi.td12a.isChecked()) {
-                    ClearClass.ClearAllFields(bi.td13, null);
+                if (!bi.td12a.isChecked ()) {
+                    ClearClass.ClearAllFields(bi.td13cv, null);
                 }
             }
-        });*/
+        });
     }
 
     public void BtnContinue() {

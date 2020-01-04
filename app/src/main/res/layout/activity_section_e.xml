@@ -452,8 +452,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-<!--                    android:visibility='@{te11a.checked ? View.VISIBLE : View.GONE}'-->
+                    android:orientation="vertical"
+                    android:visibility='@{te11a.checked ? View.VISIBLE : View.GONE}'>
 
                     <TextView
                         style="@style/i_textview"

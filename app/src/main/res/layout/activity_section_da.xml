@@ -523,8 +523,8 @@
             <!--Radio Buuton Td13-->
             <android.support.v7.widget.CardView
                 android:id="@+id/td13cv"
-                style="@style/cardView">
-<!--                android:visibility='@{td12a.checked ? View.VISIBLE : View.GONE }'-->
+                style="@style/cardView"
+                android:visibility="@{td12a.checked ? View.VISIBLE : View.GONE}">
 
                 <LinearLayout
                     android:layout_width="match_parent"
