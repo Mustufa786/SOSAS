@@ -3,6 +3,9 @@ package edu.aku.hassannaqvi.uen_sosas.contracts;
 import android.database.Cursor;
 import android.provider.BaseColumns;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class DeceasedChildContract {
 
     private String luid;
@@ -70,6 +73,31 @@ public class DeceasedChildContract {
 
         return this;
     }
+
+    public JSONObject toJSONObject() throws JSONException {
+
+        JSONObject json = new JSONObject();
+
+        json.put(singleDeceasedChild.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
+        json.put(singleDeceasedChild.COLUMN_luid, this.luid == null ? JSONObject.NULL : this.luid);
+        json.put(singleDeceasedChild.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo);
+
+        if (!this.dA.equals("")) {
+            json.put(singleDeceasedChild.COLUMN_DA, this.dA.equals("") ? JSONObject.NULL : new JSONObject(this.dA));
+        }
+        json.put(singleDeceasedChild.COLUMN_FORMDATE, this.formdate == null ? JSONObject.NULL : this.formdate);
+        json.put(singleDeceasedChild.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
+        json.put(singleDeceasedChild.COLUMN_SYNCED_DATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate);
+        json.put(singleDeceasedChild._ID, this._id == null ? JSONObject.NULL : this._id);
+        json.put(singleDeceasedChild.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
+        json.put(singleDeceasedChild.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
+        json.put(singleDeceasedChild.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
+        json.put(singleDeceasedChild.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
+
+
+        return json;
+    }
+
 
     public String getMotherId() {
         return motherId;

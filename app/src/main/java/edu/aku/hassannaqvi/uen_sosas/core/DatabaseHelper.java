@@ -1147,6 +1147,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 whereArgs);
     }
 
+    public void updateSyncedDeceasedChildForm(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(singleDeceasedChild.COLUMN_SYNCED, true);
+        values.put(singleDeceasedChild.COLUMN_SYNCED_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = singleDeceasedChild._ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                singleDeceasedChild.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
     public void updateMWRAs(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -1563,6 +1582,64 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 ProblemContract fc = new ProblemContract();
+                allFC.add(fc.hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+    public Collection<DeceasedChildContract> getUnsyncedDeceasedChildForms() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                singleDeceasedChild._ID,
+                singleDeceasedChild.COLUMN_luid,
+                singleDeceasedChild.COLUMN_UID,
+                singleDeceasedChild.COLUMN_SERIAL_NO,
+                singleDeceasedChild.COLUMN_DA,
+                singleDeceasedChild.COLUMN_FORMDATE,
+                singleDeceasedChild.COLUMN_SYNCED,
+                singleDeceasedChild.COLUMN_SYNCED_DATE,
+                singleDeceasedChild.COLUMN_MOTHER_ID,
+                singleDeceasedChild.COLUMN_USER,
+                singleDeceasedChild.COLUMN_DEVICEID,
+                singleDeceasedChild.COLUMN_DEVICETAGID,
+                singleDeceasedChild.COLUMN_UUID,
+
+
+        };
+
+
+        String whereClause = singleDeceasedChild.COLUMN_SYNCED + " is null";
+
+        String[] whereArgs = null;
+
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                singleProblem._ID + " ASC";
+
+        Collection<DeceasedChildContract> allFC = new ArrayList<DeceasedChildContract>();
+        try {
+            c = db.query(
+                    singleDeceasedChild.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                DeceasedChildContract fc = new DeceasedChildContract();
                 allFC.add(fc.hydrate(c));
             }
         } finally {
