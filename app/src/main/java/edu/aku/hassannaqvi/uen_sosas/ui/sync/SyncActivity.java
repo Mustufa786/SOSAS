@@ -30,7 +30,9 @@ import java.util.List;
 import edu.aku.hassannaqvi.uen_sosas.R;
 import edu.aku.hassannaqvi.uen_sosas.adapter.SyncListAdapter;
 import edu.aku.hassannaqvi.uen_sosas.adapter.UploadListAdapter;
+import edu.aku.hassannaqvi.uen_sosas.contracts.ChildContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.FormsContract;
+import edu.aku.hassannaqvi.uen_sosas.contracts.ProblemContract;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivitySyncBinding;
@@ -175,7 +177,8 @@ public class SyncActivity extends AppCompatActivity {
                     FormsContract.FormsTable.TABLE_NAME,
                     db.getUnsyncedForms(), 0, uploadListAdapter, uploadlist
             ).execute();
-            /*Toast.makeText(getApplicationContext(), "Syncing Form Two", Toast.LENGTH_SHORT).show();
+
+
             if (uploadlistActivityCreated) {
                 uploadmodel = new SyncModel();
                 uploadmodel.setstatusID(0);
@@ -183,13 +186,14 @@ public class SyncActivity extends AppCompatActivity {
             }
             new SyncAllData(
                     this,
-                    "Form Two ",
-                    "updateSyncedForms",
-                    FormsContract.class,
-                    MainApp._HOST_URL + FormsContract.FormsTable._URL.replace(".php", "02.php"),
-                    db.getUnsyncedForms("f2"), 1, uploadListAdapter, uploadlist
+                    "Child",
+                    "updateSyncedChildForm",
+                    ChildContract.class,
+                    MainApp._HOST_URL + MainApp._SERVER_URL,
+                    ChildContract.singleChild.TABLE_NAME,
+                    db.getUnsyncedChildForms(), 1, uploadListAdapter, uploadlist
             ).execute();
-            Toast.makeText(getApplicationContext(), "Syncing Form Three", Toast.LENGTH_SHORT).show();
+
             if (uploadlistActivityCreated) {
                 uploadmodel = new SyncModel();
                 uploadmodel.setstatusID(0);
@@ -197,26 +201,14 @@ public class SyncActivity extends AppCompatActivity {
             }
             new SyncAllData(
                     this,
-                    "Form Three",
-                    "updateSyncedForms",
-                    FormsContract.class,
-                    MainApp._HOST_URL + FormsContract.FormsTable._URL.replace(".php", "03.php"),
-                    db.getUnsyncedForms("f3"), 2, uploadListAdapter, uploadlist
+                    "Problems",
+                    "updateSyncedProblemsForm",
+                    ProblemContract.class,
+                    MainApp._HOST_URL + MainApp._SERVER_URL,
+                    ProblemContract.singleProblem.TABLE_NAME,
+                    db.getUnsyncedProblemForms(), 2, uploadListAdapter, uploadlist
             ).execute();
-            Toast.makeText(getApplicationContext(), "Syncing Form Four", Toast.LENGTH_SHORT).show();
-            if (uploadlistActivityCreated) {
-                uploadmodel = new SyncModel();
-                uploadmodel.setstatusID(0);
-                uploadlist.add(uploadmodel);
-            }
-            new SyncAllData(
-                    this,
-                    "Form Four",
-                    "updateSyncedForms",
-                    FormsContract.class,
-                    MainApp._HOST_URL + FormsContract.FormsTable._URL.replace(".php", "04.php"),
-                    db.getUnsyncedForms("f4"), 3, uploadListAdapter, uploadlist
-            ).execute();*/
+
             bi.noDataItem.setVisibility(View.GONE);
 
             uploadlistActivityCreated = false;

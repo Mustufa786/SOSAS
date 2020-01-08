@@ -3,6 +3,9 @@ package edu.aku.hassannaqvi.uen_sosas.contracts;
 import android.database.Cursor;
 import android.provider.BaseColumns;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class ChildContract {
 
     private String luid;
@@ -67,6 +70,31 @@ public class ChildContract {
         this.uuid = cursor.getString(cursor.getColumnIndex(singleChild.COLUMN_UUID));
 
         return this;
+    }
+
+    public JSONObject toJSONObject() throws JSONException {
+
+        JSONObject json = new JSONObject();
+
+        json.put(singleChild.COLUMN_luid, this.luid == null ? JSONObject.NULL : this.luid);
+        json.put(singleChild.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
+        json.put(singleChild.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo);
+
+        if (!this.dA.equals("")) {
+            json.put(singleChild.COLUMN_DA, this.dA.equals("") ? JSONObject.NULL : new JSONObject(this.dA));
+        }
+        json.put(singleChild.COLUMN_FORMDATE, this.formdate == null ? JSONObject.NULL : this.formdate);
+        json.put(singleChild.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
+        json.put(singleChild.COLUMN_SYNCED_DATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate);
+        json.put(singleChild.COLUMN_MOTHER_ID, this.motherId == null ? JSONObject.NULL : this.motherId);
+        json.put(singleChild._ID, this._id == null ? JSONObject.NULL : this._id);
+        json.put(singleChild.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
+        json.put(singleChild.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
+        json.put(singleChild.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
+        json.put(singleChild.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
+
+
+        return json;
     }
 
     public String getMotherId() {
@@ -146,7 +174,7 @@ public class ChildContract {
     public static abstract class singleChild implements BaseColumns {
 
         public static final String TABLE_NAME = "child_table";
-        public static final String _ID = "_ID";
+        public static final String _ID = "_id";
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_UUID = "_uuid";
         public static final String COLUMN_luid = "luid";

@@ -1108,6 +1108,45 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 whereArgs);
     }
 
+    public void updateSyncedChildForm(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(singleChild.COLUMN_SYNCED, true);
+        values.put(singleChild.COLUMN_SYNCED_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = singleChild._ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                singleChild.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
+
+    public void updateSyncedProblemsForm(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(singleProblem.COLUMN_SYNCED, true);
+        values.put(singleProblem.COLUMN_SYNCED_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = singleProblem._ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                singleProblem.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
     public void updateMWRAs(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -1411,6 +1450,120 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 FormsContract fc = new FormsContract();
                 allFC.add(fc.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+    public Collection<ChildContract> getUnsyncedChildForms() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                singleChild._ID,
+                singleChild.COLUMN_UID,
+                singleChild.COLUMN_UUID,
+                singleChild.COLUMN_luid,
+                singleChild.COLUMN_SERIAL_NO,
+                singleChild.COLUMN_MOTHER_ID,
+                singleChild.COLUMN_DA,
+                singleChild.COLUMN_FORMDATE,
+                singleChild.COLUMN_SYNCED,
+                singleChild.COLUMN_SYNCED_DATE,
+                singleChild.COLUMN_USER,
+                singleChild.COLUMN_DEVICEID,
+                singleChild.COLUMN_DEVICETAGID,
+
+        };
+
+
+        String whereClause = singleChild.COLUMN_SYNCED + " is null";
+
+        String[] whereArgs = null;
+
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                singleChild._ID + " ASC";
+
+        Collection<ChildContract> allFC = new ArrayList<ChildContract>();
+        try {
+            c = db.query(
+                    singleChild.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                ChildContract fc = new ChildContract();
+                allFC.add(fc.hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+    public Collection<ProblemContract> getUnsyncedProblemForms() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                singleProblem._ID,
+                singleProblem.COLUMN_UID,
+                singleProblem.COLUMN_UUID,
+                singleProblem.COLUMN_CUID,
+                singleProblem.COLUMN_PROBLEM_TYPE,
+                singleProblem.COLUMN_SYNCED,
+                singleProblem.COLUMN_SYNCED_DATE,
+                singleProblem.COLUMN_DA,
+                singleProblem.COLUMN_FORMDATE,
+                singleProblem.COLUMN_USER,
+                singleProblem.COLUMN_DEVICEID,
+                singleProblem.COLUMN_DEVICETAGID,
+
+
+        };
+
+
+        String whereClause = singleProblem.COLUMN_SYNCED + " is null";
+
+        String[] whereArgs = null;
+
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                singleProblem._ID + " ASC";
+
+        Collection<ProblemContract> allFC = new ArrayList<ProblemContract>();
+        try {
+            c = db.query(
+                    singleProblem.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                ProblemContract fc = new ProblemContract();
+                allFC.add(fc.hydrate(c));
             }
         } finally {
             if (c != null) {

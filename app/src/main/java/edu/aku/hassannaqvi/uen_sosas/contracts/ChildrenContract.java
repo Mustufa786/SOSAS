@@ -105,6 +105,8 @@ public class ChildrenContract {
     }
 
 
+
+
     /*public JSONObject toJSONObject() throws JSONException {
         JSONObject json = new JSONObject();
         json.put(singleDeceasedChild.COLUMN_LUID, this.luid == null ? JSONObject.NULL : this.luid);

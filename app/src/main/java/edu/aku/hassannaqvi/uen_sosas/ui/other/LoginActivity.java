@@ -190,7 +190,13 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                attemptLogin();
+
+                if (spTaluka.getSelectedIndex() != 0 && spUCs.getSelectedIndex() != 0) {
+                    attemptLogin();
+                } else {
+                    Toast.makeText(LoginActivity.this, "Please Sync Data Or Select UCs and Taluka before login", Toast.LENGTH_SHORT).show();
+                }
+
 
             }
         });
@@ -704,6 +710,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         lablesTalukas = new ArrayList<>();
         talukasMap = new HashMap<>();
 
+        lablesTalukas.add("-Select Taluka-");
         for (TalukasContract taluka : TalukasList) {
             lablesTalukas.add(taluka.getTaluka());
             talukasMap.put(taluka.getTaluka(), taluka.getTalukacode());
@@ -719,6 +726,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                     MainApp.talukaCode = Integer.valueOf(talukasMap.get(parent.getItemAtPosition(position)));
                     UcsList = db.getAllUCs(String.valueOf(MainApp.talukaCode));
                     lablesUCs = new ArrayList<>();
+                    lablesUCs.add("-Select UC-");
                     ucsMap = new HashMap<>();
                     for (UCsContract ucs : UcsList) {
                         lablesUCs.add(ucs.getUcs());

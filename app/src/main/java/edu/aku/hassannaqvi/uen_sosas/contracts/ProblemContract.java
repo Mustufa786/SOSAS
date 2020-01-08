@@ -3,6 +3,9 @@ package edu.aku.hassannaqvi.uen_sosas.contracts;
 import android.database.Cursor;
 import android.provider.BaseColumns;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class ProblemContract {
 
     private String uid;
@@ -36,6 +39,29 @@ public class ProblemContract {
         return this;
     }
 
+    public JSONObject toJSONObject() throws JSONException {
+
+        JSONObject json = new JSONObject();
+
+        json.put(singleProblem.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
+        json.put(singleProblem.COLUMN_CUID, this.cuid == null ? JSONObject.NULL : this.cuid);
+        json.put(singleProblem.COLUMN_PROBLEM_TYPE, this.problemType == null ? JSONObject.NULL : this.problemType);
+
+        if (!this.dA.equals("")) {
+            json.put(singleProblem.COLUMN_DA, this.dA.equals("") ? JSONObject.NULL : new JSONObject(this.dA));
+        }
+        json.put(singleProblem.COLUMN_FORMDATE, this.formdate == null ? JSONObject.NULL : this.formdate);
+        json.put(singleProblem.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
+        json.put(singleProblem.COLUMN_SYNCED_DATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate);
+        json.put(singleProblem._ID, this._id == null ? JSONObject.NULL : this._id);
+        json.put(singleProblem.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
+        json.put(singleProblem.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
+        json.put(singleProblem.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
+        json.put(singleProblem.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
+
+
+        return json;
+    }
 
     public String getUuid() {
         return uuid;
@@ -137,7 +163,7 @@ public class ProblemContract {
     public static abstract class singleProblem implements BaseColumns {
 
         public static final String TABLE_NAME = "problem_table";
-        public static final String _ID = "_ID";
+        public static final String _ID = "_id";
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_UUID = "_uuid";
         public static final String COLUMN_CUID = "cuid";
