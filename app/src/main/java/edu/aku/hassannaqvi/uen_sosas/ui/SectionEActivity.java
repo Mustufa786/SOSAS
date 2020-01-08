@@ -183,6 +183,16 @@ public class SectionEActivity extends AppCompatActivity {
                 }
             }
         });
+
+        bi.te11.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (!bi.te11a.isChecked()) {
+                    ClearClass.ClearAllFields(bi.te12cv, null);
+                }
+            }
+        });
     }
 
     public void BtnContinue() {

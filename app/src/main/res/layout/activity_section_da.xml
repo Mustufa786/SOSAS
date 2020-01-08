@@ -523,8 +523,8 @@
             <!--Radio Buuton Td13-->
             <android.support.v7.widget.CardView
                 android:id="@+id/td13cv"
-                style="@style/cardView">
-<!--                android:visibility='@{td12a.checked ? View.VISIBLE : View.GONE }'-->
+                style="@style/cardView"
+                android:visibility="@{td12a.checked ? View.VISIBLE : View.GONE}">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -648,6 +648,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="4sp"
                     android:layout_weight="1"
+                    android:padding="10dp"
                     android:background="@android:color/holo_green_light"
                     android:onClick='@{() -> callback.BtnContinue()}'
                     android:text="@string/nextSection"
@@ -662,6 +663,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="4sp"
                     android:layout_weight="1"
+                    android:padding="10dp"
                     android:background="@android:color/holo_red_light"
                     android:onClick='@{() -> callback.BtnEnd()}'
                     android:text="@string/end_interview"
