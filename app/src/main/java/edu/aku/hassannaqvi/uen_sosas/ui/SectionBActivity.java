@@ -1,25 +1,34 @@
 package edu.aku.hassannaqvi.uen_sosas.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.format.DateFormat;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Date;
+
 import edu.aku.hassannaqvi.uen_sosas.R;
+import edu.aku.hassannaqvi.uen_sosas.contracts.ChildContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.FamilyMembersContract;
+import edu.aku.hassannaqvi.uen_sosas.contracts.MotherContract;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivitySectionBBinding;
 import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.uen_sosas.validator.ClearClass;
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass;
+
+import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.cc;
+import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.mc;
 
 public class SectionBActivity extends AppCompatActivity {
 
@@ -102,17 +111,36 @@ public class SectionBActivity extends AppCompatActivity {
 
     private boolean UpdateDB() {
         DatabaseHelper db = new DatabaseHelper(this);
-        // 2. UPDATE FORM ROWID
-        int updcount = db.updatesSA();
+        long updcount = db.addMotherForm(mc);
 
-        //            Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
-        //            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
-        return updcount == 1;
+        mc.set_id(String.valueOf(updcount));
+        if (updcount != 0) {
+            mc.setUid(
+                    (mc.getDeviceID() + mc.get_id()));
+            db.updateMotherFormID();
+            return true;
+        } else {
+            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+
+        }
+
+        return false;
     }
 
     private void SaveDraft() throws JSONException {
 
+        mc = new MotherContract();
         JSONObject SA = new JSONObject();
+
+        SharedPreferences preferences = getSharedPreferences("tagName", MODE_PRIVATE);
+        mc.setLuid(MainApp.childData.getUid());
+        mc.setFormdate(DateFormat.format("dd-MM-yyyy HH:mm", new Date()).toString());
+//        mc.setMotherId(MainApp.motherData.getSerialno());
+        mc.setSerialNo(MainApp.motherData.getSerialno());
+        mc.setDeviceID(MainApp.deviceId);
+        mc.setUser(MainApp.userName);
+//        mc.setUuid(MainApp.fc.get_UID());
+        mc.setDevicetagID(preferences.getString("tagName", null));
 
         //td01
         SA.put("td01", bi.td01a.isChecked() ? "1"
@@ -120,7 +148,7 @@ public class SectionBActivity extends AppCompatActivity {
                 : "0");
         //td02a
         SA.put("td02a", bi.td02a.getText().toString());
-        MainApp.fc.setsA(String.valueOf(SA));
+        mc.setdA(String.valueOf(SA));
 
 
     }

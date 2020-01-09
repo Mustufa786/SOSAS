@@ -31,6 +31,8 @@ import edu.aku.hassannaqvi.uen_sosas.contracts.FamilyMembersContract.singleMembe
 import edu.aku.hassannaqvi.uen_sosas.contracts.FormsContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.FormsContract.FormsTable;
 import edu.aku.hassannaqvi.uen_sosas.contracts.MWRAContract;
+import edu.aku.hassannaqvi.uen_sosas.contracts.MotherContract;
+import edu.aku.hassannaqvi.uen_sosas.contracts.MotherContract.singleMother;
 import edu.aku.hassannaqvi.uen_sosas.contracts.ProblemContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.ProblemContract.singleProblem;
 import edu.aku.hassannaqvi.uen_sosas.contracts.TalukasContract;
@@ -172,6 +174,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + singleChild.COLUMN_SYNCED + " TEXT,"
             + singleChild.COLUMN_SYNCED_DATE + " TEXT );";
 
+
+    final String SQL_CREATE__MOTHER_TABLE = "CREATE TABLE " + singleMother.TABLE_NAME + "("
+            + singleMother._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + singleMother.COLUMN_luid + " TEXT,"
+            + singleMother.COLUMN_UID + " TEXT,"
+            + singleMother.COLUMN_MOTHER_ID + " TEXT,"
+            + singleMother.COLUMN_SERIAL_NO + " TEXT,"
+            + singleMother.COLUMN_DA + " TEXT,"
+            + singleMother.COLUMN_FORMDATE + " TEXT,"
+            + singleMother.COLUMN_USER + " TEXT,"
+            + singleMother.COLUMN_DEVICEID + " TEXT,"
+            + singleMother.COLUMN_DEVICETAGID + " TEXT,"
+            + singleMother.COLUMN_SYNCED + " TEXT,"
+            + singleMother.COLUMN_SYNCED_DATE + " TEXT );";
+
     final String SQL_CREATE__PROBLEM_TABLE = "CREATE TABLE " + singleProblem.TABLE_NAME + "("
             + singleProblem._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + singleProblem.COLUMN_UID + " TEXT,"
@@ -239,6 +256,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_FAMILY_MEMBERS);
         db.execSQL(SQL_CREATE__CHILD_TABLE);
         db.execSQL(SQL_CREATE__PROBLEM_TABLE);
+        db.execSQL(SQL_CREATE__MOTHER_TABLE);
     }
 
     @Override
@@ -1017,6 +1035,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return newRowId;
     }
 
+    public Long addMotherForm(MotherContract fc) {
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = this.getWritableDatabase();
+
+// Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(singleMother.COLUMN_luid, fc.getLuid());
+        values.put(singleMother.COLUMN_DA, fc.getdA());
+        values.put(singleMother.COLUMN_FORMDATE, fc.getFormdate());
+//        values.put(singleMother.COLUMN_MOTHER_ID, fc.getMotherId());
+        values.put(singleMother.COLUMN_SERIAL_NO, fc.getSerialNo());
+        values.put(singleMother.COLUMN_USER, fc.getUser());
+        values.put(singleMother.COLUMN_DEVICEID, fc.getDeviceID());
+        values.put(singleMother.COLUMN_DEVICETAGID, fc.getDevicetagID());
+//        values.put(singleMother.COLUMN_UUID, fc.getUuid());
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId;
+        newRowId = db.insert(
+                singleMother.TABLE_NAME,
+                FormsTable.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
     public Long addProblems(ProblemContract fc) {
 
         // Gets the data repository in write mode
@@ -1233,6 +1276,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] selectionArgs = {String.valueOf(MainApp.cc.get_id())};
 
         int count = db.update(singleChild.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+
+    public int updateMotherFormID() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(singleMother.COLUMN_UID, MainApp.mc.getUid());
+
+// Which row to update, based on the ID
+        String selection = singleMother._ID + " = ?";
+        String[] selectionArgs = {String.valueOf(MainApp.mc.get_id())};
+
+        int count = db.update(singleMother.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);
