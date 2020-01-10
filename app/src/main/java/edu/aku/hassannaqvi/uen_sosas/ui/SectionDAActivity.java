@@ -6,6 +6,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
+import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -62,6 +63,22 @@ public class SectionDAActivity extends AppCompatActivity {
             }
         });
 
+        /*bi.td10.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (checkedId == bi.td10b.getId()) {
+                    bi.td11cv.setVisibility(View.GONE);
+                    bi.td12cv.setVisibility(View.GONE);
+                    ClearClass.ClearAllFields(bi.td11cv, null);
+                    ClearClass.ClearAllFields(bi.td12cv, null);
+                } else {
+                    bi.td11cv.setVisibility(View.VISIBLE);
+                    bi.td12cv.setVisibility(View.VISIBLE);
+                }
+            }
+        });*/
+
         bi.td10.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -76,11 +93,23 @@ public class SectionDAActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
 
-                if (!bi.td12a.isChecked ()) {
+                if (bi.td12b.isChecked () || bi.td12c.isChecked () || bi.td12d.isChecked ()) {
                     ClearClass.ClearAllFields(bi.td13cv, null);
                 }
             }
         });
+
+        /*bi.td12.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId != bi.td12a.getId()) {
+                    bi.td13cv.setVisibility(View.GONE);
+                    ClearClass.ClearAllFields(bi.td13cv, null);
+                } else {
+                    bi.td13cv.setVisibility(View.VISIBLE);
+                }
+            }
+        });*/
     }
 
     public void BtnContinue() {

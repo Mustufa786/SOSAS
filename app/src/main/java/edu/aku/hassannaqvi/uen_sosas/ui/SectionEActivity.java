@@ -188,11 +188,21 @@ public class SectionEActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
 
-                if (!bi.te11a.isChecked()) {
+                if (bi.te11b.isChecked () || bi.te11c.isChecked () || bi.te11d.isChecked ()) {
                     ClearClass.ClearAllFields(bi.te12cv, null);
                 }
             }
         });
+
+       /* bi.te11.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (!bi.te11a.isChecked()) {
+                    ClearClass.ClearAllFields(bi.te12cv, null);
+                }
+            }
+        });*/
     }
 
     public void BtnContinue() {

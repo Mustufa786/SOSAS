@@ -266,6 +266,7 @@
 
             </android.support.v7.widget.CardView>
 
+            <!--Radio Button Td08 & Td09-->
             <LinearLayout
                 android:id="@+id/llsos02"
                 android:layout_width="match_parent"
@@ -416,6 +417,7 @@
 
             </android.support.v7.widget.CardView>
 
+            <!--Radio Button Td11 & Td12-->
             <LinearLayout
                 android:id="@+id/llsos03"
                 android:layout_width="match_parent"
@@ -520,11 +522,11 @@
 
             </LinearLayout>
 
-            <!--Radio Buuton Td13-->
+            <!--Radio Button Td13-->
             <android.support.v7.widget.CardView
                 android:id="@+id/td13cv"
                 style="@style/cardView"
-                android:visibility="@{td12a.checked ? View.VISIBLE : View.GONE}">
+                android:visibility="@{td12b.checked || td12c.checked || td12d.checked ? View.GONE : View.VISIBLE}">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -592,7 +594,7 @@
 
             </android.support.v7.widget.CardView>
 
-            <!--Radio Buuton Td14-->
+            <!--Radio Button Td14-->
             <android.support.v7.widget.CardView
                 android:id="@+id/td14cv"
                 style="@style/cardView">
@@ -637,6 +639,7 @@
 
             </android.support.v7.widget.CardView>
 
+            <!--Buttons-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
