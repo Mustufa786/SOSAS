@@ -37,7 +37,7 @@
                 android:textColor="@color/white"
                 android:textStyle="bold" />
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_sync_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -68,12 +68,12 @@
                 android:textColor="@color/white"
                 android:textStyle="bold" />
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_upload_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="visible"
-                tools:listitem="@layout/sync_list_adapter"></android.support.v7.widget.RecyclerView>
+                tools:listitem="@layout/sync_list_adapter"></androidx.recyclerview.widget.RecyclerView>
 
             <TextView
                 android:id="@+id/no_data_item"

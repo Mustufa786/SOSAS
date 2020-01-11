@@ -1,8 +1,9 @@
 package edu.aku.hassannaqvi.uen_sosas.otherClasses;
 
 import android.app.Activity;
-import android.support.design.widget.Snackbar;
 import android.view.ViewGroup;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import edu.aku.hassannaqvi.uen_sosas.R;
 

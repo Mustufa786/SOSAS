@@ -2,7 +2,6 @@ package edu.aku.hassannaqvi.uen_sosas.validator;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +13,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.cardview.widget.CardView;
 
 import com.edittextpicker.aliazaz.EditTextPicker;
 import com.shashank.sony.fancytoastlib.FancyToast;

@@ -34,7 +34,7 @@
                 android:text="@string/tdhh" />
 
             <!--Edit Text Td03-->
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/td03cv"
                 style="@style/cardView">
 
@@ -58,10 +58,10 @@
 
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <!--Edit Text Td04-->
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/td04cv"
                 style="@style/cardView">
 
@@ -96,10 +96,10 @@
 
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <!--Radio Button Td05-->
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/td05cv"
                 style="@style/cardView">
 
@@ -131,10 +131,10 @@
 
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <!--Edit Text Td06-->
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/td06cv"
                 style="@style/cardView">
 
@@ -199,10 +199,10 @@
 
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <!--Radio Button Td07-->
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/td07cv"
                 style="@style/cardView">
 
@@ -264,7 +264,7 @@
 
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <!--Radio Button Td08 & Td09-->
             <LinearLayout
@@ -275,7 +275,7 @@
                 android:visibility='@{td07h.checked ? View.GONE : View.VISIBLE }'>
 
                 <!--Radio Button Td08-->
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/td08cv"
                     style="@style/cardView">
 
@@ -307,10 +307,10 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
                 <!--Radio Button Td09-->
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/td09cv"
                     style="@style/cardView"
                     android:visibility='@{td08b.checked ? View.GONE : View.VISIBLE }'>
@@ -378,12 +378,12 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 
             <!--Radio Button Td10-->
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/td10cv"
                 style="@style/cardView">
 
@@ -415,7 +415,7 @@
 
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <!--Radio Button Td11 & Td12-->
             <LinearLayout
@@ -426,7 +426,7 @@
                 android:visibility='@{td10b.checked ? View.GONE : View.VISIBLE }'>
 
                 <!--Radio Button Td11-->
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/td11cv"
                     style="@style/cardView">
 
@@ -473,10 +473,10 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
                 <!--Radio Button Td12-->
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/td12cv"
                     style="@style/cardView">
 
@@ -518,12 +518,12 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 
             <!--Radio Button Td13-->
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/td13cv"
                 style="@style/cardView"
                 android:visibility="@{td12b.checked || td12c.checked || td12d.checked ? View.GONE : View.VISIBLE}">
@@ -592,10 +592,10 @@
 
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <!--Radio Button Td14-->
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/td14cv"
                 style="@style/cardView">
 
@@ -637,7 +637,7 @@
 
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <!--Buttons-->
             <LinearLayout

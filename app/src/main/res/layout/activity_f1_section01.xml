@@ -391,7 +391,7 @@
             </android.support.v7.widget.CardView>-->
 
             <!--Td01-->
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/td01cv"
                 style="@style/cardView">
 
@@ -423,10 +423,10 @@
 
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <!--Td02-->
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/td02cv"
                 style="@style/cardView">
 
@@ -467,10 +467,10 @@
 
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <!--Td03-->
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/td03cv"
                 style="@style/cardView">
 
@@ -494,10 +494,10 @@
 
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <!--Td05-->
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/td05cv"
                 style="@style/cardView">
 
@@ -529,10 +529,10 @@
 
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <!--Td07-->
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/td07cv"
                 style="@style/cardView">
 
@@ -594,10 +594,10 @@
 
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <!--Td08-->
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/td08cv"
                 style="@style/cardView">
 
@@ -629,10 +629,10 @@
 
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <!--Td09-->
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/td09cv"
                 style="@style/cardView">
 
@@ -699,10 +699,10 @@
 
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <!--Td10-->
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/td10cv"
                 style="@style/cardView">
 
@@ -734,10 +734,10 @@
 
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <!--Td11-->
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/td11cv"
                 style="@style/cardView">
 
@@ -784,10 +784,10 @@
 
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <!--Td12-->
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/td12cv"
                 style="@style/cardView">
 
@@ -829,10 +829,10 @@
 
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <!--Td13-->
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/td13cv"
                 style="@style/cardView">
 
@@ -900,10 +900,10 @@
 
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <!--Td14-->
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/td14cv"
                 style="@style/cardView">
 
@@ -945,7 +945,7 @@
 
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
 
             <RadioButton

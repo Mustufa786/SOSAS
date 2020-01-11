@@ -2,20 +2,16 @@ package edu.aku.hassannaqvi.uen_sosas.ui
 
 import android.content.Context
 import android.content.Intent
-import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
 import android.text.Editable
 import android.text.TextWatcher
 import android.text.format.DateFormat
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import edu.aku.hassannaqvi.uen_sosas.R
 import edu.aku.hassannaqvi.uen_sosas.adapter.ChildListAdapter
 import edu.aku.hassannaqvi.uen_sosas.contracts.AreasContract
@@ -27,9 +23,7 @@ import edu.aku.hassannaqvi.uen_sosas.core.MainApp
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp.fc
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp.setGPS
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivityInfoBinding
-import edu.aku.hassannaqvi.uen_sosas.databinding.AlertDialogLayoutBinding
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass
-import org.json.JSONObject
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
@@ -150,7 +144,7 @@ class InfoActivity : AppCompatActivity() {
 
     fun setupRecyclerView() {
         adapter = ChildListAdapter(this@InfoActivity, motherList, true)
-        bi.motherList.layoutManager = LinearLayoutManager(this@InfoActivity)
+        bi.motherList.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this@InfoActivity)
         bi.motherList.adapter = adapter
         adapter.setItemClicked { item, position, isMother ->
             MainApp.openDialog(this@InfoActivity, item, isMother)
