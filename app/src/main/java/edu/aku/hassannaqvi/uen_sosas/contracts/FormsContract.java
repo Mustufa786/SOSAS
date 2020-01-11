@@ -43,6 +43,8 @@ public class FormsContract {
     private String village = "";
     private String talukdaCode = "";
     private String areaCode = "";
+    private String clusterCode = "";
+    private String hhno = "";
 
     public String getAreaCode() {
         return areaCode;
@@ -145,6 +147,8 @@ public class FormsContract {
         this.synced_date = jsonObject.getString(FormsTable.COLUMN_SYNCED_DATE);
         this.appversion = jsonObject.getString(FormsTable.COLUMN_SYNCED_DATE);
         this.formType = jsonObject.getString(FormsTable.COLUMN_FORMTYPE);
+        this.clusterCode = jsonObject.getString(FormsTable.COLUMN_CLUSTERCODE);
+        this.hhno = jsonObject.getString(FormsTable.COLUMN_HHNO);
 
         return this;
 
@@ -174,6 +178,8 @@ public class FormsContract {
         this.uc = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_UC_CODE));
         this.village = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_VILLAGE_CODE));
         this.talukdaCode = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_TALUKA_CODE));
+        this.clusterCode = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CLUSTERCODE));
+        this.hhno = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_HHNO));
 
         return this;
     }
@@ -210,6 +216,8 @@ public class FormsContract {
         json.put(FormsTable.COLUMN_UC_CODE, this.uc == null ? JSONObject.NULL : this.uc);
         json.put(FormsTable.COLUMN_TALUKA_CODE, this.talukdaCode == null ? JSONObject.NULL : this.talukdaCode);
         json.put(FormsTable.COLUMN_VILLAGE_CODE, this.village == null ? JSONObject.NULL : this.village);
+        json.put(FormsTable.COLUMN_CLUSTERCODE, this.clusterCode == null ? JSONObject.NULL : this.clusterCode);
+        json.put(FormsTable.COLUMN_HHNO, this.hhno == null ? JSONObject.NULL : this.hhno);
 
         return json;
     }
@@ -378,6 +386,21 @@ public class FormsContract {
     public void setsC(String valueOf) {
     }
 
+    public String getClusterCode() {
+        return clusterCode;
+    }
+
+    public void setClusterCode(String clusterCode) {
+        this.clusterCode = clusterCode;
+    }
+
+    public String getHhno() {
+        return hhno;
+    }
+
+    public void setHhno(String hhno) {
+        this.hhno = hhno;
+    }
 
     public static abstract class FormsTable implements BaseColumns {
 
@@ -409,6 +432,8 @@ public class FormsContract {
         public static final String COLUMN_SYNCED_DATE = "synced_date";
         public static final String COLUMN_APPVERSION = "appversion";
         public static final String COLUMN_STATUS = "status";
+        public static final String COLUMN_CLUSTERCODE = "cluster_code";
+        public static final String COLUMN_HHNO = "hhno";
 
         public static String _URL = "sync.php";
     }

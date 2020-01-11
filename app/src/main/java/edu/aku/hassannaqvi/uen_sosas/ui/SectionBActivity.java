@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -17,8 +16,6 @@ import org.json.JSONObject;
 import java.util.Date;
 
 import edu.aku.hassannaqvi.uen_sosas.R;
-import edu.aku.hassannaqvi.uen_sosas.contracts.ChildContract;
-import edu.aku.hassannaqvi.uen_sosas.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.MotherContract;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
@@ -27,13 +24,11 @@ import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.uen_sosas.validator.ClearClass;
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass;
 
-import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.cc;
 import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.mc;
 
 public class SectionBActivity extends AppCompatActivity {
 
     ActivitySectionBBinding bi;
-    FamilyMembersContract motherData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,13 +43,10 @@ public class SectionBActivity extends AppCompatActivity {
 
     private void setListeners() {
 
-        bi.td01.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
+        bi.td01.setOnCheckedChangeListener((group, checkedId) -> {
 
-                if (bi.td01b.isChecked()) {
-                    ClearClass.ClearAllFields(bi.td02, null);
-                }
+            if (bi.td01b.isChecked()) {
+                ClearClass.ClearAllFields(bi.td02, null);
             }
         });
 
@@ -133,16 +125,18 @@ public class SectionBActivity extends AppCompatActivity {
         JSONObject SA = new JSONObject();
 
         SharedPreferences preferences = getSharedPreferences("tagName", MODE_PRIVATE);
-        mc.setLuid(MainApp.childData.getUid());
+        mc.setLuid(MainApp.motherData.getUid());
         mc.setFormdate(DateFormat.format("dd-MM-yyyy HH:mm", new Date()).toString());
 //        mc.setMotherId(MainApp.motherData.getSerialno());
         mc.setSerialNo(MainApp.motherData.getSerialno());
         mc.setDeviceID(MainApp.deviceId);
         mc.setUser(MainApp.userName);
-//        mc.setUuid(MainApp.fc.get_UID());
+        mc.setUuid(MainApp.fc.get_UID());
         mc.setDevicetagID(preferences.getString("tagName", null));
 
         //td01
+        SA.put("hhno", MainApp.fc.getHhno());
+        SA.put("cluster_code", MainApp.fc.getClusterCode());
         SA.put("td01", bi.td01a.isChecked() ? "1"
                 : bi.td01b.isChecked() ? "2"
                 : "0");

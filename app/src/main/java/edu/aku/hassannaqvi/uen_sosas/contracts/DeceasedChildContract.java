@@ -13,6 +13,7 @@ public class DeceasedChildContract {
 
 
     private String uuid;
+    private String muid;
     private String serialNo;
     private String dA;
     private String formdate;
@@ -30,6 +31,14 @@ public class DeceasedChildContract {
 
     public void setUuid(String uuid) {
         this.uuid = uuid;
+    }
+
+    public String getMuid() {
+        return muid;
+    }
+
+    public void setMuid(String muid) {
+        this.muid = muid;
     }
 
     public String getUser() {
@@ -70,6 +79,7 @@ public class DeceasedChildContract {
         this.deviceID = cursor.getString(cursor.getColumnIndex(singleDeceasedChild.COLUMN_DEVICEID));
         this.devicetagID = cursor.getString(cursor.getColumnIndex(singleDeceasedChild.COLUMN_DEVICETAGID));
         this.uuid = cursor.getString(cursor.getColumnIndex(singleDeceasedChild.COLUMN_UUID));
+        this.muid = cursor.getString(cursor.getColumnIndex(singleDeceasedChild.COLUMN_MUID));
 
         return this;
     }
@@ -81,6 +91,7 @@ public class DeceasedChildContract {
         json.put(singleDeceasedChild.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
         json.put(singleDeceasedChild.COLUMN_luid, this.luid == null ? JSONObject.NULL : this.luid);
         json.put(singleDeceasedChild.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo);
+        json.put(singleDeceasedChild.COLUMN_MOTHER_ID, this.motherId == null ? JSONObject.NULL : this.motherId);
 
         if (!this.dA.equals("")) {
             json.put(singleDeceasedChild.COLUMN_DA, this.dA.equals("") ? JSONObject.NULL : new JSONObject(this.dA));
@@ -93,6 +104,7 @@ public class DeceasedChildContract {
         json.put(singleDeceasedChild.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
         json.put(singleDeceasedChild.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
         json.put(singleDeceasedChild.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
+        json.put(singleDeceasedChild.COLUMN_MUID, this.muid == null ? JSONObject.NULL : this.muid);
 
 
         return json;
@@ -179,6 +191,7 @@ public class DeceasedChildContract {
         public static final String _ID = "_ID";
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_UUID = "_uuid";
+        public static final String COLUMN_MUID = "muid";
         public static final String COLUMN_luid = "luid";
         public static final String COLUMN_SERIAL_NO = "serial_no";
         public static final String COLUMN_MOTHER_ID = "mother_id";

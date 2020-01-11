@@ -6,7 +6,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
-import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -92,7 +91,7 @@ public class SectionDAActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
 
-                if (bi.td12b.isChecked () || bi.td12c.isChecked () || bi.td12d.isChecked ()) {
+                if (bi.td12b.isChecked() || bi.td12c.isChecked() || bi.td12d.isChecked()) {
                     ClearClass.ClearAllFields(bi.td13cv, null);
                 }
             }
@@ -167,6 +166,7 @@ public class SectionDAActivity extends AppCompatActivity {
         dcc.setDeviceID(MainApp.deviceId);
         dcc.setUser(MainApp.userName);
         dcc.setUuid(MainApp.fc.get_UID());
+        dcc.setMuid(MainApp.mc.getUid());
         dcc.setDevicetagID(preferences.getString("tagName", null));
 
         //td03

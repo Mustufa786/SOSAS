@@ -71,6 +71,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_FORMDATE + " TEXT," +
             FormsTable.COLUMN_APPVERSION + " TEXT," +
             FormsTable.COLUMN_STATUS + " TEXT," +
+            FormsTable.COLUMN_CLUSTERCODE + " TEXT," +
+            FormsTable.COLUMN_HHNO + " TEXT," +
             FormsTable.COLUMN_FORMTYPE + " TEXT," +
             FormsTable.COLUMN_DSSID + " TEXT," +
             FormsTable.COLUMN_NEXT_VISIT + " TEXT," +
@@ -104,30 +106,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String SQL_DELETE_TALUKAS = "DROP TABLE IF EXISTS " + TalukasContract.singleTalukas.TABLE_NAME;
     private static final String SQL_DELETE_UCS = "DROP TABLE IF EXISTS " + UCsContract.singleUCs.TABLE_NAME;
     private static final String SQL_DELETE_AREAS = "DROP TABLE IF EXISTS " + singleAreas.TABLE_NAME;
-    final String SQL_CREATE_VERSIONAPP = "CREATE TABLE " + VersionAppContract.VersionAppTable.TABLE_NAME + " (" +
+    private final String SQL_CREATE_VERSIONAPP = "CREATE TABLE " + VersionAppContract.VersionAppTable.TABLE_NAME + " (" +
             VersionAppContract.VersionAppTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             VersionAppContract.VersionAppTable.COLUMN_VERSION_CODE + " TEXT, " +
             VersionAppContract.VersionAppTable.COLUMN_VERSION_NAME + " TEXT, " +
             VersionAppContract.VersionAppTable.COLUMN_PATH_NAME + " TEXT " +
             ");";
 
-    final String SQL_CREATE_TALUKAS = "CREATE TABLE " + TalukasContract.singleTalukas.TABLE_NAME + "("
+    private final String SQL_CREATE_TALUKAS = "CREATE TABLE " + TalukasContract.singleTalukas.TABLE_NAME + "("
             + TalukasContract.singleTalukas._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + TalukasContract.singleTalukas.COLUMN_TALUKA_CODE + " TEXT,"
             + TalukasContract.singleTalukas.COLUMN_TALUKA + " TEXT );";
-    final String SQL_CREATE_UCS = "CREATE TABLE " + UCsContract.singleUCs.TABLE_NAME + "("
+    private final String SQL_CREATE_UCS = "CREATE TABLE " + UCsContract.singleUCs.TABLE_NAME + "("
             + UCsContract.singleUCs._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + UCsContract.singleUCs.COLUMN_UCCODE + " TEXT,"
             + UCsContract.singleUCs.COLUMN_TALUKA_CODE + " TEXT,"
             + UCsContract.singleUCs.COLUMN_UCS + " TEXT );";
-    final String SQL_CREATE_AREAS = "CREATE TABLE " + singleAreas.TABLE_NAME + "("
+    private final String SQL_CREATE_AREAS = "CREATE TABLE " + singleAreas.TABLE_NAME + "("
             + singleAreas._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + singleAreas.COLUMN_AREACODE + " TEXT,"
             + singleAreas.COLUMN_UC_CODE + " TEXT,"
             + singleAreas.COLUMN_AREA + " TEXT );";
 
 
-    final String SQL_CREATE_CHILDREN = "CREATE TABLE " + ChildrenContract.singleChild.TABLE_NAME + "("
+    private final String SQL_CREATE_CHILDREN = "CREATE TABLE " + ChildrenContract.singleChild.TABLE_NAME + "("
             + ChildrenContract.singleChild._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + ChildrenContract.singleChild.COLUMN_LHW_CODE + " TEXT,"
             + ChildrenContract.singleChild.COLUMN_CASEID + " TEXT,"
@@ -136,18 +138,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + ChildrenContract.singleChild.COLUMN_REF_DATE + " TEXT, "
             + ChildrenContract.singleChild.COLUMN_LUID + " TEXT );";
 
-    final String SQL_CREATE_PSU_TABLE = "CREATE TABLE " + singleVillage.TABLE_NAME + " (" +
+    private final String SQL_CREATE_PSU_TABLE = "CREATE TABLE " + singleVillage.TABLE_NAME + " (" +
             singleVillage._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             singleVillage.COLUMN_AREA_CODE + " TEXT, " +
             singleVillage.COLUMN_VILLAGE_CODE + " TEXT, " +
             singleVillage.COLUMN_VILLAGE_NAME + " TEXT " +
             ");";
 
-    final String SQL_CREATE_DECEASED_CHILD = "CREATE TABLE " + DeceasedChildContract.singleDeceasedChild.TABLE_NAME + "("
+    private final String SQL_CREATE_DECEASED_CHILD = "CREATE TABLE " + DeceasedChildContract.singleDeceasedChild.TABLE_NAME + "("
             + singleDeceasedChild._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + singleDeceasedChild.COLUMN_luid + " TEXT,"
             + singleDeceasedChild.COLUMN_UID + " TEXT,"
             + singleDeceasedChild.COLUMN_UUID + " TEXT,"
+            + singleDeceasedChild.COLUMN_MUID + " TEXT,"
             + singleDeceasedChild.COLUMN_MOTHER_ID + " TEXT,"
             + singleDeceasedChild.COLUMN_SERIAL_NO + " TEXT,"
             + singleDeceasedChild.COLUMN_DA + " TEXT,"
@@ -159,7 +162,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + singleDeceasedChild.COLUMN_SYNCED_DATE + " TEXT );";
 
 
-    final String SQL_CREATE__CHILD_TABLE = "CREATE TABLE " + singleChild.TABLE_NAME + "("
+    private final String SQL_CREATE__CHILD_TABLE = "CREATE TABLE " + singleChild.TABLE_NAME + "("
             + singleChild._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + singleChild.COLUMN_luid + " TEXT,"
             + singleChild.COLUMN_UID + " TEXT,"
@@ -175,7 +178,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + singleChild.COLUMN_SYNCED_DATE + " TEXT );";
 
 
-    final String SQL_CREATE__MOTHER_TABLE = "CREATE TABLE " + singleMother.TABLE_NAME + "("
+    private final String SQL_CREATE__MOTHER_TABLE = "CREATE TABLE " + singleMother.TABLE_NAME + "("
             + singleMother._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + singleMother.COLUMN_luid + " TEXT,"
             + singleMother.COLUMN_UID + " TEXT,"
@@ -189,7 +192,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + singleMother.COLUMN_SYNCED + " TEXT,"
             + singleMother.COLUMN_SYNCED_DATE + " TEXT );";
 
-    final String SQL_CREATE__PROBLEM_TABLE = "CREATE TABLE " + singleProblem.TABLE_NAME + "("
+    private final String SQL_CREATE__PROBLEM_TABLE = "CREATE TABLE " + singleProblem.TABLE_NAME + "("
             + singleProblem._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + singleProblem.COLUMN_UID + " TEXT,"
             + singleProblem.COLUMN_UUID + " TEXT,"
@@ -204,7 +207,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + singleProblem.COLUMN_SYNCED_DATE + " TEXT );";
 
 
-    final String SQL_CREATE_CHILDLIST = "CREATE TABLE " + ChildList.singleChildList.TABLE_NAME + "("
+    private final String SQL_CREATE_CHILDLIST = "CREATE TABLE " + ChildList.singleChildList.TABLE_NAME + "("
             + ChildList.singleChildList._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + ChildList.singleChildList.COLUMN_DSSID + " TEXT,"
             + ChildList.singleChildList.COLUMN_MOTHER_NAME + " TEXT,"
@@ -215,7 +218,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + ChildList.singleChildList.COLUMN_AREACODE + " TEXT,"
             + ChildList.singleChildList.COLUMN_STUDY_ID + " TEXT );";
 
-    final String SQL_CREATE_FAMILY_MEMBERS = "CREATE TABLE " + singleMember.TABLE_NAME + "("
+    private final String SQL_CREATE_FAMILY_MEMBERS = "CREATE TABLE " + singleMember.TABLE_NAME + "("
             + singleMember._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + singleMember.COLUMN_UID + " TEXT,"
             + singleMember.COLUMN_UUID + " TEXT,"
@@ -973,6 +976,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_DEVICEID, fc.getDeviceID());
         values.put(FormsTable.COLUMN_APPVERSION, fc.getAppversion());
         values.put(FormsTable.COLUMN_STATUS, fc.getStatus());
+        values.put(FormsTable.COLUMN_CLUSTERCODE, fc.getClusterCode());
+        values.put(FormsTable.COLUMN_HHNO, fc.getHhno());
         values.put(FormsTable.COLUMN_FORMTYPE, fc.getFormType());
 
         // Insert the new row, returning the primary key value of the new row
@@ -1001,6 +1006,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(singleDeceasedChild.COLUMN_DEVICEID, fc.getDeviceID());
         values.put(singleDeceasedChild.COLUMN_DEVICETAGID, fc.getDevicetagID());
         values.put(singleDeceasedChild.COLUMN_UUID, fc.getUuid());
+        values.put(singleDeceasedChild.COLUMN_MUID, fc.getMuid());
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
         newRowId = db.insert(
@@ -1335,6 +1341,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_DEVICETAGID,
                 FormsTable.COLUMN_DEVICEID,
                 FormsTable.COLUMN_APPVERSION,
+                FormsTable.COLUMN_CLUSTERCODE,
+                FormsTable.COLUMN_HHNO,
                 FormsTable.COLUMN_STATUS,
                 FormsTable.COLUMN_FORMTYPE,
 
@@ -1390,6 +1398,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_DEVICETAGID,
                 FormsTable.COLUMN_DEVICEID,
                 FormsTable.COLUMN_APPVERSION,
+                FormsTable.COLUMN_CLUSTERCODE,
+                FormsTable.COLUMN_HHNO,
                 FormsTable.COLUMN_STATUS,
                 FormsTable.COLUMN_FORMTYPE,
 
@@ -1501,6 +1511,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_DEVICETAGID,
                 FormsTable.COLUMN_DEVICEID,
                 FormsTable.COLUMN_APPVERSION,
+                FormsTable.COLUMN_CLUSTERCODE,
+                FormsTable.COLUMN_HHNO,
                 FormsTable.COLUMN_STATUS,
                 FormsTable.COLUMN_FORMTYPE
         };
@@ -1673,6 +1685,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 singleDeceasedChild.COLUMN_DEVICEID,
                 singleDeceasedChild.COLUMN_DEVICETAGID,
                 singleDeceasedChild.COLUMN_UUID,
+                singleDeceasedChild.COLUMN_MUID,
 
 
         };
