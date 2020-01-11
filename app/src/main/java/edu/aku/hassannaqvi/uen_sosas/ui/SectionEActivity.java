@@ -187,7 +187,7 @@ public class SectionEActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
 
-                if (bi.te11b.isChecked () || bi.te11c.isChecked () || bi.te11d.isChecked ()) {
+                if (bi.te11b.isChecked() || bi.te11c.isChecked() || bi.te11d.isChecked()) {
                     ClearClass.ClearAllFields(bi.te12cv, null);
                 }
             }
@@ -261,6 +261,12 @@ public class SectionEActivity extends AppCompatActivity {
         pc.setUuid(MainApp.fc.get_UID());
         pc.setCuid(MainApp.cc.getUid());
         pc.setDevicetagID(preferences.getString("tagName", null));
+
+        SE.put("mother_id", MainApp.motherData.getSerialno());
+        SE.put("muid", MainApp.mc.getUid());
+        SE.put("hhno", MainApp.fc.getHhno());
+        SE.put("cluster_code", MainApp.fc.getClusterCode());
+
         SE.put("te05", bi.te05a.isChecked() ? "1"
                 : bi.te05b.isChecked() ? "2"
                 : bi.te05c.isChecked() ? "3"

@@ -166,6 +166,10 @@ public class SectionCActivity extends AppCompatActivity {
         cc.setUuid(MainApp.fc.get_UID());
         cc.setDevicetagID(preferences.getString("tagName", null));
         //te03
+        SC.put("muid", MainApp.mc.getUid());
+        SC.put("hhno", MainApp.fc.getHhno());
+        SC.put("cluster_code", MainApp.fc.getClusterCode());
+
         SC.put("te03", bi.te03a.isChecked() ? "1"
                 : bi.te03b.isChecked() ? "2"
                 : "0");

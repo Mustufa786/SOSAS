@@ -171,6 +171,9 @@ public class SectionDAActivity extends AppCompatActivity {
         dcc.setDevicetagID(preferences.getString("tagName", null));
 
         //td03
+        SD.put("hhno", MainApp.fc.getHhno());
+        SD.put("cluster_code", MainApp.fc.getClusterCode());
+
         SD.put("td02b", bi.td02b.getText().toString());
 
         //td04
