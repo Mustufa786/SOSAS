@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,8 +19,10 @@ import edu.aku.hassannaqvi.uen_sosas.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivityChildListBinding;
+import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity;
 
 import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.motherData;
+import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.problemType;
 
 public class ChildListActivity extends AppCompatActivity {
 
@@ -32,6 +35,8 @@ public class ChildListActivity extends AppCompatActivity {
     ArrayList<String> dssids;
     ArrayList<ChildList> filteredItems;
     private TextView dssID;
+    public static final int CHILD_MAIN = 1;
+    int childCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +55,6 @@ public class ChildListActivity extends AppCompatActivity {
         bi.childlist.setHasFixedSize(true);
         list = db.getChildrenList(motherData.getHhno(), motherData.getClusterno(), motherData.getSerialno());
         setupRecyclerView(list);
-
     }
 
     private void setupRecyclerView(List<FamilyMembersContract> list) {
@@ -62,8 +66,10 @@ public class ChildListActivity extends AppCompatActivity {
 
                 MainApp.openDialog(ChildListActivity.this, item, isMother);
                 MainApp.setItemClick(() -> {
-                    startActivity(new Intent(ChildListActivity.this, isMother ? SectionBActivity.class
-                            : SectionCActivity.class).putExtra(MainApp.motherInfo, item));
+
+                    childCount++;
+
+                    startActivityForResult(new Intent(ChildListActivity.this, SectionCActivity.class).putExtra(MainApp.motherInfo, item), CHILD_MAIN);
                     MainApp.childData = item;
 
                 });
@@ -71,5 +77,20 @@ public class ChildListActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == CHILD_MAIN) {
+            if (resultCode == RESULT_CANCELED) {
+                if (childCount == list.size()) {
+                    finish();
+                    startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+                } else
+                    problemType = 0;
+            }
+        }
     }
 }

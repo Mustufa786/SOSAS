@@ -2,7 +2,6 @@ package edu.aku.hassannaqvi.uen_sosas.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -62,13 +61,12 @@ public class ChildListAdapter extends RecyclerView.Adapter<ChildListAdapter.View
         holder.bi.dob.setText("Age: " + mList.get(i).getAge() + " Year(s)");
         holder.bi.index.setText(String.valueOf(i + 1));
         holder.bi.genderImage.setImageResource(isMother ? R.drawable.mother : R.drawable.boy);
-        holder.bi.parentLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                itemClicked.onItemClick(mList.get(i), i, isMother);
-
-            }
-        });
+        holder.bi.parentLayout.setOnClickListener(v -> {
+                    itemClicked.onItemClick(mList.get(i), i, isMother);
+                    holder.bi.parentLayout.setEnabled(false);
+                    holder.bi.parentLayout.setBackgroundColor(mContext.getResources().getColor(R.color.gray));
+                }
+        );
 
     }
 
@@ -78,16 +76,14 @@ public class ChildListAdapter extends RecyclerView.Adapter<ChildListAdapter.View
     }
 
     public interface OnItemClicked {
-
         void onItemClick(FamilyMembersContract item, int position, boolean isMother);
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-
+    class ViewHolder extends RecyclerView.ViewHolder {
 
         ItemChildListBinding bi;
 
-        public ViewHolder(@NonNull ItemChildListBinding itemView) {
+        ViewHolder(@NonNull ItemChildListBinding itemView) {
             super(itemView.getRoot());
 
             bi = itemView;

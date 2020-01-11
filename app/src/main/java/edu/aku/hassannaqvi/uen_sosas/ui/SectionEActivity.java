@@ -215,9 +215,12 @@ public class SectionEActivity extends AppCompatActivity {
                 if (MainApp.problemCount > 0) {
                     finish();
                     startActivity(new Intent(this, SectionEActivity.class));
-                } else {
+                } else if (MainApp.problemType != 16) {
                     finish();
-                    startActivity(new Intent(this, MainApp.problemType != 16 ? SectionCActivity.class : EndingActivity.class).putExtra("complete", true));
+                    startActivity(new Intent(this, SectionCActivity.class));
+                } else {
+                    setResult(RESULT_OK);
+                    finish();
                 }
             } else {
                 Toast.makeText(this, "Complete", Toast.LENGTH_SHORT).show();
