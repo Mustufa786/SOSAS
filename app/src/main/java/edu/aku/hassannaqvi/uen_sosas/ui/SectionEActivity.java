@@ -2,13 +2,14 @@ package edu.aku.hassannaqvi.uen_sosas.ui;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,7 +17,6 @@ import org.json.JSONObject;
 import java.util.Date;
 
 import edu.aku.hassannaqvi.uen_sosas.R;
-import edu.aku.hassannaqvi.uen_sosas.contracts.ChildContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.ProblemContract;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
@@ -25,7 +25,6 @@ import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.uen_sosas.validator.ClearClass;
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass;
 
-import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.cc;
 import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.pc;
 
 public class SectionEActivity extends AppCompatActivity {

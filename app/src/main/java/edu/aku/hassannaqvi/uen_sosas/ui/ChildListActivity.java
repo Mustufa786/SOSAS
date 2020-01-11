@@ -1,16 +1,12 @@
 package edu.aku.hassannaqvi.uen_sosas.ui;
 
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +18,6 @@ import edu.aku.hassannaqvi.uen_sosas.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivityChildListBinding;
-import edu.aku.hassannaqvi.uen_sosas.databinding.LayoutDialogeBinding;
-import edu.aku.hassannaqvi.uen_sosas.ui.form1.Section01Activity;
-import edu.aku.hassannaqvi.uen_sosas.utils.DateUtils;
 
 import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.motherData;
 

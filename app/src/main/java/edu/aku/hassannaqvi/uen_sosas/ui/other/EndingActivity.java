@@ -1,10 +1,11 @@
 package edu.aku.hassannaqvi.uen_sosas.ui.other;
 
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,7 +14,6 @@ import edu.aku.hassannaqvi.uen_sosas.R;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivityEndingBinding;
-import edu.aku.hassannaqvi.uen_sosas.utils.DateUtils;
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass;
 
 public class EndingActivity extends AppCompatActivity {
