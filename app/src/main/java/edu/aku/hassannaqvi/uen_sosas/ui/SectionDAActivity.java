@@ -42,7 +42,6 @@ public class SectionDAActivity extends AppCompatActivity {
 
     private void setListeners() {
 
-
         bi.td07.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {

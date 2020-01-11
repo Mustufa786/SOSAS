@@ -172,6 +172,7 @@ public class MainApp extends Application {
     public static int childCount = 0;
     public static int problemType = 0;
     public static int problemCount = 0;
+
     /*
      problem type
      1 = eyes
@@ -191,6 +192,7 @@ public class MainApp extends Application {
      15 = lower leg extremities
      16 = upper leg extremities
      */
+
     public static String lhwCode;
     public static String lhwName;
     public static String hh04txt;
