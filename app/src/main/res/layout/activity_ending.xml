@@ -44,22 +44,25 @@
                     style="@style/cardView">
 
                     <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical">
 
                         <TextView
+                            style="@style/textInput"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/dcstatus" />
 
                         <RadioGroup
                             android:id="@+id/istatus"
+                            style="@style/radiogroup"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
                             <RadioButton
                                 android:id="@+id/istatus1"
+                                style="@style/radiobutton"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
@@ -79,12 +82,12 @@
 
                             <RadioButton
                                 android:id="@+id/istatus5"
+                                style="@style/radiobutton"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
                                 android:text="@string/istatus5"
                                 android:textSize="25sp" />
-
 
 
                         </RadioGroup>

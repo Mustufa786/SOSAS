@@ -60,21 +60,18 @@ public class ChildListActivity extends AppCompatActivity {
     private void setupRecyclerView(List<FamilyMembersContract> list) {
         adapter = new ChildListAdapter(this, list, false);
         bi.childlist.setAdapter(adapter);
-        adapter.setItemClicked(new ChildListAdapter.OnItemClicked() {
-            @Override
-            public void onItemClick(FamilyMembersContract item, int position, boolean isMother) {
+        adapter.setItemClicked((item, position, isMother) -> {
 
-                MainApp.openDialog(ChildListActivity.this, item, isMother);
-                MainApp.setItemClick(() -> {
+            MainApp.openDialog(ChildListActivity.this, item, isMother);
+            MainApp.setItemClick(() -> {
 
-                    childCount++;
+                childCount++;
 
-                    startActivityForResult(new Intent(ChildListActivity.this, SectionCActivity.class).putExtra(MainApp.motherInfo, item), CHILD_MAIN);
-                    MainApp.childData = item;
+                startActivityForResult(new Intent(ChildListActivity.this, SectionCActivity.class).putExtra(MainApp.motherInfo, item), CHILD_MAIN);
+                MainApp.childData = item;
 
-                });
+            });
 
-            }
         });
 
     }
@@ -84,7 +81,7 @@ public class ChildListActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == CHILD_MAIN) {
-            if (resultCode == RESULT_CANCELED) {
+            if (resultCode == RESULT_OK) {
                 if (childCount == list.size()) {
                     finish();
                     startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
