@@ -9,6 +9,7 @@ import android.text.format.DateFormat;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
@@ -32,6 +33,8 @@ public class SectionCActivity extends AppCompatActivity {
 
 
     ActivitySectionCBinding bi;
+    public static final int CHILD_DIS = 2;
+    public static final int CHILD_MAIN_C = 201;
 
 
     @Override
@@ -114,18 +117,14 @@ public class SectionCActivity extends AppCompatActivity {
             }
             if (UpdateDB()) {
                 if (bi.te03b.isChecked()) {
-
                     if (MainApp.problemType != 16) {
-                        finish();
-                        startActivity(new Intent(this, SectionCActivity.class).putExtra(MainApp.motherInfo, MainApp.childData));
+                        startActivityForResult(new Intent(this, SectionCActivity.class).putExtra(MainApp.motherInfo, MainApp.childData), CHILD_MAIN_C);
                     } else {
                         setResult(RESULT_OK);
                         finish();
                     }
-
                 } else {
-                    finish();
-                    startActivity(new Intent(this, SectionEActivity.class));
+                    startActivityForResult(new Intent(this, SectionEActivity.class), CHILD_DIS);
                 }
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -134,10 +133,34 @@ public class SectionCActivity extends AppCompatActivity {
         }
     }
 
-    public void BtnEnd() {
-        finish();
-        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CHILD_DIS) {
+            if (resultCode == RESULT_OK) {
+                if (MainApp.problemCount > 0) {
+                    finishActivity(CHILD_DIS);
+                    startActivityForResult(new Intent(this, SectionEActivity.class), CHILD_DIS);
+                } else if (MainApp.problemType != 16) {
+                    finishActivity(CHILD_MAIN_C);
+                    startActivityForResult(new Intent(this, SectionCActivity.class).putExtra(MainApp.motherInfo, MainApp.childData), CHILD_MAIN_C);
+                } else {
+                    setResult(RESULT_OK);
+                    finish();
+                }
+            }
+        } else if (requestCode == CHILD_MAIN_C) {
+            if (resultCode == RESULT_OK) {
+                setResult(RESULT_OK);
+                finish();
+            }
+        }
+    }
 
+    public void BtnEnd() {
+//        finish();
+        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
     }
 
     private boolean UpdateDB() {

@@ -40,6 +40,11 @@ public class SectionEActivity extends AppCompatActivity {
 
         setListeners();
 
+        setValues();
+
+    }
+
+    private void setValues() {
         bi.heading.setText(MainApp.problemType == 1 ? "EYES PROBLEM"
                 : MainApp.problemType == 2 ? "EARS PROBLEM"
                 : MainApp.problemType == 3 ? "FACE PROBLEM"
@@ -158,7 +163,6 @@ public class SectionEActivity extends AppCompatActivity {
             bi.te05l.setVisibility(View.GONE);
             bi.te15cv.setVisibility(View.VISIBLE);
         }
-
     }
 
     private void setListeners() {
@@ -212,16 +216,8 @@ public class SectionEActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             if (UpdateDB()) {
-                if (MainApp.problemCount > 0) {
-                    finish();
-                    startActivity(new Intent(this, SectionEActivity.class));
-                } else if (MainApp.problemType != 16) {
-                    finish();
-                    startActivity(new Intent(this, SectionCActivity.class));
-                } else {
-                    setResult(RESULT_OK);
-                    finish();
-                }
+                setResult(RESULT_OK);
+                finish();
             } else {
                 Toast.makeText(this, "Complete", Toast.LENGTH_SHORT).show();
             }
@@ -229,9 +225,11 @@ public class SectionEActivity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        finish();
-        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
-
+        /*finishActivity(CHILD_DIS);
+        finishActivity(CHILD_MAIN_C);
+        finishActivity(CHILD_MAIN);*/
+        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
     }
 
     private boolean UpdateDB() {
@@ -359,6 +357,11 @@ public class SectionEActivity extends AppCompatActivity {
 
     private boolean formValidation() {
         return ValidatorClass.EmptyCheckingContainer(this, bi.ll04);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, "can not go back", Toast.LENGTH_SHORT).show();
     }
 
 }
