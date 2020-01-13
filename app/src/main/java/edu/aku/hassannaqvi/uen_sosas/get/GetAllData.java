@@ -7,11 +7,9 @@ import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -161,7 +159,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
             urlConnection.setReadTimeout(100000 /* milliseconds */);
             urlConnection.setConnectTimeout(150000 /* milliseconds */);
 
-            urlConnection.setRequestMethod("POST");
+/*            urlConnection.setRequestMethod("POST");
             urlConnection.setDoOutput(true);
             urlConnection.setDoInput(true);
             urlConnection.setRequestProperty("Content-Type", "application/json");
@@ -180,7 +178,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
             Log.d(TAG, "downloadUrl: " + json.toString());
             wr.writeBytes(json.toString());
             wr.flush();
-            wr.close();
+            wr.close();*/
 
 
             Log.d(TAG, "doInBackground: " + urlConnection.getResponseCode());
