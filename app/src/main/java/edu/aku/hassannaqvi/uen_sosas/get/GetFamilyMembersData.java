@@ -129,7 +129,7 @@ public class GetFamilyMembersData extends AsyncTask<Void, Void, String> {
             JSONObject json = new JSONObject();
             try {
 //                json.put("cluster", MainApp.ucCode);
-                json.put("cluster", "303");
+                json.put("cluster", MainApp.ucCode);
             } catch (JSONException e1) {
                 e1.printStackTrace();
             }
