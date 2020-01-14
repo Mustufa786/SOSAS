@@ -23,7 +23,6 @@
             android:layoutDirection="ltr"
             android:orientation="vertical">
 
-
             <Button
                 android:id="@+id/btnSync"
                 style="?android:textAppearanceSmall"
@@ -73,7 +72,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="visible"
-                tools:listitem="@layout/sync_list_adapter"></androidx.recyclerview.widget.RecyclerView>
+                tools:listitem="@layout/sync_list_adapter">
+
+            </androidx.recyclerview.widget.RecyclerView>
 
             <TextView
                 android:id="@+id/no_data_item"

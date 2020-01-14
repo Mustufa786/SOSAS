@@ -177,7 +177,8 @@ public class SectionDAActivity extends AppCompatActivity {
         SD.put("td02b", bi.td02b.getText().toString());
 
         //td04
-        SD.put("td04aodc", bi.td04aodc.getText().toString());
+        SD.put("td04mm", bi.td04mm.getText().toString());
+        SD.put("td04mm", bi.td04mm.getText().toString());
 
         //td05
         SD.put("td05", bi.td05a.isChecked() ? "1"
