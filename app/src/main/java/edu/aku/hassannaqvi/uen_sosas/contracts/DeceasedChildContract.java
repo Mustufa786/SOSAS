@@ -188,7 +188,7 @@ public class DeceasedChildContract {
     public static abstract class singleDeceasedChild implements BaseColumns {
 
         public static final String TABLE_NAME = "deceasedChild";
-        public static final String _ID = "_ID";
+        public static final String _ID = "_id";
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_UUID = "_uuid";
         public static final String COLUMN_MUID = "muid";

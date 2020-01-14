@@ -54,7 +54,7 @@ public class VillagesContract {
     public static abstract class singleVillage implements BaseColumns {
 
         public static final String TABLE_NAME = "villages";
-        public static final String _ID = "_ID";
+        public static final String _ID = "_id";
         public static final String COLUMN_AREA_CODE = "area_code";
         public static final String COLUMN_VILLAGE_CODE = "village_code";
         public static final String COLUMN_VILLAGE_NAME = "village_name";

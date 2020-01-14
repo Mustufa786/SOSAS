@@ -185,7 +185,7 @@ public class ChildList implements Parcelable {
     public static abstract class singleChildList implements BaseColumns {
 
         public static final String TABLE_NAME = "childlist";
-        public static final String _ID = "_ID";
+        public static final String _ID = "_id";
         public static final String COLUMN_DSSID = "dssid";
         public static final String COLUMN_MOTHER_NAME = "mother_name";
         public static final String COLUMN_FATHER_NAME = "father_name";
