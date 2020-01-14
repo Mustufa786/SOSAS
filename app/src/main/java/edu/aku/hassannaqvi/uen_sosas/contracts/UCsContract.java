@@ -67,7 +67,7 @@ public class UCsContract {
 
 
     public static abstract class singleUCs implements BaseColumns {
-        public static final String _ID = "_ID";
+        public static final String _ID = "_id";
         public static final String TABLE_NAME = "ucs";
         public static final String COLUMN_UCCODE = "uc_code";
         public static final String COLUMN_UCS = "uc_name";

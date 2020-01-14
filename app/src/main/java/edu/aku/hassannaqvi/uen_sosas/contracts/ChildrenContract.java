@@ -122,7 +122,7 @@ public class ChildrenContract {
     public static abstract class singleChild implements BaseColumns {
 
         public static final String TABLE_NAME = "children";
-        public static final String _ID = "_ID";
+        public static final String _ID = "_id";
         public static final String COLUMN_LHW_CODE = "lhw_code";
         public static final String COLUMN_CASEID = "caseid";
         public static final String COLUMN_CHILD_NAME = "child_name";
