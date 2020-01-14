@@ -178,7 +178,7 @@ public class SectionDAActivity extends AppCompatActivity {
 
         //td04
         SD.put("td04mm", bi.td04mm.getText().toString());
-        SD.put("td04mm", bi.td04mm.getText().toString());
+        SD.put("td0yy", bi.td04yy.getText().toString());
 
         //td05
         SD.put("td05", bi.td05a.isChecked() ? "1"
@@ -188,7 +188,7 @@ public class SectionDAActivity extends AppCompatActivity {
         //td06
         SD.put("td06dd", bi.td06dd.getText().toString());
         SD.put("td06mm", bi.td06mm.getText().toString());
-        SD.put("td06dyy", bi.td06yy.getText().toString());
+        SD.put("td06yy", bi.td06yy.getText().toString());
 
         //td07
         SD.put("td07", bi.td07a.isChecked() ? "1"

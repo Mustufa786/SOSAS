@@ -81,7 +81,7 @@
 
     <string name="td04"> وفات ٿيندڙ ٻار جي عمر </string>
     <string name="td04mm"> مهينا </string>
-    <string name="td04dd"> سال </string>
+    <string name="td04yy"> سال </string>
 
     <string name="td05"> وفات ٿيندڙ ٻار جي جنس </string>
     <string name="td05a"> ڇوڪرو </string>
