@@ -18,11 +18,9 @@ import java.util.List;
 
 import edu.aku.hassannaqvi.uen_sosas.adapter.SyncListAdapter;
 import edu.aku.hassannaqvi.uen_sosas.contracts.AreasContract;
-import edu.aku.hassannaqvi.uen_sosas.contracts.ChildList;
 import edu.aku.hassannaqvi.uen_sosas.contracts.TalukasContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.UCsContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.UsersContract;
-import edu.aku.hassannaqvi.uen_sosas.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.VillagesContract;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
@@ -160,6 +158,29 @@ public class GetAllData extends AsyncTask<String, String, String> {
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setReadTimeout(100000 /* milliseconds */);
             urlConnection.setConnectTimeout(150000 /* milliseconds */);
+
+/*            urlConnection.setRequestMethod("POST");
+            urlConnection.setDoOutput(true);
+            urlConnection.setDoInput(true);
+            urlConnection.setRequestProperty("Content-Type", "application/json");
+            urlConnection.setRequestProperty("charset", "utf-8");
+            urlConnection.setUseCaches(false);
+
+            // Starts the query
+            urlConnection.connect();
+            DataOutputStream wr = new DataOutputStream(urlConnection.getOutputStream());
+            JSONObject json = new JSONObject();
+            try {
+                json.put("user", "test1234");
+            } catch (JSONException e1) {
+                e1.printStackTrace();
+            }
+            Log.d(TAG, "downloadUrl: " + json.toString());
+            wr.writeBytes(json.toString());
+            wr.flush();
+            wr.close();*/
+
+
             Log.d(TAG, "doInBackground: " + urlConnection.getResponseCode());
             publishProgress(syncClass);
             if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {

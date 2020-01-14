@@ -57,9 +57,9 @@ public class MainApp extends Application {
     public static final String _HOST_URL = "https://" + MainApp._IP + "/pulseox/api/";// .VOC server*/
 
     /*F38158 TEST SERVER*/
-    public static final String _IP = "f38158";// .TEST server
+    public static final String _IP = "vcoe1.aku.edu";// .TEST server
     public static final Integer _PORT = 80; // Port - with colon (:)
-    public static final String _HOST_URL = "http://" + MainApp._IP + "/sosas/api/";// .TEST server;
+    public static final String _HOST_URL = "https://" + MainApp._IP + "/sosas/api/";// .TEST server;
     public static final String _SERVER_URL = "sync.php";
     public static final String _UPDATE_URL = "https://" + MainApp._IP + "/rsv/app/app-debug.apk";
     public static final String _APP_UPDATE_URL = "https://" + MainApp._IP + "/rsv/app/baseline/";
