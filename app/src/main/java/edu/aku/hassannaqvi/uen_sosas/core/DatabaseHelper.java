@@ -106,6 +106,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String SQL_DELETE_TALUKAS = "DROP TABLE IF EXISTS " + TalukasContract.singleTalukas.TABLE_NAME;
     private static final String SQL_DELETE_UCS = "DROP TABLE IF EXISTS " + UCsContract.singleUCs.TABLE_NAME;
     private static final String SQL_DELETE_AREAS = "DROP TABLE IF EXISTS " + singleAreas.TABLE_NAME;
+
     private final String SQL_CREATE_VERSIONAPP = "CREATE TABLE " + VersionAppContract.VersionAppTable.TABLE_NAME + " (" +
             VersionAppContract.VersionAppTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             VersionAppContract.VersionAppTable.COLUMN_VERSION_CODE + " TEXT, " +
@@ -274,11 +275,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //        db.execSQL(SQL_DELETE_UCS);
 //        db.execSQL(SQL_DELETE_AREAS);
 
+
     }
 
     public void syncChildren(JSONArray pcList) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(ChildrenContract.singleChild.TABLE_NAME, null, null);
+
 
         try {
             JSONArray jsonArray = pcList;

@@ -366,15 +366,15 @@ public class SyncActivity extends AppCompatActivity {
                     new GetAllData(mContext, "Users", syncListAdapter, list).execute();
 
 //                    Getting App Version
-//                    Toast.makeText(SyncActivity.this, "Sync VersionApp", Toast.LENGTH_SHORT).show();
-//                    if (listActivityCreated) {
-//                        model = new SyncModel();
-//                        model.setstatusID(0);
-//                        list.add(model);
-//                    }
-//                    new GetAllData(mContext, "VersionApp", syncListAdapter, list).execute();
-////                    new GetAllData(mContext, "FamilyMembers").execute();
-//                    listActivityCreated = false;
+                    Toast.makeText(SyncActivity.this, "Sync VersionApp", Toast.LENGTH_SHORT).show();
+                    if (listActivityCreated) {
+                        model = new SyncModel();
+                        model.setstatusID(0);
+                        list.add(model);
+                    }
+                    new GetAllData(mContext, "VersionApp", syncListAdapter, list).execute();
+//                    new GetAllData(mContext, "FamilyMembers").execute();
+                    listActivityCreated = false;
                 }
             });
 

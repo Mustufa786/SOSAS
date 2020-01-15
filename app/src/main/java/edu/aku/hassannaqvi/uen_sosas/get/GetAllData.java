@@ -21,6 +21,7 @@ import edu.aku.hassannaqvi.uen_sosas.contracts.AreasContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.TalukasContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.UCsContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.UsersContract;
+import edu.aku.hassannaqvi.uen_sosas.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.VillagesContract;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
@@ -148,10 +149,10 @@ public class GetAllData extends AsyncTask<String, String, String> {
                     url = new URL(MainApp._HOST_URL + UsersContract.singleUser._URI);
                     position = 4;
                     break;
-//                case "VersionApp":
-////                    url = new URL(MainApp._UPDATE_URL_NEW + VersionAppContract.VersionAppTable._URI);
-//                    position = 5;
-//                    break;
+                case "VersionApp":
+                    url = new URL(MainApp._UPDATE_URL + VersionAppContract.VersionAppTable._URI);
+                    position = 5;
+                    break;
 
             }
 
@@ -241,10 +242,10 @@ public class GetAllData extends AsyncTask<String, String, String> {
                             db.syncUser(jsonArray);
                             position = 4;
                             break;
-//                        case "VersionApp":
-//                            db.syncVersionApp(jsonArray);
-//                            position = 5;
-//                            break;
+                        case "VersionApp":
+                            db.syncVersionApp(jsonArray);
+                            position = 5;
+                            break;
                     }
 
                     pd.setMessage("Received: " + jsonArray.length());
