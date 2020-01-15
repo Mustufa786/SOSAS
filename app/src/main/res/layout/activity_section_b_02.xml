@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.SectionCActivity">
+    tools:context=".ui.SectionB02Activity">
 
     <data>
 
@@ -10,7 +9,7 @@
 
         <variable
             name="callback"
-            type="edu.aku.hassannaqvi.uen_sosas.ui.SectionCActivity" />
+            type="edu.aku.hassannaqvi.uen_sosas.ui.SectionB02Activity" />
 
     </data>
 
@@ -32,7 +31,7 @@
                 style="@style/HeadingTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/teh" />
+                android:text="@string/ext" />
 
             <!--Radio Button Te03-->
             <androidx.cardview.widget.CardView
@@ -47,22 +46,22 @@
                     <TextView
                         android:id="@+id/te03a1"
                         style="@style/i_textview"
-                        android:text="@string/te03" />
+                        android:text="@string/td15" />
 
                     <RadioGroup
-                        android:id="@+id/te03"
+                        android:id="@+id/td15"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
                         <RadioButton
-                            android:id="@+id/te03a"
+                            android:id="@+id/td15a"
                             style="@style/radiobutton"
-                            android:text="@string/te03a" />
+                            android:text="@string/yes" />
 
                         <RadioButton
-                            android:id="@+id/te03b"
+                            android:id="@+id/td15b"
                             style="@style/radiobutton"
-                            android:text="@string/te03b" />
+                            android:text="@string/no" />
 
                     </RadioGroup>
 
@@ -74,29 +73,60 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/te04cv"
                 style="@style/cardView"
-                android:visibility='@{te03b.checked? View.GONE : View.VISIBLE}'>
+                android:visibility='@{td15b.checked? View.GONE : View.VISIBLE}'>
 
                 <LinearLayout
-                    android:id="@+id/te04sos"
+                    android:id="@+id/td16sos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <TextView
                         style="@style/i_textview"
-                        android:text="@string/te04" />
+                        android:text="@string/td16" />
 
-                    <com.edittextpicker.aliazaz.EditTextPicker
-                        android:id="@+id/te04"
-                        style="@style/textInput"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/te04"
-                        android:inputType="number"
-                        android:maxLength="1"
-                        app:maxValue="9"
-                        app:minValue="1"
-                        app:type="range" />
+                        android:orientation="vertical"
+                        android:tag="0">
+
+                        <CheckBox
+                            android:id="@+id/td16a"
+                            style="@style/checkbox"
+                            android:text="@string/td16a" />
+
+                        <CheckBox
+                            android:id="@+id/td16b"
+                            style="@style/checkbox"
+                            android:text="@string/td16b" />
+
+                        <CheckBox
+                            android:id="@+id/td16c"
+                            style="@style/checkbox"
+                            android:text="@string/td16c" />
+
+                        <CheckBox
+                            android:id="@+id/td16d"
+                            style="@style/checkbox"
+                            android:text="@string/td16d" />
+
+                        <CheckBox
+                            android:id="@+id/td16e"
+                            style="@style/checkbox"
+                            android:text="@string/td16e" />
+
+                        <CheckBox
+                            android:id="@+id/td16f"
+                            style="@style/checkbox"
+                            android:text="@string/td16f" />
+
+                        <CheckBox
+                            android:id="@+id/td16g"
+                            style="@style/checkbox"
+                            android:text="@string/td16g" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
