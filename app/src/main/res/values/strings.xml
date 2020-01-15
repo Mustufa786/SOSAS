@@ -314,5 +314,8 @@
 
 
     <!--End SOSAS Study te03 multiple text Strings-->
+    <string name="countAlertMsg">ڇا وڌل تعداد صحيح آهي؟</string>
+    <string name="countYes">ها</string>
+    <string name="countNo">نه</string>
 
 </resources>

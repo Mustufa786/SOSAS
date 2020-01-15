@@ -111,26 +111,32 @@ public class SectionCActivity extends AppCompatActivity {
 
     public void BtnContinue() {
         if (formValidation()) {
-            try {
-                SaveDraft();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            if (UpdateDB()) {
-                if (bi.te03b.isChecked()) {
-                    if (MainApp.problemType != 16) {
-                        startActivityForResult(new Intent(this, SectionCActivity.class).putExtra(MainApp.motherInfo, MainApp.childData), CHILD_MAIN_C);
-                    } else {
-                        setResult(RESULT_OK);
-                        finish();
-                    }
+            if (bi.te03a.isChecked()) {
+                MainApp.openCountDialog(this);
+                MainApp.setCountItemClick(() -> savingContinue());
+            } else savingContinue();
+        }
+    }
+
+    private void savingContinue() {
+        try {
+            SaveDraft();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if (UpdateDB()) {
+            if (bi.te03b.isChecked()) {
+                if (MainApp.problemType != 16) {
+                    startActivityForResult(new Intent(this, SectionCActivity.class).putExtra(MainApp.motherInfo, MainApp.childData), CHILD_MAIN_C);
                 } else {
-                    startActivityForResult(new Intent(this, SectionEActivity.class), CHILD_DIS);
+                    setResult(RESULT_OK);
+                    finish();
                 }
             } else {
-                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+                startActivityForResult(new Intent(this, SectionEActivity.class), CHILD_DIS);
             }
-
+        } else {
+            Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -39,6 +39,7 @@ import edu.aku.hassannaqvi.uen_sosas.contracts.FormsContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.MotherContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.ProblemContract;
 import edu.aku.hassannaqvi.uen_sosas.databinding.AlertDialogLayoutBinding;
+import edu.aku.hassannaqvi.uen_sosas.databinding.CountAlertDialogLayoutBinding;
 import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity;
 
 
@@ -86,8 +87,8 @@ public class MainApp extends Application {
     public static final long MILLISECONDS_IN_2Years = MILLIS_IN_SECOND * SECONDS_IN_MINUTE * MINUTES_IN_HOUR * HOURS_IN_DAY * DAYS_IN_2_YEAR;
     //public static final long MILLISECONDS_IN_100_YEAR = MILLISECONDS_IN_YEAR * 100;
     public static String deviceId;
-    public static int status = 0;
     public static OnItemClick itemClick;
+    public static OnItemClick countItemClick;
     public static AppInfo appInfo;
 
     public static Boolean admin = false;
@@ -96,19 +97,13 @@ public class MainApp extends Application {
     public static MotherContract mc;
     public static ChildContract cc;
     public static String userName = "0000";
-    public static String DOB = "";
-    //    Total No of members got from Section A
-
-    public static int TotalMembersCount = 0;
-    public static int mwraCount = 1;
-    public static int TotalMWRACount = 0;
-    public static int TotalChildCount = 0;
-    //    public static int TotalDeceasedMotherCount = 0;
-//    public static int CounterDeceasedMother = 0;
-    public static int TotalDeceasedChildCount = 0;
 
     public static void setItemClick(OnItemClick itemClick) {
         MainApp.itemClick = itemClick;
+    }
+
+    public static void setCountItemClick(OnItemClick itemClick) {
+        MainApp.countItemClick = itemClick;
     }
 
     public static int CounterDeceasedChild = 0;
@@ -200,6 +195,7 @@ public class MainApp extends Application {
     public static String villageName;
     public static String villageCode;
     protected static LocationManager locationManager;
+
 
     public static int monthsBetweenDates(Date startDate, Date endDate) {
 
@@ -394,6 +390,24 @@ public class MainApp extends Application {
 
             return true;
         }
+    }
+
+    public static void openCountDialog(Context context) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        View view = LayoutInflater.from(context).inflate(R.layout.count_alert_dialog_layout, null);
+        CountAlertDialogLayoutBinding bi = DataBindingUtil.bind(view.getRootView());
+        builder.setView(view);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+//        bi.itemLayout.mainHeading.setText("You Have Selected " + item.getName());
+
+        bi.continueBtn.setOnClickListener(v -> {
+            countItemClick.itemClick();
+            dialog.dismiss();
+        });
+
+        bi.noBtn.setOnClickListener(v -> dialog.dismiss());
     }
 
     public static void openDialog(Context context, FamilyMembersContract item, boolean isMother) {
