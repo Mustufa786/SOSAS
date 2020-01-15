@@ -86,21 +86,31 @@
                         app:dateFormat="dd-MM-yyyy"
                         app:maxDate="CR_DATE" />-->
 
-                    <EditText
+                    <com.edittextpicker.aliazaz.EditTextPicker
                         android:id="@+id/td04mm"
                         style="@style/textInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number"
-                        android:hint="@string/td04mm"/>
+                        android:hint="@string/td04mm"
+                        android:maxLength="2"
+                        app:maxValue="12"
+                        app:minValue="0"
+                        app:required="true"
+                        app:type="range"/>
 
-                    <EditText
+                    <com.edittextpicker.aliazaz.EditTextPicker
                         android:id="@+id/td04yy"
                         style="@style/textInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number"
-                        android:hint="@string/td04yy"/>
+                        android:hint="@string/td04yy"
+                        android:maxLength="1"
+                        app:maxValue="5"
+                        app:minValue="0"
+                        app:required="true"
+                        app:type="range"/>
 
                 </LinearLayout>
 
