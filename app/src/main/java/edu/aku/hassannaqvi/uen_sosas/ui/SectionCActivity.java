@@ -71,7 +71,13 @@ public class SectionCActivity extends AppCompatActivity {
                 : MainApp.problemType == 7 ? getString(R.string.te03a7)
                 : MainApp.problemType == 8 ? getString(R.string.te03a8)
                 : MainApp.problemType == 9 ? getString(R.string.te03a9)
-                : getString(R.string.te03a10));
+                : MainApp.problemType == 10 ? getString(R.string.te03a10)
+                : MainApp.problemType == 11 ? getString(R.string.te03a11)
+                : MainApp.problemType == 12 ? getString(R.string.te03a12)
+                : MainApp.problemType == 13 ? getString(R.string.te03a13)
+                : MainApp.problemType == 14 ? getString(R.string.te03a14)
+                : MainApp.problemType == 15 ? getString(R.string.te03a15)
+                : getString(R.string.te03a16));
 
         setListeners();
 
