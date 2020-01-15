@@ -34,7 +34,6 @@
             android:textStyle="bold" />
 
         <TextView
-            android:visibility="gone"
             android:id="@+id/lblAppVersion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -43,7 +42,8 @@
             android:background="@color/lightOrange"
             android:textAlignment="center"
             android:textColor="@color/darkRed"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:visibility="gone" />
 
 
         <ScrollView
@@ -194,12 +194,12 @@
                                     android:src="@drawable/upload" />
 
                                 <TextView
-                                    android:layout_marginStart="10dp"
                                     android:id="@+id/formText2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_centerHorizontal="true"
                                     android:layout_centerVertical="true"
+                                    android:layout_marginStart="10dp"
                                     android:text="Upload Data"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                                     android:textColor="@color/colorPrimaryDark" />
@@ -232,11 +232,11 @@
                                     android:src="@drawable/database" />
 
                                 <TextView
-                                    android:layout_marginStart="10dp"
                                     android:id="@+id/formText3"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_centerInParent="true"
+                                    android:layout_marginStart="10dp"
                                     android:text="Database"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                                     android:textColor="@color/colorPrimaryDark" />
