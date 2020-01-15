@@ -30,6 +30,7 @@ import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.pc;
 public class SectionEActivity extends AppCompatActivity {
 
     ActivitySectionEBinding bi;
+    public static int problem_counter = 0;
 
 
     @Override
@@ -45,6 +46,9 @@ public class SectionEActivity extends AppCompatActivity {
     }
 
     private void setValues() {
+
+        problem_counter++;
+
         String strHeading = (MainApp.problemType == 1 ? "EYES PROBLEM"
                 : MainApp.problemType == 2 ? "EARS PROBLEM"
                 : MainApp.problemType == 3 ? "FACE PROBLEM"
@@ -60,7 +64,7 @@ public class SectionEActivity extends AppCompatActivity {
                 : MainApp.problemType == 13 ? "UPPER ARM EXTREMITIES"
                 : MainApp.problemType == 14 ? "FOOT EXTREMITIES"
                 : MainApp.problemType == 15 ? "LOWER LEG EXTREMITIES"
-                : "UPPER LEG EXTREMITIES") + MainApp.problemCount;
+                : "UPPER LEG EXTREMITIES") + "-" + problem_counter + " out of " + MainApp.problemType;
         bi.heading.setText(strHeading);
 
         if (MainApp.problemType == 1) {
@@ -264,6 +268,7 @@ public class SectionEActivity extends AppCompatActivity {
         pc.setCuid(MainApp.cc.getUid());
         pc.setDevicetagID(preferences.getString("tagName", null));
 
+        SE.put("count", problem_counter);
         SE.put("mother_id", MainApp.motherData.getSerialno());
         SE.put("muid", MainApp.mc.getUid());
         SE.put("hhno", MainApp.fc.getHhno());
@@ -350,7 +355,7 @@ public class SectionEActivity extends AppCompatActivity {
         SE.put("te13e", bi.te13e.isChecked() ? "5" : "0");
 
         pc.setdA(String.valueOf(SE));
-        --MainApp.problemCount;
+//        --MainApp.problemCount;
 
         MainApp.fc.setsE(String.valueOf(SE));
 

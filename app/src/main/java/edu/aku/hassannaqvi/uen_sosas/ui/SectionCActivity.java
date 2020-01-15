@@ -45,22 +45,7 @@ public class SectionCActivity extends AppCompatActivity {
 
 
         MainApp.problemType++;
-        bi.headingTitle.setText(MainApp.problemType == 1 ? "EYES"
-                : MainApp.problemType == 2 ? "EARS"
-                : MainApp.problemType == 3 ? "FACE"
-                : MainApp.problemType == 4 ? "NECK"
-                : MainApp.problemType == 5 ? "HEAD"
-                : MainApp.problemType == 6 ? "CHEST"
-                : MainApp.problemType == 7 ? "BACK"
-                : MainApp.problemType == 8 ? "ABDOMEN"
-                : MainApp.problemType == 9 ? "BUTTOCKS/GROIN/GENETALIA"
-                : MainApp.problemType == 10 ? "FINGERS EXTREMITIES"
-                : MainApp.problemType == 11 ? "THUMB/HAND EXTREMITIES"
-                : MainApp.problemType == 12 ? "LOWER ARM EXTREMITIES"
-                : MainApp.problemType == 13 ? "UPPER ARM EXTREMITIES"
-                : MainApp.problemType == 14 ? "FOOT EXTREMITIES"
-                : MainApp.problemType == 15 ? "LOWER LEG EXTREMITIES"
-                : "UPPER LEG EXTREMITIES");
+        bi.headingTitle.setText(getProblemName(MainApp.problemType));
 
         bi.te03a1.setText(MainApp.problemType == 1 ? getString(R.string.te03a1)
                 : MainApp.problemType == 2 ? getString(R.string.te03a2)
@@ -81,6 +66,26 @@ public class SectionCActivity extends AppCompatActivity {
 
         setListeners();
 
+    }
+
+    private String getProblemName(int probe) {
+        return probe == 1 ? "EYES"
+                : probe == 2 ? "EARS"
+                : probe == 3 ? "FACE"
+                : probe == 4 ? "NECK"
+                : probe == 5 ? "HEAD"
+                : probe == 6 ? "CHEST"
+                : probe == 7 ? "BACK"
+                : probe == 8 ? "ABDOMEN"
+                : probe == 9 ? "BUTTOCKS/GROIN/GENETALIA"
+                : probe == 10 ? "FINGERS EXTREMITIES"
+                : probe == 11 ? "THUMB/HAND EXTREMITIES"
+                : probe == 12 ? "LOWER ARM EXTREMITIES"
+                : probe == 13 ? "UPPER ARM EXTREMITIES"
+                : probe == 14 ? "FOOT EXTREMITIES"
+                : probe == 15 ? "LOWER LEG EXTREMITIES"
+                : probe == 16 ? "UPPER LEG EXTREMITIES"
+                : "";
     }
 
     private void setListeners() {
@@ -151,7 +156,7 @@ public class SectionCActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CHILD_DIS) {
             if (resultCode == RESULT_OK) {
-                if (MainApp.problemCount > 0) {
+                if (MainApp.problemCount == SectionEActivity.problem_counter) {
                     finishActivity(CHILD_DIS);
                     startActivityForResult(new Intent(this, SectionEActivity.class), CHILD_DIS);
                 } else if (MainApp.problemType != 16) {
@@ -207,10 +212,13 @@ public class SectionCActivity extends AppCompatActivity {
         cc.setUser(MainApp.userName);
         cc.setUuid(MainApp.fc.get_UID());
         cc.setDevicetagID(preferences.getString("tagName", null));
+
         //te03
         SC.put("muid", MainApp.mc.getUid());
         SC.put("hhno", MainApp.fc.getHhno());
         SC.put("cluster_code", MainApp.fc.getClusterCode());
+        SC.put("p_type", String.valueOf(MainApp.problemType));
+        SC.put("p_name", getProblemName(MainApp.problemType));
 
         SC.put("te03", bi.te03a.isChecked() ? "1"
                 : bi.te03b.isChecked() ? "2"
