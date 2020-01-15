@@ -45,7 +45,7 @@ public class SectionEActivity extends AppCompatActivity {
     }
 
     private void setValues() {
-        bi.heading.setText(MainApp.problemType == 1 ? "EYES PROBLEM"
+        String strHeading = (MainApp.problemType == 1 ? "EYES PROBLEM"
                 : MainApp.problemType == 2 ? "EARS PROBLEM"
                 : MainApp.problemType == 3 ? "FACE PROBLEM"
                 : MainApp.problemType == 4 ? "NECK PROBLEM"
@@ -60,7 +60,8 @@ public class SectionEActivity extends AppCompatActivity {
                 : MainApp.problemType == 13 ? "UPPER ARM EXTREMITIES"
                 : MainApp.problemType == 14 ? "FOOT EXTREMITIES"
                 : MainApp.problemType == 15 ? "LOWER LEG EXTREMITIES"
-                : "UPPER LEG EXTREMITIES");
+                : "UPPER LEG EXTREMITIES") + MainApp.problemCount;
+        bi.heading.setText(strHeading);
 
         if (MainApp.problemType == 1) {
             bi.te05i.setVisibility(View.GONE);

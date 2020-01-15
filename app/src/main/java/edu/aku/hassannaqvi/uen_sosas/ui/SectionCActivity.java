@@ -118,8 +118,8 @@ public class SectionCActivity extends AppCompatActivity {
     public void BtnContinue() {
         if (formValidation()) {
             if (bi.te03a.isChecked()) {
-                MainApp.openCountDialog(this);
-                MainApp.setCountItemClick(() -> savingContinue());
+                MainApp.openCountDialog(this, Integer.valueOf(bi.te04.getText().toString()));
+                MainApp.setCountItemClick(this::savingContinue);
             } else savingContinue();
         }
     }

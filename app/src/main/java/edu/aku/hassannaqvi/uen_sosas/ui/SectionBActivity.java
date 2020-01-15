@@ -75,9 +75,9 @@ public class SectionBActivity extends AppCompatActivity {
 
     public void BtnContinue() {
         if (formValidation()) {
-            if (bi.td01b.isChecked()) {
-                MainApp.openCountDialog(this);
-                MainApp.setCountItemClick(() -> savingContinue());
+            if (bi.td01a.isChecked()) {
+                MainApp.openCountDialog(this, Integer.valueOf(bi.td02a.getText().toString()));
+                MainApp.setCountItemClick(this::savingContinue);
             } else savingContinue();
         }
     }
