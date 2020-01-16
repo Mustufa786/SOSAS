@@ -323,4 +323,16 @@
     <string name="countYes">ها</string>
     <string name="countNo">نه</string>
 
+    <!--Extremities-->
+    <string name="ext">Extremities</string>
+    <string name="td15">ڇا توهان جي (ٻار جو نالو) کي ڪڏهن هٿن، ٻانهن، ٽنگن يا پيرن ۾ زخم، سڙڻ، ڳڙ، نقص يا هڏي ٽٽڻ ڪنهن جانور جي چڪ پائڻ جو مسئلو، واقعو يا آپريشن ٿيو؟</string>
+    <string name="td16">جسم جي ڪهڙي حصي ۾مسئلو ٿيو؟(هڪ کان وڌيڪ جواب اچي سگهن ٿا)</string>
+    <string name="td16a">آڱريون </string>
+    <string name="td16b">اڱوٺو، ٻانهن</string>
+    <string name="td16c">انهن جي ڪرائي</string>
+    <string name="td16d">ڏنئورو </string>
+    <string name="td16e">پير </string>
+    <string name="td16f">بڪيون </string>
+    <string name="td16g">رانون </string>
+
 </resources>

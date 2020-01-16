@@ -142,10 +142,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:hint="XXXX-X"
+                        android:hint="####-#"
+                        android:inputType="textCapCharacters"
                         android:padding="10dp"
                         android:paddingLeft="10dp"
-                        android:textAllCaps="true"
                         app:mask="####-#" />
 
                     <Button

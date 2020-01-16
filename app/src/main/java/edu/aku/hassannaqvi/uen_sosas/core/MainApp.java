@@ -392,7 +392,7 @@ public class MainApp extends Application {
         }
     }
 
-    public static void openCountDialog(Context context) {
+    public static void openCountDialog(Context context, int count) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         View view = LayoutInflater.from(context).inflate(R.layout.count_alert_dialog_layout, null);
@@ -400,7 +400,7 @@ public class MainApp extends Application {
         builder.setView(view);
         AlertDialog dialog = builder.create();
         dialog.show();
-//        bi.itemLayout.mainHeading.setText("You Have Selected " + item.getName());
+        bi.mainHeading.setText(context.getString(R.string.countAlertMsg) + ("(No:" + String.format("%2d", count) + ")"));
 
         bi.continueBtn.setOnClickListener(v -> {
             countItemClick.itemClick();
