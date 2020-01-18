@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import edu.aku.hassannaqvi.uen_sosas.R;
 import edu.aku.hassannaqvi.uen_sosas.contracts.AppInfo;
@@ -168,6 +169,7 @@ public class MainApp extends Application {
     public static int childCount = 0;
     public static int problemType = 0;
     public static int problemCount = 0;
+    public static List<Integer> extLst;
 
     /*
      problem type

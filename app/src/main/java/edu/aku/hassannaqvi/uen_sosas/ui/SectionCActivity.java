@@ -28,8 +28,8 @@ import edu.aku.hassannaqvi.uen_sosas.validator.ClearClass;
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass;
 
 import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.cc;
+import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.extLst;
 import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.problemType;
-import static edu.aku.hassannaqvi.uen_sosas.ui.SectionB02Activity.extLst;
 
 public class SectionCActivity extends AppCompatActivity {
 
@@ -125,10 +125,32 @@ public class SectionCActivity extends AppCompatActivity {
 
 
         if (extLst != null) {
+            boolean flag = false;
             for (Integer item : extLst) {
                 if (problemType != item) {
                     bi.te03b.setChecked(true);
-                    BtnContinue();
+                    try {
+                        SaveDraft();
+                        UpdateDB();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    flag = true;
+                } else {
+                    bi.te03.clearCheck();
+                    break;
+                }
+            }
+
+            if (flag) {
+                if (problemType == 10) finish();
+                else finishActivity(CHILD_MAIN_C);
+
+                if (MainApp.problemType < 16) {
+                    startActivityForResult(new Intent(this, SectionCActivity.class), CHILD_MAIN_C);
+                } else {
+                    setResult(RESULT_OK);
+                    finish();
                 }
             }
         }
@@ -153,15 +175,17 @@ public class SectionCActivity extends AppCompatActivity {
         if (UpdateDB()) {
             if (bi.te03b.isChecked()) {
                 if (MainApp.problemType == 9) {
-                    finishActivity(CHILD_DIS);
+                    finishActivity(CHILD_MAIN_C);
                     startActivity(new Intent(this, SectionB02Activity.class));
-                } else if (MainApp.problemType != 16) {
+                } else if (MainApp.problemType < 16) {
+                    finishActivity(CHILD_MAIN_C);
                     startActivityForResult(new Intent(this, SectionCActivity.class), CHILD_MAIN_C);
                 } else {
                     setResult(RESULT_OK);
-                    finish();
+                    finishActivity(CHILD_MAIN_C);
                 }
             } else {
+                finishActivity(CHILD_DIS);
                 startActivityForResult(new Intent(this, SectionEActivity.class), CHILD_DIS);
             }
         } else {
@@ -180,12 +204,12 @@ public class SectionCActivity extends AppCompatActivity {
                 } else if (MainApp.problemType == 9) {
                     finishActivity(CHILD_DIS);
                     startActivity(new Intent(this, SectionB02Activity.class));
-                } else if (MainApp.problemType != 16) {
+                } else if (MainApp.problemType < 16) {
                     finishActivity(CHILD_MAIN_C);
                     startActivityForResult(new Intent(this, SectionCActivity.class), CHILD_MAIN_C);
                 } else {
                     setResult(RESULT_OK);
-                    finish();
+                    finishActivity(CHILD_DIS);
                 }
             }
         } else if (requestCode == CHILD_MAIN_C) {
@@ -194,8 +218,9 @@ public class SectionCActivity extends AppCompatActivity {
                     finishActivity(CHILD_DIS);
                     startActivity(new Intent(this, SectionB02Activity.class));
                 } else {
+
                     setResult(RESULT_OK);
-                    finish();
+                    finishActivity(CHILD_MAIN_C);
                 }
             }
         }

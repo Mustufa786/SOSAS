@@ -14,7 +14,6 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import edu.aku.hassannaqvi.uen_sosas.R;
@@ -24,12 +23,12 @@ import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.uen_sosas.validator.ClearClass;
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass;
 
+import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.extLst;
 import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.mc;
 
 public class SectionB02Activity extends AppCompatActivity {
 
     ActivitySectionB02Binding bi;
-    public static List<Integer> extLst;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
