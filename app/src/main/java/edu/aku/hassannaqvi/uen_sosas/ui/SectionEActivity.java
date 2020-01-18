@@ -64,7 +64,7 @@ public class SectionEActivity extends AppCompatActivity {
                 : MainApp.problemType == 13 ? "UPPER ARM EXTREMITIES"
                 : MainApp.problemType == 14 ? "FOOT EXTREMITIES"
                 : MainApp.problemType == 15 ? "LOWER LEG EXTREMITIES"
-                : "UPPER LEG EXTREMITIES") + "-" + problem_counter + " out of " + MainApp.problemType;
+                : "UPPER LEG EXTREMITIES") + " (" + problem_counter + " out of " + MainApp.problemCount + ")";
         bi.heading.setText(strHeading);
 
         if (MainApp.problemType == 1) {

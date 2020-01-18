@@ -21,7 +21,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
-import edu.aku.hassannaqvi.uen_sosas.contracts.BLRandomContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
@@ -135,7 +134,7 @@ public class GetFamilyMembersData extends AsyncTask<Void, Void, String> {
             }
             Log.d(TAG, "downloadUrl: " + json.toString());
             wr.writeBytes(json.toString());
-            longInfo(jsonSync.toString().replace("\uFEFF", "") + "\n");
+//            longInfo(jsonSync.toString().replace("\uFEFF", "") + "\n");
             wr.flush();
             wr.close();
 

@@ -53,6 +53,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme1" />
         <activity
+            android:name=".ui.SectionB02Activity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme1" />
+        <activity
             android:name=".ui.SectionCActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme1" />
