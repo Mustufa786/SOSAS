@@ -36,6 +36,7 @@ public class SectionCActivity extends AppCompatActivity {
     ActivitySectionCBinding bi;
     public static final int CHILD_DIS = 2;
     public static final int CHILD_MAIN_C = 201;
+    public static final int EXT_CHILD_MAIN_C = 202;
 
 
     @Override
@@ -189,10 +190,10 @@ public class SectionCActivity extends AppCompatActivity {
                     startActivityForResult(new Intent(this, SectionCActivity.class), CHILD_MAIN_C);
                 } else if (MainApp.problemType == 10) {
                     finishActivity(CHILD_MAIN_C);
-                    startActivityForResult(new Intent(this, SectionB02Activity.class), CHILD_MAIN_C);
+                    startActivityForResult(new Intent(this, SectionB02Activity.class), EXT_CHILD_MAIN_C);
                 } else problemConditions(true);
             } else {
-                finishActivity(CHILD_MAIN_C);
+//                finishActivity(CHILD_MAIN_C);
                 startActivityForResult(new Intent(this, SectionEActivity.class), CHILD_DIS);
             }
         } else {
@@ -206,14 +207,14 @@ public class SectionCActivity extends AppCompatActivity {
         if (requestCode == CHILD_DIS) {
             if (resultCode == RESULT_OK) {
                 if (MainApp.problemCount != SectionEActivity.problem_counter) {
-                    finishActivity(CHILD_DIS);
+//                    finishActivity(CHILD_DIS);
                     startActivityForResult(new Intent(this, SectionEActivity.class), CHILD_DIS);
                 } else if (MainApp.problemType <= 9) {
                     finishActivity(CHILD_MAIN_C);
                     startActivityForResult(new Intent(this, SectionCActivity.class), CHILD_MAIN_C);
                 } else if (MainApp.problemType == 10) {
                     finishActivity(CHILD_MAIN_C);
-                    startActivity(new Intent(this, SectionB02Activity.class));
+                    startActivityForResult(new Intent(this, SectionB02Activity.class), EXT_CHILD_MAIN_C);
                 } else problemConditions(true);
             }
         } else if (requestCode == CHILD_MAIN_C) {
@@ -223,9 +224,12 @@ public class SectionCActivity extends AppCompatActivity {
                     startActivityForResult(new Intent(this, SectionCActivity.class), CHILD_MAIN_C);
                 } else if (MainApp.problemType == 10) {
                     finishActivity(CHILD_MAIN_C);
-                    startActivityForResult(new Intent(this, SectionB02Activity.class), CHILD_MAIN_C);
+                    startActivityForResult(new Intent(this, SectionB02Activity.class), EXT_CHILD_MAIN_C);
                 } else problemConditions(true);
             }
+        } else if (requestCode == EXT_CHILD_MAIN_C) {
+            setResult(RESULT_OK);
+            finish();
         }
     }
 

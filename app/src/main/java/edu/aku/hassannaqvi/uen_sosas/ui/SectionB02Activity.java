@@ -25,7 +25,6 @@ import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass;
 
 import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.extLst;
 import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.mc;
-import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.problemType;
 import static edu.aku.hassannaqvi.uen_sosas.ui.SectionCActivity.CHILD_MAIN_C;
 
 public class SectionB02Activity extends AppCompatActivity {
@@ -65,12 +64,15 @@ public class SectionB02Activity extends AppCompatActivity {
             e.printStackTrace();
         }
         if (bi.td15a.isChecked()) {
-            problemType++;
+//            problemType++;
             finishActivity(CHILD_MAIN_C);
 //            startActivity(new Intent(this, SectionCActivity.class).putExtra("flag", true));
 
             startActivityForResult(new Intent(this, SectionCActivity.class).putExtra("flag", true), CHILD_MAIN_C);
         } else {
+
+            finishActivity(CHILD_MAIN_C);
+
             setResult(RESULT_OK);
             finish();
         }
@@ -140,10 +142,10 @@ public class SectionB02Activity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CHILD_MAIN_C) {
-            if (resultCode == RESULT_OK) {
+//            if (resultCode == RESULT_OK) {
                 setResult(RESULT_OK);
                 finish();
-            }
+//            }
         }
     }
 }
