@@ -167,7 +167,7 @@ public class MainApp extends Application {
     public static String hhno = "";
     public static int BLRandomSize;
     public static int childCount = 0;
-    public static int problemType = 0;
+    public static int problemType = 1;
     public static int problemCount = 0;
     public static List<Integer> extLst;
 

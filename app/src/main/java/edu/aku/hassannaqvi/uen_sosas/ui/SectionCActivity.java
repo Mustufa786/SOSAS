@@ -44,7 +44,6 @@ public class SectionCActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_c);
         bi.setCallback(this);
 
-        MainApp.problemType++;
         bi.headingTitle.setText(getProblemName(MainApp.problemType));
 
         bi.te03a1.setText(getProblemHead(MainApp.problemType));
@@ -123,38 +122,49 @@ public class SectionCActivity extends AppCompatActivity {
             }
         });
 
+        problemConditions(false);
 
-        if (extLst != null) {
-            boolean flag = false;
-            for (Integer item : extLst) {
-                if (problemType != item) {
-                    bi.te03b.setChecked(true);
-                    try {
-                        SaveDraft();
-                        UpdateDB();
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+    }
+
+    private void problemConditions(boolean childDSC) {
+
+        if (getIntent().getBooleanExtra("flag", false)) {
+            if (extLst != null) {
+                boolean flag = false;
+                for (int i = problemType; i < 16; i++) {
+                    int j = -1;
+                    for (Integer item : extLst) {
+                        j++;
+                        if (problemType == item) {
+                            extLst.remove(j);
+                            bi.te03.clearCheck();
+                            flag = true;
+                            break;
+                        }
                     }
-                    flag = true;
-                } else {
-                    bi.te03.clearCheck();
-                    break;
+                    if (flag) break;
+                    else {
+                        bi.te03b.setChecked(true);
+                        try {
+                            SaveDraft();
+                            UpdateDB();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
-            }
 
-            if (flag) {
-                if (problemType == 10) finish();
-                else finishActivity(CHILD_MAIN_C);
-
-                if (MainApp.problemType < 16) {
-                    startActivityForResult(new Intent(this, SectionCActivity.class), CHILD_MAIN_C);
-                } else {
-                    setResult(RESULT_OK);
-                    finish();
+                if (problemType != 10) {
+                    finishActivity(CHILD_MAIN_C);
+                    if (flag) {
+                        startActivityForResult(new Intent(this, SectionCActivity.class).putExtra("flag", childDSC), CHILD_MAIN_C);
+                    } else {
+                        setResult(RESULT_OK);
+                        finish();
+                    }
                 }
             }
         }
-
     }
 
     public void BtnContinue() {
@@ -174,18 +184,15 @@ public class SectionCActivity extends AppCompatActivity {
         }
         if (UpdateDB()) {
             if (bi.te03b.isChecked()) {
-                if (MainApp.problemType == 9) {
-                    finishActivity(CHILD_MAIN_C);
-                    startActivity(new Intent(this, SectionB02Activity.class));
-                } else if (MainApp.problemType < 16) {
+                if (MainApp.problemType < 9) {
                     finishActivity(CHILD_MAIN_C);
                     startActivityForResult(new Intent(this, SectionCActivity.class), CHILD_MAIN_C);
-                } else {
-                    setResult(RESULT_OK);
+                } else if (MainApp.problemType == 9) {
                     finishActivity(CHILD_MAIN_C);
-                }
+                    startActivity(new Intent(this, SectionB02Activity.class));
+                } else problemConditions(true);
             } else {
-                finishActivity(CHILD_DIS);
+                finishActivity(CHILD_MAIN_C);
                 startActivityForResult(new Intent(this, SectionEActivity.class), CHILD_DIS);
             }
         } else {
@@ -201,27 +208,23 @@ public class SectionCActivity extends AppCompatActivity {
                 if (MainApp.problemCount != SectionEActivity.problem_counter) {
                     finishActivity(CHILD_DIS);
                     startActivityForResult(new Intent(this, SectionEActivity.class), CHILD_DIS);
-                } else if (MainApp.problemType == 9) {
-                    finishActivity(CHILD_DIS);
-                    startActivity(new Intent(this, SectionB02Activity.class));
-                } else if (MainApp.problemType < 16) {
+                } else if (MainApp.problemType < 9) {
                     finishActivity(CHILD_MAIN_C);
                     startActivityForResult(new Intent(this, SectionCActivity.class), CHILD_MAIN_C);
-                } else {
-                    setResult(RESULT_OK);
-                    finishActivity(CHILD_DIS);
-                }
+                } else if (MainApp.problemType == 9) {
+                    finishActivity(CHILD_MAIN_C);
+                    startActivity(new Intent(this, SectionB02Activity.class));
+                } else problemConditions(true);
             }
         } else if (requestCode == CHILD_MAIN_C) {
             if (resultCode == RESULT_OK) {
-                if (MainApp.problemType == 9) {
-                    finishActivity(CHILD_DIS);
-                    startActivity(new Intent(this, SectionB02Activity.class));
-                } else {
-
-                    setResult(RESULT_OK);
+                if (MainApp.problemType < 9) {
                     finishActivity(CHILD_MAIN_C);
-                }
+                    startActivityForResult(new Intent(this, SectionCActivity.class), CHILD_MAIN_C);
+                } else if (MainApp.problemType == 9) {
+                    finishActivity(CHILD_MAIN_C);
+                    startActivity(new Intent(this, SectionB02Activity.class));
+                } else problemConditions(true);
             }
         }
     }
@@ -280,6 +283,8 @@ public class SectionCActivity extends AppCompatActivity {
 
         cc.setdA(String.valueOf(SC));
 
+
+        MainApp.problemType++;
 
     }
 
