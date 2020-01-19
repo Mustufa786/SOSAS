@@ -397,6 +397,7 @@ public class MainApp extends Application {
     public static void openCountDialog(Context context, int count) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setCancelable(false);
         View view = LayoutInflater.from(context).inflate(R.layout.count_alert_dialog_layout, null);
         CountAlertDialogLayoutBinding bi = DataBindingUtil.bind(view.getRootView());
         builder.setView(view);
@@ -415,6 +416,7 @@ public class MainApp extends Application {
     public static void openDialog(Context context, FamilyMembersContract item, boolean isMother) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setCancelable(false);
         View view = LayoutInflater.from(context).inflate(R.layout.alert_dialog_layout, null);
         AlertDialogLayoutBinding bi = DataBindingUtil.bind(view.getRootView());
         builder.setView(view);

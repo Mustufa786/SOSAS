@@ -87,7 +87,7 @@ public class ChildListActivity extends AppCompatActivity {
                     finish();
                     startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
                 } else
-                    problemType = 0;
+                    problemType = 1;
             }
         }
     }

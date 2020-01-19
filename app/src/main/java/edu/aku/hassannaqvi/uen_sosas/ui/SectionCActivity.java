@@ -112,8 +112,10 @@ public class SectionCActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if (!s.toString().isEmpty())
+                if (!s.toString().isEmpty()) {
                     MainApp.problemCount = Integer.parseInt(s.toString());
+                    SectionEActivity.problem_counter = 0;
+                }
             }
 
             @Override
@@ -128,7 +130,7 @@ public class SectionCActivity extends AppCompatActivity {
 
     private void problemConditions(boolean childDSC) {
 
-        if (getIntent().getBooleanExtra("flag", false)) {
+        if (childDSC || getIntent().getBooleanExtra("flag", false)) {
             if (extLst != null) {
                 boolean flag = false;
                 for (int i = problemType; i < 16; i++) {
@@ -154,14 +156,12 @@ public class SectionCActivity extends AppCompatActivity {
                     }
                 }
 
-                if (problemType != 10) {
+                if (flag) {
                     finishActivity(CHILD_MAIN_C);
-                    if (flag) {
-                        startActivityForResult(new Intent(this, SectionCActivity.class).putExtra("flag", childDSC), CHILD_MAIN_C);
-                    } else {
-                        setResult(RESULT_OK);
-                        finish();
-                    }
+                    startActivityForResult(new Intent(this, SectionCActivity.class), CHILD_MAIN_C);
+                } else {
+                    setResult(RESULT_OK);
+                    finish();
                 }
             }
         }
@@ -184,12 +184,12 @@ public class SectionCActivity extends AppCompatActivity {
         }
         if (UpdateDB()) {
             if (bi.te03b.isChecked()) {
-                if (MainApp.problemType < 9) {
+                if (MainApp.problemType <= 9) {
                     finishActivity(CHILD_MAIN_C);
                     startActivityForResult(new Intent(this, SectionCActivity.class), CHILD_MAIN_C);
-                } else if (MainApp.problemType == 9) {
+                } else if (MainApp.problemType == 10) {
                     finishActivity(CHILD_MAIN_C);
-                    startActivity(new Intent(this, SectionB02Activity.class));
+                    startActivityForResult(new Intent(this, SectionB02Activity.class), CHILD_MAIN_C);
                 } else problemConditions(true);
             } else {
                 finishActivity(CHILD_MAIN_C);
@@ -208,22 +208,22 @@ public class SectionCActivity extends AppCompatActivity {
                 if (MainApp.problemCount != SectionEActivity.problem_counter) {
                     finishActivity(CHILD_DIS);
                     startActivityForResult(new Intent(this, SectionEActivity.class), CHILD_DIS);
-                } else if (MainApp.problemType < 9) {
+                } else if (MainApp.problemType <= 9) {
                     finishActivity(CHILD_MAIN_C);
                     startActivityForResult(new Intent(this, SectionCActivity.class), CHILD_MAIN_C);
-                } else if (MainApp.problemType == 9) {
+                } else if (MainApp.problemType == 10) {
                     finishActivity(CHILD_MAIN_C);
                     startActivity(new Intent(this, SectionB02Activity.class));
                 } else problemConditions(true);
             }
         } else if (requestCode == CHILD_MAIN_C) {
             if (resultCode == RESULT_OK) {
-                if (MainApp.problemType < 9) {
+                if (MainApp.problemType <= 9) {
                     finishActivity(CHILD_MAIN_C);
                     startActivityForResult(new Intent(this, SectionCActivity.class), CHILD_MAIN_C);
-                } else if (MainApp.problemType == 9) {
+                } else if (MainApp.problemType == 10) {
                     finishActivity(CHILD_MAIN_C);
-                    startActivity(new Intent(this, SectionB02Activity.class));
+                    startActivityForResult(new Intent(this, SectionB02Activity.class), CHILD_MAIN_C);
                 } else problemConditions(true);
             }
         }
