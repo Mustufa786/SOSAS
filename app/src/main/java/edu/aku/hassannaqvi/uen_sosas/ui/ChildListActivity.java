@@ -66,6 +66,9 @@ public class ChildListActivity extends AppCompatActivity {
             MainApp.openDialog(ChildListActivity.this, item, isMother);
             MainApp.setItemClick(() -> {
 
+                adapter.getHolder().parentLayout.setEnabled(false);
+                adapter.getHolder().parentLayout.setBackgroundColor(getResources().getColor(R.color.gray));
+
                 childCount++;
 
                 startActivityForResult(new Intent(ChildListActivity.this, SectionCActivity.class), CHILD_MAIN);

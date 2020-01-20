@@ -434,6 +434,7 @@ public class MainApp extends Application {
             @Override
             public void onClick(View v) {
                 itemClick.itemClick();
+
                 dialog.dismiss();
             }
         });

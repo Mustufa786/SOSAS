@@ -25,13 +25,8 @@ public class ChildListAdapter extends RecyclerView.Adapter<ChildListAdapter.View
     DatabaseHelper db;
     FormsContract ChildData;
     boolean isMother;
-    /*
-       if Mother
-       isMother = true
 
-       if child
-       isMother = false
-     */
+    private ItemChildListBinding viewHolder;
 
     public ChildListAdapter(Context mContext, List<FamilyMembersContract> mList, boolean isMother) {
         this.mContext = mContext;
@@ -63,11 +58,15 @@ public class ChildListAdapter extends RecyclerView.Adapter<ChildListAdapter.View
         holder.bi.genderImage.setImageResource(isMother ? R.drawable.mother : R.drawable.boy);
         holder.bi.parentLayout.setOnClickListener(v -> {
                     itemClicked.onItemClick(mList.get(i), i, isMother);
-                    holder.bi.parentLayout.setEnabled(false);
-                    holder.bi.parentLayout.setBackgroundColor(mContext.getResources().getColor(R.color.gray));
                 }
         );
 
+        viewHolder = holder.bi;
+
+    }
+
+    public ItemChildListBinding getHolder() {
+        return viewHolder;
     }
 
     @Override

@@ -148,13 +148,13 @@ class InfoActivity : AppCompatActivity() {
         bi.motherList.layoutManager = LinearLayoutManager(this@InfoActivity)
         bi.motherList.adapter = adapter
         adapter.setItemClicked { item, position, isMother ->
-            MainApp.openDialog(this@InfoActivity, item, isMother)
-            MainApp.itemClick = MainApp.OnItemClick {
+            openDialog(this@InfoActivity, item, isMother)
+            itemClick = OnItemClick {
                 saveDraft()
                 if (updateDB()) {
                     finish()
                     startActivity(Intent(this@InfoActivity, if (isMother) SectionBActivity::class.java
-                    else SectionCActivity::class.java).putExtra(MainApp.motherInfo, item))
+                    else SectionCActivity::class.java).putExtra(motherInfo, item))
                 }
             }
 
