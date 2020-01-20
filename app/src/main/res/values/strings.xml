@@ -18,6 +18,24 @@
 
     <string name="taheading">SECTION A: HH Identification</string>
 
+
+    <string name="eye">اکيون </string>
+    <string name="ear">ڪن </string>
+    <string name="face">منهن </string>
+    <string name="neck">ڳچي </string>
+    <string name="head">مٿو </string>
+    <string name="chest">ڇاتي </string>
+    <string name="back">پٺي </string>
+    <string name="abdomen">پيٽ  </string>
+    <string name="groin"> پيٽ کان هيٺيون حصو (چڏا)، شرمگاه چتڙ (ٻنڊڻ)  </string>
+    <string name="finger"> آڱريون  </string>
+    <string name="thumb"> اڱوٺو، ٻانهن   </string>
+    <string name="lowerarm"> ٻانهن جي ڪرائي  </string>
+    <string name="upperarm">ڏنئورو   </string>
+    <string name="foot">پير    </string>
+    <string name="lowerleg">بڪيون     </string>
+    <string name="upperleg">رانون      </string>
+
     <string name="ta01"> Cluster Number </string>
     <string name="ta02"> Cluster type </string>
     <string name="ta02a"> LHW Covered </string>
