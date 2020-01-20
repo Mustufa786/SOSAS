@@ -437,6 +437,16 @@
                                 style="@style/radiobutton"
                                 android:text="@string/te11d" />
 
+                            <RadioButton
+                                android:id="@+id/te11e"
+                                style="@style/radiobutton"
+                                android:text="@string/te11e" />
+
+                            <RadioButton
+                                android:id="@+id/te11f"
+                                style="@style/radiobutton"
+                                android:text="@string/te11f" />
+
                         </RadioGroup>
 
                     </LinearLayout>
@@ -616,9 +626,9 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="4sp"
                     android:layout_weight="1"
-                    android:padding="10dp"
                     android:background="@android:color/holo_green_light"
                     android:onClick='@{() -> callback.BtnContinue()}'
+                    android:padding="10dp"
                     android:text="@string/nextSection"
                     android:textColor="@color/white"
                     android:textSize="24sp"
@@ -630,9 +640,9 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="4sp"
                     android:layout_weight="1"
-                    android:padding="10dp"
                     android:background="@android:color/holo_red_light"
                     android:onClick='@{() -> callback.BtnEnd()}'
+                    android:padding="10dp"
                     android:text="@string/end_interview"
                     android:textColor="@color/white"
                     android:textSize="24sp"

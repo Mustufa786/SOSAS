@@ -94,7 +94,7 @@
                         android:inputType="number"
                         android:hint="@string/td04mm"
                         android:maxLength="2"
-                        app:maxValue="12"
+                        app:maxValue="11"
                         app:minValue="0"
                         app:required="true"
                         app:type="range"/>
@@ -165,7 +165,7 @@
                         style="@style/i_textview"
                         android:text="@string/td06" />
 
-                    <!--<io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                    <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                         android:id="@+id/td06dod"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -175,45 +175,45 @@
                         android:hint="DD-MM-YYYY"
                         android:textColor="@android:color/black"
                         app:dateFormat="dd-MM-yyyy"
-                        app:maxDate="CR_DATE" />-->
+                        app:maxDate="CR_DATE" />
 
-                    <com.edittextpicker.aliazaz.EditTextPicker
-                        android:id="@+id/td06dd"
-                        style="@style/textInput"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:hint="@string/day"
-                        android:maxLength="2"
-                        app:maxValue="31"
-                        app:minValue="1"
-                        app:required="true"
-                        app:type="range"/>
+                    <!--    <com.edittextpicker.aliazaz.EditTextPicker
+                            android:id="@+id/td06dd"
+                            style="@style/textInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:hint="@string/day"
+                            android:maxLength="2"
+                            app:maxValue="31"
+                            app:minValue="1"
+                            app:required="true"
+                            app:type="range"/>
 
-                    <com.edittextpicker.aliazaz.EditTextPicker
-                        android:id="@+id/td06mm"
-                        style="@style/textInput"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:hint="@string/month"
-                        android:maxLength="2"
-                        app:maxValue="12"
-                        app:minValue="1"
-                        app:required="true"
-                        app:type="range"/>
+                        <com.edittextpicker.aliazaz.EditTextPicker
+                            android:id="@+id/td06mm"
+                            style="@style/textInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:hint="@string/month"
+                            android:maxLength="2"
+                            app:maxValue="12"
+                            app:minValue="1"
+                            app:required="true"
+                            app:type="range"/>
 
-                    <com.edittextpicker.aliazaz.EditTextPicker
-                        android:id="@+id/td06yy"
-                        style="@style/textInput"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:hint="@string/year"
-                        android:maxLength="4"
-                        app:maxValue="2020"
-                        app:minValue="1990"
-                        app:type="range"/>
+                        <com.edittextpicker.aliazaz.EditTextPicker
+                            android:id="@+id/td06yy"
+                            style="@style/textInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:hint="@string/year"
+                            android:maxLength="4"
+                            app:maxValue="2020"
+                            app:minValue="1990"
+                            app:type="range"/>-->
 
                 </LinearLayout>
 
