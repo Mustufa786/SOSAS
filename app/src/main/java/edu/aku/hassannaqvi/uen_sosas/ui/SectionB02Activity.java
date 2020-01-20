@@ -63,7 +63,7 @@ public class SectionB02Activity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (bi.td15a.isChecked()) {
+        /*if (bi.td15a.isChecked()) {
 //            problemType++;
             finishActivity(CHILD_MAIN_C);
 //            startActivity(new Intent(this, SectionCActivity.class).putExtra("flag", true));
@@ -75,7 +75,10 @@ public class SectionB02Activity extends AppCompatActivity {
 
             setResult(RESULT_OK);
             finish();
-        }
+        }*/
+
+        finishActivity(CHILD_MAIN_C);
+        startActivityForResult(new Intent(this, SectionCActivity.class).putExtra("flag", true), CHILD_MAIN_C);
 
     }
 

@@ -36,7 +36,6 @@ public class SectionCActivity extends AppCompatActivity {
     ActivitySectionCBinding bi;
     public static final int CHILD_DIS = 2;
     public static final int CHILD_MAIN_C = 201;
-    public static final int EXT_CHILD_MAIN_C = 202;
 
 
     @Override
@@ -190,7 +189,7 @@ public class SectionCActivity extends AppCompatActivity {
                     startActivityForResult(new Intent(this, SectionCActivity.class), CHILD_MAIN_C);
                 } else if (MainApp.problemType == 10) {
                     finishActivity(CHILD_MAIN_C);
-                    startActivityForResult(new Intent(this, SectionB02Activity.class), EXT_CHILD_MAIN_C);
+                    startActivityForResult(new Intent(this, SectionB02Activity.class), CHILD_MAIN_C);
                 } else problemConditions(true);
             } else {
 //                finishActivity(CHILD_MAIN_C);
@@ -214,7 +213,7 @@ public class SectionCActivity extends AppCompatActivity {
                     startActivityForResult(new Intent(this, SectionCActivity.class), CHILD_MAIN_C);
                 } else if (MainApp.problemType == 10) {
                     finishActivity(CHILD_MAIN_C);
-                    startActivityForResult(new Intent(this, SectionB02Activity.class), EXT_CHILD_MAIN_C);
+                    startActivityForResult(new Intent(this, SectionB02Activity.class), CHILD_MAIN_C);
                 } else problemConditions(true);
             }
         } else if (requestCode == CHILD_MAIN_C) {
@@ -224,12 +223,9 @@ public class SectionCActivity extends AppCompatActivity {
                     startActivityForResult(new Intent(this, SectionCActivity.class), CHILD_MAIN_C);
                 } else if (MainApp.problemType == 10) {
                     finishActivity(CHILD_MAIN_C);
-                    startActivityForResult(new Intent(this, SectionB02Activity.class), EXT_CHILD_MAIN_C);
+                    startActivityForResult(new Intent(this, SectionB02Activity.class), CHILD_MAIN_C);
                 } else problemConditions(true);
             }
-        } else if (requestCode == EXT_CHILD_MAIN_C) {
-            setResult(RESULT_OK);
-            finish();
         }
     }
 
