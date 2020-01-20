@@ -28,9 +28,10 @@ import edu.aku.hassannaqvi.uen_sosas.validator.ClearClass;
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass;
 
 import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.cc;
+import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.extLst;
+import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.problemType;
 
 public class SectionCActivity extends AppCompatActivity {
-
 
     ActivitySectionCBinding bi;
     public static final int CHILD_DIS = 2;
@@ -43,26 +44,9 @@ public class SectionCActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_c);
         bi.setCallback(this);
 
-
-        MainApp.problemType++;
         bi.headingTitle.setText(getProblemName(MainApp.problemType));
 
-        bi.te03a1.setText(MainApp.problemType == 1 ? getString(R.string.te03a1)
-                : MainApp.problemType == 2 ? getString(R.string.te03a2)
-                : MainApp.problemType == 3 ? getString(R.string.te03a3)
-                : MainApp.problemType == 4 ? getString(R.string.te03a4)
-                : MainApp.problemType == 5 ? getString(R.string.te03a5)
-                : MainApp.problemType == 6 ? getString(R.string.te03a6)
-                : MainApp.problemType == 7 ? getString(R.string.te03a7)
-                : MainApp.problemType == 8 ? getString(R.string.te03a8)
-                : MainApp.problemType == 9 ? getString(R.string.te03a9)
-                : MainApp.problemType == 10 ? getString(R.string.te03a10)
-                : MainApp.problemType == 11 ? getString(R.string.te03a11)
-                : MainApp.problemType == 12 ? getString(R.string.te03a12)
-                : MainApp.problemType == 13 ? getString(R.string.te03a13)
-                : MainApp.problemType == 14 ? getString(R.string.te03a14)
-                : MainApp.problemType == 15 ? getString(R.string.te03a15)
-                : getString(R.string.te03a16));
+        bi.te03a1.setText(getProblemHead(MainApp.problemType));
 
         setListeners();
 
@@ -88,6 +72,25 @@ public class SectionCActivity extends AppCompatActivity {
                 : "";
     }
 
+    private String getProblemHead(int probe) {
+        return probe == 1 ? getString(R.string.te03a1)
+                : probe == 2 ? getString(R.string.te03a2)
+                : probe == 3 ? getString(R.string.te03a3)
+                : probe == 4 ? getString(R.string.te03a4)
+                : probe == 5 ? getString(R.string.te03a5)
+                : probe == 6 ? getString(R.string.te03a6)
+                : probe == 7 ? getString(R.string.te03a7)
+                : probe == 8 ? getString(R.string.te03a8)
+                : probe == 9 ? getString(R.string.te03a9)
+                : probe == 10 ? getString(R.string.te03a10)
+                : probe == 11 ? getString(R.string.te03a11)
+                : probe == 12 ? getString(R.string.te03a12)
+                : probe == 13 ? getString(R.string.te03a13)
+                : probe == 14 ? getString(R.string.te03a14)
+                : probe == 15 ? getString(R.string.te03a15)
+                : getString(R.string.te03a16);
+    }
+
     private void setListeners() {
 
         bi.te03.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -109,8 +112,10 @@ public class SectionCActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if (!s.toString().isEmpty())
+                if (!s.toString().isEmpty()) {
                     MainApp.problemCount = Integer.parseInt(s.toString());
+                    SectionEActivity.problem_counter = 0;
+                }
             }
 
             @Override
@@ -118,6 +123,48 @@ public class SectionCActivity extends AppCompatActivity {
 
             }
         });
+
+        problemConditions(false);
+
+    }
+
+    private void problemConditions(boolean childDSC) {
+
+        if (childDSC || getIntent().getBooleanExtra("flag", false)) {
+            if (extLst != null) {
+                boolean flag = false;
+                for (int i = problemType; i < 16; i++) {
+                    int j = -1;
+                    for (Integer item : extLst) {
+                        j++;
+                        if (problemType == item) {
+                            extLst.remove(j);
+                            bi.te03.clearCheck();
+                            flag = true;
+                            break;
+                        }
+                    }
+                    if (flag) break;
+                    else {
+                        bi.te03b.setChecked(true);
+                        try {
+                            SaveDraft();
+                            UpdateDB();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
+                if (flag) {
+                    finishActivity(CHILD_MAIN_C);
+                    startActivityForResult(new Intent(this, SectionCActivity.class), CHILD_MAIN_C);
+                } else {
+                    setResult(RESULT_OK);
+                    finish();
+                }
+            }
+        }
     }
 
     public void BtnContinue() {
@@ -137,13 +184,15 @@ public class SectionCActivity extends AppCompatActivity {
         }
         if (UpdateDB()) {
             if (bi.te03b.isChecked()) {
-                if (MainApp.problemType != 16) {
-                    startActivityForResult(new Intent(this, SectionCActivity.class).putExtra(MainApp.motherInfo, MainApp.childData), CHILD_MAIN_C);
-                } else {
-                    setResult(RESULT_OK);
-                    finish();
-                }
+                if (MainApp.problemType <= 9) {
+                    finishActivity(CHILD_MAIN_C);
+                    startActivityForResult(new Intent(this, SectionCActivity.class), CHILD_MAIN_C);
+                } else if (MainApp.problemType == 10) {
+                    finishActivity(CHILD_MAIN_C);
+                    startActivityForResult(new Intent(this, SectionB02Activity.class), CHILD_MAIN_C);
+                } else problemConditions(true);
             } else {
+//                finishActivity(CHILD_MAIN_C);
                 startActivityForResult(new Intent(this, SectionEActivity.class), CHILD_DIS);
             }
         } else {
@@ -156,21 +205,26 @@ public class SectionCActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CHILD_DIS) {
             if (resultCode == RESULT_OK) {
-                if (MainApp.problemCount == SectionEActivity.problem_counter) {
-                    finishActivity(CHILD_DIS);
+                if (MainApp.problemCount != SectionEActivity.problem_counter) {
+//                    finishActivity(CHILD_DIS);
                     startActivityForResult(new Intent(this, SectionEActivity.class), CHILD_DIS);
-                } else if (MainApp.problemType != 16) {
+                } else if (MainApp.problemType <= 9) {
                     finishActivity(CHILD_MAIN_C);
-                    startActivityForResult(new Intent(this, SectionCActivity.class).putExtra(MainApp.motherInfo, MainApp.childData), CHILD_MAIN_C);
-                } else {
-                    setResult(RESULT_OK);
-                    finish();
-                }
+                    startActivityForResult(new Intent(this, SectionCActivity.class), CHILD_MAIN_C);
+                } else if (MainApp.problemType == 10) {
+                    finishActivity(CHILD_MAIN_C);
+                    startActivityForResult(new Intent(this, SectionB02Activity.class), CHILD_MAIN_C);
+                } else problemConditions(true);
             }
         } else if (requestCode == CHILD_MAIN_C) {
             if (resultCode == RESULT_OK) {
-                setResult(RESULT_OK);
-                finish();
+                if (MainApp.problemType <= 9) {
+                    finishActivity(CHILD_MAIN_C);
+                    startActivityForResult(new Intent(this, SectionCActivity.class), CHILD_MAIN_C);
+                } else if (MainApp.problemType == 10) {
+                    finishActivity(CHILD_MAIN_C);
+                    startActivityForResult(new Intent(this, SectionB02Activity.class), CHILD_MAIN_C);
+                } else problemConditions(true);
             }
         }
     }
@@ -229,6 +283,8 @@ public class SectionCActivity extends AppCompatActivity {
 
         cc.setdA(String.valueOf(SC));
 
+
+        MainApp.problemType++;
 
     }
 

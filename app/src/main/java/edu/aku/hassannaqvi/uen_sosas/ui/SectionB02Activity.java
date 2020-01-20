@@ -2,13 +2,19 @@ package edu.aku.hassannaqvi.uen_sosas.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import org.json.JSONException;
-import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import edu.aku.hassannaqvi.uen_sosas.R;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
@@ -17,7 +23,9 @@ import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.uen_sosas.validator.ClearClass;
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass;
 
+import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.extLst;
 import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.mc;
+import static edu.aku.hassannaqvi.uen_sosas.ui.SectionCActivity.CHILD_MAIN_C;
 
 public class SectionB02Activity extends AppCompatActivity {
 
@@ -55,18 +63,23 @@ public class SectionB02Activity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (UpdateDB()) {
-            if (bi.td15b.isChecked()) {
-                finish();
-                startActivity(new Intent(this, ChildListActivity.class));
-            } else {
-                finish();
-                startActivity(new Intent(this, SectionDAActivity.class));
-            }
+        /*if (bi.td15a.isChecked()) {
+//            problemType++;
+            finishActivity(CHILD_MAIN_C);
+//            startActivity(new Intent(this, SectionCActivity.class).putExtra("flag", true));
 
+            startActivityForResult(new Intent(this, SectionCActivity.class).putExtra("flag", true), CHILD_MAIN_C);
         } else {
-            Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
-        }
+
+            finishActivity(CHILD_MAIN_C);
+
+            setResult(RESULT_OK);
+            finish();
+        }*/
+
+        finishActivity(CHILD_MAIN_C);
+        startActivityForResult(new Intent(this, SectionCActivity.class).putExtra("flag", true), CHILD_MAIN_C);
+
     }
 
     public void BtnEnd() {
@@ -94,16 +107,27 @@ public class SectionB02Activity extends AppCompatActivity {
 
     private void SaveDraft() throws JSONException {
 
-        JSONObject SB = new JSONObject();
-        SB.put("td15", bi.td15a.isChecked() ? "1"
-                : bi.td15b.isChecked() ? "2"
-                : "0");
-        //td02a
-//        SB.put("td02a", bi.td02a.getText().toString());
+        Map<Integer, String> extMap = new HashMap<Integer, String>() {
+            {
+                put(10, "FINGERS EXTREMITIES");
+                put(11, "THUMB/HAND EXTREMITIES");
+                put(12, "LOWER ARM EXTREMITIES");
+                put(13, "UPPER ARM EXTREMITIES");
+                put(14, "FOOT EXTREMITIES");
+                put(15, "LOWER LEG EXTREMITIES");
+                put(16, "UPPER LEG EXTREMITIES");
+            }
+        };
 
+        extLst = new ArrayList<>();
 
-//        mc.setdA(String.valueOf(SA));
-
+        for (int i = 0; i < bi.td16sosChk.getChildCount(); i++) {
+            View view = bi.td16sosChk.getChildAt(i);
+            if (view instanceof CheckBox) {
+                if (((CheckBox) view).isChecked())
+                    extLst.add(10 + i);
+            }
+        }
 
     }
 
@@ -115,5 +139,16 @@ public class SectionB02Activity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Toast.makeText(this, "can not go back", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CHILD_MAIN_C) {
+//            if (resultCode == RESULT_OK) {
+                setResult(RESULT_OK);
+                finish();
+//            }
+        }
     }
 }

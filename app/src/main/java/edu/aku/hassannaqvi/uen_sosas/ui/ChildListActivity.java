@@ -3,6 +3,7 @@ package edu.aku.hassannaqvi.uen_sosas.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -67,7 +68,7 @@ public class ChildListActivity extends AppCompatActivity {
 
                 childCount++;
 
-                startActivityForResult(new Intent(ChildListActivity.this, SectionCActivity.class).putExtra(MainApp.motherInfo, item), CHILD_MAIN);
+                startActivityForResult(new Intent(ChildListActivity.this, SectionCActivity.class), CHILD_MAIN);
                 MainApp.childData = item;
 
             });
@@ -86,8 +87,13 @@ public class ChildListActivity extends AppCompatActivity {
                     finish();
                     startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
                 } else
-                    problemType = 0;
+                    problemType = 1;
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, "can not go back", Toast.LENGTH_SHORT).show();
     }
 }

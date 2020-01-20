@@ -86,6 +86,7 @@
                         android:text="@string/td16" />
 
                     <LinearLayout
+                        android:id="@+id/td16sosChk"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"

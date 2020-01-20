@@ -22,8 +22,7 @@ import edu.aku.hassannaqvi.uen_sosas.contracts.FormsContract
 import edu.aku.hassannaqvi.uen_sosas.contracts.VillagesContract
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp
-import edu.aku.hassannaqvi.uen_sosas.core.MainApp.fc
-import edu.aku.hassannaqvi.uen_sosas.core.MainApp.setGPS
+import edu.aku.hassannaqvi.uen_sosas.core.MainApp.*
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivityInfoBinding
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass
 import java.util.*
@@ -160,6 +159,8 @@ class InfoActivity : AppCompatActivity() {
             }
 
         }
+
+        problemType = 1
 
     }
 
