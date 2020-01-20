@@ -143,7 +143,9 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-        MainApp.appInfo = new AppInfo(this, getPackageName());
+        MainApp.appInfo = new AppInfo(this);
+        MainApp.versionCode = MainApp.appInfo.getVersionCode();
+        MainApp.versionName = MainApp.appInfo.getVersionName();
         txtinstalldate.setText(MainApp.appInfo.getAppInfo());
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

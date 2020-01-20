@@ -28,7 +28,7 @@ android {
             applicationId "edu.aku.hassannaqvi.uen_sosas"
             minSdkVersion 21
             targetSdkVersion 29
-//            versionCode code
+            versionCode code
             versionName "1.2"
             testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         }
