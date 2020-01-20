@@ -21,6 +21,7 @@ import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivitySectionDaBinding;
 import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity;
+import edu.aku.hassannaqvi.uen_sosas.utils.DateUtils;
 import edu.aku.hassannaqvi.uen_sosas.validator.ClearClass;
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass;
 
@@ -41,6 +42,8 @@ public class SectionDAActivity extends AppCompatActivity {
     }
 
     private void setListeners() {
+
+        bi.td06dod.setMinDate(DateUtils.getYearsBack("dd/MM/yyyy", -5));
 
         bi.td07.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -186,9 +189,10 @@ public class SectionDAActivity extends AppCompatActivity {
                 : "0");
 
         //td06
-        SD.put("td06dd", bi.td06dd.getText().toString());
+        SD.put("td06dod", bi.td06dod.getText().toString());
+        /*SD.put("td06dd", bi.td06dd.getText().toString());
         SD.put("td06mm", bi.td06mm.getText().toString());
-        SD.put("td06yy", bi.td06yy.getText().toString());
+        SD.put("td06yy", bi.td06yy.getText().toString());*/
 
         //td07
         SD.put("td07", bi.td07a.isChecked() ? "1"
@@ -264,6 +268,21 @@ public class SectionDAActivity extends AppCompatActivity {
     }
 
     private boolean formValidation() {
-        return ValidatorClass.EmptyCheckingContainer(this, bi.ll02);
+        if (!ValidatorClass.EmptyCheckingContainer(this, bi.ll02)) {
+            return false;
+        }
+        if (Integer.parseInt(bi.td04mm.getText().toString()) == 0 && Integer.parseInt(bi.td04yy.getText().toString()) == 0) {
+            bi.td04mm.setError("Both can not be 0 at the same time");
+            bi.td04yy.setError("Both can not be 0 at the same time");
+            bi.td04mm.requestFocus();
+            bi.td04yy.requestFocus();
+            return false;
+        } else if (Integer.parseInt(bi.td04yy.getText().toString()) == 5 && Integer.parseInt(bi.td04mm.getText().toString()) > 0) {
+            bi.td04mm.setError("Month can not greater than 0");
+            bi.td04mm.requestFocus();
+            return false;
+        }
+
+        return true;
     }
 }

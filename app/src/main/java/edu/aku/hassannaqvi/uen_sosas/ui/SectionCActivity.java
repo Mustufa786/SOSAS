@@ -53,22 +53,22 @@ public class SectionCActivity extends AppCompatActivity {
     }
 
     private String getProblemName(int probe) {
-        return probe == 1 ? "EYES"
-                : probe == 2 ? "EARS"
-                : probe == 3 ? "FACE"
-                : probe == 4 ? "NECK"
-                : probe == 5 ? "HEAD"
-                : probe == 6 ? "CHEST"
-                : probe == 7 ? "BACK"
-                : probe == 8 ? "ABDOMEN"
-                : probe == 9 ? "BUTTOCKS/GROIN/GENETALIA"
-                : probe == 10 ? "FINGERS EXTREMITIES"
-                : probe == 11 ? "THUMB/HAND EXTREMITIES"
-                : probe == 12 ? "LOWER ARM EXTREMITIES"
-                : probe == 13 ? "UPPER ARM EXTREMITIES"
-                : probe == 14 ? "FOOT EXTREMITIES"
-                : probe == 15 ? "LOWER LEG EXTREMITIES"
-                : probe == 16 ? "UPPER LEG EXTREMITIES"
+        return probe == 1 ? getString(R.string.eye) + " (EYE)"
+                : probe == 2 ? getString(R.string.ear) + " (EAR)"
+                : probe == 3 ? getString(R.string.face) + " (FACE)"
+                : probe == 4 ? getString(R.string.neck) + " (NECK)"
+                : probe == 5 ? getString(R.string.head) + " (HEAD)"
+                : probe == 6 ? getString(R.string.chest) + " (CHEST)"
+                : probe == 7 ? getString(R.string.back) + " (BACK)"
+                : probe == 8 ? getString(R.string.abdomen) + " (ABDOMEN)"
+                : probe == 9 ? getString(R.string.groin) + " (Groin/Genitalia/Buttocks)"
+                : probe == 10 ? getString(R.string.finger) + " (FINGER)"
+                : probe == 11 ? getString(R.string.thumb) + " (THUMB/HAND)"
+                : probe == 12 ? getString(R.string.lowerarm) + " (LOWER ARM)"
+                : probe == 13 ? getString(R.string.upperarm) + " (UPPER ARM)"
+                : probe == 14 ? getString(R.string.foot) + " (FOOT)"
+                : probe == 15 ? getString(R.string.lowerleg) + " (LOWER LEG)"
+                : probe == 16 ? getString(R.string.upperleg) + " (UPPER LEG)"
                 : "";
     }
 
