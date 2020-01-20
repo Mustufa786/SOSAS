@@ -31,6 +31,7 @@ public class SectionEActivity extends AppCompatActivity {
 
     ActivitySectionEBinding bi;
     public static int problem_counter = 0;
+    private static int problem_type = 0;
 
 
     @Override
@@ -47,27 +48,29 @@ public class SectionEActivity extends AppCompatActivity {
 
     private void setValues() {
 
+        problem_type = MainApp.problemType - 1;
+
         problem_counter++;
 
-        String strHeading = (MainApp.problemType == 1 ? "EYES PROBLEM"
-                : MainApp.problemType == 2 ? "EARS PROBLEM"
-                : MainApp.problemType == 3 ? "FACE PROBLEM"
-                : MainApp.problemType == 4 ? "NECK PROBLEM"
-                : MainApp.problemType == 5 ? "HEAD PROBLEM"
-                : MainApp.problemType == 6 ? "CHEST PROBLEM"
-                : MainApp.problemType == 7 ? "BACK PROBLEM"
-                : MainApp.problemType == 8 ? "ABDOMEN PROBLEM"
-                : MainApp.problemType == 9 ? "BUTTOCKS/GROIN/GENETALIA PROBLEM"
-                : MainApp.problemType == 10 ? "FINGERS EXTREMITIES"
-                : MainApp.problemType == 11 ? "THUMB/HAND EXTREMITIES"
-                : MainApp.problemType == 12 ? "LOWER ARM EXTREMITIES"
-                : MainApp.problemType == 13 ? "UPPER ARM EXTREMITIES"
-                : MainApp.problemType == 14 ? "FOOT EXTREMITIES"
-                : MainApp.problemType == 15 ? "LOWER LEG EXTREMITIES"
+        String strHeading = (problem_type == 1 ? "EYES PROBLEM"
+                : problem_type == 2 ? "EARS PROBLEM"
+                : problem_type == 3 ? "FACE PROBLEM"
+                : problem_type == 4 ? "NECK PROBLEM"
+                : problem_type == 5 ? "HEAD PROBLEM"
+                : problem_type == 6 ? "CHEST PROBLEM"
+                : problem_type == 7 ? "BACK PROBLEM"
+                : problem_type == 8 ? "ABDOMEN PROBLEM"
+                : problem_type == 9 ? "BUTTOCKS/GROIN/GENETALIA PROBLEM"
+                : problem_type == 10 ? "FINGERS EXTREMITIES"
+                : problem_type == 11 ? "THUMB/HAND EXTREMITIES"
+                : problem_type == 12 ? "LOWER ARM EXTREMITIES"
+                : problem_type == 13 ? "UPPER ARM EXTREMITIES"
+                : problem_type == 14 ? "FOOT EXTREMITIES"
+                : problem_type == 15 ? "LOWER LEG EXTREMITIES"
                 : "UPPER LEG EXTREMITIES") + " (" + problem_counter + " out of " + MainApp.problemCount + ")";
         bi.heading.setText(strHeading);
 
-        if (MainApp.problemType == 1) {
+        if (problem_type == 1) {
             bi.te05i.setVisibility(View.GONE);
             bi.te05j.setVisibility(View.GONE);
             bi.te05k.setVisibility(View.GONE);
@@ -75,7 +78,7 @@ public class SectionEActivity extends AppCompatActivity {
             bi.te15cv.setVisibility(View.GONE);
         }
 
-        if (MainApp.problemType == 2) {
+        if (problem_type == 2) {
             bi.te05g.setText(getString(R.string.te05g1));
             bi.te05h.setVisibility(View.GONE);
             bi.te05i.setVisibility(View.GONE);
@@ -85,7 +88,7 @@ public class SectionEActivity extends AppCompatActivity {
             bi.te15cv.setVisibility(View.GONE);
         }
 
-        if (MainApp.problemType == 3) {
+        if (problem_type == 3) {
             bi.te05g.setVisibility(View.GONE);
             bi.te05h.setVisibility(View.GONE);
             bi.te05i.setVisibility(View.GONE);
@@ -95,7 +98,7 @@ public class SectionEActivity extends AppCompatActivity {
             bi.te15cv.setVisibility(View.GONE);
         }
 
-        if (MainApp.problemType == 4) {
+        if (problem_type == 4) {
             bi.te05d.setText(getString(R.string.te05d1));
             bi.te05g.setVisibility(View.GONE);
             bi.te05h.setVisibility(View.GONE);
@@ -106,7 +109,7 @@ public class SectionEActivity extends AppCompatActivity {
             bi.te15cv.setVisibility(View.GONE);
         }
 
-        if (MainApp.problemType == 5) {
+        if (problem_type == 5) {
             bi.te05g.setVisibility(View.GONE);
             bi.te05h.setVisibility(View.GONE);
             bi.te05i.setVisibility(View.GONE);
@@ -116,7 +119,7 @@ public class SectionEActivity extends AppCompatActivity {
             bi.te15cv.setVisibility(View.GONE);
         }
 
-        if (MainApp.problemType == 6) {
+        if (problem_type == 6) {
             bi.te05e.setText(getString(R.string.te05e1));
             bi.te05f.setText(getString(R.string.te05e));
             bi.te05g.setText(getString(R.string.te05f));
@@ -128,7 +131,7 @@ public class SectionEActivity extends AppCompatActivity {
             bi.te15cv.setVisibility(View.GONE);
         }
 
-        if (MainApp.problemType == 7) {
+        if (problem_type == 7) {
             bi.te05g.setVisibility(View.GONE);
             bi.te05h.setVisibility(View.GONE);
             bi.te05i.setVisibility(View.GONE);
@@ -138,7 +141,7 @@ public class SectionEActivity extends AppCompatActivity {
             bi.te15cv.setVisibility(View.GONE);
         }
 
-        if (MainApp.problemType == 8) {
+        if (problem_type == 8) {
             bi.te05d.setText(getString(R.string.te05d2));
             bi.te05e.setText(getString(R.string.te05e2));
             bi.te05f.setText(getString(R.string.te05e));
@@ -147,7 +150,7 @@ public class SectionEActivity extends AppCompatActivity {
             bi.te15cv.setVisibility(View.GONE);
         }
 
-        if (MainApp.problemType == 9) {
+        if (problem_type == 9) {
             bi.te05e.setText(getString(R.string.te05e3));
             bi.te05f.setText(getString(R.string.te05e));
             bi.te05g.setText(getString(R.string.te05f));
@@ -159,7 +162,7 @@ public class SectionEActivity extends AppCompatActivity {
             bi.te15cv.setVisibility(View.GONE);
         }
 
-        if (MainApp.problemType > 9) {
+        if (problem_type > 9) {
             bi.te05g.setText(getString(R.string.te05g2));
             bi.te05h.setVisibility(View.GONE);
             bi.te05i.setVisibility(View.GONE);
@@ -261,7 +264,7 @@ public class SectionEActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("tagName", MODE_PRIVATE);
         pc = new ProblemContract();
         pc.setFormdate(DateFormat.format("dd-MM-yyyy HH:mm", new Date()).toString());
-        pc.setProblemType(String.valueOf(MainApp.problemType));
+        pc.setProblemType(String.valueOf(problem_type));
         pc.setDeviceID(MainApp.deviceId);
         pc.setUser(MainApp.userName);
         pc.setUuid(MainApp.fc.get_UID());

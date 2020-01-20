@@ -133,7 +133,7 @@ public class SectionCActivity extends AppCompatActivity {
         if (childDSC || getIntent().getBooleanExtra("flag", false)) {
             if (extLst != null) {
                 boolean flag = false;
-                for (int i = problemType; i < 16; i++) {
+                for (int i = problemType; i < 17; i++) {
                     int j = -1;
                     for (Integer item : extLst) {
                         j++;
