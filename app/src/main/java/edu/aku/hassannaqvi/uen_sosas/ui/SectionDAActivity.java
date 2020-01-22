@@ -130,7 +130,6 @@ public class SectionDAActivity extends AppCompatActivity {
                     startActivity(new Intent(this, ChildListActivity.class));
                 }
             }
-
         }
     }
 
