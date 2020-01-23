@@ -465,7 +465,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:visibility="@{te11b.checked || te11c.checked || te11d.checked ? View.GONE : View.VISIBLE}">
+                    android:visibility="@{te11b.checked || te11c.checked || te11d.checked || te11e.checked || te11f.checked ? View.GONE : View.VISIBLE}">
 
                     <TextView
                         style="@style/i_textview"

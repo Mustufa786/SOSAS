@@ -220,7 +220,7 @@ public class SectionEActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
 
-                if (bi.te11b.isChecked() || bi.te11c.isChecked() || bi.te11d.isChecked()) {
+                if ( bi.te11b.isChecked() || bi.te11c.isChecked() || bi.te11d.isChecked() || bi.te11e.isChecked() || bi.te11f.isChecked()) {
                     ClearClass.ClearAllFields(bi.te12cv, null);
                 }
             }
