@@ -61,13 +61,13 @@ public class ChildListActivity extends AppCompatActivity {
     private void setupRecyclerView(List<FamilyMembersContract> list) {
         adapter = new ChildListAdapter(this, list, false);
         bi.childlist.setAdapter(adapter);
-        adapter.setItemClicked((item, position, isMother) -> {
+        adapter.setItemClicked((item, position, isMother, holder) -> {
 
             MainApp.openDialog(ChildListActivity.this, item, isMother);
             MainApp.setItemClick(() -> {
 
-                adapter.getHolder().parentLayout.setEnabled(false);
-                adapter.getHolder().parentLayout.setBackgroundColor(getResources().getColor(R.color.gray));
+                holder.parentLayout.setEnabled(false);
+                holder.parentLayout.setBackgroundColor(getResources().getColor(R.color.gray));
 
                 childCount++;
 

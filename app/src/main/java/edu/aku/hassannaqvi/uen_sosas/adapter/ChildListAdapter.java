@@ -57,7 +57,7 @@ public class ChildListAdapter extends RecyclerView.Adapter<ChildListAdapter.View
         holder.bi.index.setText(String.valueOf(i + 1));
         holder.bi.genderImage.setImageResource(isMother ? R.drawable.mother : R.drawable.boy);
         holder.bi.parentLayout.setOnClickListener(v -> {
-                    itemClicked.onItemClick(mList.get(i), i, isMother);
+            itemClicked.onItemClick(mList.get(i), i, isMother, holder.bi);
                 }
         );
 
@@ -75,7 +75,7 @@ public class ChildListAdapter extends RecyclerView.Adapter<ChildListAdapter.View
     }
 
     public interface OnItemClicked {
-        void onItemClick(FamilyMembersContract item, int position, boolean isMother);
+        void onItemClick(FamilyMembersContract item, int position, boolean isMother, ItemChildListBinding holder);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

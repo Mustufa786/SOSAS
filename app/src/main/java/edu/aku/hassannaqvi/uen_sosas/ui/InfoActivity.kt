@@ -147,7 +147,7 @@ class InfoActivity : AppCompatActivity() {
         adapter = ChildListAdapter(this@InfoActivity, motherList, true)
         bi.motherList.layoutManager = LinearLayoutManager(this@InfoActivity)
         bi.motherList.adapter = adapter
-        adapter.setItemClicked { item, position, isMother ->
+        adapter.setItemClicked { item, position, isMother, holder ->
             openDialog(this@InfoActivity, item, isMother)
             itemClick = OnItemClick {
                 saveDraft()
