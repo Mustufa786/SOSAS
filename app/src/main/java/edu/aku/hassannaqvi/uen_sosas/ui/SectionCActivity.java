@@ -17,10 +17,13 @@ import androidx.databinding.DataBindingUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Date;
 
 import edu.aku.hassannaqvi.uen_sosas.R;
 import edu.aku.hassannaqvi.uen_sosas.contracts.ChildContract;
+import edu.aku.hassannaqvi.uen_sosas.contracts.ChildContract.singleChild;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivitySectionCBinding;
@@ -94,13 +97,10 @@ public class SectionCActivity extends AppCompatActivity {
 
     private void setListeners() {
 
-        bi.te03.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
+        bi.te03.setOnCheckedChangeListener((group, checkedId) -> {
 
-                if (bi.te03b.isChecked()) {
-                    ClearClass.ClearAllFields(bi.te04sos, null);
-                }
+            if (bi.te03b.isChecked()) {
+                ClearClass.ClearAllFields(bi.te04sos, null);
             }
         });
 
@@ -168,6 +168,7 @@ public class SectionCActivity extends AppCompatActivity {
         }
     }
 
+
     public void BtnContinue() {
         if (formValidation()) {
             if (bi.te03a.isChecked()) {
@@ -196,6 +197,8 @@ public class SectionCActivity extends AppCompatActivity {
 //                finishActivity(CHILD_MAIN_C);
                 startActivityForResult(new Intent(this, SectionEActivity.class), CHILD_DIS);
             }
+            problemType++;
+
         } else {
             Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
         }
@@ -238,17 +241,64 @@ public class SectionCActivity extends AppCompatActivity {
 
     private boolean UpdateDB() {
         DatabaseHelper db = new DatabaseHelper(this);
-        long updcount = db.addChildForm(cc);
+        long updcount;
+        if (problemType == 1) {
+            updcount = db.addChildForm(cc);
+            cc.set_id(String.valueOf(updcount));
+            if (updcount != 0) {
+                cc.setUid(
+                        (cc.getDeviceID() + cc.get_id()));
+                db.updateChildFormID();
+                return true;
+            } else {
+                Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
 
-        cc.set_id(String.valueOf(updcount));
-        if (updcount != 0) {
-            cc.setUid(
-                    (cc.getDeviceID() + cc.get_id()));
-            db.updateChildFormID();
+            }
+        } else if (problemType == 2) {
+            updcount = db.updateProblem(singleChild.COLUMN_PTYPE_2, cc.getpType2());
             return true;
-        } else {
-            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
-
+        } else if (problemType == 3) {
+            updcount = db.updateProblem(singleChild.COLUMN_PTYPE_3, cc.getpType3());
+            return true;
+        } else if (problemType == 4) {
+            updcount = db.updateProblem(singleChild.COLUMN_PTYPE_4, cc.getpType4());
+            return true;
+        } else if (problemType == 5) {
+            updcount = db.updateProblem(singleChild.COLUMN_PTYPE_5, cc.getpType5());
+            return true;
+        } else if (problemType == 6) {
+            updcount = db.updateProblem(singleChild.COLUMN_PTYPE_6, cc.getpType6());
+            return true;
+        } else if (problemType == 7) {
+            updcount = db.updateProblem(singleChild.COLUMN_PTYPE_7, cc.getpType7());
+            return true;
+        } else if (problemType == 8) {
+            updcount = db.updateProblem(singleChild.COLUMN_PTYPE_8, cc.getpType8());
+            return true;
+        } else if (problemType == 9) {
+            updcount = db.updateProblem(singleChild.COLUMN_PTYPE_9, cc.getpType9());
+            return true;
+        } else if (problemType == 10) {
+            updcount = db.updateProblem(singleChild.COLUMN_PTYPE_10, cc.getpType10());
+            return true;
+        } else if (problemType == 11) {
+            updcount = db.updateProblem(singleChild.COLUMN_PTYPE_11, cc.getpType11());
+            return true;
+        } else if (problemType == 12) {
+            updcount = db.updateProblem(singleChild.COLUMN_PTYPE_12, cc.getpType12());
+            return true;
+        } else if (problemType == 13) {
+            updcount = db.updateProblem(singleChild.COLUMN_PTYPE_13, cc.getpType13());
+            return true;
+        } else if (problemType == 14) {
+            updcount = db.updateProblem(singleChild.COLUMN_PTYPE_14, cc.getpType14());
+            return true;
+        } else if (problemType == 15) {
+            updcount = db.updateProblem(singleChild.COLUMN_PTYPE_15, cc.getpType15());
+            return true;
+        } else if (problemType == 16) {
+            updcount = db.updateProblem(singleChild.COLUMN_PTYPE_16, cc.getpType16());
+            return true;
         }
 
         return false;
@@ -257,35 +307,153 @@ public class SectionCActivity extends AppCompatActivity {
 
     private void SaveDraft() throws JSONException {
         JSONObject SC = new JSONObject();
-        SharedPreferences preferences = getSharedPreferences("tagName", MODE_PRIVATE);
-        cc = new ChildContract();
-        cc.setLuid(MainApp.childData.getUid());
-        cc.setFormdate(DateFormat.format("dd-MM-yyyy HH:mm", new Date()).toString());
-        cc.setMotherId(MainApp.motherData.getSerialno());
-        cc.setSerialNo(MainApp.childData.getSerialno());
-        cc.setDeviceID(MainApp.deviceId);
-        cc.setUser(MainApp.userName);
-        cc.setUuid(MainApp.fc.get_UID());
-        cc.setDevicetagID(preferences.getString("tagName", null));
 
-        //te03
-        SC.put("muid", MainApp.mc.getUid());
-        SC.put("hhno", MainApp.fc.getHhno());
-        SC.put("cluster_code", MainApp.fc.getClusterCode());
-        SC.put("p_type", String.valueOf(MainApp.problemType));
-        String[] p_name = getProblemName(MainApp.problemType).split("\\(");
-        SC.put("p_name", p_name[1].substring(0, p_name[1].length() - 1));
-        SC.put("te03", bi.te03a.isChecked() ? "1"
-                : bi.te03b.isChecked() ? "2"
-                : "0");
+        if (problemType == 1) {
+            SharedPreferences preferences = getSharedPreferences("tagName", MODE_PRIVATE);
+            cc = new ChildContract();
+            cc.setLuid(MainApp.childData.getUid());
+            cc.setFormdate(DateFormat.format("dd-MM-yyyy HH:mm", new Date()).toString());
+            cc.setMotherId(MainApp.motherData.getSerialno());
+            cc.setSerialNo(MainApp.childData.getSerialno());
+            cc.setDeviceID(MainApp.deviceId);
+            cc.setUser(MainApp.userName);
+            cc.setUuid(MainApp.fc.get_UID());
+            cc.setDevicetagID(preferences.getString("tagName", null));
+            //te03
+            SC.put("muid", MainApp.mc.getUid());
+            SC.put("hhno", MainApp.fc.getHhno());
+            SC.put("cluster_code", MainApp.fc.getClusterCode());
 
-        //te04
-        SC.put("te04", bi.te04.getText().toString());
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "03", bi.te03a.isChecked() ? "1"
+                    : bi.te03b.isChecked() ? "2"
+                    : "0");
+            //te04
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "04", bi.te04.getText().toString());
+            cc.setpType1(String.valueOf(SC));
+        } else if (problemType == 2) {
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "03", bi.te03a.isChecked() ? "1"
+                    : bi.te03b.isChecked() ? "2"
+                    : "0");
+            //te04
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "04", bi.te04.getText().toString());
+            cc.setpType2(String.valueOf(SC));
 
-        cc.setdA(String.valueOf(SC));
+        } else if (problemType == 3) {
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "03", bi.te03a.isChecked() ? "1"
+                    : bi.te03b.isChecked() ? "2"
+                    : "0");
+
+            //te04
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "04", bi.te04.getText().toString());
+            cc.setpType3(String.valueOf(SC));
+
+        } else if (problemType == 4) {
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "03", bi.te03a.isChecked() ? "1"
+                    : bi.te03b.isChecked() ? "2"
+                    : "0");
+            //te04
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "04", bi.te04.getText().toString());
+            cc.setpType4(String.valueOf(SC));
+
+        } else if (problemType == 5) {
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "03", bi.te03a.isChecked() ? "1"
+                    : bi.te03b.isChecked() ? "2"
+                    : "0");
+            //te04
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "04", bi.te04.getText().toString());
+            cc.setpType5(String.valueOf(SC));
+
+        } else if (problemType == 6) {
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "03", bi.te03a.isChecked() ? "1"
+                    : bi.te03b.isChecked() ? "2"
+                    : "0");
+            //te04
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "04", bi.te04.getText().toString());
+            cc.setpType6(String.valueOf(SC));
+
+        } else if (problemType == 7) {
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "03", bi.te03a.isChecked() ? "1"
+                    : bi.te03b.isChecked() ? "2"
+                    : "0");
+            //te04
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "04", bi.te04.getText().toString());
+            cc.setpType7(String.valueOf(SC));
+
+        } else if (problemType == 8) {
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "03", bi.te03a.isChecked() ? "1"
+                    : bi.te03b.isChecked() ? "2"
+                    : "0");
+            //te04
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "04", bi.te04.getText().toString());
+            cc.setpType8(String.valueOf(SC));
+
+        } else if (problemType == 9) {
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "03", bi.te03a.isChecked() ? "1"
+                    : bi.te03b.isChecked() ? "2"
+                    : "0");
+            //te04
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "04", bi.te04.getText().toString());
+            cc.setpType9(String.valueOf(SC));
+
+        } else if (problemType == 10) {
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "03", bi.te03a.isChecked() ? "1"
+                    : bi.te03b.isChecked() ? "2"
+                    : "0");
+            //te04
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "04", bi.te04.getText().toString());
+            cc.setpType10(String.valueOf(SC));
+
+        } else if (problemType == 11) {
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "03", bi.te03a.isChecked() ? "1"
+                    : bi.te03b.isChecked() ? "2"
+                    : "0");
+            //te04
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "04", bi.te04.getText().toString());
+            cc.setpType11(String.valueOf(SC));
+
+        } else if (problemType == 12) {
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "03", bi.te03a.isChecked() ? "1"
+                    : bi.te03b.isChecked() ? "2"
+                    : "0");
+            //te04
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "04", bi.te04.getText().toString());
+            cc.setpType12(String.valueOf(SC));
 
 
-        MainApp.problemType++;
+        } else if (problemType == 13) {
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "03", bi.te03a.isChecked() ? "1"
+                    : bi.te03b.isChecked() ? "2"
+                    : "0");
+            //te04
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "04", bi.te04.getText().toString());
+            cc.setpType13(String.valueOf(SC));
+
+        } else if (problemType == 14) {
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "03", bi.te03a.isChecked() ? "1"
+                    : bi.te03b.isChecked() ? "2"
+                    : "0");
+            //te04
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "04", bi.te04.getText().toString());
+            cc.setpType14(String.valueOf(SC));
+
+        } else if (problemType == 15) {
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "03", bi.te03a.isChecked() ? "1"
+                    : bi.te03b.isChecked() ? "2"
+                    : "0");
+            //te04
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "04", bi.te04.getText().toString());
+            cc.setpType15(String.valueOf(SC));
+
+        } else if (problemType == 16) {
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "03", bi.te03a.isChecked() ? "1"
+                    : bi.te03b.isChecked() ? "2"
+                    : "0");
+            //te04
+            SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "04", bi.te04.getText().toString());
+            cc.setpType16(String.valueOf(SC));
+
+        }
+
 
     }
 

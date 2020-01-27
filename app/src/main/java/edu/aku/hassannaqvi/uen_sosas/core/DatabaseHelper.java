@@ -170,7 +170,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + singleChild.COLUMN_UUID + " TEXT,"
             + singleChild.COLUMN_MOTHER_ID + " TEXT,"
             + singleChild.COLUMN_SERIAL_NO + " TEXT,"
-            + singleChild.COLUMN_DA + " TEXT,"
+//            + singleChild.COLUMN_DA + " TEXT,"
+            + singleChild.COLUMN_PTYPE_1 + " TEXT,"
+            + singleChild.COLUMN_PTYPE_2 + " TEXT,"
+            + singleChild.COLUMN_PTYPE_3 + " TEXT,"
+            + singleChild.COLUMN_PTYPE_4 + " TEXT,"
+            + singleChild.COLUMN_PTYPE_5 + " TEXT,"
+            + singleChild.COLUMN_PTYPE_6 + " TEXT,"
+            + singleChild.COLUMN_PTYPE_7 + " TEXT,"
+            + singleChild.COLUMN_PTYPE_8 + " TEXT,"
+            + singleChild.COLUMN_PTYPE_9 + " TEXT,"
+            + singleChild.COLUMN_PTYPE_10 + " TEXT,"
+            + singleChild.COLUMN_PTYPE_11 + " TEXT,"
+            + singleChild.COLUMN_PTYPE_12 + " TEXT,"
+            + singleChild.COLUMN_PTYPE_13 + " TEXT,"
+            + singleChild.COLUMN_PTYPE_14 + " TEXT,"
+            + singleChild.COLUMN_PTYPE_15 + " TEXT,"
+            + singleChild.COLUMN_PTYPE_16 + " TEXT,"
             + singleChild.COLUMN_FORMDATE + " TEXT,"
             + singleChild.COLUMN_USER + " TEXT,"
             + singleChild.COLUMN_DEVICEID + " TEXT,"
@@ -1026,10 +1042,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
         values.put(singleChild.COLUMN_luid, fc.getLuid());
-        values.put(singleChild.COLUMN_DA, fc.getdA());
+//        values.put(singleChild.COLUMN_DA, fc.getdA());
         values.put(singleChild.COLUMN_FORMDATE, fc.getFormdate());
         values.put(singleChild.COLUMN_MOTHER_ID, fc.getMotherId());
         values.put(singleChild.COLUMN_SERIAL_NO, fc.getSerialNo());
+        values.put(singleChild.COLUMN_PTYPE_1, fc.getpType1());
         values.put(singleChild.COLUMN_USER, fc.getUser());
         values.put(singleChild.COLUMN_DEVICEID, fc.getDeviceID());
         values.put(singleChild.COLUMN_DEVICETAGID, fc.getDevicetagID());
@@ -1585,13 +1602,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 singleChild.COLUMN_luid,
                 singleChild.COLUMN_SERIAL_NO,
                 singleChild.COLUMN_MOTHER_ID,
-                singleChild.COLUMN_DA,
+//                singleChild.COLUMN_DA,
                 singleChild.COLUMN_FORMDATE,
                 singleChild.COLUMN_SYNCED,
                 singleChild.COLUMN_SYNCED_DATE,
                 singleChild.COLUMN_USER,
                 singleChild.COLUMN_DEVICEID,
                 singleChild.COLUMN_DEVICETAGID,
+                singleChild.COLUMN_PTYPE_1,
+                singleChild.COLUMN_PTYPE_2,
+                singleChild.COLUMN_PTYPE_3,
+                singleChild.COLUMN_PTYPE_4,
+                singleChild.COLUMN_PTYPE_5,
+                singleChild.COLUMN_PTYPE_6,
+                singleChild.COLUMN_PTYPE_7,
+                singleChild.COLUMN_PTYPE_8,
+                singleChild.COLUMN_PTYPE_9,
+                singleChild.COLUMN_PTYPE_10,
+                singleChild.COLUMN_PTYPE_11,
+                singleChild.COLUMN_PTYPE_12,
+                singleChild.COLUMN_PTYPE_13,
+                singleChild.COLUMN_PTYPE_14,
+                singleChild.COLUMN_PTYPE_15,
+                singleChild.COLUMN_PTYPE_16,
+
 
         };
 
@@ -2026,18 +2060,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allDC;
     }
 
-    public int updatesSA() {
+    public int updateProblem(String column, String value) {
         SQLiteDatabase db = this.getReadableDatabase();
 
 // New value for one column
         ContentValues values = new ContentValues();
-        values.put(FormsTable.COLUMN_SA, MainApp.fc.getsA());
+        values.put(column, value);
 
 // Which row to update, based on the ID
-        String selection = FormsTable._ID + " =? ";
-        String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};
+        String selection = singleChild._ID + " =? ";
+        String[] selectionArgs = {String.valueOf(MainApp.cc.get_id())};
 
-        int count = db.update(FormsTable.TABLE_NAME,
+        int count = db.update(singleChild.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);
