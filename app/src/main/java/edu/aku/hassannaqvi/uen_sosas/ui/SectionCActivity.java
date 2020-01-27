@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -272,8 +273,8 @@ public class SectionCActivity extends AppCompatActivity {
         SC.put("hhno", MainApp.fc.getHhno());
         SC.put("cluster_code", MainApp.fc.getClusterCode());
         SC.put("p_type", String.valueOf(MainApp.problemType));
-        SC.put("p_name", getProblemName(MainApp.problemType));
-
+        String[] p_name = getProblemName(MainApp.problemType).split("\\(");
+        SC.put("p_name", p_name[1].substring(0, p_name[1].length() - 1));
         SC.put("te03", bi.te03a.isChecked() ? "1"
                 : bi.te03b.isChecked() ? "2"
                 : "0");
