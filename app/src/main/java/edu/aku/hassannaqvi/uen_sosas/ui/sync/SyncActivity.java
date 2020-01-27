@@ -34,6 +34,7 @@ import edu.aku.hassannaqvi.uen_sosas.adapter.UploadListAdapter;
 import edu.aku.hassannaqvi.uen_sosas.contracts.ChildContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.DeceasedChildContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.FormsContract;
+import edu.aku.hassannaqvi.uen_sosas.contracts.MotherContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.ProblemContract;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
@@ -225,6 +226,21 @@ public class SyncActivity extends AppCompatActivity {
                     MainApp._HOST_URL + MainApp._SERVER_URL,
                     DeceasedChildContract.singleDeceasedChild.TABLE_NAME,
                     db.getUnsyncedDeceasedChildForms(), 3, uploadListAdapter, uploadlist
+            ).execute();
+
+            if (uploadlistActivityCreated) {
+                uploadmodel = new SyncModel();
+                uploadmodel.setstatusID(0);
+                uploadlist.add(uploadmodel);
+            }
+            new SyncAllData(
+                    this,
+                    "Mother",
+                    "updateSyncedMotherForm",
+                    MotherContract.class,
+                    MainApp._HOST_URL + MainApp._SERVER_URL,
+                    MotherContract.singleMother.TABLE_NAME,
+                    db.getUnsyncedMotherForms(), 4, uploadListAdapter, uploadlist
             ).execute();
 
             bi.noDataItem.setVisibility(View.GONE);

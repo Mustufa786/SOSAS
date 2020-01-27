@@ -180,7 +180,7 @@ public class SectionDAActivity extends AppCompatActivity {
 
         //td04
         SD.put("td04mm", bi.td04mm.getText().toString());
-        SD.put("td0yy", bi.td04yy.getText().toString());
+        SD.put("td04yy", bi.td04yy.getText().toString());
 
         //td05
         SD.put("td05", bi.td05a.isChecked() ? "1"
