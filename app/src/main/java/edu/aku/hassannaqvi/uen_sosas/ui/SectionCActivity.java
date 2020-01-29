@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
-import android.util.Log;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -17,8 +15,6 @@ import androidx.databinding.DataBindingUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.Date;
 
 import edu.aku.hassannaqvi.uen_sosas.R;
@@ -47,6 +43,8 @@ public class SectionCActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_c);
         bi.setCallback(this);
+
+        problemType++;
 
         bi.headingTitle.setText(getProblemName(MainApp.problemType));
 
@@ -142,6 +140,7 @@ public class SectionCActivity extends AppCompatActivity {
                             extLst.remove(j);
                             bi.te03.clearCheck();
                             flag = true;
+                            problemType--;
                             break;
                         }
                     }
@@ -151,6 +150,7 @@ public class SectionCActivity extends AppCompatActivity {
                         try {
                             SaveDraft();
                             UpdateDB();
+                            problemType++;
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -186,18 +186,16 @@ public class SectionCActivity extends AppCompatActivity {
         }
         if (UpdateDB()) {
             if (bi.te03b.isChecked()) {
-                if (MainApp.problemType <= 9) {
+                if (MainApp.problemType < 9) {
                     finishActivity(CHILD_MAIN_C);
                     startActivityForResult(new Intent(this, SectionCActivity.class), CHILD_MAIN_C);
-                } else if (MainApp.problemType == 10) {
+                } else if (MainApp.problemType == 9) {
                     finishActivity(CHILD_MAIN_C);
                     startActivityForResult(new Intent(this, SectionB02Activity.class), CHILD_MAIN_C);
                 } else problemConditions(true);
             } else {
-//                finishActivity(CHILD_MAIN_C);
                 startActivityForResult(new Intent(this, SectionEActivity.class), CHILD_DIS);
             }
-            problemType++;
 
         } else {
             Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -210,22 +208,21 @@ public class SectionCActivity extends AppCompatActivity {
         if (requestCode == CHILD_DIS) {
             if (resultCode == RESULT_OK) {
                 if (MainApp.problemCount != SectionEActivity.problem_counter) {
-//                    finishActivity(CHILD_DIS);
                     startActivityForResult(new Intent(this, SectionEActivity.class), CHILD_DIS);
-                } else if (MainApp.problemType <= 9) {
+                } else if (MainApp.problemType < 9) {
                     finishActivity(CHILD_MAIN_C);
                     startActivityForResult(new Intent(this, SectionCActivity.class), CHILD_MAIN_C);
-                } else if (MainApp.problemType == 10) {
+                } else if (MainApp.problemType == 9) {
                     finishActivity(CHILD_MAIN_C);
                     startActivityForResult(new Intent(this, SectionB02Activity.class), CHILD_MAIN_C);
                 } else problemConditions(true);
             }
         } else if (requestCode == CHILD_MAIN_C) {
             if (resultCode == RESULT_OK) {
-                if (MainApp.problemType <= 9) {
+                if (MainApp.problemType < 9) {
                     finishActivity(CHILD_MAIN_C);
                     startActivityForResult(new Intent(this, SectionCActivity.class), CHILD_MAIN_C);
-                } else if (MainApp.problemType == 10) {
+                } else if (MainApp.problemType == 9) {
                     finishActivity(CHILD_MAIN_C);
                     startActivityForResult(new Intent(this, SectionB02Activity.class), CHILD_MAIN_C);
                 } else problemConditions(true);
@@ -234,14 +231,13 @@ public class SectionCActivity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-//        finish();
         startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false)
                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
     }
 
     private boolean UpdateDB() {
         DatabaseHelper db = new DatabaseHelper(this);
-        long updcount;
+        long updcount = 0;
         if (problemType == 1) {
             updcount = db.addChildForm(cc);
             cc.set_id(String.valueOf(updcount));
@@ -252,57 +248,62 @@ public class SectionCActivity extends AppCompatActivity {
                 return true;
             } else {
                 Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
-
+                return false;
             }
         } else if (problemType == 2) {
             updcount = db.updateProblem(singleChild.COLUMN_PTYPE_2, cc.getpType2());
-            return true;
+
         } else if (problemType == 3) {
             updcount = db.updateProblem(singleChild.COLUMN_PTYPE_3, cc.getpType3());
-            return true;
+
         } else if (problemType == 4) {
             updcount = db.updateProblem(singleChild.COLUMN_PTYPE_4, cc.getpType4());
-            return true;
+
         } else if (problemType == 5) {
             updcount = db.updateProblem(singleChild.COLUMN_PTYPE_5, cc.getpType5());
-            return true;
+
         } else if (problemType == 6) {
             updcount = db.updateProblem(singleChild.COLUMN_PTYPE_6, cc.getpType6());
-            return true;
+
         } else if (problemType == 7) {
             updcount = db.updateProblem(singleChild.COLUMN_PTYPE_7, cc.getpType7());
-            return true;
+
         } else if (problemType == 8) {
             updcount = db.updateProblem(singleChild.COLUMN_PTYPE_8, cc.getpType8());
-            return true;
+
         } else if (problemType == 9) {
             updcount = db.updateProblem(singleChild.COLUMN_PTYPE_9, cc.getpType9());
-            return true;
+
         } else if (problemType == 10) {
             updcount = db.updateProblem(singleChild.COLUMN_PTYPE_10, cc.getpType10());
-            return true;
+
         } else if (problemType == 11) {
             updcount = db.updateProblem(singleChild.COLUMN_PTYPE_11, cc.getpType11());
-            return true;
+
         } else if (problemType == 12) {
             updcount = db.updateProblem(singleChild.COLUMN_PTYPE_12, cc.getpType12());
-            return true;
+
         } else if (problemType == 13) {
             updcount = db.updateProblem(singleChild.COLUMN_PTYPE_13, cc.getpType13());
-            return true;
+
         } else if (problemType == 14) {
             updcount = db.updateProblem(singleChild.COLUMN_PTYPE_14, cc.getpType14());
-            return true;
+
         } else if (problemType == 15) {
             updcount = db.updateProblem(singleChild.COLUMN_PTYPE_15, cc.getpType15());
-            return true;
+
         } else if (problemType == 16) {
             updcount = db.updateProblem(singleChild.COLUMN_PTYPE_16, cc.getpType16());
+
+        }
+
+        if (updcount == 1) {
             return true;
+        } else {
+            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
         }
 
         return false;
-
     }
 
     private void SaveDraft() throws JSONException {

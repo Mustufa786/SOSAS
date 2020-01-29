@@ -48,7 +48,7 @@ public class SectionEActivity extends AppCompatActivity {
 
     private void setValues() {
 
-        problem_type = MainApp.problemType - 1;
+        problem_type = MainApp.problemType;
 
         problem_counter++;
 

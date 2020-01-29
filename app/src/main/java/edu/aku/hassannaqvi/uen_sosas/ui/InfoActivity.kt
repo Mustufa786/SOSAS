@@ -160,7 +160,7 @@ class InfoActivity : AppCompatActivity() {
 
         }
 
-        problemType = 1
+        problemType = 0
 
     }
 
