@@ -161,6 +161,7 @@ public class SectionCActivity extends AppCompatActivity {
                     finishActivity(CHILD_MAIN_C);
                     startActivityForResult(new Intent(this, SectionCActivity.class), CHILD_MAIN_C);
                 } else {
+//                    finishActivity(CHILD_MAIN_C);
                     setResult(RESULT_OK);
                     finish();
                 }

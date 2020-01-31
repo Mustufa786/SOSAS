@@ -1,9 +1,9 @@
 package edu.aku.hassannaqvi.uen_sosas.ui
 
+//import android.support.v4.content.ContextCompat.startActivity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-//import android.support.v4.content.ContextCompat.startActivity
 import android.text.Editable
 import android.text.TextWatcher
 import android.text.format.DateFormat
@@ -24,6 +24,7 @@ import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp.*
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivityInfoBinding
+import edu.aku.hassannaqvi.uen_sosas.ui.other.MainActivity
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass
 import java.util.*
 import kotlin.collections.ArrayList
@@ -37,19 +38,27 @@ class InfoActivity : AppCompatActivity() {
     var villageCode: String? = null
     var areaCode: String? = null
     var hhNo: String? = null
-    lateinit var adapter: ChildListAdapter
+    var adapter: ChildListAdapter? = null
     lateinit var villageList: Collection<VillagesContract>
     lateinit var villageNames: ArrayList<String>
     lateinit var villageMap: HashMap<String, String>
     lateinit var motherList: List<FamilyMembersContract>
+//    lateinit var womenList: List<Int>
 
+    companion object {
+        lateinit var womenList: MutableList<Pair<Int, Boolean>>
+
+        fun checkingWomenExist(serial: Int): Boolean {
+            val item = womenList.find { it.first == serial }
+            return item?.second ?: false
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         bi = DataBindingUtil.setContentView(this, R.layout.activity_info)
         bi.callback = this
-
         db = DatabaseHelper(this)
 
         setupViews()
@@ -58,6 +67,7 @@ class InfoActivity : AppCompatActivity() {
     private fun setupViews() {
 
         motherList = ArrayList()
+        womenList = ArrayList()
         val list: Collection<AreasContract> = db.getAllAreas(MainApp.ucCode)
         var areaNames = ArrayList<String>()
         areaNames.add("-Select Area-")
@@ -147,35 +157,33 @@ class InfoActivity : AppCompatActivity() {
         adapter = ChildListAdapter(this@InfoActivity, motherList, true)
         bi.motherList.layoutManager = LinearLayoutManager(this@InfoActivity)
         bi.motherList.adapter = adapter
-        adapter.setItemClicked { item, position, isMother, holder ->
+        adapter?.setItemClicked { item, position, isMother, holder ->
             openDialog(this@InfoActivity, item, isMother)
             itemClick = OnItemClick {
                 saveDraft()
                 if (updateDB()) {
-                    finish()
-                    startActivity(Intent(this@InfoActivity, if (isMother) SectionBActivity::class.java
-                    else SectionCActivity::class.java).putExtra(motherInfo, item))
+
+                    womenList.add(Pair(item.serialno.toInt(), true))
+
+                    startActivity(Intent(this@InfoActivity, SectionBActivity::class.java).putExtra(motherInfo, item))
                 }
             }
 
         }
-
-        problemType = 0
-
     }
 
     private fun saveDraft() {
         fc = FormsContract()
         val pref = getSharedPreferences("tagName", Context.MODE_PRIVATE)
         fc.devicetagID = pref.getString("tagName", null)
-        fc.deviceID = MainApp.deviceId
+        fc.deviceID = deviceId
         fc.formDate = DateFormat.format("dd-MM-yyyy HH:mm", Date()).toString()
-        fc.user = MainApp.userName
-        fc.talukdaCode = MainApp.talukaCode.toString()
-        fc.uc = MainApp.ucCode.toString()
+        fc.user = userName
+        fc.talukdaCode = talukaCode.toString()
+        fc.uc = ucCode.toString()
         fc.areaCode = areaCode
         fc.village = villageCode
-        fc.appversion = MainApp.appInfo.appInfo + "." + MainApp.versionCode
+        fc.appversion = appInfo.appInfo + "." + versionCode
         fc.clusterCode = bi.clusterNumber.text.toString()
         fc.hhno = bi.hhName.text.toString()
         setGPS(this)
@@ -185,7 +193,6 @@ class InfoActivity : AppCompatActivity() {
     private fun formValidation(): Boolean {
         return ValidatorClass.EmptyCheckingContainer(this, bi.checkLayout1)
     }
-
 
     private fun updateDB(): Boolean {
         val rowId: Long
@@ -199,8 +206,24 @@ class InfoActivity : AppCompatActivity() {
         } else {
             false
         }
-
     }
 
+    override fun onResume() {
+        super.onResume()
 
+        if (adapter == null) return
+
+
+        if (womenList.size == motherList.size) {
+            finish()
+            startActivity(Intent(this, MainActivity::class.java))
+            return
+        }
+
+        bi.checkLayout1.visibility = View.GONE
+        bi.checkLayout2.visibility = View.GONE
+
+        adapter?.notifyDataSetChanged()
+
+    }
 }

@@ -15,6 +15,7 @@ import edu.aku.hassannaqvi.uen_sosas.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.FormsContract;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.databinding.ItemChildListBinding;
+import edu.aku.hassannaqvi.uen_sosas.ui.InfoActivity;
 
 public class ChildListAdapter extends RecyclerView.Adapter<ChildListAdapter.ViewHolder> {
 
@@ -62,6 +63,14 @@ public class ChildListAdapter extends RecyclerView.Adapter<ChildListAdapter.View
         );
 
         viewHolder = holder.bi;
+
+        if (isMother) {
+            if (InfoActivity.womenList.size() == 0) return;
+            if (InfoActivity.Companion.checkingWomenExist(Integer.valueOf(mList.get(i).getSerialno()))) {
+                holder.bi.parentLayout.setEnabled(false);
+                holder.bi.parentLayout.setBackgroundColor(mContext.getResources().getColor(R.color.gray));
+            }
+        }
 
     }
 
