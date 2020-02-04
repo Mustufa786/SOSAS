@@ -22,6 +22,9 @@ public class ProblemContract {
     private String devicetagID = "";
 
 
+    private String muid = "";
+
+
     public ProblemContract hydrate(Cursor cursor) {
         this.cuid = cursor.getString(cursor.getColumnIndex(singleProblem.COLUMN_CUID));
         this.uid = cursor.getString(cursor.getColumnIndex(singleProblem.COLUMN_UID));
@@ -35,6 +38,7 @@ public class ProblemContract {
         this.deviceID = cursor.getString(cursor.getColumnIndex(singleProblem.COLUMN_DEVICEID));
         this.devicetagID = cursor.getString(cursor.getColumnIndex(singleProblem.COLUMN_DEVICETAGID));
         this.uuid = cursor.getString(cursor.getColumnIndex(singleProblem.COLUMN_UUID));
+        this.muid = cursor.getString(cursor.getColumnIndex(singleProblem.COLUMN_MUID));
 
         return this;
     }
@@ -58,11 +62,19 @@ public class ProblemContract {
         json.put(singleProblem.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
         json.put(singleProblem.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
         json.put(singleProblem.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
+        json.put(singleProblem.COLUMN_MUID, this.muid == null ? JSONObject.NULL : this.muid);
 
 
         return json;
     }
 
+    public String getMuid() {
+        return muid;
+    }
+
+    public void setMuid(String muid) {
+        this.muid = muid;
+    }
     public String getUuid() {
         return uuid;
     }
@@ -166,6 +178,7 @@ public class ProblemContract {
         public static final String _ID = "_id";
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_UUID = "_uuid";
+        public static final String COLUMN_MUID = "muid";
         public static final String COLUMN_CUID = "cuid";
         public static final String COLUMN_PROBLEM_TYPE = "p_type";
         public static final String COLUMN_DA = "sA";

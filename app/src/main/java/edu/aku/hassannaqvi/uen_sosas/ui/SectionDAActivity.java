@@ -163,7 +163,7 @@ public class SectionDAActivity extends AppCompatActivity {
 
         dcc = new DeceasedChildContract();
         dcc.setLuid(MainApp.motherData.getUid());
-        dcc.setFormdate(DateFormat.format("dd-MM-yyyy HH:mm", new Date()).toString());
+        dcc.setFormdate(MainApp.fc.getFormDate());
         dcc.setMotherId(MainApp.motherData.getSerialno());
         dcc.setSerialNo(String.valueOf(MainApp.childCount));
         dcc.setDeviceID(MainApp.deviceId);

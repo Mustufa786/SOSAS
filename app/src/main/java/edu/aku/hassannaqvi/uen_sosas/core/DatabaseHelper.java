@@ -159,6 +159,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + singleChild.COLUMN_UUID + " TEXT,"
             + singleChild.COLUMN_MOTHER_ID + " TEXT,"
             + singleChild.COLUMN_SERIAL_NO + " TEXT,"
+            + singleChild.COLUMN_MUID + " TEXT,"
 //            + singleChild.COLUMN_DA + " TEXT,"
             + singleChild.COLUMN_PTYPE_1 + " TEXT,"
             + singleChild.COLUMN_PTYPE_2 + " TEXT,"
@@ -203,6 +204,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + singleProblem.COLUMN_UID + " TEXT,"
             + singleProblem.COLUMN_UUID + " TEXT,"
             + singleProblem.COLUMN_CUID + " TEXT,"
+            + singleProblem.COLUMN_MUID + " TEXT,"
             + singleProblem.COLUMN_PROBLEM_TYPE + " TEXT,"
             + singleProblem.COLUMN_DA + " TEXT,"
             + singleProblem.COLUMN_FORMDATE + " TEXT,"
@@ -494,7 +496,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return allDC;
     }
-
 
 
     public Collection<UCsContract> getAllUCs(String talukaCode) {
@@ -908,6 +909,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //        values.put(singleChild.COLUMN_DA, fc.getdA());
         values.put(singleChild.COLUMN_FORMDATE, fc.getFormdate());
         values.put(singleChild.COLUMN_MOTHER_ID, fc.getMotherId());
+        values.put(singleChild.COLUMN_MUID, fc.getMuid());
         values.put(singleChild.COLUMN_SERIAL_NO, fc.getSerialNo());
         values.put(singleChild.COLUMN_PTYPE_1, fc.getpType1());
         values.put(singleChild.COLUMN_USER, fc.getUser());
@@ -957,13 +959,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(singleProblem.COLUMN_UUID, fc.getUuid());
         values.put(singleProblem.COLUMN_CUID, fc.getCuid());
+        values.put(singleProblem.COLUMN_MUID, fc.getMuid());
         values.put(singleProblem.COLUMN_FORMDATE, fc.getFormdate());
         values.put(singleProblem.COLUMN_DA, fc.getdA());
         values.put(singleProblem.COLUMN_PROBLEM_TYPE, fc.getProblemType());
         values.put(singleProblem.COLUMN_USER, fc.getUser());
         values.put(singleProblem.COLUMN_DEVICEID, fc.getDeviceID());
         values.put(singleProblem.COLUMN_DEVICETAGID, fc.getDevicetagID());
-        values.put(singleProblem.COLUMN_UUID, fc.getUuid());
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
         newRowId = db.insert(
@@ -1465,6 +1467,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 singleChild.COLUMN_luid,
                 singleChild.COLUMN_SERIAL_NO,
                 singleChild.COLUMN_MOTHER_ID,
+                singleChild.COLUMN_MUID,
 //                singleChild.COLUMN_DA,
                 singleChild.COLUMN_FORMDATE,
                 singleChild.COLUMN_SYNCED,
@@ -1537,6 +1540,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 singleProblem.COLUMN_UID,
                 singleProblem.COLUMN_UUID,
                 singleProblem.COLUMN_CUID,
+                singleProblem.COLUMN_MUID,
                 singleProblem.COLUMN_PROBLEM_TYPE,
                 singleProblem.COLUMN_SYNCED,
                 singleProblem.COLUMN_SYNCED_DATE,

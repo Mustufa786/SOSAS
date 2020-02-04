@@ -314,11 +314,12 @@ public class SectionCActivity extends AppCompatActivity {
             SharedPreferences preferences = getSharedPreferences("tagName", MODE_PRIVATE);
             cc = new ChildContract();
             cc.setLuid(MainApp.childData.getUid());
-            cc.setFormdate(DateFormat.format("dd-MM-yyyy HH:mm", new Date()).toString());
+            cc.setFormdate(MainApp.fc.getFormDate());
             cc.setMotherId(MainApp.motherData.getSerialno());
             cc.setSerialNo(MainApp.childData.getSerialno());
             cc.setDeviceID(MainApp.deviceId);
             cc.setUser(MainApp.userName);
+            cc.setMuid(MainApp.mc.getUid());
             cc.setUuid(MainApp.fc.get_UID());
             cc.setDevicetagID(preferences.getString("tagName", null));
             //te03

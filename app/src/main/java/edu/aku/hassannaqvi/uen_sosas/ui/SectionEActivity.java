@@ -25,6 +25,7 @@ import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.uen_sosas.validator.ClearClass;
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass;
 
+import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.dcc;
 import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.pc;
 
 public class SectionEActivity extends AppCompatActivity {
@@ -279,10 +280,11 @@ public class SectionEActivity extends AppCompatActivity {
         JSONObject SE = new JSONObject();
         SharedPreferences preferences = getSharedPreferences("tagName", MODE_PRIVATE);
         pc = new ProblemContract();
-        pc.setFormdate(DateFormat.format("dd-MM-yyyy HH:mm", new Date()).toString());
+        pc.setFormdate(MainApp.fc.getFormDate());
         pc.setProblemType(String.valueOf(problem_type));
         pc.setDeviceID(MainApp.deviceId);
         pc.setUser(MainApp.userName);
+        pc.setMuid(MainApp.mc.getUid());
         pc.setUuid(MainApp.fc.get_UID());
         pc.setCuid(MainApp.cc.getUid());
         pc.setDevicetagID(preferences.getString("tagName", null));
