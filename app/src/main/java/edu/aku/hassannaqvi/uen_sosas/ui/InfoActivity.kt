@@ -160,13 +160,15 @@ class InfoActivity : AppCompatActivity() {
         adapter?.setItemClicked { item, position, isMother, holder ->
             openDialog(this@InfoActivity, item, isMother)
             itemClick = OnItemClick {
-                saveDraft()
-                if (updateDB()) {
-
-                    womenList.add(Pair(item.serialno.toInt(), true))
-
-                    startActivity(Intent(this@InfoActivity, SectionBActivity::class.java).putExtra(motherInfo, item))
+                if (adapter == null) {
+                    saveDraft()
+                    if (!updateDB()) {
+                        return@OnItemClick
+                    }
                 }
+                womenList.add(Pair(item.serialno.toInt(), true))
+
+                startActivity(Intent(this@InfoActivity, SectionBActivity::class.java).putExtra(motherInfo, item))
             }
 
         }
