@@ -310,8 +310,8 @@ public class SectionCActivity extends AppCompatActivity {
         if (problemType == 1) {
             SharedPreferences preferences = getSharedPreferences("tagName", MODE_PRIVATE);
             cc = new ChildContract();
-            cc.setLuid(MainApp.childData.getUid());
-            cc.setFmuid(MainApp.childData.getUuid());
+            cc.setLuid(MainApp.childData.getUuid());
+            cc.setFmuid(MainApp.childData.getUid());
             cc.setFormdate(MainApp.fc.getFormDate());
             cc.setMotherId(MainApp.motherData.getSerialno());
             cc.setSerialNo(MainApp.childData.getSerialno());

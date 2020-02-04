@@ -127,8 +127,8 @@ public class SectionBActivity extends AppCompatActivity {
         JSONObject SA = new JSONObject();
 
         SharedPreferences preferences = getSharedPreferences("tagName", MODE_PRIVATE);
-        mc.setLuid(MainApp.motherData.getUid());
-        mc.setFmuid(MainApp.motherData.getUuid());
+        mc.setLuid(MainApp.motherData.getUuid());
+        mc.setFmuid(MainApp.motherData.getUid());
         mc.setFormdate(MainApp.fc.getFormDate());
 //        mc.setMotherId(MainApp.motherData.getSerialno());
         mc.setSerialNo(MainApp.motherData.getSerialno());
