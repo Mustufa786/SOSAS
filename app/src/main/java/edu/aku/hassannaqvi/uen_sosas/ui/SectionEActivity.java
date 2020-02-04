@@ -25,6 +25,7 @@ import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.uen_sosas.validator.ClearClass;
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass;
 
+import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.dcc;
 import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.pc;
 
 public class SectionEActivity extends AppCompatActivity {
@@ -196,33 +197,28 @@ public class SectionEActivity extends AppCompatActivity {
 
     private void setListeners() {
 
-        bi.te06.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
+        bi.te06.setOnCheckedChangeListener((group, checkedId) -> {
 
-                if (bi.te06b.isChecked()) {
-                    ClearClass.ClearAllFields(bi.te07cv, null);
-                }
+            if (bi.te06b.isChecked()) {
+                ClearClass.ClearAllFields(bi.te07cv, null);
             }
         });
 
-        bi.te09.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
+        bi.te09.setOnCheckedChangeListener((group, checkedId) -> {
 
-                if (bi.te09b.isChecked()) {
-                    ClearClass.ClearAllFields(bi.llsos04, null);
-                }
+            if (bi.te09b.isChecked()) {
+                ClearClass.ClearAllFields(bi.llsos04, null);
             }
         });
 
-        bi.te11.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
+        bi.te11.setOnCheckedChangeListener((group, checkedId) -> {
 
-                if ( bi.te11b.isChecked() || bi.te11c.isChecked() || bi.te11d.isChecked() || bi.te11e.isChecked() || bi.te11f.isChecked()) {
-                    ClearClass.ClearAllFields(bi.te12cv, null);
-                }
+            if (bi.te11b.isChecked()
+                    || bi.te11c.isChecked()
+                    || bi.te11d.isChecked()
+                    || bi.te11e.isChecked()
+                    || bi.te11f.isChecked()) {
+                ClearClass.ClearAllFields(bi.te12cv, null);
             }
         });
 
@@ -284,10 +280,11 @@ public class SectionEActivity extends AppCompatActivity {
         JSONObject SE = new JSONObject();
         SharedPreferences preferences = getSharedPreferences("tagName", MODE_PRIVATE);
         pc = new ProblemContract();
-        pc.setFormdate(DateFormat.format("dd-MM-yyyy HH:mm", new Date()).toString());
+        pc.setFormdate(MainApp.fc.getFormDate());
         pc.setProblemType(String.valueOf(problem_type));
         pc.setDeviceID(MainApp.deviceId);
         pc.setUser(MainApp.userName);
+        pc.setMuid(MainApp.mc.getUid());
         pc.setUuid(MainApp.fc.get_UID());
         pc.setCuid(MainApp.cc.getUid());
         pc.setDevicetagID(preferences.getString("tagName", null));

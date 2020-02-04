@@ -131,7 +131,7 @@ public class SectionBActivity extends AppCompatActivity {
 
         SharedPreferences preferences = getSharedPreferences("tagName", MODE_PRIVATE);
         mc.setLuid(MainApp.motherData.getUid());
-        mc.setFormdate(DateFormat.format("dd-MM-yyyy HH:mm", new Date()).toString());
+        mc.setFormdate(MainApp.fc.getFormDate());
 //        mc.setMotherId(MainApp.motherData.getSerialno());
         mc.setSerialNo(MainApp.motherData.getSerialno());
         mc.setDeviceID(MainApp.deviceId);
