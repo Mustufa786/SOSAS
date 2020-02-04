@@ -409,11 +409,11 @@ public class ChildContract {
         public static final String _ID = "_id";
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_UUID = "_uuid";
-        public static final String COLUMN_luid = "luid";
+        public static final String COLUMN_luid = "_luid";
         public static final String COLUMN_SERIAL_NO = "serial_no";
         public static final String COLUMN_MOTHER_ID = "mother_id";
-        public static final String COLUMN_MUID = "muid";
-        public static final String COLUMN_FMUID = "fmuid";
+        public static final String COLUMN_MUID = "_muid";
+        public static final String COLUMN_FMUID = "_fmuid";
         //        public static final String COLUMN_DA = "dA";
         public static final String COLUMN_PTYPE_1 = "p_type_1";
         public static final String COLUMN_PTYPE_2 = "p_type_2";

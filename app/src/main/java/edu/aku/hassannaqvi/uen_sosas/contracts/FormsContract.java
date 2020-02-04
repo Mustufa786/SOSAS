@@ -412,7 +412,7 @@ public class FormsContract {
         public static final String COLUMN_SYNCED_DATE = "synced_date";
         public static final String COLUMN_APPVERSION = "appversion";
         public static final String COLUMN_STATUS = "status";
-        public static final String COLUMN_CLUSTERCODE = "cluster_code";
+        public static final String COLUMN_CLUSTERCODE = "cluster_no";
         public static final String COLUMN_HHNO = "hhno";
 
         public static String _URL = "sync.php";

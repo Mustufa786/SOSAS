@@ -130,7 +130,6 @@ public class SectionBActivity extends AppCompatActivity {
         mc.setLuid(MainApp.motherData.getUuid());
         mc.setFmuid(MainApp.motherData.getUid());
         mc.setFormdate(MainApp.fc.getFormDate());
-//        mc.setMotherId(MainApp.motherData.getSerialno());
         mc.setSerialNo(MainApp.motherData.getSerialno());
         mc.setDeviceID(MainApp.deviceId);
         mc.setUser(MainApp.userName);
@@ -139,7 +138,7 @@ public class SectionBActivity extends AppCompatActivity {
 
         //td01
         SA.put("hhno", MainApp.fc.getHhno());
-        SA.put("cluster_code", MainApp.fc.getClusterCode());
+        SA.put("cluster_no", MainApp.fc.getClusterCode());
         SA.put("td01", bi.td01a.isChecked() ? "1"
                 : bi.td01b.isChecked() ? "2"
                 : "0");
