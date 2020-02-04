@@ -2,7 +2,6 @@ package edu.aku.hassannaqvi.uen_sosas.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -10,12 +9,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import edu.aku.hassannaqvi.uen_sosas.R;
 import edu.aku.hassannaqvi.uen_sosas.adapter.ChildListAdapter;
-import edu.aku.hassannaqvi.uen_sosas.contracts.ChildList;
 import edu.aku.hassannaqvi.uen_sosas.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
@@ -27,19 +24,13 @@ import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.problemType;
 
 public class ChildListActivity extends AppCompatActivity {
 
-
-    int areaCode;
     ActivityChildListBinding bi;
     DatabaseHelper db;
     ChildListAdapter adapter;
     List<FamilyMembersContract> list;
-    ArrayList<String> dssids;
-    ArrayList<ChildList> filteredItems;
-    private TextView dssID;
     public static final int CHILD_MAIN = 1;
-    public static final int MOTHER_MAIN = 2;
+    public static final int CHILD_MAIN_END = 101;
     int childCount = 0;
-    int motherCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,9 +58,12 @@ public class ChildListActivity extends AppCompatActivity {
 
             MainApp.openDialog(ChildListActivity.this, item, isMother);
             MainApp.setItemClick(() -> {
+
                 holder.parentLayout.setEnabled(false);
                 holder.parentLayout.setBackgroundColor(getResources().getColor(R.color.gray));
+
                 childCount++;
+
                 startActivityForResult(new Intent(ChildListActivity.this, SectionCActivity.class), CHILD_MAIN);
                 MainApp.childData = item;
 
@@ -82,6 +76,7 @@ public class ChildListActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if (requestCode == CHILD_MAIN) {
             if (resultCode == RESULT_OK) {
                 if (childCount == list.size()) {
