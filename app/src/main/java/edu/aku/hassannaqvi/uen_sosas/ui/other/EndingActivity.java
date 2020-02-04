@@ -31,10 +31,17 @@ public class EndingActivity extends AppCompatActivity {
 
         if (check) {
             bi.istatus1.setEnabled(true);
+            bi.istatus2.setEnabled(false);
+            bi.istatus3.setEnabled(false);
+            bi.istatus4.setEnabled(false);
             bi.istatus5.setEnabled(false);
         } else {
             //fldGrpmn0823Reason.setVisibility(View.GONE);
             bi.istatus1.setEnabled(false);
+            bi.istatus2.setEnabled(true);
+            bi.istatus3.setEnabled(true);
+            bi.istatus4.setEnabled(true);
+            bi.istatus5.setEnabled(true);
         }
 
         MainApp.problemType = 0;
@@ -55,9 +62,13 @@ public class EndingActivity extends AppCompatActivity {
     }
 
     private void SaveDraft() {
-        MainApp.fc.setIstatus(bi.istatus1.isChecked() ? "1"
-                : bi.istatus5.isChecked() ? "5"
-                : "0");
+        MainApp.fc.setIstatus(
+                bi.istatus1.isChecked() ? "1" :
+                        bi.istatus2.isChecked() ? "2" :
+                                bi.istatus3.isChecked() ? "3" :
+                                        bi.istatus4.isChecked() ? "4" :
+                                                bi.istatus5.isChecked() ? "5"
+                                                        : "0");
         MainApp.fc.setEndingdatetime(dtToday);
     }
 
