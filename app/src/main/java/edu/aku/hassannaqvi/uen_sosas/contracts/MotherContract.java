@@ -18,7 +18,6 @@ public class MotherContract {
     private String synced;
     private String syncedDate;
     private String _id;
-    private String motherId;
     private String user = ""; // Interviewer
     private String deviceID = "";
     private String devicetagID = "";
@@ -63,7 +62,6 @@ public class MotherContract {
         this.formdate = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_FORMDATE));
         this.synced = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_SYNCED));
         this.syncedDate = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_SYNCED_DATE));
-        this.motherId = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_MOTHER_ID));
         this._id = cursor.getString(cursor.getColumnIndex(singleMother._ID));
         this.user = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_USER));
         this.deviceID = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_DEVICEID));
@@ -87,7 +85,6 @@ public class MotherContract {
         json.put(singleMother.COLUMN_FORMDATE, this.formdate == null ? JSONObject.NULL : this.formdate);
         json.put(singleMother.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
         json.put(singleMother.COLUMN_SYNCED_DATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate);
-        json.put(singleMother.COLUMN_MOTHER_ID, this.motherId == null ? JSONObject.NULL : this.motherId);
         json.put(singleMother._ID, this._id == null ? JSONObject.NULL : this._id);
         json.put(singleMother.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
         json.put(singleMother.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
@@ -105,15 +102,6 @@ public class MotherContract {
     public void setFmuid(String fmuid) {
         this.fmuid = fmuid;
     }
-
-    public String getMotherId() {
-        return motherId;
-    }
-
-    public void setMotherId(String motherId) {
-        this.motherId = motherId;
-    }
-
 
     public String getLuid() {
         return luid;
