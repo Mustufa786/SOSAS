@@ -291,12 +291,10 @@
     <!-- Strings related to Sections Below -->
     <string name="istatus"> انٹرویو کا نتیجہ </string>
     <string name="istatus1"> مکمل </string>
-    <string name="istatus2"> انکار کر دیا </string>
-    <string name="istatus3"> گھر مستقل طور پر بند ہے </string>
-    <string name="istatus4"> گھر عارضی طور پر بند ہے </string>
-    <string name="istatus5"> نامکمل </string>
-    <string name="istatus6"> گھر پر کوئی نہیں تھا </string>
-    <string name="istatus7"> مکمل نہیں ہوسکا </string>
+    <string name="istatus2"> انڪار ڪيو </string>
+    <string name="istatus3"> گھر مستقل طور بند آھي </string>
+    <string name="istatus4"> گھر عارضي طور بند آھي </string>
+    <string name="istatus5">(5) سالن کان گهٽ عمر جو ٻار نه آهي </string>
     <string name="comment">Comments</string>
     <string name="never"> کبھی نہیں </string>
     <string name="ed_letterOnly">QWERTYUIOPASDFGHJKLZXCVBNM qwertyuiopasdfghjklzxcvbnm</string>
