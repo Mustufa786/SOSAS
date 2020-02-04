@@ -12,7 +12,7 @@ import org.json.JSONObject;
 
 public class MWRAContract {
 
-    private final String projectName = "Pulse Oximetry";
+    private final String projectName = "UEN SOSAS";
 
     private String _ID = "";
     private String UID = "";

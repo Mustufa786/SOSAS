@@ -21,7 +21,6 @@ public class FormsContract {
     //private final String surveyType = "SN";
     private String _ID = "";
     private String _UID = "";
-    private String formType = "";
     private String formDate = ""; // Date
     private String user = ""; // Interviewer
     private String istatus = ""; // Interview Status
@@ -146,7 +145,6 @@ public class FormsContract {
         this.synced = jsonObject.getString(FormsTable.COLUMN_SYNCED);
         this.synced_date = jsonObject.getString(FormsTable.COLUMN_SYNCED_DATE);
         this.appversion = jsonObject.getString(FormsTable.COLUMN_SYNCED_DATE);
-        this.formType = jsonObject.getString(FormsTable.COLUMN_FORMTYPE);
         this.clusterCode = jsonObject.getString(FormsTable.COLUMN_CLUSTERCODE);
         this.hhno = jsonObject.getString(FormsTable.COLUMN_HHNO);
 
@@ -173,7 +171,6 @@ public class FormsContract {
         this.devicetagID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DEVICETAGID));
         this.appversion = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_APPVERSION));
         this.status = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_STATUS));
-        this.formType = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORMTYPE));
         this.areaCode = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_AREA_CODE));
         this.uc = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_UC_CODE));
         this.village = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_VILLAGE_CODE));
@@ -211,7 +208,6 @@ public class FormsContract {
         json.put(FormsTable.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
         json.put(FormsTable.COLUMN_APPVERSION, this.appversion == null ? JSONObject.NULL : this.appversion);
         json.put(FormsTable.COLUMN_STATUS, this.status == null ? JSONObject.NULL : this.status);
-        json.put(FormsTable.COLUMN_FORMTYPE, this.formType == null ? JSONObject.NULL : this.formType);
         json.put(FormsTable.COLUMN_AREA_CODE, this.areaCode == null ? JSONObject.NULL : this.areaCode);
         json.put(FormsTable.COLUMN_UC_CODE, this.uc == null ? JSONObject.NULL : this.uc);
         json.put(FormsTable.COLUMN_TALUKA_CODE, this.talukdaCode == null ? JSONObject.NULL : this.talukdaCode);
@@ -242,13 +238,6 @@ public class FormsContract {
         this._UID = _UID;
     }
 
-    public String getFormType() {
-        return formType;
-    }
-
-    public void setFormType(String formType) {
-        this.formType = formType;
-    }
 
     public String getFormDate() {
         return formDate;
