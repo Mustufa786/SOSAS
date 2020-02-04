@@ -18,9 +18,10 @@ public class ChildContract {
     private String syncedDate;
     private String _id;
     private String motherId;
-
-
+    private String fmuid;
     private String muid;
+
+
     private String user = ""; // Interviewer
     private String deviceID = "";
     private String devicetagID = "";
@@ -40,6 +41,15 @@ public class ChildContract {
     private String pType14 = "";
     private String pType15 = "";
     private String pType16 = "";
+
+
+    public String getFmuid() {
+        return fmuid;
+    }
+
+    public void setFmuid(String fmuid) {
+        this.fmuid = fmuid;
+    }
 
     public String getMuid() {
         return muid;
@@ -241,6 +251,7 @@ public class ChildContract {
         this.pType15 = cursor.getString(cursor.getColumnIndex(singleChild.COLUMN_PTYPE_15));
         this.pType16 = cursor.getString(cursor.getColumnIndex(singleChild.COLUMN_PTYPE_16));
         this.muid = cursor.getString(cursor.getColumnIndex(singleChild.COLUMN_MUID));
+        this.fmuid = cursor.getString(cursor.getColumnIndex(singleChild.COLUMN_FMUID));
 
         return this;
     }
@@ -312,6 +323,7 @@ public class ChildContract {
         json.put(singleChild.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
         json.put(singleChild.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
         json.put(singleChild.COLUMN_MUID, this.muid == null ? JSONObject.NULL : this.muid);
+        json.put(singleChild.COLUMN_FMUID, this.fmuid == null ? JSONObject.NULL : this.fmuid);
 
 
         return json;
@@ -401,6 +413,7 @@ public class ChildContract {
         public static final String COLUMN_SERIAL_NO = "serial_no";
         public static final String COLUMN_MOTHER_ID = "mother_id";
         public static final String COLUMN_MUID = "muid";
+        public static final String COLUMN_FMUID = "fmuid";
         //        public static final String COLUMN_DA = "dA";
         public static final String COLUMN_PTYPE_1 = "p_type_1";
         public static final String COLUMN_PTYPE_2 = "p_type_2";

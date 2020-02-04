@@ -160,6 +160,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + singleChild.COLUMN_MOTHER_ID + " TEXT,"
             + singleChild.COLUMN_SERIAL_NO + " TEXT,"
             + singleChild.COLUMN_MUID + " TEXT,"
+            + singleChild.COLUMN_FMUID + " TEXT,"
 //            + singleChild.COLUMN_DA + " TEXT,"
             + singleChild.COLUMN_PTYPE_1 + " TEXT,"
             + singleChild.COLUMN_PTYPE_2 + " TEXT,"
@@ -189,6 +190,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + singleMother._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + singleMother.COLUMN_luid + " TEXT,"
             + singleMother.COLUMN_UID + " TEXT,"
+            + singleMother.COLUMN_fmuid + " TEXT,"
             + singleMother.COLUMN_MOTHER_ID + " TEXT,"
             + singleMother.COLUMN_SERIAL_NO + " TEXT,"
             + singleMother.COLUMN_DA + " TEXT,"
@@ -910,6 +912,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(singleChild.COLUMN_FORMDATE, fc.getFormdate());
         values.put(singleChild.COLUMN_MOTHER_ID, fc.getMotherId());
         values.put(singleChild.COLUMN_MUID, fc.getMuid());
+        values.put(singleChild.COLUMN_FMUID, fc.getFmuid());
         values.put(singleChild.COLUMN_SERIAL_NO, fc.getSerialNo());
         values.put(singleChild.COLUMN_PTYPE_1, fc.getpType1());
         values.put(singleChild.COLUMN_USER, fc.getUser());
@@ -935,6 +938,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(singleMother.COLUMN_luid, fc.getLuid());
         values.put(singleMother.COLUMN_DA, fc.getdA());
         values.put(singleMother.COLUMN_FORMDATE, fc.getFormdate());
+        values.put(singleMother.COLUMN_fmuid, fc.getFmuid());
 //        values.put(singleMother.COLUMN_MOTHER_ID, fc.getMotherId());
         values.put(singleMother.COLUMN_SERIAL_NO, fc.getSerialNo());
         values.put(singleMother.COLUMN_USER, fc.getUser());
@@ -1468,6 +1472,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 singleChild.COLUMN_SERIAL_NO,
                 singleChild.COLUMN_MOTHER_ID,
                 singleChild.COLUMN_MUID,
+                singleChild.COLUMN_FMUID,
 //                singleChild.COLUMN_DA,
                 singleChild.COLUMN_FORMDATE,
                 singleChild.COLUMN_SYNCED,
@@ -1597,6 +1602,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 singleMother._ID,
                 singleMother.COLUMN_luid,
                 singleMother.COLUMN_UID,
+                singleMother.COLUMN_fmuid,
                 singleMother.COLUMN_SERIAL_NO,
                 singleMother.COLUMN_DA,
                 singleMother.COLUMN_FORMDATE,

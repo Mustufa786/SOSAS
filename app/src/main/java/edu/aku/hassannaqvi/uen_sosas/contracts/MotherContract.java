@@ -12,6 +12,7 @@ public class MotherContract {
     private String uid;
     private String uuid;
     private String serialNo;
+    private String fmuid;
     private String dA;
     private String formdate;
     private String synced;
@@ -67,6 +68,7 @@ public class MotherContract {
         this.user = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_USER));
         this.deviceID = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_DEVICEID));
         this.devicetagID = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_DEVICETAGID));
+        this.fmuid = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_fmuid));
 
         return this;
     }
@@ -90,9 +92,18 @@ public class MotherContract {
         json.put(singleMother.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
         json.put(singleMother.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
         json.put(singleMother.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
+        json.put(singleMother.COLUMN_fmuid, this.fmuid == null ? JSONObject.NULL : this.fmuid);
 
 
         return json;
+    }
+
+    public String getFmuid() {
+        return fmuid;
+    }
+
+    public void setFmuid(String fmuid) {
+        this.fmuid = fmuid;
     }
 
     public String getMotherId() {
@@ -175,6 +186,7 @@ public class MotherContract {
         public static final String _ID = "_id";
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_luid = "luid";
+        public static final String COLUMN_fmuid = "fmuid";
         public static final String COLUMN_SERIAL_NO = "serial_no";
         public static final String COLUMN_MOTHER_ID = "mother_id";
         public static final String COLUMN_DA = "dA";
