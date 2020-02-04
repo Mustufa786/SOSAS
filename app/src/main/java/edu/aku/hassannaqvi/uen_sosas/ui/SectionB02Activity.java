@@ -92,7 +92,7 @@ public class SectionB02Activity extends AppCompatActivity {
         long updcount = db.addMotherForm(mc);
 
         mc.set_id(String.valueOf(updcount));
-        if (updcount != 0) {
+        if (updcount > 0) {
             mc.setUid(
                     (mc.getDeviceID() + mc.get_id()));
             db.updateMotherFormID();

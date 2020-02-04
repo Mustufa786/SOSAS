@@ -3,7 +3,6 @@ package edu.aku.hassannaqvi.uen_sosas.ui;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -12,8 +11,6 @@ import androidx.databinding.DataBindingUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.Date;
 
 import edu.aku.hassannaqvi.uen_sosas.R;
 import edu.aku.hassannaqvi.uen_sosas.contracts.DeceasedChildContract;
@@ -144,7 +141,7 @@ public class SectionDAActivity extends AppCompatActivity {
         long updcount = db.addChildDeceaseForm(dcc);
 
         MainApp.dcc.set_id(String.valueOf(updcount));
-        if (updcount != 0) {
+        if (updcount > 0) {
             MainApp.dcc.setUid(
                     (MainApp.dcc.getDeviceID() + MainApp.dcc.get_id()));
             db.updateChildDeceaseFormID();

@@ -124,7 +124,7 @@ public class MainApp extends Application {
     public static String DeviceURL = "devices.php";
     public static String IMEI;
     public static String formtype;
-    public static String motherInfo = "motherInfo";
+    public static final String motherInfo = "motherInfo";
     public static FamilyMembersContract motherData;
     public static FamilyMembersContract childData;
     public static ProblemContract pc;

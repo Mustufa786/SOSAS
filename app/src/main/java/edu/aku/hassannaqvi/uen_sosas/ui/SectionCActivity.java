@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.text.format.DateFormat;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -14,8 +13,6 @@ import androidx.databinding.DataBindingUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.Date;
 
 import edu.aku.hassannaqvi.uen_sosas.R;
 import edu.aku.hassannaqvi.uen_sosas.contracts.ChildContract;
@@ -242,7 +239,7 @@ public class SectionCActivity extends AppCompatActivity {
         if (problemType == 1) {
             updcount = db.addChildForm(cc);
             cc.set_id(String.valueOf(updcount));
-            if (updcount != 0) {
+            if (updcount > 0) {
                 cc.setUid(
                         (cc.getDeviceID() + cc.get_id()));
                 db.updateChildFormID();

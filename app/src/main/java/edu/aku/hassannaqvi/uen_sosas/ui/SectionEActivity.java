@@ -3,9 +3,7 @@ package edu.aku.hassannaqvi.uen_sosas.ui;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.view.View;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,8 +11,6 @@ import androidx.databinding.DataBindingUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.Date;
 
 import edu.aku.hassannaqvi.uen_sosas.R;
 import edu.aku.hassannaqvi.uen_sosas.contracts.ProblemContract;
@@ -25,7 +21,6 @@ import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.uen_sosas.validator.ClearClass;
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass;
 
-import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.dcc;
 import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.pc;
 
 public class SectionEActivity extends AppCompatActivity {
@@ -263,7 +258,7 @@ public class SectionEActivity extends AppCompatActivity {
         long updcount = db.addProblems(pc);
 
         pc.set_id(String.valueOf(updcount));
-        if (updcount != 0) {
+        if (updcount > 0) {
             pc.setUid(
                     (MainApp.pc.getDeviceID() + MainApp.pc.get_id()));
             db.updateProblemFormID();

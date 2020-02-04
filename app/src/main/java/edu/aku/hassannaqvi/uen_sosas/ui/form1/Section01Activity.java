@@ -82,7 +82,7 @@ public class Section01Activity extends AppCompatActivity {
 //        long updcount = db.addForm(MainApp.fc);
 //
 //        MainApp.fc.set_ID(String.valueOf(updcount));
-//        if (updcount != 0) {
+//        if (updcount > 0) {
 //            MainApp.fc.set_UID(
 //                    (MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
 //            db.updateFormID();

@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.text.format.DateFormat;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,8 +12,6 @@ import androidx.databinding.DataBindingUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.Date;
 
 import edu.aku.hassannaqvi.uen_sosas.R;
 import edu.aku.hassannaqvi.uen_sosas.contracts.MotherContract;
@@ -111,7 +108,7 @@ public class SectionBActivity extends AppCompatActivity {
         long updcount = db.addMotherForm(mc);
 
         mc.set_id(String.valueOf(updcount));
-        if (updcount != 0) {
+        if (updcount > 0) {
             mc.setUid(
                     (mc.getDeviceID() + mc.get_id()));
             db.updateMotherFormID();

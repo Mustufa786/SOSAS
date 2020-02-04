@@ -43,6 +43,8 @@ class InfoActivity : AppCompatActivity() {
     lateinit var villageNames: ArrayList<String>
     lateinit var villageMap: HashMap<String, String>
     lateinit var motherList: List<FamilyMembersContract>
+
+    var flag = false
 //    lateinit var womenList: List<Int>
 
     companion object {
@@ -160,7 +162,7 @@ class InfoActivity : AppCompatActivity() {
         adapter?.setItemClicked { item, position, isMother, holder ->
             openDialog(this@InfoActivity, item, isMother)
             itemClick = OnItemClick {
-                if (adapter == null) {
+                if (!flag) {
                     saveDraft()
                     if (!updateDB()) {
                         return@OnItemClick
@@ -221,6 +223,8 @@ class InfoActivity : AppCompatActivity() {
             startActivity(Intent(this, MainActivity::class.java))
             return
         }
+
+        flag = true
 
         bi.checkLayout1.visibility = View.GONE
         bi.checkLayout2.visibility = View.GONE
