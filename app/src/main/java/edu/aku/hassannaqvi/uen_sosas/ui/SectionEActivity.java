@@ -196,33 +196,28 @@ public class SectionEActivity extends AppCompatActivity {
 
     private void setListeners() {
 
-        bi.te06.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
+        bi.te06.setOnCheckedChangeListener((group, checkedId) -> {
 
-                if (bi.te06b.isChecked()) {
-                    ClearClass.ClearAllFields(bi.te07cv, null);
-                }
+            if (bi.te06b.isChecked()) {
+                ClearClass.ClearAllFields(bi.te07cv, null);
             }
         });
 
-        bi.te09.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
+        bi.te09.setOnCheckedChangeListener((group, checkedId) -> {
 
-                if (bi.te09b.isChecked()) {
-                    ClearClass.ClearAllFields(bi.llsos04, null);
-                }
+            if (bi.te09b.isChecked()) {
+                ClearClass.ClearAllFields(bi.llsos04, null);
             }
         });
 
-        bi.te11.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
+        bi.te11.setOnCheckedChangeListener((group, checkedId) -> {
 
-                if ( bi.te11b.isChecked() || bi.te11c.isChecked() || bi.te11d.isChecked() || bi.te11e.isChecked() || bi.te11f.isChecked()) {
-                    ClearClass.ClearAllFields(bi.te12cv, null);
-                }
+            if (bi.te11b.isChecked()
+                    || bi.te11c.isChecked()
+                    || bi.te11d.isChecked()
+                    || bi.te11e.isChecked()
+                    || bi.te11f.isChecked()) {
+                ClearClass.ClearAllFields(bi.te12cv, null);
             }
         });
 

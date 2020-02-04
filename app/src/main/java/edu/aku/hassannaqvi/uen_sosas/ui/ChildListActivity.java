@@ -37,7 +37,9 @@ public class ChildListActivity extends AppCompatActivity {
     ArrayList<ChildList> filteredItems;
     private TextView dssID;
     public static final int CHILD_MAIN = 1;
+    public static final int MOTHER_MAIN = 2;
     int childCount = 0;
+    int motherCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,12 +67,9 @@ public class ChildListActivity extends AppCompatActivity {
 
             MainApp.openDialog(ChildListActivity.this, item, isMother);
             MainApp.setItemClick(() -> {
-
                 holder.parentLayout.setEnabled(false);
                 holder.parentLayout.setBackgroundColor(getResources().getColor(R.color.gray));
-
                 childCount++;
-
                 startActivityForResult(new Intent(ChildListActivity.this, SectionCActivity.class), CHILD_MAIN);
                 MainApp.childData = item;
 
@@ -83,7 +82,6 @@ public class ChildListActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == CHILD_MAIN) {
             if (resultCode == RESULT_OK) {
                 if (childCount == list.size()) {
