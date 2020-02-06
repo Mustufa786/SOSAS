@@ -191,8 +191,8 @@ public class DeceasedChildContract {
         public static final String _ID = "_id";
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_UUID = "_uuid";
-        public static final String COLUMN_MUID = "muid";
-        public static final String COLUMN_luid = "luid";
+        public static final String COLUMN_MUID = "_muid";
+        public static final String COLUMN_luid = "_luid";
         public static final String COLUMN_SERIAL_NO = "serial_no";
         public static final String COLUMN_MOTHER_ID = "mother_id";
         public static final String COLUMN_DA = "dA";

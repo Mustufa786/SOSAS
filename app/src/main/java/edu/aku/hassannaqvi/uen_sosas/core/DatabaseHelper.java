@@ -72,9 +72,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_STATUS + " TEXT," +
             FormsTable.COLUMN_CLUSTERCODE + " TEXT," +
             FormsTable.COLUMN_HHNO + " TEXT," +
-            FormsTable.COLUMN_FORMTYPE + " TEXT," +
-            FormsTable.COLUMN_DSSID + " TEXT," +
-            FormsTable.COLUMN_NEXT_VISIT + " TEXT," +
             FormsTable.COLUMN_USER + " TEXT," +
             FormsTable.COLUMN_SA + " TEXT," +
             FormsTable.COLUMN_ISTATUS + " TEXT," +
@@ -841,8 +838,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_PROJECT_NAME, fc.getProjectName());
         values.put(FormsTable.COLUMN_UID, fc.get_UID());
         values.put(FormsTable.COLUMN_FORMDATE, fc.getFormDate());
-        values.put(FormsTable.COLUMN_DSSID, fc.getDSSID());
-        values.put(FormsTable.COLUMN_NEXT_VISIT, fc.getNextVisit());
         values.put(FormsTable.COLUMN_USER, fc.getUser());
         values.put(FormsTable.COLUMN_ISTATUS, fc.getIstatus());
         values.put(FormsTable.COLUMN_ISTATUS88x, fc.getIstatus88x());
@@ -979,50 +974,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public FormsContract isDataExists(String studyId) {
-        SQLiteDatabase db = getReadableDatabase();
-        Cursor c = null;
-
-// New value for one column
-        String[] columns = {
-                FormsTable.COLUMN_DSSID,
-                FormsTable.COLUMN_ISTATUS,
-                FormsTable.COLUMN_STATUS,
-
-        };
-
-// Which row to update, based on the ID
-        String selection = FormsTable.COLUMN_DSSID + " = ? AND "
-                + FormsTable.COLUMN_ISTATUS + " = ?";
-        String[] selectionArgs = new String[]{studyId, "1"};
-
-        FormsContract allFC = new FormsContract();
-        try {
-            c = db.query(FormsTable.TABLE_NAME, //Table to query
-                    columns,                    //columns to return
-                    selection,                  //columns for the WHERE clause
-                    selectionArgs,              //The values for the WHERE clause
-                    null,                       //group the rows
-                    null,                       //filter by row groups
-                    null);                   // The sort order
-
-            while (c.moveToNext()) {
-                allFC.setDSSID(c.getString(c.getColumnIndex(FormsTable.COLUMN_DSSID)));
-                allFC.setIstatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
-                allFC.setStatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_STATUS)));
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allFC;
-
-
-    }
 
 
     public void updateSyncedForms(String id) {
@@ -1250,7 +1201,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_CLUSTERCODE,
                 FormsTable.COLUMN_HHNO,
                 FormsTable.COLUMN_STATUS,
-                FormsTable.COLUMN_FORMTYPE,
 
         };
         String whereClause = null;
@@ -1307,7 +1257,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_CLUSTERCODE,
                 FormsTable.COLUMN_HHNO,
                 FormsTable.COLUMN_STATUS,
-                FormsTable.COLUMN_FORMTYPE,
 
         };
         String whereClause = null;
@@ -1402,8 +1351,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_USER,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_ISTATUS88x,
-                FormsTable.COLUMN_DSSID,
-                FormsTable.COLUMN_NEXT_VISIT,
                 FormsTable.COLUMN_ENDINGDATETIME,
                 FormsTable.COLUMN_SA,
                 FormsTable.COLUMN_TALUKA_CODE,
@@ -1420,7 +1367,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_CLUSTERCODE,
                 FormsTable.COLUMN_HHNO,
                 FormsTable.COLUMN_STATUS,
-                FormsTable.COLUMN_FORMTYPE
         };
 
 
@@ -1716,7 +1662,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = null;
         String[] columns = {
                 FormsTable._ID,
-                FormsTable.COLUMN_DSSID,
                 FormsTable.COLUMN_FORMDATE,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SYNCED,
@@ -1744,7 +1689,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 FormsContract fc = new FormsContract();
                 fc.set_ID(c.getString(c.getColumnIndex(FormsTable.COLUMN_ID)));
-                fc.setDSSID(c.getString(c.getColumnIndex(FormsTable.COLUMN_DSSID)));
                 fc.setFormDate(c.getString(c.getColumnIndex(FormsTable.COLUMN_FORMDATE)));
                 fc.setIstatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
                 fc.setSynced(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYNCED)));

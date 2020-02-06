@@ -178,8 +178,8 @@ public class ProblemContract {
         public static final String _ID = "_id";
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_UUID = "_uuid";
-        public static final String COLUMN_MUID = "muid";
-        public static final String COLUMN_CUID = "cuid";
+        public static final String COLUMN_MUID = "_muid";
+        public static final String COLUMN_CUID = "_cuid";
         public static final String COLUMN_PROBLEM_TYPE = "p_type";
         public static final String COLUMN_DA = "sA";
         public static final String COLUMN_FORMDATE = "formdate";
