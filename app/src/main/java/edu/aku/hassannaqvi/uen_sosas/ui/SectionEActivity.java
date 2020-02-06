@@ -290,7 +290,7 @@ public class SectionEActivity extends AppCompatActivity {
         SE.put("hhno", MainApp.fc.getHhno());
         SE.put("cluster_code", MainApp.fc.getClusterCode());
 
-     /*   SE.put("te05", bi.te05a.isChecked() ? "1"
+        SE.put("te05", bi.te05a.isChecked() ? "1"
                 : bi.te05b.isChecked() ? "2"
                 : bi.te05c.isChecked() ? "3"
                 : bi.te05d.isChecked() ? "4"
@@ -302,9 +302,9 @@ public class SectionEActivity extends AppCompatActivity {
                 : bi.te05j.isChecked() ? "10"
                 : bi.te05k.isChecked() ? "11"
                 : bi.te05l.isChecked() ? "12"
-                : "0");*/
+                : "0");
 
-        SE.put("te05a", bi.te05a.isChecked() ? "1" : "0");
+       /* SE.put("te05a", bi.te05a.isChecked() ? "1" : "0");
         SE.put("te05b", bi.te05b.isChecked() ? "2" : "0");
         SE.put("te05c", bi.te05c.isChecked() ? "3" : "0");
         SE.put("te05d", bi.te05d.isChecked() ? "4" : "0");
@@ -315,7 +315,9 @@ public class SectionEActivity extends AppCompatActivity {
         SE.put("te05i", bi.te05i.isChecked() ? "9" : "0");
         SE.put("te05j", bi.te05j.isChecked() ? "10" : "0");
         SE.put("te05k", bi.te05k.isChecked() ? "11" : "0");
-        SE.put("te05l", bi.te05l.isChecked() ? "12" : "0");
+        SE.put("te05l", bi.te05l.isChecked() ? "12" : "0");*/
+
+
         //te06
         SE.put("te06", bi.te06a.isChecked() ? "1"
                 : bi.te06b.isChecked() ? "2"

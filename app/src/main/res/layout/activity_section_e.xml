@@ -54,65 +54,73 @@
                         android:orientation="vertical"
                         android:tag="0">
 
-                        <CheckBox
-                            android:id="@+id/te05a"
-                            style="@style/checkbox"
-                            android:text="@string/te05a" />
+                        <RadioGroup
+                            android:id="@+id/te05"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
 
-                        <CheckBox
-                            android:id="@+id/te05b"
-                            style="@style/checkbox"
-                            android:text="@string/te05b" />
+                            <RadioButton
+                                android:id="@+id/te05a"
+                                style="@style/radiobutton"
+                                android:text="@string/te05a" />
 
-                        <CheckBox
-                            android:id="@+id/te05c"
-                            style="@style/checkbox"
-                            android:text="@string/te05c" />
+                            <RadioButton
+                                android:id="@+id/te05b"
+                                style="@style/radiobutton"
+                                android:text="@string/te05b" />
 
-                        <CheckBox
-                            android:id="@+id/te05d"
-                            style="@style/checkbox"
-                            android:text="@string/te05d" />
+                            <RadioButton
+                                android:id="@+id/te05c"
+                                style="@style/radiobutton"
+                                android:text="@string/te05c" />
 
-                        <CheckBox
-                            android:id="@+id/te05e"
-                            style="@style/checkbox"
-                            android:text="@string/te05e" />
+                            <RadioButton
+                                android:id="@+id/te05d"
+                                style="@style/radiobutton"
+                                android:text="@string/te05d" />
 
-                        <CheckBox
-                            android:id="@+id/te05f"
-                            style="@style/checkbox"
-                            android:text="@string/te05f" />
+                            <RadioButton
+                                android:id="@+id/te05e"
+                                style="@style/radiobutton"
+                                android:text="@string/te05e" />
 
-                        <CheckBox
-                            android:id="@+id/te05g"
-                            style="@style/checkbox"
-                            android:text="@string/te05g" />
+                            <RadioButton
+                                android:id="@+id/te05f"
+                                style="@style/radiobutton"
+                                android:text="@string/te05f" />
 
-                        <CheckBox
-                            android:id="@+id/te05h"
-                            style="@style/checkbox"
-                            android:text="@string/te05h" />
+                            <RadioButton
+                                android:id="@+id/te05g"
+                                style="@style/radiobutton"
+                                android:text="@string/te05g" />
 
-                        <CheckBox
-                            android:id="@+id/te05i"
-                            style="@style/checkbox"
-                            android:text="@string/te05i" />
+                            <RadioButton
+                                android:id="@+id/te05h"
+                                style="@style/radiobutton"
+                                android:text="@string/te05h" />
 
-                        <CheckBox
-                            android:id="@+id/te05j"
-                            style="@style/checkbox"
-                            android:text="@string/te05j" />
+                            <RadioButton
+                                android:id="@+id/te05i"
+                                style="@style/radiobutton"
+                                android:text="@string/te05i" />
 
-                        <CheckBox
-                            android:id="@+id/te05k"
-                            style="@style/checkbox"
-                            android:text="@string/te05k" />
+                            <RadioButton
+                                android:id="@+id/te05j"
+                                style="@style/radiobutton"
+                                android:text="@string/te05j" />
 
-                        <CheckBox
-                            android:id="@+id/te05l"
-                            style="@style/checkbox"
-                            android:text="@string/te05l" />
+                            <RadioButton
+                                android:id="@+id/te05k"
+                                style="@style/radiobutton"
+                                android:text="@string/te05k" />
+
+                            <RadioButton
+                                android:id="@+id/te05l"
+                                style="@style/radiobutton"
+                                android:text="@string/te05l" />
+                        </RadioGroup>
+
 
                     </LinearLayout>
 
