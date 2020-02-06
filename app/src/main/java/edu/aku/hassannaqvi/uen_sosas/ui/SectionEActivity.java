@@ -215,6 +215,7 @@ public class SectionEActivity extends AppCompatActivity {
                     || bi.te11f.isChecked()) {
                 ClearClass.ClearAllFields(bi.te12cv, null);
             }
+
         });
 
        /* bi.te11.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
