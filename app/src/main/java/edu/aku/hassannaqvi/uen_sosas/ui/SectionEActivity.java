@@ -71,21 +71,39 @@ public class SectionEActivity extends AppCompatActivity {
             bi.te05j.setVisibility(View.GONE);
             bi.te05k.setVisibility(View.GONE);
             bi.te05l.setVisibility(View.GONE);
+            bi.te05m.setVisibility(View.GONE);
+            bi.te05n.setVisibility(View.GONE);
+            bi.te05o.setVisibility(View.GONE);
+            bi.te05p.setVisibility(View.GONE);
+            bi.te05q.setVisibility(View.GONE);
+            bi.te05r.setVisibility(View.GONE);
+            bi.te05s.setVisibility(View.GONE);
+            bi.te05t.setVisibility(View.GONE);
+            bi.te05u.setVisibility(View.GONE);
             bi.te15cv.setVisibility(View.GONE);
             bi.te11e.setVisibility(View.GONE);
             bi.te11f.setVisibility(View.GONE);
         }
 
         if (problem_type == 2) {
-            bi.te05g.setText(getString(R.string.te05i));
+            bi.te05g.setVisibility(View.GONE);
             bi.te05h.setVisibility(View.GONE);
-            bi.te05i.setVisibility(View.GONE);
             bi.te05j.setVisibility(View.GONE);
             bi.te05k.setVisibility(View.GONE);
             bi.te05l.setVisibility(View.GONE);
             bi.te15cv.setVisibility(View.GONE);
             bi.te11e.setVisibility(View.GONE);
             bi.te11f.setVisibility(View.GONE);
+            bi.te05m.setVisibility(View.GONE);
+            bi.te05n.setVisibility(View.GONE);
+            bi.te05o.setVisibility(View.GONE);
+            bi.te05p.setVisibility(View.GONE);
+            bi.te05q.setVisibility(View.GONE);
+            bi.te05r.setVisibility(View.GONE);
+            bi.te05s.setVisibility(View.GONE);
+            bi.te05t.setVisibility(View.GONE);
+            bi.te05u.setVisibility(View.GONE);
+            bi.te05i.setVisibility(View.VISIBLE);
         }
 
         if (problem_type == 3) {
@@ -95,19 +113,37 @@ public class SectionEActivity extends AppCompatActivity {
             bi.te05j.setVisibility(View.GONE);
             bi.te05k.setVisibility(View.GONE);
             bi.te05l.setVisibility(View.GONE);
+            bi.te05m.setVisibility(View.GONE);
+            bi.te05n.setVisibility(View.GONE);
+            bi.te05o.setVisibility(View.GONE);
+            bi.te05p.setVisibility(View.GONE);
+            bi.te05q.setVisibility(View.GONE);
+            bi.te05r.setVisibility(View.GONE);
+            bi.te05s.setVisibility(View.GONE);
+            bi.te05t.setVisibility(View.GONE);
+            bi.te05u.setVisibility(View.GONE);
             bi.te15cv.setVisibility(View.GONE);
             bi.te11e.setVisibility(View.GONE);
             bi.te11f.setVisibility(View.GONE);
         }
 
         if (problem_type == 4) {
-            bi.te05d.setText(getString(R.string.te05j));
+            bi.te05j.setVisibility(View.VISIBLE);
             bi.te05g.setVisibility(View.GONE);
             bi.te05h.setVisibility(View.GONE);
             bi.te05i.setVisibility(View.GONE);
-            bi.te05j.setVisibility(View.GONE);
+            bi.te05d.setVisibility(View.GONE);
             bi.te05k.setVisibility(View.GONE);
             bi.te05l.setVisibility(View.GONE);
+            bi.te05m.setVisibility(View.GONE);
+            bi.te05n.setVisibility(View.GONE);
+            bi.te05o.setVisibility(View.GONE);
+            bi.te05p.setVisibility(View.GONE);
+            bi.te05q.setVisibility(View.GONE);
+            bi.te05r.setVisibility(View.GONE);
+            bi.te05s.setVisibility(View.GONE);
+            bi.te05t.setVisibility(View.GONE);
+            bi.te05u.setVisibility(View.GONE);
             bi.te15cv.setVisibility(View.GONE);
             bi.te11e.setVisibility(View.GONE);
             bi.te11f.setVisibility(View.GONE);
@@ -121,23 +157,39 @@ public class SectionEActivity extends AppCompatActivity {
             bi.te05j.setVisibility(View.GONE);
             bi.te05k.setVisibility(View.GONE);
             bi.te05l.setVisibility(View.GONE);
+            bi.te05m.setVisibility(View.GONE);
+            bi.te05n.setVisibility(View.GONE);
+            bi.te05o.setVisibility(View.GONE);
+            bi.te05p.setVisibility(View.GONE);
+            bi.te05q.setVisibility(View.GONE);
+            bi.te05r.setVisibility(View.GONE);
+            bi.te05s.setVisibility(View.GONE);
+            bi.te05t.setVisibility(View.GONE);
+            bi.te05u.setVisibility(View.GONE);
             bi.te15cv.setVisibility(View.GONE);
             bi.te11e.setVisibility(View.GONE);
             bi.te11f.setVisibility(View.GONE);
         }
 
         if (problem_type == 6) {
-            bi.te05e.setText(getString(R.string.te05k));
-            bi.te05f.setText(getString(R.string.te05e));
-            bi.te05g.setText(getString(R.string.te05f));
-            bi.te05h.setText(getString(R.string.te05l));
+            bi.te05g.setVisibility(View.GONE);
+            bi.te05h.setVisibility(View.GONE);
             bi.te05i.setVisibility(View.GONE);
             bi.te05j.setVisibility(View.GONE);
-            bi.te05k.setVisibility(View.GONE);
-            bi.te05l.setVisibility(View.GONE);
+            bi.te05m.setVisibility(View.GONE);
+            bi.te05n.setVisibility(View.GONE);
+            bi.te05o.setVisibility(View.GONE);
+            bi.te05p.setVisibility(View.GONE);
+            bi.te05q.setVisibility(View.GONE);
+            bi.te05r.setVisibility(View.GONE);
+            bi.te05s.setVisibility(View.GONE);
+            bi.te05t.setVisibility(View.GONE);
+            bi.te05u.setVisibility(View.GONE);
             bi.te15cv.setVisibility(View.GONE);
             bi.te11e.setVisibility(View.GONE);
             bi.te11f.setVisibility(View.GONE);
+            bi.te05k.setVisibility(View.VISIBLE);
+            bi.te05l.setVisibility(View.VISIBLE);
         }
 
         if (problem_type == 7) {
@@ -147,43 +199,82 @@ public class SectionEActivity extends AppCompatActivity {
             bi.te05j.setVisibility(View.GONE);
             bi.te05k.setVisibility(View.GONE);
             bi.te05l.setVisibility(View.GONE);
+            bi.te05m.setVisibility(View.GONE);
+            bi.te05n.setVisibility(View.GONE);
+            bi.te05o.setVisibility(View.GONE);
+            bi.te05p.setVisibility(View.GONE);
+            bi.te05q.setVisibility(View.GONE);
+            bi.te05r.setVisibility(View.GONE);
+            bi.te05s.setVisibility(View.GONE);
+            bi.te05t.setVisibility(View.GONE);
+            bi.te05u.setVisibility(View.GONE);
             bi.te15cv.setVisibility(View.GONE);
             bi.te11e.setVisibility(View.GONE);
             bi.te11f.setVisibility(View.GONE);
         }
 
         if (problem_type == 8) {
-            bi.te05d.setText(getString(R.string.te05m));
-            bi.te05e.setText(getString(R.string.te05n));
-            bi.te05f.setText(getString(R.string.te05e));
-            bi.te05g.setText(getString(R.string.te05f));
-            bi.te05h.setText(getString(R.string.te05o));
+            bi.te05d.setVisibility(View.GONE);
+            bi.te05h.setVisibility(View.GONE);
+            bi.te05t.setVisibility(View.GONE);
+            bi.te05u.setVisibility(View.GONE);
             bi.te15cv.setVisibility(View.GONE);
             bi.te11e.setVisibility(View.GONE);
             bi.te11f.setVisibility(View.GONE);
+            bi.te05i.setVisibility(View.GONE);
+            bi.te05g.setVisibility(View.GONE);
+            bi.te05j.setVisibility(View.GONE);
+            bi.te05f.setVisibility(View.VISIBLE);
+            bi.te05e.setVisibility(View.VISIBLE);
+            bi.te05m.setVisibility(View.VISIBLE);
+            bi.te05n.setVisibility(View.VISIBLE);
+            bi.te05o.setVisibility(View.VISIBLE);
+            bi.te05p.setVisibility(View.VISIBLE);
+            bi.te05q.setVisibility(View.VISIBLE);
+            bi.te05r.setVisibility(View.VISIBLE);
+            bi.te05s.setVisibility(View.VISIBLE);
         }
 
         if (problem_type == 9) {
-            bi.te05e.setText(getString(R.string.te05t));
-            bi.te05f.setText(getString(R.string.te05e));
-            bi.te05g.setText(getString(R.string.te05f));
-            bi.te05h.setText(getString(R.string.te05h3));
-            bi.te05i.setText(getString(R.string.te05i1));
-            bi.te05j.setText(getString(R.string.te05j1));
-            bi.te05k.setVisibility(View.GONE);
-            bi.te05l.setVisibility(View.GONE);
-            bi.te15cv.setVisibility(View.GONE);
-            bi.te11e.setVisibility(View.GONE);
-            bi.te11f.setVisibility(View.GONE);
-        }
-
-        if (problem_type > 9) {
-            bi.te05g.setText(getString(R.string.te05u));
+            bi.te05d.setVisibility(View.GONE);
             bi.te05h.setVisibility(View.GONE);
             bi.te05i.setVisibility(View.GONE);
             bi.te05j.setVisibility(View.GONE);
             bi.te05k.setVisibility(View.GONE);
             bi.te05l.setVisibility(View.GONE);
+            bi.te05n.setVisibility(View.GONE);
+            bi.te05o.setVisibility(View.GONE);
+            bi.te05p.setVisibility(View.GONE);
+            bi.te05q.setVisibility(View.GONE);
+            bi.te05u.setVisibility(View.GONE);
+            bi.te15cv.setVisibility(View.GONE);
+            bi.te11e.setVisibility(View.GONE);
+            bi.te11f.setVisibility(View.GONE);
+            bi.te05e.setVisibility(View.VISIBLE);
+            bi.te05f.setVisibility(View.VISIBLE);
+            bi.te05g.setVisibility(View.VISIBLE);
+            bi.te05m.setVisibility(View.VISIBLE);
+            bi.te05r.setVisibility(View.VISIBLE);
+            bi.te05s.setVisibility(View.VISIBLE);
+            bi.te05t.setVisibility(View.VISIBLE);
+        }
+
+        if (problem_type > 9) {
+            bi.te05g.setVisibility(View.GONE);
+            bi.te05h.setVisibility(View.GONE);
+            bi.te05i.setVisibility(View.GONE);
+            bi.te05j.setVisibility(View.GONE);
+            bi.te05k.setVisibility(View.GONE);
+            bi.te05l.setVisibility(View.GONE);
+            bi.te05m.setVisibility(View.GONE);
+            bi.te05n.setVisibility(View.GONE);
+            bi.te05o.setVisibility(View.GONE);
+            bi.te05p.setVisibility(View.GONE);
+            bi.te05q.setVisibility(View.GONE);
+            bi.te05r.setVisibility(View.GONE);
+            bi.te05s.setVisibility(View.GONE);
+            bi.te05t.setVisibility(View.GONE);
+            bi.te05u.setVisibility(View.VISIBLE);
             bi.te11e.setVisibility(View.VISIBLE);
             bi.te11f.setVisibility(View.VISIBLE);
             bi.te15cv.setVisibility(View.VISIBLE);
@@ -302,6 +393,15 @@ public class SectionEActivity extends AppCompatActivity {
                 : bi.te05j.isChecked() ? "10"
                 : bi.te05k.isChecked() ? "11"
                 : bi.te05l.isChecked() ? "12"
+                : bi.te05m.isChecked() ? "13"
+                : bi.te05n.isChecked() ? "14"
+                : bi.te05o.isChecked() ? "15"
+                : bi.te05p.isChecked() ? "16"
+                : bi.te05q.isChecked() ? "17"
+                : bi.te05r.isChecked() ? "18"
+                : bi.te05s.isChecked() ? "19"
+                : bi.te05t.isChecked() ? "20"
+                : bi.te05u.isChecked() ? "21"
                 : "0");
 
        /* SE.put("te05a", bi.te05a.isChecked() ? "1" : "0");

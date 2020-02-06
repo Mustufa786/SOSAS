@@ -114,6 +114,51 @@
                             style="@style/radiobutton"
                             android:text="@string/te05l" />
 
+                        <RadioButton
+                            android:id="@+id/te05m"
+                            style="@style/radiobutton"
+                            android:text="@string/te05m" />
+
+                        <RadioButton
+                            android:id="@+id/te05n"
+                            style="@style/radiobutton"
+                            android:text="@string/te05n" />
+
+                        <RadioButton
+                            android:id="@+id/te05o"
+                            style="@style/radiobutton"
+                            android:text="@string/te05o" />
+
+                        <RadioButton
+                            android:id="@+id/te05p"
+                            style="@style/radiobutton"
+                            android:text="@string/te05p" />
+
+                        <RadioButton
+                            android:id="@+id/te05q"
+                            style="@style/radiobutton"
+                            android:text="@string/te05q" />
+
+                        <RadioButton
+                            android:id="@+id/te05r"
+                            style="@style/radiobutton"
+                            android:text="@string/te05r" />
+
+                        <RadioButton
+                            android:id="@+id/te05s"
+                            style="@style/radiobutton"
+                            android:text="@string/te05s" />
+
+                        <RadioButton
+                            android:id="@+id/te05t"
+                            style="@style/radiobutton"
+                            android:text="@string/te05t" />
+
+                        <RadioButton
+                            android:id="@+id/te05u"
+                            style="@style/radiobutton"
+                            android:text="@string/te05u" />
+
                     </RadioGroup>
 
                 </LinearLayout>

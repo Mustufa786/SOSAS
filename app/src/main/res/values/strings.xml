@@ -198,11 +198,16 @@
     <string name="te05m">جسم ۾ غير ضروري واڌ، سخت ڳڙ</string>
     <string name="te05n">جسم ۾ غير ضروري واڌ، گهٽجندڙ ڳڙ</string>
     <string name="te05o">پيٽ ۾ سور يا مروڙ پوڻ يا پيٽ سڄڻ</string>
+    <string name="te05p">پيشاب ۾ رڪاوٽ</string>
+    <string name="te05q">گُردن۾ سور/ پٿري</string>
+    <string name="te05r">پائخاني ۾ رت اچڻ </string>
+    <string name="te05s">پائخاني ۾ رت اچڻ </string>
     <string name="te05t">جسم ۾ غير ضروري واڌ، گهٽجندڙ ڳڙ</string>
+    <string name="te05u">زخم مان رت يا پس وهڻ</string>
+
     <string name="te05h3">پائخاني يا پيشاب جو هر وقت نڪري وڃڻ</string>
     <string name="te05i1">پائخاني ۾ رت اچڻ</string>
     <string name="te05j1">پيشاب جي نالي مان رت اچڻ</string>
-    <string name="te05u">زخم مان رت يا پس وهڻ</string>
     <!--END SOSAS Study te05 Response Strings-->
 
     <!--<string name="te05i"> پيشاب ۾ رڪاوٽ </string>
