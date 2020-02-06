@@ -190,10 +190,25 @@
     <string name="te05g"> نابين ٿيڻ </string>
     <string name="te05h"> نظر گهٽ ٿيڻ </string>
 
-    <string name="te05i"> پيشاب ۾ رڪاوٽ </string>
+    <!--Start SOSAS Study te05 Response Strings-->
+    <string name="te05i">ٻوڙو ٿيڻ</string>
+    <string name="te05j">جسم ۾ غير ضروري واڌ، ڳڙ</string>
+    <string name="te05k">ساهه جي ناليءَ ۾ ڪا شئي ڦاسڻ</string>
+    <string name="te05l">دل جو مسئلو (پئدائشي)</string>
+    <string name="te05m">جسم ۾ غير ضروري واڌ، سخت ڳڙ</string>
+    <string name="te05n">جسم ۾ غير ضروري واڌ، گهٽجندڙ ڳڙ</string>
+    <string name="te05o">پيٽ ۾ سور يا مروڙ پوڻ يا پيٽ سڄڻ</string>
+    <string name="te05t">جسم ۾ غير ضروري واڌ، گهٽجندڙ ڳڙ</string>
+    <string name="te05h3">پائخاني يا پيشاب جو هر وقت نڪري وڃڻ</string>
+    <string name="te05i1">پائخاني ۾ رت اچڻ</string>
+    <string name="te05j1">پيشاب جي نالي مان رت اچڻ</string>
+    <string name="te05u">زخم مان رت يا پس وهڻ</string>
+    <!--END SOSAS Study te05 Response Strings-->
+
+    <!--<string name="te05i"> پيشاب ۾ رڪاوٽ </string>
     <string name="te05j"> گُردن۾ سور/ پٿري </string>
     <string name="te05k"> پائخاني ۾ رت اچڻ </string>
-    <string name="te05l"> پيشاب جي نالي مان رت اچڻ </string>
+    <string name="te05l"> پيشاب جي نالي مان رت اچڻ </string>-->
 
     <string name="tfhh"> Eyes Problems </string>
 
@@ -303,20 +318,6 @@
     <string name="num">اعداد</string>
     <string name="gender">جنس</string>
 
-    <!--Start SOSAS Study te05 Response Strings-->
-    <string name="te05g1">ٻوڙو ٿيڻ</string>
-    <string name="te05d1">جسم ۾ غير ضروري واڌ، ڳڙ</string>
-    <string name="te05e1">ساهه جي ناليءَ ۾ ڪا شئي ڦاسڻ</string>
-    <string name="te05h1">دل جو مسئلو (پئدائشي)</string>
-    <string name="te05d2">جسم ۾ غير ضروري واڌ، سخت ڳڙ</string>
-    <string name="te05e2">جسم ۾ غير ضروري واڌ، گهٽجندڙ ڳڙ</string>
-    <string name="te05h2">پيٽ ۾ سور يا مروڙ پوڻ يا پيٽ سڄڻ</string>
-    <string name="te05e3">جسم ۾ غير ضروري واڌ، گهٽجندڙ ڳڙ</string>
-    <string name="te05h3">پائخاني يا پيشاب جو هر وقت نڪري وڃڻ</string>
-    <string name="te05i1">پائخاني ۾ رت اچڻ</string>
-    <string name="te05j1">پيشاب جي نالي مان رت اچڻ</string>
-    <string name="te05g2">زخم مان رت يا پس وهڻ</string>
-    <!--END SOSAS Study te05 Response Strings-->
 
     <!--Start SOSAS Study te03 multiple text Strings-->
     <string name="te03a1">توهان جي (ٻار جو نالو) کي ڪڏهن اکين ۾ زخم، سڙڻ، ڳڙ، نقص، نظرجو يا اهڙو ڪو ٻيو مسئلو ٿيو آهي؟</string>
