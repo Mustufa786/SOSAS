@@ -57,6 +57,7 @@ public class MotherContract {
     public MotherContract hydrate(Cursor cursor) {
         this.luid = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_luid));
         this.uid = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_UID));
+        this.uuid = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_UUID));
         this.serialNo = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_SERIAL_NO));
         this.dA = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_DA));
         this.formdate = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_FORMDATE));
@@ -77,6 +78,7 @@ public class MotherContract {
 
         json.put(singleMother.COLUMN_luid, this.luid == null ? JSONObject.NULL : this.luid);
         json.put(singleMother.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
+        json.put(singleMother.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
         json.put(singleMother.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo);
 
         if (!this.dA.equals("")) {
@@ -173,8 +175,9 @@ public class MotherContract {
         public static final String TABLE_NAME = "mother";
         public static final String _ID = "_id";
         public static final String COLUMN_UID = "_uid";
-        public static final String COLUMN_luid = "luid";
-        public static final String COLUMN_fmuid = "fmuid";
+        public static final String COLUMN_UUID = "_uuid";
+        public static final String COLUMN_luid = "_luid";
+        public static final String COLUMN_fmuid = "_fmuid";
         public static final String COLUMN_SERIAL_NO = "serial_no";
         public static final String COLUMN_MOTHER_ID = "mother_id";
         public static final String COLUMN_DA = "dA";

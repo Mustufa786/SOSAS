@@ -286,9 +286,8 @@ public class SectionEActivity extends AppCompatActivity {
 
         SE.put("count", problem_counter);
         SE.put("mother_id", MainApp.motherData.getSerialno());
-        SE.put("muid", MainApp.mc.getUid());
         SE.put("hhno", MainApp.fc.getHhno());
-        SE.put("cluster_code", MainApp.fc.getClusterCode());
+        SE.put("cluster_no", MainApp.fc.getClusterCode());
 
         SE.put("te05", bi.te05a.isChecked() ? "1"
                 : bi.te05b.isChecked() ? "2"
