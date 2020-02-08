@@ -17,7 +17,6 @@ import edu.aku.hassannaqvi.uen_sosas.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivityChildListBinding;
-import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity;
 
 import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.motherData;
 import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.problemType;
@@ -80,8 +79,8 @@ public class ChildListActivity extends AppCompatActivity {
         if (requestCode == CHILD_MAIN) {
             if (resultCode == RESULT_OK) {
                 if (childCount == list.size()) {
+                    problemType = 0;
                     finish();
-                    startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
                 } else
                     problemType = 0;
             }
@@ -91,5 +90,17 @@ public class ChildListActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Toast.makeText(this, "can not go back", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        /*if (childCount == list.size()) {
+            finish();
+            if (MainApp.fc.getIstatus().equals("")) return;
+            startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+        } else
+            problemType = 0;*/
     }
 }
