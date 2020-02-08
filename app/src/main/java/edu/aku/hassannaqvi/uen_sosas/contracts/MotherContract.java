@@ -55,7 +55,7 @@ public class MotherContract {
     }
 
     public MotherContract hydrate(Cursor cursor) {
-        this.luid = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_luid));
+        this.luid = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_LUID));
         this.uid = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_UID));
         this.uuid = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_UUID));
         this.serialNo = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_SERIAL_NO));
@@ -67,7 +67,7 @@ public class MotherContract {
         this.user = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_USER));
         this.deviceID = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_DEVICEID));
         this.devicetagID = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_DEVICETAGID));
-        this.fmuid = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_fmuid));
+        this.fmuid = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_FMUID));
 
         return this;
     }
@@ -76,7 +76,7 @@ public class MotherContract {
 
         JSONObject json = new JSONObject();
 
-        json.put(singleMother.COLUMN_luid, this.luid == null ? JSONObject.NULL : this.luid);
+        json.put(singleMother.COLUMN_LUID, this.luid == null ? JSONObject.NULL : this.luid);
         json.put(singleMother.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
         json.put(singleMother.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
         json.put(singleMother.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo);
@@ -91,7 +91,7 @@ public class MotherContract {
         json.put(singleMother.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
         json.put(singleMother.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
         json.put(singleMother.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
-        json.put(singleMother.COLUMN_fmuid, this.fmuid == null ? JSONObject.NULL : this.fmuid);
+        json.put(singleMother.COLUMN_FMUID, this.fmuid == null ? JSONObject.NULL : this.fmuid);
 
 
         return json;
@@ -176,8 +176,8 @@ public class MotherContract {
         public static final String _ID = "_id";
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_UUID = "_uuid";
-        public static final String COLUMN_luid = "_luid";
-        public static final String COLUMN_fmuid = "_fmuid";
+        public static final String COLUMN_LUID = "_luid";
+        public static final String COLUMN_FMUID = "_fmuid";
         public static final String COLUMN_SERIAL_NO = "serial_no";
         public static final String COLUMN_MOTHER_ID = "mother_id";
         public static final String COLUMN_DA = "dA";

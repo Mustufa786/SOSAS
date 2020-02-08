@@ -221,7 +221,7 @@ public class ChildContract {
     }
 
     public ChildContract hydrate(Cursor cursor) {
-        this.luid = cursor.getString(cursor.getColumnIndex(singleChild.COLUMN_luid));
+        this.luid = cursor.getString(cursor.getColumnIndex(singleChild.COLUMN_LUID));
         this.uid = cursor.getString(cursor.getColumnIndex(singleChild.COLUMN_UID));
         this.serialNo = cursor.getString(cursor.getColumnIndex(singleChild.COLUMN_SERIAL_NO));
 //        this.dA = cursor.getString(cursor.getColumnIndex(singleChild.COLUMN_DA));
@@ -260,7 +260,7 @@ public class ChildContract {
 
         JSONObject json = new JSONObject();
 
-        json.put(singleChild.COLUMN_luid, this.luid == null ? JSONObject.NULL : this.luid);
+        json.put(singleChild.COLUMN_LUID, this.luid == null ? JSONObject.NULL : this.luid);
         json.put(singleChild.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
         json.put(singleChild.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo);
 
@@ -409,7 +409,7 @@ public class ChildContract {
         public static final String _ID = "_id";
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_UUID = "_uuid";
-        public static final String COLUMN_luid = "_luid";
+        public static final String COLUMN_LUID = "_luid";
         public static final String COLUMN_SERIAL_NO = "serial_no";
         public static final String COLUMN_MOTHER_ID = "mother_id";
         public static final String COLUMN_MUID = "_muid";
