@@ -134,7 +134,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private final String SQL_CREATE_DECEASED_CHILD = "CREATE TABLE " + DeceasedChildContract.singleDeceasedChild.TABLE_NAME + "("
             + singleDeceasedChild._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + singleDeceasedChild.COLUMN_luid + " TEXT,"
+            + singleDeceasedChild.COLUMN_LUID + " TEXT,"
             + singleDeceasedChild.COLUMN_UID + " TEXT,"
             + singleDeceasedChild.COLUMN_UUID + " TEXT,"
             + singleDeceasedChild.COLUMN_MUID + " TEXT,"
@@ -151,7 +151,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private final String SQL_CREATE__CHILD_TABLE = "CREATE TABLE " + singleChild.TABLE_NAME + "("
             + singleChild._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + singleChild.COLUMN_luid + " TEXT,"
+            + singleChild.COLUMN_LUID + " TEXT,"
             + singleChild.COLUMN_UID + " TEXT,"
             + singleChild.COLUMN_UUID + " TEXT,"
             + singleChild.COLUMN_MOTHER_ID + " TEXT,"
@@ -185,9 +185,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private final String SQL_CREATE__MOTHER_TABLE = "CREATE TABLE " + singleMother.TABLE_NAME + "("
             + singleMother._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + singleMother.COLUMN_luid + " TEXT,"
+            + singleMother.COLUMN_LUID + " TEXT,"
             + singleMother.COLUMN_UID + " TEXT,"
-            + singleMother.COLUMN_fmuid + " TEXT,"
+            + singleMother.COLUMN_UUID + " TEXT,"
+            + singleMother.COLUMN_FMUID + " TEXT,"
             + singleMother.COLUMN_MOTHER_ID + " TEXT,"
             + singleMother.COLUMN_SERIAL_NO + " TEXT,"
             + singleMother.COLUMN_DA + " TEXT,"
@@ -875,7 +876,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(DeceasedChildContract.singleDeceasedChild.COLUMN_luid, fc.getLuid());
+        values.put(DeceasedChildContract.singleDeceasedChild.COLUMN_LUID, fc.getLuid());
         values.put(singleDeceasedChild.COLUMN_DA, fc.getdA());
         values.put(singleDeceasedChild.COLUMN_FORMDATE, fc.getFormdate());
         values.put(singleDeceasedChild.COLUMN_MOTHER_ID, fc.getMotherId());
@@ -901,7 +902,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(singleChild.COLUMN_luid, fc.getLuid());
+        values.put(singleChild.COLUMN_LUID, fc.getLuid());
 //        values.put(singleChild.COLUMN_DA, fc.getdA());
         values.put(singleChild.COLUMN_FORMDATE, fc.getFormdate());
         values.put(singleChild.COLUMN_MOTHER_ID, fc.getMotherId());
@@ -929,10 +930,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(singleMother.COLUMN_luid, fc.getLuid());
+        values.put(singleMother.COLUMN_LUID, fc.getLuid());
         values.put(singleMother.COLUMN_DA, fc.getdA());
         values.put(singleMother.COLUMN_FORMDATE, fc.getFormdate());
-        values.put(singleMother.COLUMN_fmuid, fc.getFmuid());
+        values.put(singleMother.COLUMN_FMUID, fc.getFmuid());
 //        values.put(singleMother.COLUMN_MOTHER_ID, fc.getMotherId());
         values.put(singleMother.COLUMN_SERIAL_NO, fc.getSerialNo());
         values.put(singleMother.COLUMN_USER, fc.getUser());
@@ -1413,7 +1414,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 singleChild._ID,
                 singleChild.COLUMN_UID,
                 singleChild.COLUMN_UUID,
-                singleChild.COLUMN_luid,
+                singleChild.COLUMN_LUID,
                 singleChild.COLUMN_SERIAL_NO,
                 singleChild.COLUMN_MOTHER_ID,
                 singleChild.COLUMN_MUID,
@@ -1545,9 +1546,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = null;
         String[] columns = {
                 singleMother._ID,
-                singleMother.COLUMN_luid,
+                singleMother.COLUMN_LUID,
                 singleMother.COLUMN_UID,
-                singleMother.COLUMN_fmuid,
+                singleMother.COLUMN_UUID,
+                singleMother.COLUMN_FMUID,
                 singleMother.COLUMN_SERIAL_NO,
                 singleMother.COLUMN_DA,
                 singleMother.COLUMN_FORMDATE,
@@ -1603,7 +1605,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = null;
         String[] columns = {
                 singleDeceasedChild._ID,
-                singleDeceasedChild.COLUMN_luid,
+                singleDeceasedChild.COLUMN_LUID,
                 singleDeceasedChild.COLUMN_UID,
                 singleDeceasedChild.COLUMN_SERIAL_NO,
                 singleDeceasedChild.COLUMN_DA,
