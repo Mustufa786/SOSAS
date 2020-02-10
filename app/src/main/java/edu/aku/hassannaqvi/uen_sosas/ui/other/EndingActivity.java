@@ -1,5 +1,6 @@
 package edu.aku.hassannaqvi.uen_sosas.ui.other;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -55,6 +56,7 @@ public class EndingActivity extends AppCompatActivity {
             SaveDraft();
             if (UpdateDB()) {
                 finish();
+                startActivity(new Intent(this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }

@@ -24,7 +24,7 @@ import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp.*
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivityInfoBinding
-import edu.aku.hassannaqvi.uen_sosas.ui.other.MainActivity
+import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass
 import java.util.*
 import kotlin.collections.ArrayList
@@ -220,7 +220,7 @@ class InfoActivity : AppCompatActivity() {
 
         if (womenList.size == motherList.size) {
             finish()
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, EndingActivity::class.java).putExtra("complete", true))
             return
         }
 

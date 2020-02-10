@@ -14,13 +14,14 @@ import androidx.databinding.DataBindingUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import edu.aku.hassannaqvi.uen_sosas.R;
 import edu.aku.hassannaqvi.uen_sosas.contracts.ChildContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.ChildContract.singleChild;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivitySectionCBinding;
-import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.uen_sosas.validator.ClearClass;
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass;
 
@@ -229,8 +230,10 @@ public class SectionCActivity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false)
-                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+        problemType = 17;
+        if (extLst == null) extLst = new ArrayList<>();
+        setResult(RESULT_OK);
+        finish();
     }
 
     private boolean UpdateDB() {
