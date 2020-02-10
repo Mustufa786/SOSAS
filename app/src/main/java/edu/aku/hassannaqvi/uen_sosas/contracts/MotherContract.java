@@ -57,7 +57,7 @@ public class MotherContract {
     public MotherContract hydrate(Cursor cursor) {
         this.luid = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_luid));
         this.uid = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_UID));
-        this.uuid = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_UUID));
+        // this.uuid = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_UUID));
         this.serialNo = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_SERIAL_NO));
         this.dA = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_DA));
         this.formdate = cursor.getString(cursor.getColumnIndex(singleMother.COLUMN_FORMDATE));
@@ -78,7 +78,7 @@ public class MotherContract {
 
         json.put(singleMother.COLUMN_luid, this.luid == null ? JSONObject.NULL : this.luid);
         json.put(singleMother.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
-        json.put(singleMother.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
+        // json.put(singleMother.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
         json.put(singleMother.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo);
 
         if (!this.dA.equals("")) {
