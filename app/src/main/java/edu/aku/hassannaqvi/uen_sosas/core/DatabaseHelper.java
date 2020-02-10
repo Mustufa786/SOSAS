@@ -57,7 +57,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "sosas.db";
     public static final String DB_NAME = "sosas_copy.db";
     public static final String PROJECT_NAME = "DMU-SOSASSTUDY";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String SQL_CREATE_FORMS = "CREATE TABLE "
             + FormsTable.TABLE_NAME + "("
             + FormsTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -214,6 +214,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + singleProblem.COLUMN_SYNCED + " TEXT,"
             + singleProblem.COLUMN_SYNCED_DATE + " TEXT );";
 
+    private final String SQL_ALTER_MOTHER = " ALTER TABLE " + singleMother.TABLE_NAME + " ADD COLUMN " +
+            singleMother.COLUMN_UUID + " TEXT;";
+
 
     private final String SQL_CREATE_CHILDLIST = "CREATE TABLE " + ChildList.singleChildList.TABLE_NAME + "("
             + ChildList.singleChildList._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -280,6 +283,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //        db.execSQL(SQL_DELETE_TALUKAS);
 //        db.execSQL(SQL_DELETE_UCS);
 //        db.execSQL(SQL_DELETE_AREAS);
+
+        switch (i) {
+            case 1:
+                db.execSQL(SQL_ALTER_MOTHER);
+        }
 
 
     }
@@ -973,8 +981,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values);
         return newRowId;
     }
-
-
 
 
     public void updateSyncedForms(String id) {
