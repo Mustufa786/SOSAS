@@ -947,7 +947,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(singleMother.COLUMN_USER, fc.getUser());
         values.put(singleMother.COLUMN_DEVICEID, fc.getDeviceID());
         values.put(singleMother.COLUMN_DEVICETAGID, fc.getDevicetagID());
-//        values.put(singleMother.COLUMN_UUID, fc.getUuid());
+        values.put(singleMother.COLUMN_UUID, fc.getUuid());
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
         newRowId = db.insert(
