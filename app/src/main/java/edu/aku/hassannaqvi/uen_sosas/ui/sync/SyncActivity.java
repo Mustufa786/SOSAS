@@ -262,7 +262,6 @@ public class SyncActivity extends AppCompatActivity {
     }
 
     public void dbBackup() {
-
         sharedPref = getSharedPreferences("src", MODE_PRIVATE);
         editor = sharedPref.edit();
 
