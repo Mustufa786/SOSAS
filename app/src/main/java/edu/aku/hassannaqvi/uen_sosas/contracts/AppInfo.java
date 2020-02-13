@@ -36,6 +36,10 @@ public class AppInfo {
         return "Ver. " + versionName + "." + versionCode + " \r\n( Last Updated: " + new SimpleDateFormat("dd MMM. yyyy").format(new Date(getInfo().installedOn)) + " )";
     }
 
+    public String getAppVersion() {
+        return versionName + "." + versionCode;
+    }
+
     public String getVersionName() {
         return versionName;
     }

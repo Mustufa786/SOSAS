@@ -384,6 +384,10 @@ public class SectionEActivity extends AppCompatActivity {
         SE.put("hhno", MainApp.fc.getHhno());
         SE.put("cluster_no", MainApp.fc.getClusterCode());
         SE.put("luid", MainApp.cc.getUuid());
+        SE.put("Appver", MainApp.appInfo.getAppVersion());
+        SE.put("serialNo", MainApp.cc.getSerialNo());
+        SE.put("_fmuid", MainApp.cc.getUid());
+        SE.put("motherid", MainApp.cc.getMotherId());
 
         SE.put("te05", bi.te05a.isChecked() ? "1"
                 : bi.te05b.isChecked() ? "2"
