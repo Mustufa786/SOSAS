@@ -188,12 +188,12 @@ class InfoActivity : AppCompatActivity() {
         fc.uc = ucCode.toString()
         fc.areaCode = areaCode
         fc.village = villageCode
-        fc.appversion = appInfo.appInfo + "." + versionCode
+        fc.appversion = appInfo.appVersion
         fc.clusterCode = bi.clusterNumber.text.toString()
         fc.hhno = bi.hhName.text.toString()
 
         val json = JSONObject()
-        json.put("luid", item.uuid)
+        json.put("_luid", item.uuid)
         fc.setsA(json.toString())
 
 
