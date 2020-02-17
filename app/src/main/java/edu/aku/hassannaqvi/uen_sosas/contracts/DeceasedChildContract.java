@@ -88,23 +88,23 @@ public class DeceasedChildContract {
 
         JSONObject json = new JSONObject();
 
-        json.put(singleDeceasedChild.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
-        json.put(singleDeceasedChild.COLUMN_LUID, this.luid == null ? JSONObject.NULL : this.luid);
-        json.put(singleDeceasedChild.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo);
-        json.put(singleDeceasedChild.COLUMN_MOTHER_ID, this.motherId == null ? JSONObject.NULL : this.motherId);
+        json.put(singleDeceasedChild.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+        json.put(singleDeceasedChild.COLUMN_LUID, this.luid == null ? JSONObject.NULL : this.luid.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+        json.put(singleDeceasedChild.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+        json.put(singleDeceasedChild.COLUMN_MOTHER_ID, this.motherId == null ? JSONObject.NULL : this.motherId.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
 
         if (!this.dA.equals("")) {
-            json.put(singleDeceasedChild.COLUMN_DA, this.dA.equals("") ? JSONObject.NULL : new JSONObject(this.dA));
+            json.put(singleDeceasedChild.COLUMN_DA, this.dA.equals("") ? JSONObject.NULL : new JSONObject(this.dA.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@")));
         }
-        json.put(singleDeceasedChild.COLUMN_FORMDATE, this.formdate == null ? JSONObject.NULL : this.formdate);
-        json.put(singleDeceasedChild.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
-        json.put(singleDeceasedChild.COLUMN_SYNCED_DATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate);
-        json.put(singleDeceasedChild._ID, this._id == null ? JSONObject.NULL : this._id);
-        json.put(singleDeceasedChild.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
-        json.put(singleDeceasedChild.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
-        json.put(singleDeceasedChild.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
-        json.put(singleDeceasedChild.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
-        json.put(singleDeceasedChild.COLUMN_MUID, this.muid == null ? JSONObject.NULL : this.muid);
+        json.put(singleDeceasedChild.COLUMN_FORMDATE, this.formdate == null ? JSONObject.NULL : this.formdate.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+        json.put(singleDeceasedChild.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+        json.put(singleDeceasedChild.COLUMN_SYNCED_DATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+        json.put(singleDeceasedChild._ID, this._id == null ? JSONObject.NULL : this._id.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+        json.put(singleDeceasedChild.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+        json.put(singleDeceasedChild.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+        json.put(singleDeceasedChild.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+        json.put(singleDeceasedChild.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+        json.put(singleDeceasedChild.COLUMN_MUID, this.muid == null ? JSONObject.NULL : this.muid.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
 
 
         return json;

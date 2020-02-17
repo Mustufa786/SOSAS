@@ -2,6 +2,7 @@ package edu.aku.hassannaqvi.uen_sosas.sync;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ import java.util.List;
 
 import edu.aku.hassannaqvi.uen_sosas.adapter.UploadListAdapter;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
+import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
 import edu.aku.hassannaqvi.uen_sosas.otherClasses.SyncModel;
 
 /**
@@ -57,6 +59,7 @@ public class SyncAllData extends AsyncTask<Void, Integer, String> {
         TAG = "Get" + syncClass;
         uploadlist.get(position).settableName(syncClass);
     }
+
 
     @Override
     protected void onPreExecute() {
@@ -144,10 +147,13 @@ public class SyncAllData extends AsyncTask<Void, Integer, String> {
                     } catch (InvocationTargetException e) {
                         e.printStackTrace();
                     }
+                    SharedPreferences preferences = mContext.getSharedPreferences("tagName", Context.MODE_PRIVATE);
 
                     //TODO table server
                     JSONObject jsonTable = new JSONObject();
                     jsonTable.put("table", tableName);
+                    jsonTable.put("appver", MainApp.appInfo.getAppVersion());
+                    jsonTable.put("tabID", preferences.getString("tagName", null));
 
 
                     JSONArray jsonParam = new JSONArray();
@@ -206,8 +212,12 @@ public class SyncAllData extends AsyncTask<Void, Integer, String> {
         String sSyncedError = "";
         JSONArray json = null;
         try {
-            json = new JSONArray(result);
-
+            try {
+                json = new JSONArray(result);
+            } catch (JSONException e) {
+                Log.d(TAG, "onPostExecute: " + result);
+                json = new JSONArray(result);
+            }
             DatabaseHelper db = new DatabaseHelper(mContext); // Database Helper
 
             Method method = null;

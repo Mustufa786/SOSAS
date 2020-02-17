@@ -256,76 +256,98 @@ public class ChildContract {
         return this;
     }
 
-    public JSONObject toJSONObject() throws JSONException {
+    public JSONObject toJSONObject() {
 
         JSONObject json = new JSONObject();
-
-        json.put(singleChild.COLUMN_LUID, this.luid == null ? JSONObject.NULL : this.luid);
-        json.put(singleChild.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
-        json.put(singleChild.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo);
-
-        if (!this.pType1.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_1, this.pType1.equals("") ? JSONObject.NULL : new JSONObject(this.pType1));
-        }
-        if (!this.pType2.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_2, this.pType2.equals("") ? JSONObject.NULL : new JSONObject(this.pType2));
-        }
-        if (!this.pType3.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_3, this.pType3.equals("") ? JSONObject.NULL : new JSONObject(this.pType3));
-        }
-        if (!this.pType4.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_4, this.pType4.equals("") ? JSONObject.NULL : new JSONObject(this.pType4));
-        }
-        if (!this.pType5.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_5, this.pType5.equals("") ? JSONObject.NULL : new JSONObject(this.pType5));
-        }
-        if (!this.pType6.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_6, this.pType6.equals("") ? JSONObject.NULL : new JSONObject(this.pType6));
-        }
-        if (!this.pType7.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_7, this.pType7.equals("") ? JSONObject.NULL : new JSONObject(this.pType7));
-        }
-        if (!this.pType8.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_8, this.pType8.equals("") ? JSONObject.NULL : new JSONObject(this.pType8));
-        }
-        if (!this.pType9.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_9, this.pType9.equals("") ? JSONObject.NULL : new JSONObject(this.pType9));
-        }
-        if (!this.pType10.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_10, this.pType10.equals("") ? JSONObject.NULL : new JSONObject(this.pType10));
-        }
-        if (!this.pType11.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_11, this.pType11.equals("") ? JSONObject.NULL : new JSONObject(this.pType11));
-        }
-        if (!this.pType12.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_12, this.pType12.equals("") ? JSONObject.NULL : new JSONObject(this.pType12));
-        }
-        if (!this.pType13.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_13, this.pType13.equals("") ? JSONObject.NULL : new JSONObject(this.pType13));
-        }
-        if (!this.pType14.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_14, this.pType14.equals("") ? JSONObject.NULL : new JSONObject(this.pType14));
-        }
-        if (!this.pType15.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_15, this.pType15.equals("") ? JSONObject.NULL : new JSONObject(this.pType15));
-        }
-        if (!this.pType16.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_16, this.pType16.equals("") ? JSONObject.NULL : new JSONObject(this.pType16));
-        }
-
-        json.put(singleChild.COLUMN_FORMDATE, this.formdate == null ? JSONObject.NULL : this.formdate);
-        json.put(singleChild.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
-        json.put(singleChild.COLUMN_SYNCED_DATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate);
-        json.put(singleChild.COLUMN_MOTHER_ID, this.motherId == null ? JSONObject.NULL : this.motherId);
-        json.put(singleChild._ID, this._id == null ? JSONObject.NULL : this._id);
-        json.put(singleChild.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
-        json.put(singleChild.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
-        json.put(singleChild.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
-        json.put(singleChild.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
-        json.put(singleChild.COLUMN_MUID, this.muid == null ? JSONObject.NULL : this.muid);
-        json.put(singleChild.COLUMN_FMUID, this.fmuid == null ? JSONObject.NULL : this.fmuid);
+        try {
+            json.put(singleChild.COLUMN_LUID, this.luid == null ? JSONObject.NULL : this.luid.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+            json.put(singleChild.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+            json.put(singleChild.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
 
 
+            if (!this.pType1.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_1, this.pType1.equals("") ? JSONObject.NULL : new JSONObject(this.pType1.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@")));
+            }
+            if (!this.pType2.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_2, this.pType2.equals("") ? JSONObject.NULL : new JSONObject(this.pType2.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@")));
+            }
+            if (!this.pType3.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_3, this.pType3.equals("") ? JSONObject.NULL : new JSONObject(this.pType3.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@")));
+            }
+            if (!this.pType4.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_4, this.pType4.equals("") ? JSONObject.NULL : new JSONObject(this.pType4.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@")));
+            }
+            if (!this.pType5.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_5, this.pType5.equals("") ? JSONObject.NULL : new JSONObject(this.pType5.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@")));
+            }
+            if (!this.pType6.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_6, this.pType6.equals("") ? JSONObject.NULL : new JSONObject(this.pType6.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@")));
+            }
+            if (!this.pType7.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_7, this.pType7.equals("") ? JSONObject.NULL : new JSONObject(this.pType7.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@")));
+            }
+            if (!this.pType8.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_8, this.pType8.equals("") ? JSONObject.NULL : new JSONObject(this.pType8.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@")));
+            }
+            if (!this.pType9.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_9, this.pType9.equals("") ? JSONObject.NULL : new JSONObject(this.pType9.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@")));
+            }
+            if (!this.pType10.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_10, this.pType10.equals("") ? JSONObject.NULL : new JSONObject(this.pType10.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@")));
+            }
+            if (!this.pType11.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_11, this.pType11.equals("") ? JSONObject.NULL : new JSONObject(this.pType11.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@")));
+            }
+            if (!this.pType12.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_12, this.pType12.equals("") ? JSONObject.NULL : new JSONObject(this.pType12.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@")));
+            }
+            if (!this.pType13.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_13, this.pType13.equals("") ? JSONObject.NULL : new JSONObject(this.pType13.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@")));
+            }
+            if (!this.pType14.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_14, this.pType14.equals("") ? JSONObject.NULL : new JSONObject(this.pType14.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@")));
+            }
+            if (!this.pType15.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_15, this.pType15.equals("") ? JSONObject.NULL : new JSONObject(this.pType15.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@")));
+            }
+            if (!this.pType16.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_16, this.pType16.equals("") ? JSONObject.NULL : new JSONObject(this.pType16.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@")));
+            }
+
+            json.put(singleChild.COLUMN_FORMDATE, this.formdate == null ? JSONObject.NULL : this.formdate.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+            json.put(singleChild.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+            json.put(singleChild.COLUMN_SYNCED_DATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+            json.put(singleChild.COLUMN_MOTHER_ID, this.motherId == null ? JSONObject.NULL : this.motherId.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+            json.put(singleChild._ID, this._id == null ? JSONObject.NULL : this._id.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+            json.put(singleChild.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+            json.put(singleChild.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+            json.put(singleChild.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+            json.put(singleChild.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+            json.put(singleChild.COLUMN_MUID, this.muid == null ? JSONObject.NULL : this.muid.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+            json.put(singleChild.COLUMN_FMUID, this.fmuid == null ? JSONObject.NULL : this.fmuid.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+
+        } catch (JSONException e) {
+            try {
+                json.put(singleChild.COLUMN_PTYPE_1, this.pType1.equals("") ? JSONObject.NULL : this.pType1.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+                json.put(singleChild.COLUMN_PTYPE_2, this.pType2.equals("") ? JSONObject.NULL : this.pType2.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+                json.put(singleChild.COLUMN_PTYPE_3, this.pType3.equals("") ? JSONObject.NULL : this.pType3.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+                json.put(singleChild.COLUMN_PTYPE_4, this.pType4.equals("") ? JSONObject.NULL : this.pType4.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+                json.put(singleChild.COLUMN_PTYPE_5, this.pType5.equals("") ? JSONObject.NULL : this.pType5.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+                json.put(singleChild.COLUMN_PTYPE_6, this.pType6.equals("") ? JSONObject.NULL : this.pType6.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+                json.put(singleChild.COLUMN_PTYPE_7, this.pType7.equals("") ? JSONObject.NULL : this.pType7.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+                json.put(singleChild.COLUMN_PTYPE_8, this.pType8.equals("") ? JSONObject.NULL : this.pType8.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+                json.put(singleChild.COLUMN_PTYPE_9, this.pType9.equals("") ? JSONObject.NULL : this.pType9.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+                json.put(singleChild.COLUMN_PTYPE_10, this.pType10.equals("") ? JSONObject.NULL : this.pType10.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+                json.put(singleChild.COLUMN_PTYPE_11, this.pType11.equals("") ? JSONObject.NULL : this.pType11.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+                json.put(singleChild.COLUMN_PTYPE_12, this.pType12.equals("") ? JSONObject.NULL : this.pType12.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+                json.put(singleChild.COLUMN_PTYPE_13, this.pType13.equals("") ? JSONObject.NULL : this.pType13.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+                json.put(singleChild.COLUMN_PTYPE_14, this.pType14.equals("") ? JSONObject.NULL : this.pType14.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+                json.put(singleChild.COLUMN_PTYPE_15, this.pType15.equals("") ? JSONObject.NULL : this.pType15.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+                json.put(singleChild.COLUMN_PTYPE_16, this.pType16.equals("") ? JSONObject.NULL : this.pType16.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+            } catch (JSONException e1) {
+
+            }
+        }
         return json;
     }
 

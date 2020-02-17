@@ -145,12 +145,10 @@ public class MainApp extends Application {
 
 
     //    Ali
-    public static String regionDss = "";
     //    public static List<FamilyMembersContract> familyMembersList;
 //    public static FamilyMembersContract fmc;
 //    public static DeceasedMotherContract dcM;
 //    public static DeceasedChildContract dcC;
-    public static MWRAContract mw;
     //    public static SectionIIMContract ims;
     public static String TAG = "AppMain";
 

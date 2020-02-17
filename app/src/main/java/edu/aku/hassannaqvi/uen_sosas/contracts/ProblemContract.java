@@ -47,22 +47,22 @@ public class ProblemContract {
 
         JSONObject json = new JSONObject();
 
-        json.put(singleProblem.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
-        json.put(singleProblem.COLUMN_CUID, this.cuid == null ? JSONObject.NULL : this.cuid);
-        json.put(singleProblem.COLUMN_PROBLEM_TYPE, this.problemType == null ? JSONObject.NULL : this.problemType);
+        json.put(singleProblem.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+        json.put(singleProblem.COLUMN_CUID, this.cuid == null ? JSONObject.NULL : this.cuid.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+        json.put(singleProblem.COLUMN_PROBLEM_TYPE, this.problemType == null ? JSONObject.NULL : this.problemType.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
 
         if (!this.dA.equals("")) {
-            json.put(singleProblem.COLUMN_DA, this.dA.equals("") ? JSONObject.NULL : new JSONObject(this.dA));
+            json.put(singleProblem.COLUMN_DA, this.dA.equals("") ? JSONObject.NULL : new JSONObject(this.dA.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@")));
         }
-        json.put(singleProblem.COLUMN_FORMDATE, this.formdate == null ? JSONObject.NULL : this.formdate);
-        json.put(singleProblem.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
-        json.put(singleProblem.COLUMN_SYNCED_DATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate);
-        json.put(singleProblem._ID, this._id == null ? JSONObject.NULL : this._id);
-        json.put(singleProblem.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
-        json.put(singleProblem.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
-        json.put(singleProblem.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
-        json.put(singleProblem.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
-        json.put(singleProblem.COLUMN_MUID, this.muid == null ? JSONObject.NULL : this.muid);
+        json.put(singleProblem.COLUMN_FORMDATE, this.formdate == null ? JSONObject.NULL : this.formdate.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+        json.put(singleProblem.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+        json.put(singleProblem.COLUMN_SYNCED_DATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+        json.put(singleProblem._ID, this._id == null ? JSONObject.NULL : this._id.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+        json.put(singleProblem.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+        json.put(singleProblem.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+        json.put(singleProblem.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+        json.put(singleProblem.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+        json.put(singleProblem.COLUMN_MUID, this.muid == null ? JSONObject.NULL : this.muid.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
 
 
         return json;

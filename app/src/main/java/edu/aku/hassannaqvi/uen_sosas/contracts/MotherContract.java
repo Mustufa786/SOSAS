@@ -27,6 +27,7 @@ public class MotherContract {
     }
 
     public void setUuid(String uuid) {
+
         this.uuid = uuid;
     }
 
@@ -72,26 +73,49 @@ public class MotherContract {
         return this;
     }
 
-    public JSONObject toJSONObject() throws JSONException {
+    public JSONObject toJSONObject() {
 
         JSONObject json = new JSONObject();
-
-        json.put(singleMother.COLUMN_LUID, this.luid == null ? JSONObject.NULL : this.luid);
-        json.put(singleMother.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
-        json.put(singleMother.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
-        json.put(singleMother.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo);
+        try {
+            json.put(singleMother.COLUMN_LUID, this.luid == null ? JSONObject.NULL : this.luid.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+            json.put(singleMother.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+            json.put(singleMother.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+            json.put(singleMother.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
 
         if (!this.dA.equals("")) {
-            json.put(singleMother.COLUMN_DA, this.dA.equals("") ? JSONObject.NULL : new JSONObject(this.dA));
+            json.put(singleMother.COLUMN_DA, this.dA.equals("") ? JSONObject.NULL : new JSONObject(this.dA.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@")));
         }
-        json.put(singleMother.COLUMN_FORMDATE, this.formdate == null ? JSONObject.NULL : this.formdate);
-        json.put(singleMother.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
-        json.put(singleMother.COLUMN_SYNCED_DATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate);
-        json.put(singleMother._ID, this._id == null ? JSONObject.NULL : this._id);
-        json.put(singleMother.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
-        json.put(singleMother.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
-        json.put(singleMother.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
-        json.put(singleMother.COLUMN_FMUID, this.fmuid == null ? JSONObject.NULL : this.fmuid);
+
+            json.put(singleMother.COLUMN_FORMDATE, this.formdate == null ? JSONObject.NULL : this.formdate.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+            json.put(singleMother.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+            json.put(singleMother.COLUMN_SYNCED_DATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+            json.put(singleMother._ID, this._id == null ? JSONObject.NULL : this._id.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+            json.put(singleMother.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+            json.put(singleMother.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+            json.put(singleMother.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+            json.put(singleMother.COLUMN_FMUID, this.fmuid == null ? JSONObject.NULL : this.fmuid.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+        } catch (JSONException e) {
+
+            try {
+
+                json.put("MotherDump",
+                        "LUID:" + this.luid.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@") +
+                                "|UID:" + this.uuid.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@") +
+                                "|SerialNo:" + this.serialNo.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@") +
+                                "|dA:" + this.dA.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@") +
+                                "|formdate:" + this.formdate.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@") +
+                                "|id:" + this._id.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@") +
+                                "|username:" + this.user.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@") +
+                                "|deviceID:" + this.deviceID.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@") +
+                                "|deviceTagID:" + this.devicetagID.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@") +
+                                "|fmuid:" + this.fmuid.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+
+            } catch (JSONException e1) {
+
+            }
+        }
+
+
 
 
         return json;

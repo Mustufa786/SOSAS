@@ -72,7 +72,20 @@ public class SyncActivity extends AppCompatActivity {
         listActivityCreated = true;
         uploadlistActivityCreated = true;
         db = new DatabaseHelper(this);
+        sharedPref = getSharedPreferences("src", MODE_PRIVATE);
+
         dbBackup();
+        String txtInfo;
+
+        txtInfo =
+                "App Version: "
+                        + MainApp.appInfo.getAppVersion()
+                        + " Device Tag: "
+                        + sharedPref.getString("tagName", null);
+
+
+        bi.appInfo.setText(txtInfo);
+
         bi.btnSync.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

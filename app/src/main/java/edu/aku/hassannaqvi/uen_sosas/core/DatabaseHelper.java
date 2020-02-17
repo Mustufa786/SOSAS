@@ -29,7 +29,6 @@ import edu.aku.hassannaqvi.uen_sosas.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.FamilyMembersContract.singleMember;
 import edu.aku.hassannaqvi.uen_sosas.contracts.FormsContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.FormsContract.FormsTable;
-import edu.aku.hassannaqvi.uen_sosas.contracts.MWRAContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.MotherContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.MotherContract.singleMother;
 import edu.aku.hassannaqvi.uen_sosas.contracts.ProblemContract;
@@ -274,15 +273,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-//        db.execSQL(SQL_DELETE_USERS);
-//        db.execSQL(SQL_DELETE_FORMS);
-//        db.execSQL("DROP TABLE IF EXISTS " + LHWContract.lhwEntry.TABLE_NAME);
-//        db.execSQL(SQL_DELETE_CHILDREN);
-//        db.execSQL(SQL_DELETE_CHILDLIST);
-//        db.execSQL(SQL_DELETE_VILLAGES);
-//        db.execSQL(SQL_DELETE_TALUKAS);
-//        db.execSQL(SQL_DELETE_UCS);
-//        db.execSQL(SQL_DELETE_AREAS);
+
 
         switch (i) {
             case 1:
@@ -1060,43 +1051,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 whereArgs);
     }
 
-    public void updateSyncedMotherForm(String id) {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-// New value for one column
-        ContentValues values = new ContentValues();
-        values.put(singleMother.COLUMN_SYNCED, true);
-        values.put(singleMother.COLUMN_SYNCED_DATE, new Date().toString());
-
-// Which row to update, based on the title
-        String where = singleMother._ID + " = ?";
-        String[] whereArgs = {id};
-
-        int count = db.update(
-                singleMother.TABLE_NAME,
-                values,
-                where,
-                whereArgs);
-    }
-
-    public void updateMWRAs(String id) {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-// New value for one column
-        ContentValues values = new ContentValues();
-        values.put(MWRAContract.MWRATable.COLUMN_SYNCED, true);
-        values.put(MWRAContract.MWRATable.COLUMN_SYNCED_DATE, new Date().toString());
-
-// Which row to update, based on the title
-        String where = MWRAContract.MWRATable.COLUMN_ID + " = ?";
-        String[] whereArgs = {id};
-
-        int count = db.update(
-                MWRAContract.MWRATable.TABLE_NAME,
-                values,
-                where,
-                whereArgs);
-    }
 
     public int updateFormID() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -1301,53 +1255,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public Collection<MWRAContract> getUnsyncedMWRA() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = {
-                MWRAContract.MWRATable.COLUMN_ID,
-                MWRAContract.MWRATable.COLUMN_UID,
-                MWRAContract.MWRATable.COLUMN_UUID,
-                MWRAContract.MWRATable.COLUMN_FORMDATE,
-                MWRAContract.MWRATable.COLUMN_USER,
-                MWRAContract.MWRATable.COLUMN_SD,
-                MWRAContract.MWRATable.COLUMN_DEVICEID,
-                MWRAContract.MWRATable.COLUMN_DEVICETAGID
-        };
-        String whereClause = MWRAContract.MWRATable.COLUMN_SYNCED + " is null";
-        String[] whereArgs = null;
-        String groupBy = null;
-        String having = null;
-
-        String orderBy =
-                MWRAContract.MWRATable.COLUMN_ID + " ASC";
-
-        Collection<MWRAContract> allMC = new ArrayList<MWRAContract>();
-        try {
-            c = db.query(
-                    MWRAContract.MWRATable.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                MWRAContract mc = new MWRAContract();
-                allMC.add(mc.Hydrate(c));
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allMC;
-    }
-
     public Collection<FormsContract> getUnsyncedForms() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -1486,6 +1393,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.close();
             }
         }
+
         return allFC;
     }
 
