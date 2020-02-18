@@ -1060,11 +1060,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(singleMother.COLUMN_SYNCED_DATE, new Date().toString());
 
 // Which row to update, based on the title
-        String where = singleDeceasedChild._ID + " = ?";
+        String where = singleMother._ID + " = ?";
         String[] whereArgs = {id};
 
         int count = db.update(
-                singleDeceasedChild.TABLE_NAME,
+                singleMother.TABLE_NAME,
                 values,
                 where,
                 whereArgs);
