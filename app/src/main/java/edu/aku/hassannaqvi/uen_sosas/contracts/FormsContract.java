@@ -182,32 +182,33 @@ public class FormsContract {
 
         JSONObject json = new JSONObject();
 
-        json.put(FormsTable.COLUMN_ID, this._ID == null ? JSONObject.NULL : this._ID.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
-        json.put(FormsTable.COLUMN_UID, this._UID == null ? JSONObject.NULL : this._UID.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
-        json.put(FormsTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
-        json.put(FormsTable.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
-        json.put(FormsTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
-        json.put(FormsTable.COLUMN_ISTATUS88x, this.istatus88x == null ? JSONObject.NULL : this.istatus88x.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
-        json.put(FormsTable.COLUMN_ENDINGDATETIME, this.endingdatetime == null ? JSONObject.NULL : this.endingdatetime.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+        json.put(FormsTable.COLUMN_ID, this._ID == null ? JSONObject.NULL : this._ID);
+        json.put(FormsTable.COLUMN_UID, this._UID == null ? JSONObject.NULL : this._UID);
+        json.put(FormsTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
+        json.put(FormsTable.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
+        json.put(FormsTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
+        json.put(FormsTable.COLUMN_ISTATUS88x, this.istatus88x == null ? JSONObject.NULL : this.istatus88x);
+        json.put(FormsTable.COLUMN_ENDINGDATETIME, this.endingdatetime == null ? JSONObject.NULL : this.endingdatetime);
 
-        if (!this.sA.equals("")) {
-            json.put(FormsTable.COLUMN_SA, this.sA.equals("") ? JSONObject.NULL : new JSONObject(this.sA.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@")));
-        }
+        if (this.sA != null)
+            if (!this.sA.equals("")) {
+                json.put(FormsTable.COLUMN_SA, this.sA.equals("") ? JSONObject.NULL : new JSONObject(this.sA));
+            }
 
-        json.put(FormsTable.COLUMN_GPSLAT, this.gpsLat == null ? JSONObject.NULL : this.gpsLat.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
-        json.put(FormsTable.COLUMN_GPSLNG, this.gpsLng == null ? JSONObject.NULL : this.gpsLng.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
-        json.put(FormsTable.COLUMN_GPSDATE, this.gpsDT == null ? JSONObject.NULL : this.gpsDT.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
-        json.put(FormsTable.COLUMN_GPSACC, this.gpsAcc == null ? JSONObject.NULL : this.gpsAcc.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
-        json.put(FormsTable.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
-        json.put(FormsTable.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
-        json.put(FormsTable.COLUMN_APPVERSION, this.appversion == null ? JSONObject.NULL : this.appversion.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
-        json.put(FormsTable.COLUMN_STATUS, this.status == null ? JSONObject.NULL : this.status.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
-        json.put(FormsTable.COLUMN_AREA_CODE, this.areaCode == null ? JSONObject.NULL : this.areaCode.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
-        json.put(FormsTable.COLUMN_UC_CODE, this.uc == null ? JSONObject.NULL : this.uc.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
-        json.put(FormsTable.COLUMN_TALUKA_CODE, this.talukdaCode == null ? JSONObject.NULL : this.talukdaCode.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
-        json.put(FormsTable.COLUMN_VILLAGE_CODE, this.village == null ? JSONObject.NULL : this.village.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
-        json.put(FormsTable.COLUMN_CLUSTERCODE, this.clusterCode == null ? JSONObject.NULL : this.clusterCode.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
-        json.put(FormsTable.COLUMN_HHNO, this.hhno == null ? JSONObject.NULL : this.hhno.replace("[^w\\s+\\_\\\":,\\}{\\]\\[\\-]", "@"));
+        json.put(FormsTable.COLUMN_GPSLAT, this.gpsLat == null ? JSONObject.NULL : this.gpsLat);
+        json.put(FormsTable.COLUMN_GPSLNG, this.gpsLng == null ? JSONObject.NULL : this.gpsLng);
+        json.put(FormsTable.COLUMN_GPSDATE, this.gpsDT == null ? JSONObject.NULL : this.gpsDT);
+        json.put(FormsTable.COLUMN_GPSACC, this.gpsAcc == null ? JSONObject.NULL : this.gpsAcc);
+        json.put(FormsTable.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
+        json.put(FormsTable.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
+        json.put(FormsTable.COLUMN_APPVERSION, this.appversion == null ? JSONObject.NULL : this.appversion);
+        json.put(FormsTable.COLUMN_STATUS, this.status == null ? JSONObject.NULL : this.status);
+        json.put(FormsTable.COLUMN_AREA_CODE, this.areaCode == null ? JSONObject.NULL : this.areaCode);
+        json.put(FormsTable.COLUMN_UC_CODE, this.uc == null ? JSONObject.NULL : this.uc);
+        json.put(FormsTable.COLUMN_TALUKA_CODE, this.talukdaCode == null ? JSONObject.NULL : this.talukdaCode);
+        json.put(FormsTable.COLUMN_VILLAGE_CODE, this.village == null ? JSONObject.NULL : this.village);
+        json.put(FormsTable.COLUMN_CLUSTERCODE, this.clusterCode == null ? JSONObject.NULL : this.clusterCode);
+        json.put(FormsTable.COLUMN_HHNO, this.hhno == null ? JSONObject.NULL : this.hhno);
 
         return json;
     }
