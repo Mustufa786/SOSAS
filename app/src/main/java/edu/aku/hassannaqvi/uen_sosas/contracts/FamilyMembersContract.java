@@ -9,17 +9,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class FamilyMembersContract implements Parcelable {
-    private String uid;
-    private String uuid;
-    private String formdate;
-    private String age;
-    private String clusterno;
-    private String hhno;
-    private String motherid;
-    private String name;
-    private String serialno;
-    private String motherName;
-    private String type;
+    private String uid = "";
+    private String uuid = "";
+    private String formdate = "";
+    private String age = "";
+    private String clusterno = "";
+    private String hhno = "";
+    private String motherid = "";
+    private String name = "";
+    private String serialno = "";
+    private String motherName = "";
+    private String type = "";
 
     public static final Creator<FamilyMembersContract> CREATOR = new Creator<FamilyMembersContract>() {
         @Override
