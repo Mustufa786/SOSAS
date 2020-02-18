@@ -1051,6 +1051,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 whereArgs);
     }
 
+    public void updateSyncedMotherForm(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(singleMother.COLUMN_SYNCED, true);
+        values.put(singleMother.COLUMN_SYNCED_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = singleDeceasedChild._ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                singleDeceasedChild.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
 
     public int updateFormID() {
         SQLiteDatabase db = this.getReadableDatabase();
