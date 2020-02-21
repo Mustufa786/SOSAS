@@ -8,18 +8,18 @@ import org.json.JSONObject;
 
 public class ChildContract {
 
-    private String luid;
-    private String uid;
-    private String uuid;
-    private String serialNo;
-    private String dA;
-    private String formdate;
-    private String synced;
-    private String syncedDate;
-    private String _id;
-    private String motherId;
-    private String fmuid;
-    private String muid;
+    private String luid = "";
+    private String uid = "";
+    private String uuid = "";
+    private String serialNo = "";
+    private String dA = "";
+    private String formdate = "";
+    private String synced = "";
+    private String syncedDate = "";
+    private String _id = "";
+    private String motherId = "";
+    private String fmuid = "";
+    private String muid = "";
 
 
     private String user = ""; // Interviewer
@@ -58,6 +58,7 @@ public class ChildContract {
     public void setMuid(String muid) {
         this.muid = muid;
     }
+
     public String getpType1() {
         return pType1;
     }
@@ -187,7 +188,6 @@ public class ChildContract {
     }
 
 
-
     public String getUuid() {
         return uuid;
     }
@@ -221,7 +221,7 @@ public class ChildContract {
     }
 
     public ChildContract hydrate(Cursor cursor) {
-        this.luid = cursor.getString(cursor.getColumnIndex(singleChild.COLUMN_luid));
+        this.luid = cursor.getString(cursor.getColumnIndex(singleChild.COLUMN_LUID));
         this.uid = cursor.getString(cursor.getColumnIndex(singleChild.COLUMN_UID));
         this.serialNo = cursor.getString(cursor.getColumnIndex(singleChild.COLUMN_SERIAL_NO));
 //        this.dA = cursor.getString(cursor.getColumnIndex(singleChild.COLUMN_DA));
@@ -260,58 +260,89 @@ public class ChildContract {
 
         JSONObject json = new JSONObject();
 
-        json.put(singleChild.COLUMN_luid, this.luid == null ? JSONObject.NULL : this.luid);
+        json.put(singleChild.COLUMN_LUID, this.luid == null ? JSONObject.NULL : this.luid);
         json.put(singleChild.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
         json.put(singleChild.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo);
 
-        if (!this.pType1.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_1, this.pType1.equals("") ? JSONObject.NULL : new JSONObject(this.pType1));
-        }
-        if (!this.pType2.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_2, this.pType2.equals("") ? JSONObject.NULL : new JSONObject(this.pType2));
-        }
-        if (!this.pType3.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_3, this.pType3.equals("") ? JSONObject.NULL : new JSONObject(this.pType3));
-        }
-        if (!this.pType4.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_4, this.pType4.equals("") ? JSONObject.NULL : new JSONObject(this.pType4));
-        }
-        if (!this.pType5.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_5, this.pType5.equals("") ? JSONObject.NULL : new JSONObject(this.pType5));
-        }
-        if (!this.pType6.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_6, this.pType6.equals("") ? JSONObject.NULL : new JSONObject(this.pType6));
-        }
-        if (!this.pType7.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_7, this.pType7.equals("") ? JSONObject.NULL : new JSONObject(this.pType7));
-        }
-        if (!this.pType8.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_8, this.pType8.equals("") ? JSONObject.NULL : new JSONObject(this.pType8));
-        }
-        if (!this.pType9.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_9, this.pType9.equals("") ? JSONObject.NULL : new JSONObject(this.pType9));
-        }
-        if (!this.pType10.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_10, this.pType10.equals("") ? JSONObject.NULL : new JSONObject(this.pType10));
-        }
-        if (!this.pType11.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_11, this.pType11.equals("") ? JSONObject.NULL : new JSONObject(this.pType11));
-        }
-        if (!this.pType12.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_12, this.pType12.equals("") ? JSONObject.NULL : new JSONObject(this.pType12));
-        }
-        if (!this.pType13.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_13, this.pType13.equals("") ? JSONObject.NULL : new JSONObject(this.pType13));
-        }
-        if (!this.pType14.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_14, this.pType14.equals("") ? JSONObject.NULL : new JSONObject(this.pType14));
-        }
-        if (!this.pType15.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_15, this.pType15.equals("") ? JSONObject.NULL : new JSONObject(this.pType15));
-        }
-        if (!this.pType16.equals("")) {
-            json.put(singleChild.COLUMN_PTYPE_16, this.pType16.equals("") ? JSONObject.NULL : new JSONObject(this.pType16));
-        }
+        if (this.pType1 != null)
+            if (!this.pType1.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_1, this.pType1.equals("") ? JSONObject.NULL : new JSONObject(this.pType1));
+            }
+
+        if (this.pType2 != null)
+            if (!this.pType2.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_2, this.pType2.equals("") ? JSONObject.NULL : new JSONObject(this.pType2));
+            }
+
+        if (this.pType3 != null)
+            if (!this.pType3.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_3, this.pType3.equals("") ? JSONObject.NULL : new JSONObject(this.pType3));
+            }
+
+        if (this.pType4 != null)
+            if (!this.pType4.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_4, this.pType4.equals("") ? JSONObject.NULL : new JSONObject(this.pType4));
+            }
+
+        if (this.pType5 != null)
+            if (!this.pType5.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_5, this.pType5.equals("") ? JSONObject.NULL : new JSONObject(this.pType5));
+            }
+
+        if (this.pType6 != null)
+            if (!this.pType6.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_6, this.pType6.equals("") ? JSONObject.NULL : new JSONObject(this.pType6));
+            }
+
+        if (this.pType7 != null)
+            if (!this.pType7.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_7, this.pType7.equals("") ? JSONObject.NULL : new JSONObject(this.pType7));
+            }
+
+        if (this.pType8 != null)
+            if (!this.pType8.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_8, this.pType8.equals("") ? JSONObject.NULL : new JSONObject(this.pType8));
+            }
+
+        if (this.pType9 != null)
+            if (!this.pType9.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_9, this.pType9.equals("") ? JSONObject.NULL : new JSONObject(this.pType9));
+            }
+
+        if (this.pType10 != null)
+            if (!this.pType10.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_10, this.pType10.equals("") ? JSONObject.NULL : new JSONObject(this.pType10));
+            }
+
+        if (this.pType11 != null)
+            if (!this.pType11.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_11, this.pType11.equals("") ? JSONObject.NULL : new JSONObject(this.pType11));
+            }
+
+        if (this.pType12 != null)
+            if (!this.pType12.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_12, this.pType12.equals("") ? JSONObject.NULL : new JSONObject(this.pType12));
+            }
+
+        if (this.pType13 != null)
+            if (!this.pType13.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_13, this.pType13.equals("") ? JSONObject.NULL : new JSONObject(this.pType13));
+            }
+
+        if (this.pType14 != null)
+            if (!this.pType14.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_14, this.pType14.equals("") ? JSONObject.NULL : new JSONObject(this.pType14));
+            }
+
+        if (this.pType15 != null)
+            if (!this.pType15.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_15, this.pType15.equals("") ? JSONObject.NULL : new JSONObject(this.pType15));
+            }
+
+        if (this.pType16 != null)
+            if (!this.pType16.equals("")) {
+                json.put(singleChild.COLUMN_PTYPE_16, this.pType16.equals("") ? JSONObject.NULL : new JSONObject(this.pType16));
+            }
 
         json.put(singleChild.COLUMN_FORMDATE, this.formdate == null ? JSONObject.NULL : this.formdate);
         json.put(singleChild.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
@@ -409,7 +440,7 @@ public class ChildContract {
         public static final String _ID = "_id";
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_UUID = "_uuid";
-        public static final String COLUMN_luid = "_luid";
+        public static final String COLUMN_LUID = "_luid";
         public static final String COLUMN_SERIAL_NO = "serial_no";
         public static final String COLUMN_MOTHER_ID = "mother_id";
         public static final String COLUMN_MUID = "_muid";

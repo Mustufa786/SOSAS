@@ -29,7 +29,6 @@ import edu.aku.hassannaqvi.uen_sosas.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.FamilyMembersContract.singleMember;
 import edu.aku.hassannaqvi.uen_sosas.contracts.FormsContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.FormsContract.FormsTable;
-import edu.aku.hassannaqvi.uen_sosas.contracts.MWRAContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.MotherContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.MotherContract.singleMother;
 import edu.aku.hassannaqvi.uen_sosas.contracts.ProblemContract;
@@ -57,7 +56,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "sosas.db";
     public static final String DB_NAME = "sosas_copy.db";
     public static final String PROJECT_NAME = "DMU-SOSASSTUDY";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String SQL_CREATE_FORMS = "CREATE TABLE "
             + FormsTable.TABLE_NAME + "("
             + FormsTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -134,7 +133,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private final String SQL_CREATE_DECEASED_CHILD = "CREATE TABLE " + DeceasedChildContract.singleDeceasedChild.TABLE_NAME + "("
             + singleDeceasedChild._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + singleDeceasedChild.COLUMN_luid + " TEXT,"
+            + singleDeceasedChild.COLUMN_LUID + " TEXT,"
             + singleDeceasedChild.COLUMN_UID + " TEXT,"
             + singleDeceasedChild.COLUMN_UUID + " TEXT,"
             + singleDeceasedChild.COLUMN_MUID + " TEXT,"
@@ -151,7 +150,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private final String SQL_CREATE__CHILD_TABLE = "CREATE TABLE " + singleChild.TABLE_NAME + "("
             + singleChild._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + singleChild.COLUMN_luid + " TEXT,"
+            + singleChild.COLUMN_LUID + " TEXT,"
             + singleChild.COLUMN_UID + " TEXT,"
             + singleChild.COLUMN_UUID + " TEXT,"
             + singleChild.COLUMN_MOTHER_ID + " TEXT,"
@@ -185,9 +184,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private final String SQL_CREATE__MOTHER_TABLE = "CREATE TABLE " + singleMother.TABLE_NAME + "("
             + singleMother._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + singleMother.COLUMN_luid + " TEXT,"
+            + singleMother.COLUMN_LUID + " TEXT,"
             + singleMother.COLUMN_UID + " TEXT,"
-            + singleMother.COLUMN_fmuid + " TEXT,"
+            + singleMother.COLUMN_UUID + " TEXT,"
+            + singleMother.COLUMN_FMUID + " TEXT,"
             + singleMother.COLUMN_MOTHER_ID + " TEXT,"
             + singleMother.COLUMN_SERIAL_NO + " TEXT,"
             + singleMother.COLUMN_DA + " TEXT,"
@@ -212,6 +212,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + singleProblem.COLUMN_DEVICETAGID + " TEXT,"
             + singleProblem.COLUMN_SYNCED + " TEXT,"
             + singleProblem.COLUMN_SYNCED_DATE + " TEXT );";
+
+    private final String SQL_ALTER_MOTHER = " ALTER TABLE " + singleMother.TABLE_NAME + " ADD COLUMN " +
+            singleMother.COLUMN_UUID + " TEXT;";
 
 
     private final String SQL_CREATE_CHILDLIST = "CREATE TABLE " + ChildList.singleChildList.TABLE_NAME + "("
@@ -270,15 +273,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-//        db.execSQL(SQL_DELETE_USERS);
-//        db.execSQL(SQL_DELETE_FORMS);
-//        db.execSQL("DROP TABLE IF EXISTS " + LHWContract.lhwEntry.TABLE_NAME);
-//        db.execSQL(SQL_DELETE_CHILDREN);
-//        db.execSQL(SQL_DELETE_CHILDLIST);
-//        db.execSQL(SQL_DELETE_VILLAGES);
-//        db.execSQL(SQL_DELETE_TALUKAS);
-//        db.execSQL(SQL_DELETE_UCS);
-//        db.execSQL(SQL_DELETE_AREAS);
+
+
+        switch (i) {
+            case 1:
+                db.execSQL(SQL_ALTER_MOTHER);
+        }
 
 
     }
@@ -875,7 +875,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(DeceasedChildContract.singleDeceasedChild.COLUMN_luid, fc.getLuid());
+        values.put(DeceasedChildContract.singleDeceasedChild.COLUMN_LUID, fc.getLuid());
         values.put(singleDeceasedChild.COLUMN_DA, fc.getdA());
         values.put(singleDeceasedChild.COLUMN_FORMDATE, fc.getFormdate());
         values.put(singleDeceasedChild.COLUMN_MOTHER_ID, fc.getMotherId());
@@ -901,7 +901,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(singleChild.COLUMN_luid, fc.getLuid());
+        values.put(singleChild.COLUMN_LUID, fc.getLuid());
 //        values.put(singleChild.COLUMN_DA, fc.getdA());
         values.put(singleChild.COLUMN_FORMDATE, fc.getFormdate());
         values.put(singleChild.COLUMN_MOTHER_ID, fc.getMotherId());
@@ -929,16 +929,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(singleMother.COLUMN_luid, fc.getLuid());
+        values.put(singleMother.COLUMN_LUID, fc.getLuid());
         values.put(singleMother.COLUMN_DA, fc.getdA());
         values.put(singleMother.COLUMN_FORMDATE, fc.getFormdate());
-        values.put(singleMother.COLUMN_fmuid, fc.getFmuid());
+        values.put(singleMother.COLUMN_FMUID, fc.getFmuid());
 //        values.put(singleMother.COLUMN_MOTHER_ID, fc.getMotherId());
         values.put(singleMother.COLUMN_SERIAL_NO, fc.getSerialNo());
         values.put(singleMother.COLUMN_USER, fc.getUser());
         values.put(singleMother.COLUMN_DEVICEID, fc.getDeviceID());
         values.put(singleMother.COLUMN_DEVICETAGID, fc.getDevicetagID());
-//        values.put(singleMother.COLUMN_UUID, fc.getUuid());
+        values.put(singleMother.COLUMN_UUID, fc.getUuid());
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
         newRowId = db.insert(
@@ -972,8 +972,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values);
         return newRowId;
     }
-
-
 
 
     public void updateSyncedForms(String id) {
@@ -1072,24 +1070,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 whereArgs);
     }
 
-    public void updateMWRAs(String id) {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-// New value for one column
-        ContentValues values = new ContentValues();
-        values.put(MWRAContract.MWRATable.COLUMN_SYNCED, true);
-        values.put(MWRAContract.MWRATable.COLUMN_SYNCED_DATE, new Date().toString());
-
-// Which row to update, based on the title
-        String where = MWRAContract.MWRATable.COLUMN_ID + " = ?";
-        String[] whereArgs = {id};
-
-        int count = db.update(
-                MWRAContract.MWRATable.TABLE_NAME,
-                values,
-                where,
-                whereArgs);
-    }
 
     public int updateFormID() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -1294,53 +1274,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public Collection<MWRAContract> getUnsyncedMWRA() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = {
-                MWRAContract.MWRATable.COLUMN_ID,
-                MWRAContract.MWRATable.COLUMN_UID,
-                MWRAContract.MWRATable.COLUMN_UUID,
-                MWRAContract.MWRATable.COLUMN_FORMDATE,
-                MWRAContract.MWRATable.COLUMN_USER,
-                MWRAContract.MWRATable.COLUMN_SD,
-                MWRAContract.MWRATable.COLUMN_DEVICEID,
-                MWRAContract.MWRATable.COLUMN_DEVICETAGID
-        };
-        String whereClause = MWRAContract.MWRATable.COLUMN_SYNCED + " is null";
-        String[] whereArgs = null;
-        String groupBy = null;
-        String having = null;
-
-        String orderBy =
-                MWRAContract.MWRATable.COLUMN_ID + " ASC";
-
-        Collection<MWRAContract> allMC = new ArrayList<MWRAContract>();
-        try {
-            c = db.query(
-                    MWRAContract.MWRATable.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                MWRAContract mc = new MWRAContract();
-                allMC.add(mc.Hydrate(c));
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allMC;
-    }
-
     public Collection<FormsContract> getUnsyncedForms() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -1413,7 +1346,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 singleChild._ID,
                 singleChild.COLUMN_UID,
                 singleChild.COLUMN_UUID,
-                singleChild.COLUMN_luid,
+                singleChild.COLUMN_LUID,
                 singleChild.COLUMN_SERIAL_NO,
                 singleChild.COLUMN_MOTHER_ID,
                 singleChild.COLUMN_MUID,
@@ -1479,6 +1412,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.close();
             }
         }
+
         return allFC;
     }
 
@@ -1545,9 +1479,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = null;
         String[] columns = {
                 singleMother._ID,
-                singleMother.COLUMN_luid,
+                singleMother.COLUMN_LUID,
                 singleMother.COLUMN_UID,
-                singleMother.COLUMN_fmuid,
+                singleMother.COLUMN_UUID,
+                singleMother.COLUMN_FMUID,
                 singleMother.COLUMN_SERIAL_NO,
                 singleMother.COLUMN_DA,
                 singleMother.COLUMN_FORMDATE,
@@ -1603,7 +1538,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = null;
         String[] columns = {
                 singleDeceasedChild._ID,
-                singleDeceasedChild.COLUMN_luid,
+                singleDeceasedChild.COLUMN_LUID,
                 singleDeceasedChild.COLUMN_UID,
                 singleDeceasedChild.COLUMN_SERIAL_NO,
                 singleDeceasedChild.COLUMN_DA,

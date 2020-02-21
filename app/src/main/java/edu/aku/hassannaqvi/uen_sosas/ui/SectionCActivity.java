@@ -14,13 +14,14 @@ import androidx.databinding.DataBindingUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import edu.aku.hassannaqvi.uen_sosas.R;
 import edu.aku.hassannaqvi.uen_sosas.contracts.ChildContract;
 import edu.aku.hassannaqvi.uen_sosas.contracts.ChildContract.singleChild;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivitySectionCBinding;
-import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.uen_sosas.validator.ClearClass;
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass;
 
@@ -229,8 +230,10 @@ public class SectionCActivity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false)
-                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+        problemType = 17;
+        if (extLst == null) extLst = new ArrayList<>();
+        setResult(RESULT_OK);
+        finish();
     }
 
     private boolean UpdateDB() {
@@ -322,8 +325,10 @@ public class SectionCActivity extends AppCompatActivity {
             cc.setDevicetagID(preferences.getString("tagName", null));
             //te03
             // SC.put("_muid", MainApp.mc.getUid());
+            SC.put("name", MainApp.childData.getName());
             SC.put("hhno", MainApp.fc.getHhno());
             SC.put("cluster_no", MainApp.fc.getClusterCode());
+            SC.put("Appver", MainApp.appInfo.getAppVersion());
 
             SC.put("te" + "_" + String.format("%02d", problemType) + "_" + "03", bi.te03a.isChecked() ? "1"
                     : bi.te03b.isChecked() ? "2"

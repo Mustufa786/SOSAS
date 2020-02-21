@@ -18,7 +18,6 @@ import edu.aku.hassannaqvi.uen_sosas.contracts.MotherContract;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivitySectionBBinding;
-import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.uen_sosas.validator.ClearClass;
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass;
 
@@ -100,7 +99,7 @@ public class SectionBActivity extends AppCompatActivity {
 
     public void BtnEnd() {
         finish();
-        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
+//        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
     }
 
     private boolean UpdateDB() {
@@ -137,12 +136,14 @@ public class SectionBActivity extends AppCompatActivity {
         mc.setDevicetagID(preferences.getString("tagName", null));
 
         //td01
+        SA.put("Appver", MainApp.appInfo.getAppVersion());
         SA.put("hhno", MainApp.fc.getHhno());
         SA.put("cluster_no", MainApp.fc.getClusterCode());
         SA.put("td01", bi.td01a.isChecked() ? "1"
                 : bi.td01b.isChecked() ? "2"
                 : "0");
         //td02a
+        SA.put("name", MainApp.motherData.getMotherName());
         SA.put("td02a", bi.td02a.getText().toString());
         mc.setdA(String.valueOf(SA));
 

@@ -24,8 +24,9 @@ import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp.*
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivityInfoBinding
-import edu.aku.hassannaqvi.uen_sosas.ui.other.MainActivity
+import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass
+import org.json.JSONObject
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
@@ -163,7 +164,7 @@ class InfoActivity : AppCompatActivity() {
             openDialog(this@InfoActivity, item, isMother)
             itemClick = OnItemClick {
                 if (!flag) {
-                    saveDraft()
+                    saveDraft(item)
                     if (!updateDB()) {
                         return@OnItemClick
                     }
@@ -176,7 +177,7 @@ class InfoActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveDraft() {
+    private fun saveDraft(item: FamilyMembersContract) {
         fc = FormsContract()
         val pref = getSharedPreferences("tagName", Context.MODE_PRIVATE)
         fc.devicetagID = pref.getString("tagName", null)
@@ -187,9 +188,15 @@ class InfoActivity : AppCompatActivity() {
         fc.uc = ucCode.toString()
         fc.areaCode = areaCode
         fc.village = villageCode
-        fc.appversion = appInfo.appInfo + "." + versionCode
+        fc.appversion = appInfo.appVersion
         fc.clusterCode = bi.clusterNumber.text.toString()
         fc.hhno = bi.hhName.text.toString()
+
+        val json = JSONObject()
+        json.put("_luid", item.uuid)
+        fc.setsA(json.toString())
+
+
         setGPS(this)
 
     }
@@ -217,10 +224,9 @@ class InfoActivity : AppCompatActivity() {
 
         if (adapter == null) return
 
-
         if (womenList.size == motherList.size) {
             finish()
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, EndingActivity::class.java).putExtra("complete", true))
             return
         }
 

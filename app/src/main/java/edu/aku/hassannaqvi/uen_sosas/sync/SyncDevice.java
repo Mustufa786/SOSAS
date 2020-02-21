@@ -81,7 +81,6 @@ public class SyncDevice extends AsyncTask<Void, Integer, String> {
                     jsonObject.put("imei", MainApp.IMEI);
                     jsonObject.put("appversion", MainApp.versionName + "." + MainApp.versionCode);
                     jsonObject.put("appname", context.getString(R.string.app_name));
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

@@ -1,6 +1,5 @@
 package edu.aku.hassannaqvi.uen_sosas.ui;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -12,16 +11,19 @@ import androidx.databinding.DataBindingUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import edu.aku.hassannaqvi.uen_sosas.R;
 import edu.aku.hassannaqvi.uen_sosas.contracts.ProblemContract;
 import edu.aku.hassannaqvi.uen_sosas.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_sosas.core.MainApp;
 import edu.aku.hassannaqvi.uen_sosas.databinding.ActivitySectionEBinding;
-import edu.aku.hassannaqvi.uen_sosas.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.uen_sosas.validator.ClearClass;
 import edu.aku.hassannaqvi.uen_sosas.validator.ValidatorClass;
 
+import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.extLst;
 import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.pc;
+import static edu.aku.hassannaqvi.uen_sosas.core.MainApp.problemType;
 
 public class SectionEActivity extends AppCompatActivity {
 
@@ -337,11 +339,11 @@ public class SectionEActivity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        /*finishActivity(CHILD_DIS);
-        finishActivity(CHILD_MAIN_C);
-        finishActivity(CHILD_MAIN);*/
-        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false)
-                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+        problemType = 17;
+        problem_counter = MainApp.problemCount;
+        if (extLst == null) extLst = new ArrayList<>();
+        setResult(RESULT_OK);
+        finish();
     }
 
     private boolean UpdateDB() {
@@ -378,8 +380,14 @@ public class SectionEActivity extends AppCompatActivity {
 
         SE.put("count", problem_counter);
         SE.put("mother_id", MainApp.motherData.getSerialno());
+        SE.put("child_id", MainApp.cc.getSerialNo());
         SE.put("hhno", MainApp.fc.getHhno());
         SE.put("cluster_no", MainApp.fc.getClusterCode());
+        SE.put("luid", MainApp.cc.getUuid());
+        SE.put("Appver", MainApp.appInfo.getAppVersion());
+        SE.put("serialNo", MainApp.cc.getSerialNo());
+        SE.put("_fmuid", MainApp.cc.getUid());
+        SE.put("motherid", MainApp.cc.getMotherId());
 
         SE.put("te05", bi.te05a.isChecked() ? "1"
                 : bi.te05b.isChecked() ? "2"

@@ -8,19 +8,19 @@ import org.json.JSONObject;
 
 public class DeceasedChildContract {
 
-    private String luid;
-    private String uid;
+    private String luid = "";
+    private String uid = "";
 
 
-    private String uuid;
-    private String muid;
-    private String serialNo;
-    private String dA;
-    private String formdate;
-    private String synced;
-    private String syncedDate;
-    private String _id;
-    private String motherId;
+    private String uuid = "";
+    private String muid = "";
+    private String serialNo = "";
+    private String dA = "";
+    private String formdate = "";
+    private String synced = "";
+    private String syncedDate = "";
+    private String _id = "";
+    private String motherId = "";
     private String user = ""; // Interviewer
     private String deviceID = "";
     private String devicetagID = "";
@@ -66,7 +66,7 @@ public class DeceasedChildContract {
     }
 
     public DeceasedChildContract hydrate(Cursor cursor) {
-        this.luid = cursor.getString(cursor.getColumnIndex(singleDeceasedChild.COLUMN_luid));
+        this.luid = cursor.getString(cursor.getColumnIndex(singleDeceasedChild.COLUMN_LUID));
         this.uid = cursor.getString(cursor.getColumnIndex(singleDeceasedChild.COLUMN_UID));
         this.serialNo = cursor.getString(cursor.getColumnIndex(singleDeceasedChild.COLUMN_SERIAL_NO));
         this.dA = cursor.getString(cursor.getColumnIndex(singleDeceasedChild.COLUMN_DA));
@@ -89,13 +89,14 @@ public class DeceasedChildContract {
         JSONObject json = new JSONObject();
 
         json.put(singleDeceasedChild.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
-        json.put(singleDeceasedChild.COLUMN_luid, this.luid == null ? JSONObject.NULL : this.luid);
+        json.put(singleDeceasedChild.COLUMN_LUID, this.luid == null ? JSONObject.NULL : this.luid);
         json.put(singleDeceasedChild.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo);
         json.put(singleDeceasedChild.COLUMN_MOTHER_ID, this.motherId == null ? JSONObject.NULL : this.motherId);
 
-        if (!this.dA.equals("")) {
-            json.put(singleDeceasedChild.COLUMN_DA, this.dA.equals("") ? JSONObject.NULL : new JSONObject(this.dA));
-        }
+        if (this.dA != null)
+            if (!this.dA.equals("")) {
+                json.put(singleDeceasedChild.COLUMN_DA, this.dA.equals("") ? JSONObject.NULL : new JSONObject(this.dA));
+            }
         json.put(singleDeceasedChild.COLUMN_FORMDATE, this.formdate == null ? JSONObject.NULL : this.formdate);
         json.put(singleDeceasedChild.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
         json.put(singleDeceasedChild.COLUMN_SYNCED_DATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate);
@@ -192,7 +193,7 @@ public class DeceasedChildContract {
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_UUID = "_uuid";
         public static final String COLUMN_MUID = "_muid";
-        public static final String COLUMN_luid = "_luid";
+        public static final String COLUMN_LUID = "_luid";
         public static final String COLUMN_SERIAL_NO = "serial_no";
         public static final String COLUMN_MOTHER_ID = "mother_id";
         public static final String COLUMN_DA = "dA";

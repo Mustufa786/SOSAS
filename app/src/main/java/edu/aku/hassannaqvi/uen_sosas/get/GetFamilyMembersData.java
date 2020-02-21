@@ -41,10 +41,10 @@ public class GetFamilyMembersData extends AsyncTask<Void, Void, String> {
 
     public static void longInfo(String str) {
         if (str.length() > 4000) {
-            Log.i(TAG + "LongInfo", str.substring(0, 4000));
+            Log.i(TAG + "LI", str.substring(0, 4000));
             longInfo(str.substring(4000));
         } else
-            Log.i(TAG + "LongInfo", str);
+            Log.i(TAG + "LI", str);
     }
 
     @Override

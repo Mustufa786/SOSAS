@@ -42,6 +42,7 @@ import edu.aku.hassannaqvi.uen_sosas.databinding.ActivitySyncBinding;
 import edu.aku.hassannaqvi.uen_sosas.get.GetAllData;
 import edu.aku.hassannaqvi.uen_sosas.otherClasses.SyncModel;
 import edu.aku.hassannaqvi.uen_sosas.sync.SyncAllData;
+import edu.aku.hassannaqvi.uen_sosas.sync.SyncDevice;
 
 public class SyncActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
@@ -71,7 +72,20 @@ public class SyncActivity extends AppCompatActivity {
         listActivityCreated = true;
         uploadlistActivityCreated = true;
         db = new DatabaseHelper(this);
+        sharedPref = getSharedPreferences("src", MODE_PRIVATE);
+
         dbBackup();
+        String txtInfo;
+
+        txtInfo =
+                "App Version: "
+                        + MainApp.appInfo.getAppVersion()
+                        + " Device Tag: "
+                        + sharedPref.getString("tagName", null);
+
+
+        bi.appInfo.setText(txtInfo);
+
         bi.btnSync.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -163,7 +177,7 @@ public class SyncActivity extends AppCompatActivity {
 
             DatabaseHelper db = new DatabaseHelper(this);
             //syncStatus.setText(null);
-//            new SyncDevice(this).execute();
+            new SyncDevice(this).execute();
 //  *******************************************************Forms*********************************
             Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
             if (uploadlistActivityCreated) {
@@ -261,7 +275,6 @@ public class SyncActivity extends AppCompatActivity {
     }
 
     public void dbBackup() {
-
         sharedPref = getSharedPreferences("src", MODE_PRIVATE);
         editor = sharedPref.edit();
 
@@ -332,8 +345,12 @@ public class SyncActivity extends AppCompatActivity {
         protected String doInBackground(String... strings) {
             runOnUiThread(new Runnable() {
 
+
                 @Override
                 public void run() {
+
+                    new SyncDevice(SyncActivity.this).execute();
+
                     Toast.makeText(SyncActivity.this, "Sync Talukas", Toast.LENGTH_SHORT).show();
 
                     if (listActivityCreated) {

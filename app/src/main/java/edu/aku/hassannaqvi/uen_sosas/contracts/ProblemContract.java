@@ -8,15 +8,15 @@ import org.json.JSONObject;
 
 public class ProblemContract {
 
-    private String uid;
-    private String uuid;
-    private String cuid;
-    private String problemType;
-    private String dA;
-    private String formdate;
-    private String synced;
-    private String syncedDate;
-    private String _id;
+    private String uid = "";
+    private String uuid = "";
+    private String cuid = "";
+    private String problemType = "";
+    private String dA = "";
+    private String formdate = "";
+    private String synced = "";
+    private String syncedDate = "";
+    private String _id = "";
     private String user = ""; // Interviewer
     private String deviceID = "";
     private String devicetagID = "";
@@ -51,9 +51,10 @@ public class ProblemContract {
         json.put(singleProblem.COLUMN_CUID, this.cuid == null ? JSONObject.NULL : this.cuid);
         json.put(singleProblem.COLUMN_PROBLEM_TYPE, this.problemType == null ? JSONObject.NULL : this.problemType);
 
-        if (!this.dA.equals("")) {
-            json.put(singleProblem.COLUMN_DA, this.dA.equals("") ? JSONObject.NULL : new JSONObject(this.dA));
-        }
+        if (this.dA != null)
+            if (!this.dA.equals("")) {
+                json.put(singleProblem.COLUMN_DA, this.dA.equals("") ? JSONObject.NULL : new JSONObject(this.dA));
+            }
         json.put(singleProblem.COLUMN_FORMDATE, this.formdate == null ? JSONObject.NULL : this.formdate);
         json.put(singleProblem.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
         json.put(singleProblem.COLUMN_SYNCED_DATE, this.syncedDate == null ? JSONObject.NULL : this.syncedDate);
@@ -75,6 +76,7 @@ public class ProblemContract {
     public void setMuid(String muid) {
         this.muid = muid;
     }
+
     public String getUuid() {
         return uuid;
     }
